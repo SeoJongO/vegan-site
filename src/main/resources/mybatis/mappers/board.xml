@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	
+	<update id="updateHit" parameterType = "int">
+		<![CDATA[
+			update board
+			set hit = hit+1
+			where no = #{no} 
+       	]]>
+	</update>
+	
+	<select id="boardList" resultType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			select	b.no,
+					b.title,
+					b.hit,
+					b.reg_date regDate,
+					b.user_no userNo,
+					u.name
+			from board b, users u
+			where b.user_no = u.no
+			order by b.reg_date desc
+       	]]>
+	</select>
+	
+	<select id="selectBoard" parameterType = "int" resultType="com.javaex.vo.BoardVo">
+		<![CDATA[
+			select	b.no,
+					b.title,
+					b.content,
+					b.hit,
+					b.reg_date regDate,
+					b.user_no userNo,
+					u.name
+			from board b, users u
+			where b.user_no = u.no
+			and b.no = #{no} 
+       	]]>
+	</select>
+	
+	<insert id="writeBoard" parameterType = "com.javaex.vo.BoardVo">
+		<![CDATA[
+			insert into board
+			values ( SEQ_BOARD_NO.nextval, #{title}, #{content}, 0, sysdate, #{userNo} )
+		]]>
+	</insert>
+	
+	<delete id="deleteBoard" parameterType = "int">
+		<![CDATA[
+			delete from board
+			where no = #{no}
+		]]>
+	</delete>
+	
+	<update id="updateBoard" parameterType = "com.javaex.vo.BoardVo">
+		<![CDATA[
+			update board
+			set title = #{title},
+		    content = #{content}
+			where no = #{no}
+		]]>
+	</update>
+	
+</mapper>
