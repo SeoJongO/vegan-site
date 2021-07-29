@@ -21,17 +21,19 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	// 게시판 리스트 ===========================================================================================================
 	@RequestMapping(value = "/board", method = {RequestMethod.GET, RequestMethod.POST})
-	public String board(Model model) {
+	public String board(Model model, @RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		System.out.println("BoardController.board()");
 		
-		List<BoardVo> bList = boardService.boardList();
+		List<BoardVo> bList = boardService.boardList(keyword);
 		
 		model.addAttribute("bList", bList);
 		
 		return "board/board";
 	}
 	
+	// 게시판 조회수 증가, 글 하나 가져오기 ==========================================================================================
 	@RequestMapping(value = "/board/read", method = {RequestMethod.GET, RequestMethod.POST})
 	public String read(Model model, @RequestParam("no") int no) {
 		System.out.println("BoardController.read()");
@@ -43,6 +45,7 @@ public class BoardController {
 		return "board/read";
 	}
 	
+	// 게시판 글 등록폼 =========================================================================================================
 	@RequestMapping(value = "/board/writeForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String writeForm() {
 		System.out.println("BoardController.writeForm()");
@@ -50,6 +53,7 @@ public class BoardController {
 		return "board/writeForm";
 	}
 	
+	// 게시판 글 등록 ===========================================================================================================
 	@RequestMapping(value = "/board/write", method = {RequestMethod.GET, RequestMethod.POST})
 	public String write(HttpSession session,
 						@RequestParam("title") String title,
@@ -65,6 +69,7 @@ public class BoardController {
 		return "redirect:/board";
 	}
 	
+	// 게시판 글 수정폼 ==========================================================================================================
 	@RequestMapping(value = "/board/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String modifyForm(Model model, @RequestParam("no") int no) {
 		System.out.println("BoardController.modifyForm()");
@@ -76,6 +81,7 @@ public class BoardController {
 		return "board/modifyForm";
 	}
 	
+	// 게시판 글 수정 ===========================================================================================================
 	@RequestMapping(value = "/board/modify", method = {RequestMethod.GET, RequestMethod.POST})
 	public String modify(Model model,
 						 @RequestParam("no") int no,
@@ -90,6 +96,7 @@ public class BoardController {
 		return "redirect:/board";
 	}
 	
+	// 게시판 글 삭제 ===========================================================================================================
 	@RequestMapping(value = "/board/delete", method = {RequestMethod.GET, RequestMethod.POST})
 	public String delete(@RequestParam("no") int no) {
 		System.out.println("BoardController.delete()");
