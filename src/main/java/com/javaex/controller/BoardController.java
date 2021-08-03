@@ -47,8 +47,14 @@ public class BoardController {
 	
 	// 게시판 글 등록폼 =========================================================================================================
 	@RequestMapping(value = "/board/writeForm", method = {RequestMethod.GET, RequestMethod.POST})
-	public String writeForm() {
+	public String writeForm(HttpSession session) {
 		System.out.println("BoardController.writeForm()");
+		
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
+		
+		if(authUser == null) {
+			return "redirect:/user/loginForm";
+		}
 		
 		return "board/writeForm";
 	}
@@ -71,14 +77,24 @@ public class BoardController {
 	
 	// 게시판 글 수정폼 ==========================================================================================================
 	@RequestMapping(value = "/board/modifyForm", method = {RequestMethod.GET, RequestMethod.POST})
-	public String modifyForm(Model model, @RequestParam("no") int no) {
+	public String modifyForm(HttpSession session, Model model, @RequestParam("no") int no) {
 		System.out.println("BoardController.modifyForm()");
 		
 		BoardVo modify = boardService.getBoard(no);
 		
-		model.addAttribute("modify", modify);
+		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		
-		return "board/modifyForm";
+		if(authUser == null) {
+			return "redirect:/main";
+		}
+		
+		if(authUser.getNo() == modify.getUserNo()) {
+			model.addAttribute("modify", modify);
+			return "board/modifyForm";
+		} else {
+			return "redirect:/main";
+		}
+		
 	}
 	
 	// 게시판 글 수정 ===========================================================================================================
