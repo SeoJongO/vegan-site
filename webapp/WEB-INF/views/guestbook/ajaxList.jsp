@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/guestbook.css" rel="stylesheet" type="text/css">
 
@@ -85,28 +87,31 @@
 		<!-- //footer -->
 	</div>
 	<!-- //wrap -->
+	
+	<!-- 삭제 모달창 -->
+	<div id="delModal" class="modal fade">
+  	 <div class="modal-dialog">
+      <div class="modal-content">
+       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title">방명록 삭제</h4>
+          </div>
+           <div class="modal-body">
+           	<label for="modalPassword">비밀번호</label>
+            <input id="modalPassword" type="password" name="password" value="">
+            <input type="hidden" name="no" value="">
+           </div>
+          <div class="modal-footer">
+        <button id="modalDelete" type="button" class="btn btn-primary">삭제</button>
+       </div>
+      </div><!-- /.modal-content -->
+  	 </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 
 </body>
 <script type="text/javascript">
 	$(document).ready(function() {
-		console.log("로딩 직전");
-
-		$.ajax({
-			url : "${pageContext.request.contextPath }/api/guestbook/list",
-			type : "post",
-			//contentType : "application/json",
-			//data : {name: ”홍길동"},
-			//dataType : "json",
-	
-			success : function(guestList) {
-				for(var i=0; i<guestList.length;i++) {
-					render(guestList[i], "down");
-				}
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		});
+		fetchList();
 	});
 	
 	// 로딩이 끝난후
@@ -127,14 +132,17 @@
 		// 데이터 ajax방식으로 서버에 전송
 		$.ajax({
 			url : "${pageContext.request.contextPath }/api/guestbook/write",
-			type : "get",
+			type : "post",
 			//contentType : "application/json",
 			//data : {name: userName, password: password, content: content},
 			data : guestbookVo,
+			
 			dataType : "json",
-	
 			success : function(guestbookVo) {
 				render(guestbookVo, "up");
+				$("#input-uname").val("");
+				$("#input-pass").val("");
+				$("[name='content']").val("");
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -142,10 +150,76 @@
 		});
 	});
 	
+	// 리스트 삭제 버튼 클릭
+	$("#listArea").on("click", ".btnDel", function() {
+		// 비밀번호 초기화
+		$("[name=no]").val("");
+		$("#modalPassword").val("");
+		// hidden no 입력
+		var no = $(this).data("no");
+		$("[name=no]").val(no);
+		// 모달창 보이기
+		$("#delModal").modal();
+	});
+	
+	// 모달 삭제 버튼 클릭
+	$("#modalDelete").on("click", function() {
+		// 서버에 삭제요청 (no, password 전달)
+		var guestbookVo = {
+				no: $("[name='no']").val(),
+				password: $("#modalPassword").val()
+			};
+		
+		console.log(guestbookVo);
+		
+		$("button").click(function(){
+
+		$.ajax({
+			url : "${pageContext.request.contextPath }/api/guestbook/delete",
+			type : "post",
+			//contentType : "application/json",
+			data : guestbookVo,
+			dataType : "json",
+			
+			success : function(count){
+				if(count === 1) {
+					$("#delModal").modal("hide");
+					$("#t-"+ $("[name='no']").val() +"").remove();
+				} else {
+					$("#delModal").modal("hide");
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			});
+		});
+	});
+	
+	// 리스트 가져오기
+	function fetchList() {
+		$.ajax({
+			url : "${pageContext.request.contextPath }/api/guestbook/list",
+			type : "post",
+			//contentType : "application/json",
+			//data : {name: ”홍길동"},
+			//dataType : "json",
+	
+			success : function(guestList) {
+				for(var i=0; i<guestList.length;i++) {
+					render(guestList[i], "down");
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	} ;
+	
 	// 방명록 1개씩 렌더링
 	function render(guestbookVo, type) {
 		var str = "";
-		str += '<table class="guestRead">';
+		str += '<table id="t-' + guestbookVo.no + '" class="guestRead">';
 		str += '	<colgroup>';
 		str += '		<col style="width: 10%;">';
 		str += '		<col style="width: 40%;">';
@@ -156,7 +230,7 @@
 		str += '		<td>'+ guestbookVo.no +'</td>';
 		str += '		<td>'+ guestbookVo.name +'</td>';
 		str += '		<td>'+ guestbookVo.regDate +'</td>';
-		str += '		<td><a href="${pageContext.request.contextPath}/guestbook/deleteForm?no=${guest.no}">[삭제]</a></td>';
+		str += '		<td><button class="btnDel" data-no="'+ guestbookVo.no +'">삭제</button></td>';
 		str += '	</tr>';
 		str += '	<tr>';
 		str += '		<td colspan=4 class="text-left">'+ guestbookVo.content +'</td>';

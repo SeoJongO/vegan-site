@@ -43,5 +43,11 @@ public class GuestbookDao {
 		
 		return sqlSession.selectOne("guestbook.selectGuestbook", no);
 	}
+	
+	public int deleteGuest(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao.deleteGuest");
+		
+		return sqlSession.delete("guestbook.guestDelete", guestbookVo);
+	}
 
 }
