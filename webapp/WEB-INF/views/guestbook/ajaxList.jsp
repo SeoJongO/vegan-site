@@ -99,7 +99,7 @@
            <div class="modal-body">
            	<label for="modalPassword">비밀번호</label>
             <input id="modalPassword" type="password" name="password" value="">
-            <input type="hidden" name="no" value="">
+            <input type="hidden" name="no" value=""> 
            </div>
           <div class="modal-footer">
         <button id="modalDelete" type="button" class="btn btn-primary">삭제</button>
@@ -109,6 +109,7 @@
 	</div><!-- /.modal -->
 
 </body>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		fetchList();
