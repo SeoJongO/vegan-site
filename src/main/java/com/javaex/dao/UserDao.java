@@ -36,4 +36,10 @@ public class UserDao {
 		return sqlSession.update("user.userUpdate", userVo);
 	}
 	
+	public UserVo getUser(String id) {
+		System.out.println("UserDao.getUser()");
+		
+		return sqlSession.selectOne("user.selectUserById",id);
+	}
+	
 }

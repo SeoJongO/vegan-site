@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +21,19 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	// 게시판 페이징 연습용 리스트
+	@RequestMapping(value = "/board/list", method = {RequestMethod.GET, RequestMethod.POST})
+	public String list(Model model, @RequestParam(value="crtPage", required=false, defaultValue="1") int crtPage,
+									@RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
+		System.out.println("BoardService.list()");
+		
+		Map<String, Object> listMap = boardService.getList(crtPage, keyword);
+		
+		model.addAttribute("listMap", listMap);
+		
+		return  "board/list";
+	}
 	
 	// 게시판 리스트 ===========================================================================================================
 	@RequestMapping(value = "/board", method = {RequestMethod.GET, RequestMethod.POST})
@@ -67,8 +81,8 @@ public class BoardController {
 		System.out.println("BoardController.write()");
 		
 		int userNo = ((UserVo)session.getAttribute("authUser")).getNo();
-		
-		BoardVo boardVo = new BoardVo(title, content, userNo);
+
+		BoardVo boardVo = new BoardVo(userNo, title, content);
 		
 		boardService.writeBoard(boardVo);
 		

@@ -41,5 +41,13 @@
 		where no = #{no}
 	]]>
 	</update>
+	
+	<select id="selectUserById" parameterType="String" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select no, id
+			from users
+			where id = #{id}
+		]]>
+	</select>
 
 </mapper>

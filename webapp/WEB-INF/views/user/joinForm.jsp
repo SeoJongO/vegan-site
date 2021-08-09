@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 <link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
 
@@ -35,13 +36,14 @@
 				<!-- //content-head -->
 
 				<div id="user">
-					<div id="joinForm">
-						<form action="${pageContext.request.contextPath }/user/join" method="post">
+					<div>
+						<form id="joinForm" action="${pageContext.request.contextPath }/user/join" method="post">
 							<!-- 아이디 -->
 							<div class="form-group">
 								<label class="form-text" for="input-uid">아이디</label>
 								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="">중복체크</button>
+								<button type="button" id="btnIdCheck">중복체크</button>
+								<p class="form-text" id="idCheckMsg"></p>
 							</div>
 
 							<!-- 비밀번호 -->
@@ -94,5 +96,104 @@
 	<!-- //wrap -->
 
 </body>
+
+<script type="text/javascript">
+
+	
+	$("#btn-submit").on("click", function() {
+		event.preventDefault();
+		
+		var userVo = {
+				id: $("#input-uid").val(),
+				password: $("#input-pass").val(),
+				name: $("#input-name").val(),
+				gender: $("[name=gender]").val()
+		}
+		
+		//userVo.gender = $("[name=gender]").val()
+		
+		console.log(userVo);
+		console.log(JSON.stringify(userVo));
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/user/join2",
+			type : "post",
+			contentType : "application/json",
+			data : JSON.stringify(userVo),
+			dataType : "json",
+			
+			success : function(count){
+				if( count == 1 ) {
+					console.log(count);
+					console.log("성공");
+				} else {
+					console.log(count);
+					console.log("실패");
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+		
+	});
+
+
+
+/*
+	$("#joinForm").on("submit", function() {
+		
+		
+		var password = $("#input-pass").val();
+		
+		if( password.length <= 8) {
+			alert("패스워드를 8글자 이상 입력해 주세요");
+			return false;
+		}
+		
+		var name = $("#input-name").val();
+		
+		if( name.length < 1) {
+			alert("이름을 입력해 주세요");
+			return false;
+		}
+
+		var agree = $("#chk-agree").id(":checked");
+		
+		if( agree == false ) {
+			alert("약관에 동의해 주세요");
+			return false;
+		}
+		
+		return true;
+	});
+*/
+
+	$("#btnIdCheck").on("click", function(){
+		
+		var id = $("#input-uid").val();
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath }/user/idcheck",
+			type : "post",
+			//contentType : "application/json",
+			data : {id: id},
+			dataType : "json",
+			
+			success : function(state){
+				console.log(state);
+				
+				if(state == true) {
+					$("#idCheckMsg").html("사용가능한 ID입니다.")
+				} else {
+					$("#idCheckMsg").html("사용중인 ID입니다.")
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+			});
+	});
+</script>
 
 </html>

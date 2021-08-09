@@ -35,4 +35,16 @@ public class UserService {
 		
 		return userDao.userUpdate(userVo);
 	}
+	
+	public boolean getUser(String id) {
+		System.out.println("UserService.getUser()");
+		
+		UserVo userVo = userDao.getUser(id);
+		
+		if( userVo == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

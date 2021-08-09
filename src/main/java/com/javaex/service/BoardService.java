@@ -1,6 +1,8 @@
 package com.javaex.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,51 @@ public class BoardService {
 		int count = boardDao.updateHit(no);
 		
 		return boardDao.selectBoard(no);
+	}
+	
+	public Map<String, Object> getList(int crtPage, String keyword) {
+		System.out.println("BoardService.getList()");
+
+		int listCnt = 10;
+		
+		crtPage = (crtPage > 0) ? crtPage : (crtPage=1);
+		
+		int startRnum = (crtPage-1)*listCnt+1;
+				
+		int endRnum = (startRnum+listCnt)-1;
+		
+		List<BoardVo> boardList = boardDao.getList(startRnum, endRnum, keyword);
+		
+		
+		
+		int totalcount = boardDao.selectTotal(keyword);
+		
+		int pageBtnCount = 5;
+		
+		int endPageBtnNo = (int)Math.ceil(crtPage/(double)pageBtnCount)*pageBtnCount;
+		
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount-1);
+		
+		boolean next = false;
+		if ((endPageBtnNo * listCnt) < totalcount) {
+			next = true;
+		} else {
+			endPageBtnNo = (int) Math.ceil(totalcount/(double)listCnt);
+		};
+		
+		boolean prev = false;
+		if (startPageBtnNo != 1) {
+			prev = true;
+		} 
+		
+		Map<String, Object> listMap = new HashMap<String, Object>();
+		listMap.put("boardList", boardList);
+		listMap.put("prev", prev);
+		listMap.put("startPageBtnNo", startPageBtnNo);
+		listMap.put("endPageBtnNo", endPageBtnNo);
+		listMap.put("next", next);
+		
+		return listMap;
 	}
 	
 	// 게시판 리스트 ============================================================================================================
@@ -49,7 +96,7 @@ public class BoardService {
 	// 게시판 글 수정 ===========================================================================================================
 	public int updateBoard(BoardVo boardVo) {
 		System.out.println("BoardService.updateBoard()");
-		
+		System.out.println(boardVo);
 		return boardDao.updateBoard(boardVo);
 	}
 
