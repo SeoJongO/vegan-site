@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+textarea {vertical-align: top; width: 964px; height: 200px; margin: 0 0 10px 0; padding: 5px 10px;}
+#input-zone { margin: 10px 0 20px 0;}
+#input-zone input[type="text"]{width: 964px; margin: 0 0 10px 0; padding: 0 10px;}
+#historyTable tr {border-bottom: 1px solid #a6a6a6;}
+#t-head {background-color: #ff6001; color: #fff; height: 40px; /* border: 1px solid #a6a6a6; */ }
+input[type="file"] {margin: 0 0 0 35px;}
+#q-title {width: 300px;}
+#q-content {width: 600px; padding: 0 0 0 10px;}
+#q-status {width: 100px;}
+.t-body {height: 40px;}
+.t-body td {padding: 0 0 0 10px;}
+.t-body td[class="text-center"] {color: #ff6001;}
+.qna-q, .qna-a { width: 300px; font-weight: bold; font-size: 20px;}
+.qna-q-content, .qna-a-content { width: 990px; height: 60px;}
+
+
+#aside-submenu {padding: 15px 0 0 5px;}
+#aside-submenu>li {padding: 0 0 15px 0;}

@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+
+
+#content{
+   width: 1200px;
+   text-align: center;
+}
+#content_top{
+    border: 1px solid #a6a6a6;
+    height: 430px;
+    box-sizing: border-box;
+   
+}
+
+.shopInfo {
+    /* border: 1px solid #000; */
+    width: 369px;
+    height: 360px;
+    float: left;
+    padding: 15px 15px;
+    text-align: left;
+}
+
+
+
+img[class="instarimg"] { width: 40px; height: 40px;}
+
+#btn{
+    margin: 15px 0;
+}
+
+#reviews { 
+	margin: 25px 0 25px 0; 
+	width: 1200px; 
+	border-bottom: 1px solid #a6a6a6;
+	padding-bottom: 10px;
+}
+	
+	.shopInfo >.img {
+	background-color: #000;
+	width: 90px;
+	height: 90px;
+	margin-top: 15px;
+	
+}
+
+#menuModalList{
+	background-color: #ff6001;
+	border:none;
+	border-radius: 3px;
+	height: 30px;
+	width: 80px;
+}
+
+.img {
+	background-color: #000;
+	width: 90px;
+	height: 90px;
+	
+}
+.btn_view{
+	background-color: #ff6001;
+	border:none;
+	border-radius: 3px;
+	height: 30px;
+	width: 80px;
+}
+
+.btn_view2{
+	background-color: #ff6001;
+	border:none;
+	border-radius: 3px;
+	height: 30px;
+	width: 80px;
+}
+
+#reviewInfo { 
+	width: 100px;
+	margin-left : 30px;
+	
+}
+
+
+
+
+.viewImg{
+    width: 900px;
+    float: left;
+    text-align: left;
+    padding-left : 30px;
+}
+
+.viewImg > div {
+	margin-bottom : 10px;
+}
+
+.viewpro img {
+	width: 90px;
+	height: 90px;
+}
+
+#paging {
+	align-items: center;
+	width : 1200px;
+}
+
+.paging {
+	display : inline-block;
+	margin: 10px auto;
+}
+
+.paging>li{
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+
+.modi{
+    float: right;
+}
+
+.modi>ul>li{
+    float: left;
+    margin: 0 0 0 10px;
+}
+
+.btn_sin{
+    margin-top: 90px;
+}
+
+/* modal 리뷰쓰기*/
+
+#content_main > div > form > textarea {
+	width: 570px;
+	height: 250px;
+}
+
+#reviewFile img {
+	float:left;
+	width: 90px;
+	height: 90px;
+	margin-right: 5px;
+}
+
+.reviewModiBtn{
+	background-color: #ff6001;
+	border:none;
+	border-radius: 3px;
+	height: 30px;
+	width: 50px;
+}
+
+
+/* modal 리뷰삭제*/
+
+#reviewModalDel{
+	background-color: #ff6001;
+	border:none;
+	border-radius: 3px;
+	height: 30px;
+	width: 50px;
+}
+
+
+
+

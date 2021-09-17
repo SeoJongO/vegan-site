@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+
+/* 상세페이지 & 공통 */
+#content { box-sizing: border-box; width: 1200px; }
+#restaurantInfo {  border: 1px solid #a6a6a6; height: 370px;}
+.restaurantInfo { box-sizing: border-box; width: 399px; padding: 15px 30px;}
+
+.restaurantInfo .restaurantInfo-text .timeInfo {display: block;}
+.restaurantInfo .restaurantInfo-text { padding:  0 0 15px 0;}
+.restaurantInfo .restaurantInfo-text .favoritesImg {width: 25px; height: 25px;}
+.restaurantInfo p .favorites {font-weight: bold; font-size: 25px;}
+
+.menu {margin: 0 0 15px 0;}
+.foodImg { width: 90px; height: 90px; margin: 0 15px 0 0;}
+.foodInfo { display: block; padding: 0 0 2px 0; }
+
+#staticMap {border-left: 1px solid #a6a6a6; border-top: 1px solid #a6a6a6; border-right: 1px solid #a6a6a6;}
+#address {border: 1px solid #a6a6a6; width: 340px; height: 70px; background-color: #f5f6f8;}
+#addressText {padding: 15px;}
+#addressType {border: 1px solid #a6a6a6; }
+
+#restaurantPage-btn {margin: 15px auto; }
+#restaurantPage-btn button { margin-right: 20px; width: 100px; height: 40px;}
+
+
+.review { border-top: 1px solid #a6a6a6; padding: 30px 0;}
+#userProfile {width: 250px;}
+.userProfile-img { width: 70px; height: 70px; border: 1px solid #000; margin-right: 10px}
+#userProfile p { text-align: left;}
+#starPoint {font-size: 20px;}
+
+#modify-deleft-btn .modify {margin: 0 15px 0 0;}
+#modify-deleft-btn .delete { cursor: pointer;}
+
+#reviewImg-text { text-align: left; width: 700px;}
+img[class="review-img"] {margin-bottom: 10px;}
+.review-img { width: 90px; height: 90px; border: 1px solid #000; margin: 0 10px 0 0;}
+
+#paging {border-top: 1px solid #a6a6a6;}
+#paging p {padding: 30px 0;}
+
+.singo {padding: 0 0 30px 0;}
+
+
+/*임시*/
+img{border: 1px solid #000;}
+
+/* //상세페이지 & 공통 */
+
+
+
+/* 메뉴더보기 */
+.modal-body {padding-left: 16px; padding-right: 16px;}
+.menu-modal-dialog {width: 1102px; margin: 0 auto;}
+#myModalLabel {padding: 5.93px;}
+.modal-body .menuInfo {width: 237px; margin: 15px 15px;}
+.modal-body .menuInfo .menuImg {width: 237px; height:150px; border: 1px solid #000;}
+.menuInfo .menuText {margin-top: 5px;}
+/* //메뉴더보기 */
+
+
+
+/* 리뷰남기기(모달) 리뷰수정(페이지) 신고하기(모달) */
+.restaurantPage-modal-dialog { width: 734px; padding-left: 0; padding-right: 0; margin: 0 auto;}
+#modify-content {width: 700px; margin: 0 auto;}
+#modify-content textarea {width: 700px; height: 200px;}
+#modify-content .modifyPage-review-img {margin: 15px 0;}
+
+#modify-content .modifyPage-starPoint {font-size: 40px; margin-bottom: 10px;}
+#modify-content .text-center .btn {width: 100px;}
+#modify-content .text-center .btn[type="submit"] {margin-right: 15px;}
+/* //리뷰수정페이지 */
+

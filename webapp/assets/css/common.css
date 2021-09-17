@@ -1,0 +1,174 @@
+@charset "UTF-8";
+/****************************************************************/
+/* 초기화 관련 ***************************************************/
+/****************************************************************/
+
+/* 여백 초기화 */
+body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, 
+input, input[type="checkbox"], input[type="radio"], fieldset, legend, p, select, table, th, td, tr,
+textarea, button, form, border {margin: 0; padding: 0;}
+
+h1, h2, h3, h4, h5, h6 {line-height: 1.4;}
+
+
+
+body {font-size:15px; font-family: "맑은 고딕", 돋움, 굴림; color: #333333; background-color: #ffffff; overflow-y: auto;}
+
+ul, ol	{list-style-type: none; }
+a:link {text-decoration: none; color: #000000; }
+a:visited {text-decoration: none; color: #000000; }
+a:active {text-decoration: none; color: #000000; }
+a:hover {text-decoration: none; color: #000000; cursor: pointer;}
+
+/****************** 공통 ************************/
+/* clearfix */
+.clearfix{*zoom:1;}
+.clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
+.clearfix:after {clear: both;}
+
+
+/* 폼 관련 */
+input[type="text"] {padding: 0 10px; height: 40px;}
+input[type="password"] {padding: 0 10px; height: 40px;}
+textarea{padding: 0 10px;}
+
+/* 번외 */
+.nomal-input-box { height: 40px; width: 300px; padding: 0 10px;}
+
+
+/* font *(기본값 12px) */
+.bold {font-weight: bold; }
+.text-xlarge {font-size: 18px; }
+.text-large {font-size: 15px; }
+.text-small {font-size: 10px; }
+
+.text-right {text-align: right !important;}
+.text-left {text-align: left !important;}
+.text-center {text-align: center !important;}
+
+.btn { border: none; outline: 0; background-color: #ff6001; color: #fff; height: 40px;}
+.btn:hover { border: none; color: #fff; background-color: #319cf8;}
+/* 
+.btn:active { border: none; background-color: #ff6001;  outline: 0;}
+.btn:focus { border: none; background-color: #ff6001;  outline: 0 none;} 
+ */
+/*누르고있을때 라인생기는거 어캐없앰 */
+
+/* 위치 */
+.float-r {float: right; }
+.float-l {float: left; }
+.clear{clear: both; }
+
+
+
+/****************************************************************/
+/* 레이아웃 관련 ***************************************************/
+/****************************************************************/
+
+/************* 레이아웃 **************/
+#header {border-bottom: 1px solid #A6A6A6; box-sizing: border-box;}
+#container {border-bottom: 1px solid #A6A6A6; padding: 0 0 30px 0;}    /* 왼쪽메뉴 없을때 */
+#container2 {border-bottom: 1px solid #A6A6A6; padding: 0 0 30px 0;}   /* 왼쪽메뉴 있을때 */
+#footer {border-bottom: 1px solid #A6A6A6;}
+
+
+
+/************* 해더 **********************************************************************/
+/* header > 상단(로고 검색창 로그인) */
+#header #top-box {width: 1200px; margin: 0px auto; text-align: center;}
+#header #top-box #logo {float: left; font-size: 32px; font-weight: bold; margin: 15px 0px 18px 0px;}
+#header #top-box form {float: left; margin: 19px 0px 0px 260px;}
+#header #top-box #searchBox {float: left; border: 3px solid #ff6001; width: 350px; height:38px;}
+#header #top-box #searchBox:focus {border: 3px solid #ff6001; outline: 0 none;}
+#header #top-box #searchBox-btn {width: 55px; height: 38px; background-color: #ff6001; border: 0px solid #ff6001; color: #ffffff; font-weight: bold;}
+#header #top-box ul {float: right; font-size: 14px; margin: 35px 0px 0px 0px;}
+#header #top-box ul>li {float: left; margin: 0px 0px 0px 20px; }
+
+/* header > 하단 네비(GNB) */
+#header #nav {width: 1200px; margin: 0px auto; font-size: 18px; box-sizing: border-box;}
+#header #nav ul {width: 900px; float: left; }
+#header #nav ul>li {float: left; width: 220px; text-align: left; padding: 18px 0px 20px 0px;}
+#header #nav a:hover {color: #ff6001; transition: 0.5s all;}
+#header #nav > a{float: right;  margin: 18px 0px 20px 0px;}
+
+
+/************* 푸터 **********************************************************************/
+/* footer > 푸터내용(추가해야함) */
+#footer #footer-content-wrap {width: 1200px; margin: 0px auto; }
+#footer #footer-content-wrap #footer-top {color: #000; padding: 30px 0;}
+#footer #footer-content-wrap #footer-top .footer-main-title {font-size: 20px; font-weight: bold;}
+#footer #footer-content-wrap #footer-top .footer-notice {font-weight: bold; padding: 0 5px 0 15px;}
+#footer #footer-content-wrap #footer-top .footer-notice::after {padding: 0 5px 0 10px; content: ">";}
+#footer #footer-content-wrap .footer-middle .footer-top-text {color: #7e7e7e;}
+#footer #footer-content-wrap .footer-middle .footer-top-text::after {padding: 0 0 0 5px; content: "∙";}
+#footer #footer-content-wrap .footer-middle .footer-top-text-last::after {content: "";}
+#footer #footer-content-wrap .footer-low {font-size: 12px; color:#7e7e7e; padding: 15px 0;}
+#footer #footer-content-wrap #footer-top .footer-service-all {font-weight: bold; color: #7e7e7e;}
+
+
+
+
+/************* 본문(왼쪽 메뉴 없을때) **********************************************************************/
+#container #page-title-wrap {width: 1200px; margin: 0px auto; padding: 30px 0px 10px 0px; border-bottom: 2px solid #000000;}
+
+/* container > 본문 상단 타이틀 */
+#container #page-title-wrap #page-title {float: left; font-size: 30px; font-weight: 400;}
+
+/* container > 본문 상단 경로표시 */
+#container #page-title-wrap ul {float: right; font-size: 14px; margin: 25px 0px 0px 0px;}
+#container #page-title-wrap ul > li {float: left; font-size: 14px;}
+#container #page-title-wrap ul > li:after {content: ">"; margin: 0px 5px 0px 5px;}
+#container #page-title-wrap ul > li.last:after {content: ""; margin: 0px 0px 0px 5px;}
+
+/* container > 본문 하단 컨텐츠영역 */
+#container #content-wrap {width: 1200px; margin: 0px auto; padding: 30px 0px 0px 0px;}
+
+/************* //본문(왼쪽 메뉴 없을때) **********************************************************************/
+
+
+
+
+/************* 본문(왼쪽 메뉴 있을때) **********************************************************************/
+#container2 #main-wrap {width: 1200px; margin: 0px auto; padding: 0px 0px 0px 0px;}
+
+/* container2 > 본문 > 왼쪽메뉴 */
+#container2 #main-wrap #aside {width: 200px; float: left; padding: 25px 10px 10px 0px;}
+#container2 #main-wrap #aside h2 {padding: 13px 10px 13px 10px; background-color: #ff6001; color: #ffffff; font-size: 25px; font-weight: bold; text-align: center;}
+
+#container2 #main-wrap #aside-menu {width: 200px; float: left; padding: 30px 10px 0px 10px;}
+#container2 #main-wrap #aside-menu li {font-size: 18px; font-weight: bold; padding: 0px 0px 20px 0px;}
+
+#container2 #main-wrap #aside-menu #aside-submenu li {font-size: 15px; font-weight: normal; padding: 5px 0px 5px 30px;}
+
+
+
+/* container2 > 본문 > 메인상단 타이틀 */
+#container2 #main-wrap #main {width: 1000px; float: left;}
+#container2 #main-wrap #main #page-title-wrap {padding: 30px 0px 10px 0px; border-bottom: 2px solid #000000;}
+#container2 #main-wrap #main #page-title-wrap #page-title {float: left; font-size: 30px; font-weight: 400;}
+
+/* container2 > 본문 > 메인하단 컨텐츠영역  */
+#container2 #main-wrap #main #page-title-wrap ul {float: right; font-size: 14px; margin: 25px 0px 0px 0px;}
+#container2 #main-wrap #main #page-title-wrap ul > li {float: left; font-size: 14px;}
+#container2 #main-wrap #main #page-title-wrap ul > li:after {content: ">"; margin: 0px 5px 0px 5px;}
+#container2 #main-wrap #main #page-title-wrap ul > li.last:after {content: ""; margin: 0px 0px 0px 5px;}
+
+
+/* container2 > 본문 > 메인하단 컨텐츠영역  */
+#container2 #content-wrap {width: 1000px; margin: 0px auto; padding: 30px 0px 10px 0px;}
+
+/************* //본문(왼쪽 메뉴 있을때) **********************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

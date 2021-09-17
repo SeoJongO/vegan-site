@@ -1,198 +1,157 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인페이지</title>
+
+<link href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
-<link href="${pageContext.request.contextPath }/assets/css/mysite.css" rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.js"></script>
+
 
 </head>
-
 <body>
+
 	<div id="wrap">
 
-		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+		<!-- 해더 -->
+		<c:import url="/WEB-INF/views/includes/mainHeaderNav.jsp"></c:import>
 
-		<div id="container" class="clearfix">
-			<c:import url="/WEB-INF/views/includes/asideUser.jsp"></c:import>
-			<!-- //aside -->
 
-			<div id="content">
 
-				<div id="content-head">
-					<h3>회원가입</h3>
-					<div id="location">
-						<ul>
-							<li>홈</li>
-							<li>회원</li>
-							<li class="last">회원가입</li>
-						</ul>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<!-- //content-head -->
+		<!-- container -->
+		<div id="container">
 
-				<div id="user">
-					<div>
-						<form id="joinForm" action="${pageContext.request.contextPath }/user/join" method="post">
-							<!-- 아이디 -->
-							<div class="form-group">
-								<label class="form-text" for="input-uid">아이디</label>
-								<input type="text" id="input-uid" name="id" value="" placeholder="아이디를 입력하세요">
-								<button type="button" id="btnIdCheck">중복체크</button>
-								<p class="form-text" id="idCheckMsg"></p>
+			<!-- 페이지타이틀 -->
+			<div id="page-title-wrap" class="clearfix">
+				<h2 id="page-title">회원가입</h2>
+
+				<ul class="clearfix text-center">
+					<li><a href="">홈</a></li>
+					<li><a href="">약관동의</a></li>
+					<li class="last"><a href="">회원가입</a></li>
+				</ul>
+			</div>
+			<!-- //페이지타이틀 -->
+
+			<!-- 컨텐츠 -->
+			<div id="content-wrap">
+				<div id="joinForm">
+					<div class="wrap3">
+						<form action="" method="get">
+							<table>
+								<tr>
+									<td class="bold">이메일</td>
+									<td><input class="nomal-input-box" type="text" class="margin-right" placeholder="이메일을 입력해주세요"></td>
+									<td><button class="btn">중복체크</button></td>
+								</tr>
+								<tr>
+									<td class="bold">비밀번호</td>
+									<td><input class="nomal-input-box" type="text" name="password" value="" placeholder="비밀번호를 입력해주세요"></td>
+								</tr>
+
+								<tr>
+									<td class="bold">비밀번호 재입력</td>
+									<td><input class="nomal-input-box" type="text" name="password" value="" placeholder="비밀번호를 입력해주세요"></td>
+								</tr>
+
+								<tr>
+									<td class="bold">닉네임</td>
+									<td><input class="nomal-input-box" type="text" name="nickname" value="" placeholder="닉네임을 입력해주세요"></td>
+								</tr>
+								<tr>
+									<td class="bold">성별</td>
+									<td><select class="select" name="gender">
+											<option value="" selected disabled>선택</option>
+											<option value="male">남자</option>
+											<option value="female">여자</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td class="bold">핸드폰</td>
+									<td><input class="nomal-input-box" type="text" name="ph" value="" placeholder="핸드폰 번호를 입력해주세요"></td>
+								</tr>
+								<tr>
+									<td class="bold">채식타입</td>
+									<td><select id="vegan-select" class="select" name="type">
+											<option value="" selected disabled>선택</option>
+											<option value="vegan">비건</option>
+											<option value="lacto">락토</option>
+											<option value="ovo">오보</option>
+											<option value="lacto-ovo">락토-오보</option>
+											<option value="pesco">페스코</option>
+											<option value="idk">잘모르겠어요</option>
+									</select></td>
+								</tr>
+							</table>
+							<div class="text-center">
+								<button class="btn" type="submit" onclick="location.href='${pageContext.request.contextPath }/user/loginForm'">회원가입</button>
+								<button class="btn" type="button" onclick="location.href='${pageContext.request.contextPath }/main'">돌아가기</button>
 							</div>
-
-							<!-- 비밀번호 -->
-							<div class="form-group">
-								<label class="form-text" for="input-pass">패스워드</label> 
-								<input type="text" id="input-pass" name="password" value="" placeholder="비밀번호를 입력하세요">
-							</div>
-
-							<!-- 이름 -->
-							<div class="form-group">
-								<label class="form-text" for="input-name">이름</label> 
-								<input type="text" id="input-name" name="name" value="" placeholder="이름을 입력하세요">
-							</div>
-
-							<!-- 나이 -->
-							<div class="form-group">
-								<span class="form-text">성별</span> 
-									<label for="rdo-male">남</label> 
-										<input type="radio" id="rdo-male" name="gender" value="male"> 
-									<label for="rdo-female">여</label> 
-										<input type="radio" id="rdo-female" name="gender" value="female">
-							</div>
-
-							<!-- 약관동의 -->
-							<div class="form-group">
-								<span class="form-text">약관동의</span> 
-								<input type="checkbox" id="chk-agree" name="" value=""> 
-								<label for="chk-agree">서비스 약관에 동의합니다.</label>
-							</div>
-
-							<!-- 버튼영역 -->
-							<div class="button-area">
-								<button type="submit" id="btn-submit">회원가입</button>
-							</div>
-
 						</form>
 					</div>
-					<!-- //joinForm -->
 				</div>
-				<!-- //user -->
 			</div>
-			<!-- //content  -->
+			<!-- //컨텐츠 -->
 		</div>
-		<!-- //container  -->
+		<!-- //container -->
 
-	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-	<!-- //footer -->
+
+		<!-- footer -->
+		<div id="footer">
+
+			<!-- 푸터내용 -->
+			<div id="footer-content-wrap">
+				<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
+			</div>
+			<!-- //푸터내용 -->
+
+		</div>
+		<!-- //footer -->
+
 
 	</div>
-	<!-- //wrap -->
+
+	<div class="modal fade" id="addModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>반갑습니다! 채식타입설문조사를 시작하겠습니다.</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn" id="btnUpload">확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 
 <script type="text/javascript">
-
-	
-	$("#btn-submit").on("click", function() {
-		event.preventDefault();
-		
-		var userVo = {
-				id: $("#input-uid").val(),
-				password: $("#input-pass").val(),
-				name: $("#input-name").val(),
-				gender: $("[name=gender]").val()
+	$('#vegan-select').change(function() {
+		var opv = $(this).val();
+		console.log(opv);
+		if (opv == "idk") {
+			$("#addModal").modal();
 		}
-		
-		//userVo.gender = $("[name=gender]").val()
-		
-		console.log(userVo);
-		console.log(JSON.stringify(userVo));
-		
-		$.ajax({
-			url : "${pageContext.request.contextPath }/user/join2",
-			type : "post",
-			contentType : "application/json",
-			data : JSON.stringify(userVo),
-			dataType : "json",
-			
-			success : function(count){
-				if( count == 1 ) {
-					console.log(count);
-					console.log("성공");
-				} else {
-					console.log(count);
-					console.log("실패");
-				}
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		});
-		
-	});
-
-
-
-/*
-	$("#joinForm").on("submit", function() {
-		
-		
-		var password = $("#input-pass").val();
-		
-		if( password.length <= 8) {
-			alert("패스워드를 8글자 이상 입력해 주세요");
-			return false;
-		}
-		
-		var name = $("#input-name").val();
-		
-		if( name.length < 1) {
-			alert("이름을 입력해 주세요");
-			return false;
-		}
-
-		var agree = $("#chk-agree").id(":checked");
-		
-		if( agree == false ) {
-			alert("약관에 동의해 주세요");
-			return false;
-		}
-		
-		return true;
-	});
-*/
-
-	$("#btnIdCheck").on("click", function(){
-		
-		var id = $("#input-uid").val();
-		
-		$.ajax({
-			url : "${pageContext.request.contextPath }/user/idcheck",
-			type : "post",
-			//contentType : "application/json",
-			data : {id: id},
-			dataType : "json",
-			
-			success : function(state){
-				console.log(state);
-				
-				if(state == true) {
-					$("#idCheckMsg").html("사용가능한 ID입니다.")
-				} else {
-					$("#idCheckMsg").html("사용중인 ID입니다.")
-				}
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-			});
 	});
 </script>
 
