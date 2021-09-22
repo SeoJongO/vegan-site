@@ -44,26 +44,26 @@
 			<div id="content-wrap">
 				<div id="joinForm">
 					<div class="wrap3">
-						<form action="" method="get">
+						<form action="${pageContext.request.contextPath}/user/join" method="get">
 							<table>
 								<tr>
 									<td class="bold">이메일</td>
-									<td><input class="nomal-input-box" type="text" class="margin-right" placeholder="이메일을 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="email" value="" type="text" class="margin-right" placeholder="이메일을 입력해주세요"></td>
 									<td><button class="btn">중복체크</button></td>
 								</tr>
 								<tr>
 									<td class="bold">비밀번호</td>
-									<td><input class="nomal-input-box" type="text" name="password" value="" placeholder="비밀번호를 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="password" value="" type="text" placeholder="비밀번호를 입력해주세요"></td>
 								</tr>
 
 								<tr>
 									<td class="bold">비밀번호 재입력</td>
-									<td><input class="nomal-input-box" type="text" name="password" value="" placeholder="비밀번호를 입력해주세요"></td>
+									<td><input class="nomal-input-box" type="text" placeholder="비밀번호를 입력해주세요"></td>
 								</tr>
 
 								<tr>
 									<td class="bold">닉네임</td>
-									<td><input class="nomal-input-box" type="text" name="nickname" value="" placeholder="닉네임을 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="nickname" value="" type="text" placeholder="닉네임을 입력해주세요"></td>
 								</tr>
 								<tr>
 									<td class="bold">성별</td>
@@ -75,11 +75,11 @@
 								</tr>
 								<tr>
 									<td class="bold">핸드폰</td>
-									<td><input class="nomal-input-box" type="text" name="ph" value="" placeholder="핸드폰 번호를 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="phonenumber" value="" type="text" placeholder="핸드폰 번호를 입력해주세요"></td>
 								</tr>
 								<tr>
 									<td class="bold">채식타입</td>
-									<td><select id="vegan-select" class="select" name="type">
+									<td><select id="vegan-select" class="select" name="vegan_type">
 											<option value="" selected disabled>선택</option>
 											<option value="vegan">비건</option>
 											<option value="lacto">락토</option>
@@ -91,7 +91,7 @@
 								</tr>
 							</table>
 							<div class="text-center">
-								<button class="btn" type="submit" onclick="location.href='${pageContext.request.contextPath }/user/loginForm'">회원가입</button>
+								<button class="btn" type="submit">회원가입</button>
 								<button class="btn" type="button" onclick="location.href='${pageContext.request.contextPath }/main'">돌아가기</button>
 							</div>
 						</form>

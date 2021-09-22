@@ -3,12 +3,14 @@
 
 <mapper namespace="user">
 	
-	<select id="selectUser" parameterType = "com.javaex.vo.UserVo" resultType = "com.javaex.vo.UserVo">
+	<select id="getUser" parameterType = "com.javaex.vo.UserVo" resultType = "com.javaex.vo.UserVo">
 		<![CDATA[
-			select	no,
-					name
+			select	user_no,
+					nickname,
+					password,
+					vegan_type
 			from users
-			where id = #{id}
+			where email = #{email}
 			and password = #{password}
        	]]>
 	</select>
@@ -16,38 +18,33 @@
 	<insert id="joinUser" parameterType = "com.javaex.vo.UserVo">
 		<![CDATA[
 			insert into users 
-			values(SEQ_USER_NO.nextval, #{id}, #{password}, #{name}, #{gender})
+			values(seq_user_no.nextval, #{email}, #{password}, #{nickname}, #{gender}, #{phonenumber}, #{vegan_type})
 		]]>
 	</insert>
 	
-	<select id="userInfo" parameterType="int" resultType="com.javaex.vo.UserVo">
+	<select id="userInfo" parameterType = "int" resultType = "com.javaex.vo.UserVo">
 		<![CDATA[
-			select no,
-				   name,
-				   id,
-				   password,
-				   gender
+			select	email,
+					password,
+					nickname,
+					gender,
+					phonenumber,
+					vegan_type
 			from users
-			where no = #{no}
-		]]>
+			where user_no = #{user_no}
+       	]]>
 	</select>
 	
-	<update id="userUpdate" parameterType="com.javaex.vo.UserVo">
-	<![CDATA[
-		update users
-		set password = #{password},
-	    	name = #{name},
-	    	gender = #{gender}
-		where no = #{no}
-	]]>
-	</update>
-	
-	<select id="selectUserById" parameterType="String" resultType="com.javaex.vo.UserVo">
+	<select id="userUpdate" parameterType = "com.javaex.vo.UserVo">
 		<![CDATA[
-			select no, id
-			from users
-			where id = #{id}
-		]]>
+			update users
+			set password = #{password},
+				nickname = #{nickname},
+				gender = #{gender},
+				phonenumber = #{phonenumber},
+				vegan_type = #{vegan_type}
+			where email = #{email}
+       	]]>
 	</select>
 
 </mapper>

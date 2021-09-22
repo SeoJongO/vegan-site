@@ -66,33 +66,39 @@ td {
 
 /******************** 로그인 폼 ********************/
 .nomal-input-box {margin-bottom: 10px;}
-.epj {margin-top: 10px;}
 .btn {width: 100px;}
+#loginForm .margin-bottom{margin-bottom: 5px;}
 
 #loginForm {
 	text-align: center;
 }
 
-/* 
 #loginForm button {
-	margin: 10px 0;
+	width: 300px;
 	height: 40px;
+	margin-right: 0px !important;
 }
- */
+
 /* #loginForm input {
 	margin-top: 10px;
 	width: 250px;
 	height: 40px;
 } */
 
+#loginForm .checkbox{
+	margin-right: 5px;
+	display: inline-block !important;
+}
+
 #loginForm ul {
-	margin-left: 474px;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
+	margin-left: 460px;
 }
 
 .epj li {
 	float: left;
 	margin-right: 5px;
+	font-size: 14px;
 }
 
 .epj li::after {
@@ -139,10 +145,6 @@ table tr .btn { margin-left: 15px;}
 .terms-checkbox {zoom: 1.5; position: relative; top: 4px;}
 .btn {width: 100px;}
 .btn[type="submit"] {margin-right: 10px;}
-
-
-
-
 
 #checkTerm {
 	text-align: center;
@@ -217,14 +219,15 @@ table tr .btn { margin-left: 15px;}
 }
 
 /******************** 수정 폼 ********************/
+/* 
 #modify-form { position: relative; top: 0; left: -100px; margin: 20px 0 0 0;}
 #modify-form .btn { position: relative; top: 0; left: 100px; margin: 20px 0 0 0;}
 #modify-form div { padding: 10px 0;}
 #modify-form div label { width: 200px; text-align: left;}
+*/
 
 
-
-/* #modifyForm span {
+#modifyForm span {
 	font-weight: bold;
 }
 
@@ -236,7 +239,7 @@ table tr .btn { margin-left: 15px;}
 #modifyForm .select {
 	width: 210px;
 	height: 40px;
-} */
+} 
 
 /******************** 가게등록 폼 ********************/
 #addShop button {

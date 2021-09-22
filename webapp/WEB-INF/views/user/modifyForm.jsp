@@ -19,8 +19,6 @@ $(function(){
 		console.log("비번수정");
 		//비번확인을 숨기고픈데 어케짜지?
 	})
-	
-	
 });
 
 
@@ -60,46 +58,109 @@ $(function(){
 
 					<!-- 컨텐츠 -->
 					<div id="content-wrap" class="padding_0px">
-						<!-- <div id="modifyForm">
+						<div id="modifyForm">
 							<div class="out">
 								<div class="wrap2">
-									<form  action="" method="get">
+									<form action="${pageContext.request.contextPath}/user/modify" method="get">
 										<table>
 											<tr>
 												<td class="bold">이메일</td>
-												<td><input type="text" value="UserEmail" readonly></td>
+												<td><input type="text" name="email" value="${userInfo.email}" readonly></td>
 											</tr>
 											<tr>
 												<td class="bold">비밀번호</td>
-												<td><input type="text" name="password" value="UserPassword" placeholder="비밀번호를 입력해주세요"></td>
+												<td><input type="text" name="password" value="${userInfo.password}" placeholder="비밀번호를 입력해주세요"></td>
 											</tr>
 											<tr>
 												<td class="bold">닉네임</td>
-												<td><input type="text" name="nickname" value="UserNickName" placeholder="닉네임을 입력해주세요"></td>
+												<td><input type="text" name="nickname" value="${userInfo.nickname}" placeholder="닉네임을 입력해주세요"></td>
 											</tr>
 											<tr>
 												<td class="bold">성별</td>
-												<td><select class="select" name="gender">
-														<option value="" selected disabled>선택</option>
-														<option value="male">남자</option>
-														<option value="female">여자</option>
-												</select></td>
+												<td>
+													<c:choose>
+														<c:when test="${userInfo.gender eq 'male'}">
+															<select class="select" name="gender">
+																	<option value="" disabled>선택</option>
+																	<option value="male" selected>남자</option>
+																	<option value="female">여자</option>
+															</select>
+														</c:when>
+														<c:otherwise>
+															<select class="select" name="gender">
+																	<option value="" disabled>선택</option>
+																	<option value="male">남자</option>
+																	<option value="female" selected>여자</option>
+															</select>
+														</c:otherwise>
+													</c:choose>
+												</td>
 											</tr>
 											<tr>
 												<td class="bold">핸드폰</td>
-												<td><input type="text" name="ph" value="UserPhoneNumber" placeholder="핸드폰 번호를 입력해주세요"></td>
+												<td><input type="text" name="phonenumber" value="${userInfo.phonenumber}" placeholder="핸드폰 번호를 입력해주세요"></td>
 											</tr>
 											<tr>
 												<td class="bold">채식타입</td>
-												<td><select class="select" name="type">
-														<option value="" selected disabled>선택</option>
-														<option value="vegan">비건</option>
-														<option value="lacto">락토</option>
-														<option value="ovo">오보</option>
-														<option value="lacto-ovo">락토-오보</option>
-														<option value="pesco">페스코</option>
-														<option value="idk">잘모르겠어요</option>
-												</select></td>
+												<td>
+													<c:choose>
+														<c:when test="${userInfo.vegan_type eq 'vegan'}">
+															<select class="select" name="vegan_type">
+																<option value="" disabled>선택</option>
+																<option value="vegan" selected>비건</option>
+																<option value="lacto">락토</option>
+																<option value="ovo">오보</option>
+																<option value="lacto-ovo">락토-오보</option>
+																<option value="pesco">페스코</option>
+																<option value="idk">잘모르겠어요</option>
+															</select>
+														</c:when>
+														<c:when test="${userInfo.vegan_type eq 'lacto'}">
+															<select class="select" name="vegan_type">
+																<option value="" disabled>선택</option>
+																<option value="vegan">비건</option>
+																<option value="lacto" selected>락토</option>
+																<option value="ovo">오보</option>
+																<option value="lacto-ovo">락토-오보</option>
+																<option value="pesco">페스코</option>
+																<option value="idk">잘모르겠어요</option>
+															</select>
+														</c:when>
+														<c:when test="${userInfo.vegan_type eq 'ovo'}">
+															<select class="select" name="vegan_type">
+																<option value="" disabled>선택</option>
+																<option value="vegan">비건</option>
+																<option value="lacto">락토</option>
+																<option value="ovo" selected>오보</option>
+																<option value="lacto-ovo">락토-오보</option>
+																<option value="pesco">페스코</option>
+																<option value="idk">잘모르겠어요</option>
+															</select>
+														</c:when>
+														<c:when test="${userInfo.vegan_type eq 'lacto-ovo'}">
+															<select class="select" name="vegan_type">
+																<option value="" disabled>선택</option>
+																<option value="vegan">비건</option>
+																<option value="lacto">락토</option>
+																<option value="ovo">오보</option>
+																<option value="lacto-ovo" selected>락토-오보</option>
+																<option value="pesco">페스코</option>
+																<option value="idk">잘모르겠어요</option>
+															</select>
+														</c:when>
+														<c:when test="${userInfo.vegan_type eq 'pesco'}">
+															<select class="select" name="vegan_type">
+																<option value="" disabled>선택</option>
+																<option value="vegan">비건</option>
+																<option value="lacto">락토</option>
+																<option value="ovo">오보</option>
+																<option value="lacto-ovo">락토-오보</option>
+																<option value="pesco" selected>페스코</option>
+																<option value="idk">잘모르겠어요</option>
+															</select>
+														</c:when>
+													</c:choose>
+												</td>
 											</tr>
 										</table>
 										<div id="button_center">
@@ -107,7 +168,10 @@ $(function(){
 										</div>
 									</form>
 								</div>
-								<div class="wrap2"> -->
+							</div>
+						</div>
+					</div>
+					<!-- <div class="wrap2">
 						<form id="modify-form" class="text-center">
 							<div>
 								<label for="user-email">이메일</label>
@@ -148,57 +212,7 @@ $(function(){
 								</select>
 							</div>	
 							<button class="btn" type="submit">수정</button>
-							
-							<%-- 
-							<table>
-								<tr>
-									<td class="bold">이메일</td>
-									<td><input type="text" value="UserEmail" disabled></td>
-								</tr>
-								<tr>
-									<td class="bold">비밀번호</td>
-									<td><input type="text" name="password" value="UserPassword" placeholder="비밀번호를 입력해주세요"></td>
-								</tr>
-								<tr>
-									<td class="bold">닉네임</td>
-									<td><input type="text" name="nickname" value="UserNickName" placeholder="닉네임을 입력해주세요"></td>
-								</tr>
-								<tr>
-									<td class="bold">성별</td>
-									<td><select class="select" name="gender">
-											<option value="" selected disabled>선택</option>
-											<option value="male">남자</option>
-											<option value="female">여자</option>
-									</select></td>
-								</tr>
-								<tr>
-									<td class="bold">핸드폰</td>
-									<td><input type="text" name="ph" value="UserPhoneNumber" placeholder="핸드폰 번호를 입력해주세요"></td>
-								</tr>
-								<tr>
-									<td class="bold">채식타입</td>
-									<td><select class="select" name="type">
-											<option value="" selected disabled>선택</option>
-											<option value="vegan">비건</option>
-											<option value="lacto">락토</option>
-											<option value="ovo">오보</option>
-											<option value="lacto-ovo">락토-오보</option>
-											<option value="pesco">페스코</option>
-											<option value="idk">잘모르겠어요</option>
-									</select></td>
-								</tr>
-							</table>
-							<div id="button_center">
-								<button class="btn blue" type="submit" onclick="location.href='${pageContext.request.contextPath }/main'">수정</button>
-							</div>
-							 --%>
-						 
-						</form>
-						<!-- form -->
-								<!-- </div>
-							</div>
-						</div> -->
-					</div>
+						</form> -->
 					<!-- //컨텐츠 -->
 				</div>
 				<!-- //메인 -->

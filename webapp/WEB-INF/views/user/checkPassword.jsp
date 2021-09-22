@@ -46,10 +46,11 @@
 					<!-- 컨텐츠 -->
 					<div id="content-wrap">
 						<div id="find">
-							<form action="" method="">
-								<h4>비밀번호</h4>
-								<br> <input class="margin-0px" type="text" placeholder="비밀번호를 입력해주세요"><br>
-								<button class="btn blue" type="button" onclick="location.href='${pageContext.request.contextPath }/user/modifyForm'">확인</button>
+							<h4>비밀번호</h4>
+							<br> 
+							<form action="${pageContext.request.contextPath}/user/passwordCheck" method="get">
+								<input class="margin-0px" type="text" name="password" value="" placeholder="비밀번호를 입력해주세요"><br>
+								<button class="btn blue" type="submit">확인</button>
 							</form>
 						</div>
 					</div>
