@@ -46,5 +46,13 @@
 			where email = #{email}
        	]]>
 	</select>
+	
+	<select id="getEmail" parameterType = "String" resultType="String">
+		<![CDATA[
+			select email
+			from users
+			where phonenumber = #{phonenumber}
+       	]]>
+	</select>
 
 </mapper>

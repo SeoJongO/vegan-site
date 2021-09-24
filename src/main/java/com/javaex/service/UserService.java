@@ -33,9 +33,13 @@ public class UserService {
 	public int userUpdate(UserVo userVo) {
 		System.out.println("UserService.userUpdate()");
 		
-		System.out.println(userVo);
-		
 		return userDao.userUpdate(userVo);
+	}
+	
+	public String getEmail(String phonenumber) {
+		System.out.println("UserService.getEmail()");
+		
+		return userDao.getEmail(phonenumber);
 	}
 	
 	

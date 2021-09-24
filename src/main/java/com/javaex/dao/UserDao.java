@@ -33,9 +33,13 @@ public class UserDao {
 	public int userUpdate(UserVo userVo) {
 		System.out.println("UserDao.userUpdate()");
 		
-		System.out.println(userVo);
-		
 		return sqlSession.update("user.userUpdate", userVo);
+	}
+	
+	public String getEmail(String phonenumber) {
+		System.out.println("UserDao.getEmail()");
+		
+		return sqlSession.selectOne("user.getEmail", phonenumber);
 	}
 
 }

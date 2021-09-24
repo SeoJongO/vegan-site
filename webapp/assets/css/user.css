@@ -66,7 +66,6 @@ td {
 
 /******************** 로그인 폼 ********************/
 .nomal-input-box {margin-bottom: 10px;}
-.btn {width: 100px;}
 #loginForm .margin-bottom{margin-bottom: 5px;}
 
 #loginForm {
@@ -143,7 +142,6 @@ table tr .btn { margin-left: 15px;}
 /******************** 약관동의 폼 ********************/
 #checked-all {zoom: 2; position: relative; top: 3px;}
 .terms-checkbox {zoom: 1.5; position: relative; top: 4px;}
-.btn {width: 100px;}
 .btn[type="submit"] {margin-right: 10px;}
 
 #checkTerm {
@@ -193,8 +191,6 @@ table tr .btn { margin-left: 15px;}
 
 #find button {
 	text-align: center;
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
 #find input {

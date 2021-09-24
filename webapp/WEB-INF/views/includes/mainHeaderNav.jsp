@@ -15,12 +15,22 @@
 			<input id="searchBox" type="text" name="" value="" placeholder=" 검색어를 입력해주세요">
 			<button type="submit" id="searchBox-btn">검색</button>
 		</form>
+		
+		<c:if test="${not empty authUser}">
+			<ul class="clearfix">
+				<li>${authUser.nickname}님 안녕하세요^^</li>
+				<li><a href="${pageContext.request.contextPath }/user/logout" class="btn_s">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath }/user/modifyForm" class="btn_s">회원정보수정</a></li>
+			</ul>
+		</c:if>
 
-		<ul class="clearfix">
-			<!-- 작업끝낼때 가게관리 지울것 -->
-			<li><a href="${ pageContext.request.contextPath }/user/loginForm">로그인</a></li>
-			<li><a href="${ pageContext.request.contextPath }/user/checkTerm">회원가입</a></li>
-		</ul>
+		<c:if test="${empty authUser}">
+			<ul class="clearfix">
+				<!-- 작업끝낼때 가게관리 지울것 -->
+				<li><a href="${ pageContext.request.contextPath }/user/loginForm">로그인</a></li>
+				<li><a href="${ pageContext.request.contextPath }/user/checkTerm">회원가입</a></li>
+			</ul>
+		</c:if>
 
 	</div>
 	<!-- //해더상단 -->
@@ -31,7 +41,12 @@
 			<li><a href="${ pageContext.request.contextPath }/restaurantSearch">식당검색</a></li>
 			<li><a href="${ pageContext.request.contextPath }/ranking">랭킹</a></li>
 			<li><a href="${ pageContext.request.contextPath }/serviceCenter">고객센터</a></li>
-			<li><a href="${ pageContext.request.contextPath }/user/checkPassword">마이페이지</a></li>
+			<c:if test="${not empty authUser}">
+				<li><a href="${ pageContext.request.contextPath }/user/checkPassword">마이페이지</a></li>
+			</c:if>
+			<c:if test="${empty authUser}">
+				<li><a href="${ pageContext.request.contextPath }/user/loginForm">마이페이지</a></li>
+			</c:if>
 		</ul>
 
 		<!-- 작업편의상 가게관리 노출시킴 -->

@@ -42,8 +42,10 @@
 				<div id="find">
 					<div class="wrap3">
 						<h4>핸드폰</h4>
-						<input type="text" placeholder="가입된 전화번호를 입력해주세요"><br>
-						<button class="btn blue" type="submit" onclick="location.href='${pageContext.request.contextPath }/user/findEmailSuccess'">확인</button>
+						<form action="${pageContext.request.contextPath }/user/findEmailSuccess" method="get">
+							<input type="text" name="phonenumber" value="" placeholder="가입된 전화번호를 입력해주세요"><br>
+							<button class="btn blue" type="submit">확인</button>
+						</form>
 					</div>
 				</div>
 			</div>

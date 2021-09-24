@@ -162,8 +162,12 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/findEmailSuccess", method = { RequestMethod.GET, RequestMethod.POST })
-	public String findEmailSuccess() {
+	public String findEmailSuccess(@RequestParam("phonenumber") String phonenumber, Model model) {
 		System.out.println("[UserController.findEmailSuccess()]");
+		
+		String userEmail = userService.getEmail(phonenumber);
+		
+		model.addAttribute("userEmail", userEmail);
 		
 		return "user/findEmailSuccess";
 	}
@@ -181,5 +185,14 @@ public class UserController {
 		
 		return "user/findPassword";
 	}
-	
+
+	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
+	public String logout(HttpSession session) {
+		System.out.println("[UserController.logout()]");
+
+		session.removeAttribute("authUser");
+		session.invalidate();
+		
+		return "redirect:/main";
+	}
 }

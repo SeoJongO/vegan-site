@@ -43,7 +43,7 @@
 					<div class="wrap3">
 						<h4>이메일</h4>
 						<input type="text" placeholder="가입된 이메일을 입력해주세요"><br>
-						<button class="btn blue" type="submit" onclick="location.href='${pageContext.request.contextPath }/user/changePassword'">확인</button>
+						<button class="btn blue" type="submit">확인</button>
 					</div>
 				</div>
 			</div>

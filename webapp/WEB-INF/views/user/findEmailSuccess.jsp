@@ -42,7 +42,7 @@
 				<div id="find">
 					<div class="wrap3">
 						<h4>이메일</h4>
-						<textarea>UserE****@naver.com</textarea>
+						<textarea>${userEmail}</textarea>
 						<br>
 						<button class="btn blue" type="button" onclick="location.href='${pageContext.request.contextPath }/user/loginForm'">로그인</button>
 						<button class="btn blue" type="button" onclick="location.href='${pageContext.request.contextPath }/user/findPassword'">비밀번호찾기</button>
