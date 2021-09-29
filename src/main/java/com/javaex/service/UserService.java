@@ -24,10 +24,10 @@ public class UserService {
 		return userDao.getUser(userVo);
 	}
 	
-	public UserVo userInfo(int user_no) {
+	public UserVo userInfo(int u_no) {
 		System.out.println("UserService.userInfo()");
 		
-		return userDao.userInfo(user_no);
+		return userDao.userInfo(u_no);
 	}
 	
 	public int userUpdate(UserVo userVo) {
@@ -36,12 +36,10 @@ public class UserService {
 		return userDao.userUpdate(userVo);
 	}
 	
-	public String getEmail(String phonenumber) {
+	public String getEmail(String u_phone) {
 		System.out.println("UserService.getEmail()");
 		
-		return userDao.getEmail(phonenumber);
+		return userDao.getEmail(u_phone);
 	}
-	
-	
 
 }

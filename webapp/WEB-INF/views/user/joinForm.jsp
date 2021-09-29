@@ -48,12 +48,12 @@
 							<table>
 								<tr>
 									<td class="bold">이메일</td>
-									<td><input class="nomal-input-box" name="email" value="" type="text" class="margin-right" placeholder="이메일을 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="u_email" value="" type="text" class="margin-right" placeholder="이메일을 입력해주세요"></td>
 									<td><button class="btn">중복체크</button></td>
 								</tr>
 								<tr>
 									<td class="bold">비밀번호</td>
-									<td><input class="nomal-input-box" name="password" value="" type="text" placeholder="비밀번호를 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="u_password" value="" type="text" placeholder="비밀번호를 입력해주세요"></td>
 								</tr>
 
 								<tr>
@@ -63,11 +63,11 @@
 
 								<tr>
 									<td class="bold">닉네임</td>
-									<td><input class="nomal-input-box" name="nickname" value="" type="text" placeholder="닉네임을 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="u_nickname" value="" type="text" placeholder="닉네임을 입력해주세요"></td>
 								</tr>
 								<tr>
 									<td class="bold">성별</td>
-									<td><select class="select" name="gender">
+									<td><select class="select" name="u_gender">
 											<option value="" selected disabled>선택</option>
 											<option value="male">남자</option>
 											<option value="female">여자</option>
@@ -75,11 +75,11 @@
 								</tr>
 								<tr>
 									<td class="bold">핸드폰</td>
-									<td><input class="nomal-input-box" name="phonenumber" value="" type="text" placeholder="핸드폰 번호를 입력해주세요"></td>
+									<td><input class="nomal-input-box" name="u_phone" value="" type="text" placeholder="핸드폰 번호를 입력해주세요"></td>
 								</tr>
 								<tr>
 									<td class="bold">채식타입</td>
-									<td><select id="vegan-select" class="select" name="vegan_type">
+									<td><select id="vegan-select" class="select" name="u_type">
 											<option value="" selected disabled>선택</option>
 											<option value="vegan">비건</option>
 											<option value="lacto">락토</option>

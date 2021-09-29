@@ -11,7 +11,7 @@
 <link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript">
 $(function(){
 	//비번수정시도
@@ -62,32 +62,33 @@ $(function(){
 							<div class="out">
 								<div class="wrap2">
 									<form action="${pageContext.request.contextPath}/user/modify" method="get">
+										<input type="hidden" name="u_no" value="${userInfo.u_no}">	
 										<table>
 											<tr>
 												<td class="bold">이메일</td>
-												<td><input type="text" name="email" value="${userInfo.email}" readonly></td>
+												<td><input type="text" name="u_email" value="${userInfo.u_email}" readonly></td>
 											</tr>
 											<tr>
 												<td class="bold">비밀번호</td>
-												<td><input type="text" name="password" value="${userInfo.password}" placeholder="비밀번호를 입력해주세요"></td>
+												<td><input type="text" name="u_password" value="${userInfo.u_password}" placeholder="비밀번호를 입력해주세요"></td>
 											</tr>
 											<tr>
 												<td class="bold">닉네임</td>
-												<td><input type="text" name="nickname" value="${userInfo.nickname}" placeholder="닉네임을 입력해주세요"></td>
+												<td><input type="text" name="u_nickname" value="${userInfo.u_nickname}" placeholder="닉네임을 입력해주세요"></td>
 											</tr>
 											<tr>
 												<td class="bold">성별</td>
 												<td>
 													<c:choose>
-														<c:when test="${userInfo.gender eq 'male'}">
-															<select class="select" name="gender">
+														<c:when test="${userInfo.u_gender eq 'male'}">
+															<select class="select" name="u_gender">
 																	<option value="" disabled>선택</option>
 																	<option value="male" selected>남자</option>
 																	<option value="female">여자</option>
 															</select>
 														</c:when>
 														<c:otherwise>
-															<select class="select" name="gender">
+															<select class="select" name="u_gender">
 																	<option value="" disabled>선택</option>
 																	<option value="male">남자</option>
 																	<option value="female" selected>여자</option>
@@ -98,14 +99,14 @@ $(function(){
 											</tr>
 											<tr>
 												<td class="bold">핸드폰</td>
-												<td><input type="text" name="phonenumber" value="${userInfo.phonenumber}" placeholder="핸드폰 번호를 입력해주세요"></td>
+												<td><input type="text" name="u_phone" value="${userInfo.u_phone}" placeholder="핸드폰 번호를 입력해주세요"></td>
 											</tr>
 											<tr>
 												<td class="bold">채식타입</td>
 												<td>
 													<c:choose>
-														<c:when test="${userInfo.vegan_type eq 'vegan'}">
-															<select class="select" name="vegan_type">
+														<c:when test="${userInfo.u_type eq 'vegan'}">
+															<select class="select" name="u_type">
 																<option value="" disabled>선택</option>
 																<option value="vegan" selected>비건</option>
 																<option value="lacto">락토</option>
@@ -115,8 +116,8 @@ $(function(){
 																<option value="idk">잘모르겠어요</option>
 															</select>
 														</c:when>
-														<c:when test="${userInfo.vegan_type eq 'lacto'}">
-															<select class="select" name="vegan_type">
+														<c:when test="${userInfo.u_type eq 'lacto'}">
+															<select class="select" name="u_type">
 																<option value="" disabled>선택</option>
 																<option value="vegan">비건</option>
 																<option value="lacto" selected>락토</option>
@@ -126,8 +127,8 @@ $(function(){
 																<option value="idk">잘모르겠어요</option>
 															</select>
 														</c:when>
-														<c:when test="${userInfo.vegan_type eq 'ovo'}">
-															<select class="select" name="vegan_type">
+														<c:when test="${userInfo.u_type eq 'ovo'}">
+															<select class="select" name="u_type">
 																<option value="" disabled>선택</option>
 																<option value="vegan">비건</option>
 																<option value="lacto">락토</option>
@@ -137,8 +138,8 @@ $(function(){
 																<option value="idk">잘모르겠어요</option>
 															</select>
 														</c:when>
-														<c:when test="${userInfo.vegan_type eq 'lacto-ovo'}">
-															<select class="select" name="vegan_type">
+														<c:when test="${userInfo.u_type eq 'lacto-ovo'}">
+															<select class="select" name="u_type">
 																<option value="" disabled>선택</option>
 																<option value="vegan">비건</option>
 																<option value="lacto">락토</option>
@@ -148,8 +149,8 @@ $(function(){
 																<option value="idk">잘모르겠어요</option>
 															</select>
 														</c:when>
-														<c:when test="${userInfo.vegan_type eq 'pesco'}">
-															<select class="select" name="vegan_type">
+														<c:when test="${userInfo.u_type eq 'pesco'}">
+															<select class="select" name="u_type">
 																<option value="" disabled>선택</option>
 																<option value="vegan">비건</option>
 																<option value="lacto">락토</option>

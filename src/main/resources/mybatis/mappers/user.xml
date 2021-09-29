@@ -5,53 +5,55 @@
 	
 	<select id="getUser" parameterType = "com.javaex.vo.UserVo" resultType = "com.javaex.vo.UserVo">
 		<![CDATA[
-			select	user_no,
-					nickname,
-					password,
-					vegan_type
+			select	u_no,
+					u_nickname,
+					u_password,
+					u_type
 			from users
-			where email = #{email}
-			and password = #{password}
+			where u_email = #{u_email}
+			and u_password = #{u_password}
        	]]>
 	</select>
 	
 	<insert id="joinUser" parameterType = "com.javaex.vo.UserVo">
 		<![CDATA[
 			insert into users 
-			values(seq_user_no.nextval, #{email}, #{password}, #{nickname}, #{gender}, #{phonenumber}, #{vegan_type})
+			values(u_no.nextval, #{u_email}, #{u_password}, #{u_nickname}, #{u_gender}, #{u_phone}, #{u_type}, sysdate)
 		]]>
 	</insert>
 	
 	<select id="userInfo" parameterType = "int" resultType = "com.javaex.vo.UserVo">
 		<![CDATA[
-			select	email,
-					password,
-					nickname,
-					gender,
-					phonenumber,
-					vegan_type
+			select	u_no,
+					u_email,
+					u_password,
+					u_nickname,
+					u_gender,
+					u_phone,
+					u_type
 			from users
-			where user_no = #{user_no}
+			where u_no = #{u_no}
        	]]>
 	</select>
 	
 	<select id="userUpdate" parameterType = "com.javaex.vo.UserVo">
 		<![CDATA[
 			update users
-			set password = #{password},
-				nickname = #{nickname},
-				gender = #{gender},
-				phonenumber = #{phonenumber},
-				vegan_type = #{vegan_type}
-			where email = #{email}
+			set u_no = #{u_no},
+				u_password = #{u_password},
+				u_nickname = #{u_nickname},
+				u_gender = #{u_gender},
+				u_phone = #{u_phone},
+				u_type = #{u_type}
+			where u_email = #{u_email}
        	]]>
 	</select>
 	
 	<select id="getEmail" parameterType = "String" resultType="String">
 		<![CDATA[
-			select email
+			select u_email
 			from users
-			where phonenumber = #{phonenumber}
+			where u_phone = #{u_phone}
        	]]>
 	</select>
 

@@ -40,8 +40,8 @@
 			<div id="content-wrap">
 				<div id="loginForm">
 					<form action="${pageContext.request.contextPath}/user/login" method="get">
-						<input class="nomal-input-box" name="email" value="" id="userEmail" type="text" placeholder="이메일을 입력해주세요"> <br>
-						<input class="nomal-input-box" name="password" value="" type="password" placeholder="비밀번호를 입력해주세요"> <br>
+						<input class="nomal-input-box" name="u_email" value="" id="userEmail" type="text" placeholder="이메일을 입력해주세요"> <br>
+						<input class="nomal-input-box" name="u_password" value="" type="password" placeholder="비밀번호를 입력해주세요"> <br>
 						<ul class="epj">
 							<li><input class="checkbox" type="checkbox">이메일 저장</li>
 							<li><a href="${pageContext.request.contextPath}/user/findEmail">이메일 찾기</a></li>
