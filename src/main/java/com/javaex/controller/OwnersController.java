@@ -1,6 +1,9 @@
 package com.javaex.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -8,8 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/owners")
 public class OwnersController {
 	@RequestMapping(value="/NownerPage", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerPage() {
+	public String ownerPage(HttpSession session, Model model) {
 		System.out.println("[OwnersController.ownerPage]");
+		
+		
+		
+		
+		
 		
 		return "owners/NownerPage";
 	}
