@@ -15,10 +15,6 @@ public class OwnersController {
 		System.out.println("[OwnersController.ownerPage]");
 		
 		
-		
-		System.out.println("hi");
-		
-		
 		return "owners/NownerPage";
 	}
 	
