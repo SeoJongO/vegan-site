@@ -16,7 +16,7 @@ public class OwnersController {
 		
 		
 		
-		
+		System.out.println("hi");
 		
 		
 		return "owners/NownerPage";
