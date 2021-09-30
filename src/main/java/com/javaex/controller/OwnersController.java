@@ -31,7 +31,7 @@ public class OwnersController {
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
 		
-		storeInsert
+		
 		
 		return "owners/NownerSinsert";
 	}

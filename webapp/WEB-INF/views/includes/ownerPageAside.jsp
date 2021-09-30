@@ -6,7 +6,7 @@
 		<li><a href="${pageContext.request.contextPath}/owners/NownerPage">가게</a>
 			<ul id="aside-submenu">
 				<li><a href="${pageContext.request.contextPath}/owners/NownerSlist">가게관리</a></li>
-				<li><a href="${pageContext.request.contextPath}/owners/NownerPage">가게등록</a></li>
+				<li><a href="${pageContext.request.contextPath}/owners/NownerSinsert">가게등록</a></li>
 			</ul>
 		</li>
 
