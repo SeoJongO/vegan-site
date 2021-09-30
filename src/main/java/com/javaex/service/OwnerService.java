@@ -25,5 +25,23 @@ public class OwnerService {
 		
 		return ownerDao.storeList(u_no);
 	}
+	
+	public OwnerVo getStore(int s_no) {
+		System.out.println("OwnerService.getStore()");
+		
+		return ownerDao.getStore(s_no);
+	}
+	
+	public int storeDelete(int s_no) {
+		System.out.println("OwnerService.storeDelete()");
+		
+		return ownerDao.storeDelete(s_no);
+	}
+	
+	public int storeModify(OwnerVo ownerVo) {
+		System.out.println("OwnerService.storeModify()");
+		
+		return ownerDao.storeModify(ownerVo);
+	}
 
 }

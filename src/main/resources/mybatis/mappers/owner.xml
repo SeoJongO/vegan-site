@@ -6,18 +6,83 @@
 	<insert id="storeInsert" parameterType = "com.javaex.vo.OwnerVo">
 		<![CDATA[
 			insert into store
-			values(s_no.nextval, #{u_no}, #{s_img}, #{s_name}, #{s_phone}, #{s_address}, #{s_detail_address}, #{s_openH}, #{s_openM}, #{s_closeH}, #{s_closeM}, #{s_parking}, #{s_intro}, #{s_youtube}, #{s_twitter}, #{s_instagram}, #{s_Hmon}, #{s_Htue}, #{s_Hwen}, #{s_Hthu}, #{s_Hfri}, #{s_Hsat}, #{s_Hsun}, #{s_latitude}, #{s_longitude}, SYSDATE)
+			values(s_no.nextval, #{u_no}, #{s_img}, #{s_name}, #{s_phone}, #{s_address}, #{s_detail_address}, #{s_openH}, #{s_openM}, #{s_closeH}, #{s_closeM}, #{s_parking}, #{s_intro}, #{s_youtube}, #{s_twitter}, #{s_instagram}, #{s_Hmon}, #{s_Htue}, #{s_Hwen}, #{s_Hthu}, #{s_Hfri}, #{s_Hsat}, #{s_Hsun}, #{s_latitude}, #{s_longitude}, to_char(SYSDATE, 'yyyy-mm-dd'))
 		]]>
 	</insert>
 	
 	<select id="storeList" parameterType="int" resultType="com.javaex.vo.OwnerVo">
 		<![CDATA[
-			select s_name,
+			select s_no,
+				   s_name,
 				   s_img,
 				   s_address,
-				   to_char(s_date, 'YYYY-MM-DD')
+				   to_char(s_date, 'YYYY-MM-DD') AS s_date
 			from store
 			where u_no = #{u_no}
 		]]>
 	</select>	
+	
+	<select id="getStore" parameterType="int" resultType="com.javaex.vo.OwnerVo">
+		<![CDATA[
+			select s_no,
+				   s_img,
+				   s_name,
+				   s_phone,
+				   s_address,
+				   s_detail_address,
+				   s_openH,
+				   s_openM,
+				   s_closeH,
+				   s_closeM,
+				   s_parking,
+				   s_intro,
+				   s_youtube,
+				   s_instagram,
+				   s_twitter,
+				   s_Hmon,
+				   s_Htue,
+				   s_Hwen,
+				   s_Hthu,
+				   s_Hfri,
+				   s_Hsat,
+				   s_Hsun
+			from store
+			where s_no = #{s_no}
+		]]>
+	</select>
+	
+	<delete id="storeDelete" parameterType="int">
+		<![CDATA[
+			delete store
+			where s_no = #{s_no}
+		]]>
+	</delete>
+	
+	<update id="storeModify" parameterType="com.javaex.vo.OwnerVo">
+		<![CDATA[
+			update store
+			set s_img = #{s_img},
+				s_name = #{s_name},
+				s_phone = #{s_phone},
+				s_address = #{s_address},
+				s_detail_address = #{s_detail_address},
+				s_openH = #{s_openH},
+				s_openM = #{s_openM},
+				s_closeH = #{s_closeH},
+				s_closeM = #{s_closeM},
+				s_Hmon = #{s_Hmon},
+				s_Htue = #{s_Htue},
+				s_Hwen = #{s_Hwen},
+				s_Hthu = #{s_Hthu},
+				s_Hfri = #{s_Hfri},
+				s_Hsat = #{s_Hsat},
+				s_Hsun = #{s_Hsun},
+				s_parking = #{s_parking},
+				s_intro = #{s_intro},
+				s_youtube = #{s_youtube},
+				s_twitter = #{s_twitter},
+				s_instagram = #{s_instagram}
+			where s_no = #{s_no}
+		]]>
+	</update>
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.OwnerService;
 import com.javaex.vo.OwnerVo;
@@ -33,7 +34,7 @@ public class OwnersController {
 		int u_no = userVo.getU_no();
 
 		List<OwnerVo> sList = ownerService.storeList(u_no);
-
+		
 		model.addAttribute("storeList", sList);
 
 		return "owners/NownerSlist";
@@ -52,19 +53,47 @@ public class OwnersController {
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
 
-		System.out.println(ownerVo);
-
 		int count = ownerService.storeInsert(ownerVo);
 
-		return "owners/NownerSinsert";
+		return "redirect:/owners/NownerSlist";
 	}
 
 	// 가게 수정폼
-	@RequestMapping(value = "/NownerPage", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerPage(HttpSession session, Model model) {
-		System.out.println("[OwnersController.ownerPage]");
+	@RequestMapping(value = "/NownerSmodify", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ownerPage(HttpSession session, Model model, @RequestParam("s_no") int s_no) {
+		System.out.println("[OwnersController.NownerSmodify]");
+		
+		OwnerVo ownerVo = ownerService.getStore(s_no);
+		
+		System.out.println(ownerVo);
+		
+		model.addAttribute("store", ownerVo);
 
-		return "owners/NownerPage";
+		return "owners/NownerSmodify";
+	}
+	
+	@RequestMapping(value = "/storeModify", method = { RequestMethod.GET, RequestMethod.POST })
+	public String storeModify(@ModelAttribute OwnerVo ownerVo, HttpSession session, Model model) {
+		System.out.println("[OwnersController.storeModify]");
+		
+		int count = ownerService.storeModify(ownerVo);
+		
+		if(count>0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
+		
+		return "redirect:/owners/NownerSlist";
+	}
+	
+	@RequestMapping(value = "/storeDelete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String storeDelete(@RequestParam("s_no") int s_no) {
+		System.out.println("[OwnersController.storeDelete]");
+
+		int count = ownerService.storeDelete(s_no);
+		
+		return "redirect:/owners/NownerSlist";
 	}
 
 	// 메뉴 추가
