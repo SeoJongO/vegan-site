@@ -48,7 +48,7 @@
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
 							<li><a href="${pageContext.request.contextPath}/owners/NownerPage">가게관리</a></li>
-							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerPage">가게</a></li>
+							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerPage">가게등록</a></li>
 						</ul>
 					</div>
 					<!-- //페이지타이틀 -->

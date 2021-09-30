@@ -13,6 +13,10 @@ import com.javaex.vo.OwnerVo;
 @Controller
 @RequestMapping(value="/owners")
 public class OwnersController {
+
+	
+	
+	//가게 리스트 
 	@RequestMapping(value="/NownerSlist", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerSlist() {
 		System.out.println("[OwnersController.ownerSlist]");
@@ -20,6 +24,7 @@ public class OwnersController {
 		return "owners/NownerSlist";
 	}
 	
+	//가게 등록폼
 	@RequestMapping(value="/NownerSinsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerSinsert() {
 		System.out.println("[OwnersController.ownerSinsert]");
@@ -27,6 +32,7 @@ public class OwnersController {
 		return "owners/NownerSinsert";
 	}
 	
+	//가게 등록
 	@RequestMapping(value="/storeInsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
@@ -36,6 +42,7 @@ public class OwnersController {
 		return "owners/NownerSinsert";
 	}
 	
+	//가게 수정폼
 	@RequestMapping(value="/NownerPage", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerPage(HttpSession session, Model model) {
 		System.out.println("[OwnersController.ownerPage]");
@@ -44,6 +51,7 @@ public class OwnersController {
 		return "owners/NownerPage";
 	}
 	
+	//메뉴 추가
 	@RequestMapping(value="/NownerMinsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerMinsert() {
 		System.out.println("[OwnersController.ownerMinsert]");
@@ -51,13 +59,23 @@ public class OwnersController {
 		return "owners/NownerMinsert";
 	}
 	
+	
+	
+	//메뉴 리스트
 	@RequestMapping(value="/NownerMlist", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerMlist() {
 		System.out.println("[OwnersController.ownerMlist]");
 		
+		
+		
+	
 		return "owners/NownerMlist";
 	}
 	
+	
+	
+	
+	//리뷰페이지
 	@RequestMapping(value="/NownerLivew", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerLivew() {
 		System.out.println("[OwnersController.ownerLivew]");
@@ -65,6 +83,7 @@ public class OwnersController {
 		return "owners/NownerLivew";
 	}
 	
+	//별점 페이지
 	@RequestMapping(value="/NownerStar", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerStar() {
 		System.out.println("[OwnersController.ownerStar]");

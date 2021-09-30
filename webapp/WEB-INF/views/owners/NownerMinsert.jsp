@@ -44,7 +44,7 @@
 				<div id="main">
 					<!-- 페이지타이틀 -->
 					<div id="page-title-wrap" class="clearfix">
-						<h3 id="page-title">메뉴추가</h3>
+						<h3 id="page-title">메뉴등록</h3>
 
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
@@ -53,7 +53,7 @@
 							>가게관리</a></li>
 							<li class="last"><a
 								href="${pageContext.request.contextPath}/owners/NownerMlist"
-							>메뉴</a></li>
+							>메뉴등록</a></li>
 						</ul>
 					</div>
 					<!-- //페이지타이틀 -->

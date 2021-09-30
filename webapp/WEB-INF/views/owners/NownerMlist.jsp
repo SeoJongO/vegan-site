@@ -48,7 +48,7 @@
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
 							<li><a href="${pageContext.request.contextPath}/owners/NownerPage">가게관리</a></li>
-							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerMlist">메뉴</a></li>
+							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerMlist">메뉴관리</a></li>
 						</ul>
 					</div>
 					<!-- //페이지타이틀 -->
@@ -100,7 +100,7 @@
 										</td>
 										<td>7800</td>
 										<td>
-											<a href="test.html">[수정]</a>, <a href="test.html">[삭제]</a>
+											<a href="test.html">[수정]</a> <a href="test.html">[삭제]</a>
 										</td>
 									</tr>
 
@@ -118,7 +118,7 @@
 										</td>
 										<td>7800</td>
 										<td>
-											<a href="test.html">[수정]</a>, <a href="test.html">[삭제]</a>
+											<a href="test.html">[수정]</a> <a href="test.html">[삭제]</a>
 										</td>
 									</tr>
 
@@ -136,7 +136,7 @@
 										</td>
 										<td>7800</td>
 										<td>
-											<a href="test.html">[수정]</a>, <a href="test.html">[삭제]</a>
+											<a href="test.html">[수정]</a> <a href="test.html">[삭제]</a>
 										</td>
 									</tr>
 

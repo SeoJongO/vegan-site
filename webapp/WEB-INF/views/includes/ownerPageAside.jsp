@@ -13,7 +13,7 @@
 		<li><a href="${pageContext.request.contextPath}/owners/NownerMlist">메뉴</a>
 			<ul id="aside-submenu">
 				<li><a href="${pageContext.request.contextPath}/owners/NownerMlist">메뉴관리</a></li>
-				<li><a href="${pageContext.request.contextPath}/owners/NownerMinsert">메뉴추가</a></li>
+				<li><a href="${pageContext.request.contextPath}/owners/NownerMinsert">메뉴등록</a></li>
 			</ul>
 		</li>
 		<li><a href="${pageContext.request.contextPath}/owners/NownerLivew">리뷰</a>
