@@ -13,7 +13,9 @@ public class OwnerService {
 	private OwnerDao ownerDao;
 	
 	public int storeInsert(OwnerVo ownerVo) {
-		System.out.println("OwnersController.storeInsert()");
+		System.out.println("OwnerService.storeInsert()");
+		
+		System.out.println(ownerVo);
 		
 		return ownerDao.storeInsert(ownerVo);
 	}

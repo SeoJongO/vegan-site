@@ -61,6 +61,7 @@
 
 							</div>
 							<form action="${pageContext.request.contextPath}/owners/storeInsert" method="get">
+								<input type="hidden" name="u_no" value="${authUser.u_no}">
 								<table class="main-table">
 									<tr>
 										<td><b>로고</b></td>
@@ -85,7 +86,7 @@
 									</tr>
 									<tr>
 										<td></td>
-										<td><input type="text" id="detailAddres" name="s_detail" value="${store.s_detail_address}"></td>
+										<td><input type="text" id="detailAddres" name="s_detail_address" value="${store.s_detail_address}"></td>
 									</tr>
 									<tr>
 										<td><b>영업시간</b></td>
@@ -191,6 +192,8 @@
 										<td class="bnone"><img alt="인스타" src="${ pageContext.request.contextPath }/assets/imges/인스타아이콘.png"> <input type="text" id="twich" name="s_instagram" value="${store.s_instagram}"></td>
 									</tr>
 								</table>
+								<input type="hidden" name="s_latitude" value="0">
+								<input type="hidden" name="s_longitude" value="0">
 								<div class="button-area button-center ">
 									<button>취소</button>
 									<span class="orange">

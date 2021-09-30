@@ -37,6 +37,8 @@ public class OwnersController {
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
 		
+		System.out.println(ownerVo);
+		
 		int count = ownerService.storeInsert(ownerVo);
 		
 		return "owners/NownerSinsert";

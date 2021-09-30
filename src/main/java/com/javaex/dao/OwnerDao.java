@@ -13,7 +13,9 @@ public class OwnerDao {
 	private SqlSession sqlSession;
 	
 	public int storeInsert(OwnerVo ownerVo) {
-		System.out.println("OwnersController.storeInsert()");
+		System.out.println("OwnerDao.storeInsert()");
+		
+		System.out.println(ownerVo);
 		
 		return sqlSession.insert("owner.storeInsert", ownerVo);
 	}
