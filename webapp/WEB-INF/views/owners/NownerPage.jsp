@@ -64,7 +64,7 @@
 								<table class="main-table">
 									<tr>
 										<td><b>로고</b></td>
-										<td><img alt="가게로고" name="s_img" src="${store.s_img}"> <input type="file"></td>
+										<td><img alt="가게로고" src="${store.s_img}"> <input type="file" name="s_img" value=""></td>
 									</tr>
 									<tr>
 										<td><label for="s-name"><b>상호명</b></label></td>
@@ -85,7 +85,7 @@
 									</tr>
 									<tr>
 										<td></td>
-										<td><input type="text" id="detailAddres" name="s_detail_address" value="${store.s_detail_address}"></td>
+										<td><input type="text" id="detailAddres" name="s_detail" value="${store.s_detail_address}"></td>
 									</tr>
 									<tr>
 										<td><b>영업시간</b></td>
@@ -171,12 +171,12 @@
 										<td><b>주차가능 여부</b></td>
 										<td>
 											<label for="rdo-parking">주차 가능</label> <input class="chkh" type="radio" id="rdo-parking" name="s_parking" value=1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<label for="rdo-noParking">주차 불가능</label> <input class="chkh" type="radio" id="rdo-noParking" name="s_parking" value=0>
+											<label for="rdo-noParking">주차 불가능</label> <input class="chkh" type="radio" id="rdo-noParking" name="s_parking" value=2>
 										</td>
 									</tr>
 									<tr>
 										<td><b>가게 소개글</b></td>
-										<td><textarea class="textarea-size" rows="" cols="">${store.s_intro}</textarea></td>
+										<td><textarea class="textarea-size" name="s_intro" rows="" cols="">${store.s_intro}</textarea></td>
 									</tr>
 									<tr>
 										<td class="bnone"><b>플랫폼 링크</b></td>

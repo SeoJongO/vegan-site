@@ -50,7 +50,7 @@
 		</ul>
 
 		<!-- 작업편의상 가게관리 노출시킴 -->
-		<a href="${ pageContext.request.contextPath }/addShop" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게등록</span></a> 
+		<a href="${ pageContext.request.contextPath }/owners/NownerPage" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게등록</span></a> 
 		<%-- <a href="${ pageContext.request.contextPath }/owners/NownerPage" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게관리</span></a> --%>
 
 

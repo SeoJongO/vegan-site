@@ -10,6 +10,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value="/owners")
 public class OwnersController {
+	@RequestMapping(value="/NownerSlist", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ownerSlist() {
+		System.out.println("[OwnersController.ownerSlist]");
+		
+		return "owners/NownerSlist";
+	}
+	
+	@RequestMapping(value="/NownerSinsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ownerSinsert() {
+		System.out.println("[OwnersController.ownerSinsert]");
+		
+		return "owners/NownerSinsert";
+	}
+	
 	@RequestMapping(value="/NownerPage", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerPage(HttpSession session, Model model) {
 		System.out.println("[OwnersController.ownerPage]");
