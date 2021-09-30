@@ -60,7 +60,7 @@
 								<h3>샐러디 낙성대점</h3>
 
 							</div>
-							<form action="" method="get">
+							<form action="${pageContext.request.contextPath}/owners/storeInsert" method="get">
 								<table class="main-table">
 									<tr>
 										<td><b>로고</b></td>

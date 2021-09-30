@@ -20,7 +20,7 @@
 			<ul class="clearfix">
 				<li>${authUser.u_nickname}(${authUser.u_type})</li>
 				<li><a href="${pageContext.request.contextPath }/user/logout" class="btn_s">로그아웃</a></li>
-				<li><a href="${pageContext.request.contextPath }/user/modifyForm" class="btn_s">회원정보수정</a></li>
+				<li><a href="${pageContext.request.contextPath }/user/checkPassword" class="btn_s">회원정보수정</a></li>
 			</ul>
 		</c:if>
 

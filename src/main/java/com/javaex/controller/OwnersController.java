@@ -4,8 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.javaex.vo.OwnerVo;
 
 @Controller
 @RequestMapping(value="/owners")
@@ -20,6 +23,15 @@ public class OwnersController {
 	@RequestMapping(value="/NownerSinsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerSinsert() {
 		System.out.println("[OwnersController.ownerSinsert]");
+		
+		return "owners/NownerSinsert";
+	}
+	
+	@RequestMapping(value="/storeInsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
+		System.out.println("[OwnersController.storeInsert]");
+		
+		storeInsert
 		
 		return "owners/NownerSinsert";
 	}
