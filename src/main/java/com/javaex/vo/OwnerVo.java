@@ -1,6 +1,6 @@
 package com.javaex.vo;
 
-public class StoreVo {
+public class OwnerVo {
 
 	private int s_no;
 	private String s_img;
@@ -28,14 +28,13 @@ public class StoreVo {
 	private String s_longitude;
 	private String s_date;
 
-	public StoreVo() {
+	public OwnerVo() {
 	}
 
-	public StoreVo(int s_no, String s_img, String s_name, String s_phone, String s_address, String s_detail,
+	public OwnerVo(int s_no, String s_img, String s_name, String s_phone, String s_address, String s_detail,
 			String s_openH, String s_openM, String s_closeH, String s_closeM, int s_parking, String s_intro,
 			String s_youtube, String s_instagram, String s_twitter, int s_Hmon, int s_Htue, int s_Hwen, int s_Hthu,
 			int s_Hfri, int s_Hsat, int s_Hsun, String s_latitude, String s_longitude, String s_date) {
-		super();
 		this.s_no = s_no;
 		this.s_img = s_img;
 		this.s_name = s_name;
@@ -265,7 +264,7 @@ public class StoreVo {
 
 	@Override
 	public String toString() {
-		return "StoreVo [s_no=" + s_no + ", s_img=" + s_img + ", s_name=" + s_name + ", s_phone=" + s_phone
+		return "OwnerVo [s_no=" + s_no + ", s_img=" + s_img + ", s_name=" + s_name + ", s_phone=" + s_phone
 				+ ", s_address=" + s_address + ", s_detail=" + s_detail + ", s_openH=" + s_openH + ", s_openM="
 				+ s_openM + ", s_closeH=" + s_closeH + ", s_closeM=" + s_closeM + ", s_parking=" + s_parking
 				+ ", s_intro=" + s_intro + ", s_youtube=" + s_youtube + ", s_instagram=" + s_instagram + ", s_twitter="
