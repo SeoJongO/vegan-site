@@ -25,6 +25,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     </context:component-scan>
     
     <!-- oracle datasource -->
+    
+    <!-- window -->
     <bean id="oracleDatasource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
         <property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
         <property name="user" value="C##vegan" />
@@ -32,6 +34,17 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
         <property name="connectionCachingEnabled" value="true" />
         <qualifier value="main-db" />
     </bean>
+    
+    <!-- mac -->
+    <!--  
+    <bean id="oracleDatasource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+        <property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
+        <property name="user" value="C##vegan" />
+        <property name="password" value="vegan" />
+        <property name="connectionCachingEnabled" value="true" />
+        <qualifier value="main-db" />
+    </bean>
+    -->
     
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="oracleDatasource" />

@@ -26,6 +26,7 @@ public class StoreVo {
 	private int s_Hsun;
 	private String s_latitude;
 	private String s_longitude;
+	private String s_date;
 
 	public StoreVo() {
 	}
@@ -33,7 +34,8 @@ public class StoreVo {
 	public StoreVo(int s_no, String s_img, String s_name, String s_phone, String s_address, String s_detail,
 			String s_openH, String s_openM, String s_closeH, String s_closeM, int s_parking, String s_intro,
 			String s_youtube, String s_instagram, String s_twitter, int s_Hmon, int s_Htue, int s_Hwen, int s_Hthu,
-			int s_Hfri, int s_Hsat, int s_Hsun, String s_latitude, String s_longitude) {
+			int s_Hfri, int s_Hsat, int s_Hsun, String s_latitude, String s_longitude, String s_date) {
+		super();
 		this.s_no = s_no;
 		this.s_img = s_img;
 		this.s_name = s_name;
@@ -58,6 +60,7 @@ public class StoreVo {
 		this.s_Hsun = s_Hsun;
 		this.s_latitude = s_latitude;
 		this.s_longitude = s_longitude;
+		this.s_date = s_date;
 	}
 
 	public int getS_no() {
@@ -252,6 +255,14 @@ public class StoreVo {
 		this.s_longitude = s_longitude;
 	}
 
+	public String getS_date() {
+		return s_date;
+	}
+
+	public void setS_date(String s_date) {
+		this.s_date = s_date;
+	}
+
 	@Override
 	public String toString() {
 		return "StoreVo [s_no=" + s_no + ", s_img=" + s_img + ", s_name=" + s_name + ", s_phone=" + s_phone
@@ -260,7 +271,7 @@ public class StoreVo {
 				+ ", s_intro=" + s_intro + ", s_youtube=" + s_youtube + ", s_instagram=" + s_instagram + ", s_twitter="
 				+ s_twitter + ", s_Hmon=" + s_Hmon + ", s_Htue=" + s_Htue + ", s_Hwen=" + s_Hwen + ", s_Hthu=" + s_Hthu
 				+ ", s_Hfri=" + s_Hfri + ", s_Hsat=" + s_Hsat + ", s_Hsun=" + s_Hsun + ", s_latitude=" + s_latitude
-				+ ", s_longitude=" + s_longitude + "]";
+				+ ", s_longitude=" + s_longitude + ", s_date=" + s_date + "]";
 	}
 
 }
