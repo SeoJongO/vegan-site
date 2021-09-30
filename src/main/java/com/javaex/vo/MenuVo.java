@@ -3,6 +3,7 @@ package com.javaex.vo;
 public class MenuVo {
 
 	private int m_no;
+	private int s_no;
 	private String m_name;
 	private String m_imge;
 	private String m_price;
@@ -13,9 +14,10 @@ public class MenuVo {
 		super();
 	}
 
-	public MenuVo(int m_no, String m_name, String m_imge, String m_price, int m_type, String m_intro) {
+	public MenuVo(int m_no, int s_no, String m_name, String m_imge, String m_price, int m_type, String m_intro) {
 		super();
 		this.m_no = m_no;
+		this.s_no = s_no;
 		this.m_name = m_name;
 		this.m_imge = m_imge;
 		this.m_price = m_price;
@@ -29,6 +31,14 @@ public class MenuVo {
 
 	public void setM_no(int m_no) {
 		this.m_no = m_no;
+	}
+
+	public int getS_no() {
+		return s_no;
+	}
+
+	public void setS_no(int s_no) {
+		this.s_no = s_no;
 	}
 
 	public String getM_name() {
@@ -69,6 +79,12 @@ public class MenuVo {
 
 	public void setM_intro(String m_intro) {
 		this.m_intro = m_intro;
+	}
+
+	@Override
+	public String toString() {
+		return "MenuVo [m_no=" + m_no + ", s_no=" + s_no + ", m_name=" + m_name + ", m_imge=" + m_imge + ", m_price="
+				+ m_price + ", m_type=" + m_type + ", m_intro=" + m_intro + "]";
 	}
 
 }
