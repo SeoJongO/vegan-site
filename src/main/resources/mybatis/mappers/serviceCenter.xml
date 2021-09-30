@@ -9,7 +9,7 @@
 
 <![CDATA[
 insert into serviceCenter
-	values(c_no.nextval,2,9,#{c_title},#{c_content},sysdate)
+	values(c_no.nextval,2,2,#{c_title},#{c_content},sysdate)
 
 ]]>
 
