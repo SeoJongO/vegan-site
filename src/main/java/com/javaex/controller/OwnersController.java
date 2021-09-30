@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javaex.service.OwnerService;
 import com.javaex.vo.OwnerVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value="/owners")
@@ -20,8 +23,16 @@ public class OwnersController {
 	private OwnerService ownerService;
 	
 	@RequestMapping(value="/NownerSlist", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerSlist() {
+	public String ownerSlist(Model model, HttpSession session) {
 		System.out.println("[OwnersController.ownerSlist]");
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		
+		int u_no = userVo.getU_no();
+		
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		
+		model.addAttribute("storeList", sList);
 		
 		return "owners/NownerSlist";
 	}
@@ -36,8 +47,6 @@ public class OwnersController {
 	@RequestMapping(value="/storeInsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
-		
-		System.out.println(ownerVo);
 		
 		int count = ownerService.storeInsert(ownerVo);
 		

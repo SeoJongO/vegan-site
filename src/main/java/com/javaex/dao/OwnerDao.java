@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,12 @@ public class OwnerDao {
 		System.out.println(ownerVo);
 		
 		return sqlSession.insert("owner.storeInsert", ownerVo);
+	}
+	
+	public List<OwnerVo> storeList(int u_no) {
+		System.out.println("OwnerDao.storeList()");
+		
+		return sqlSession.selectList("owner.storeList", u_no);
 	}
 
 }

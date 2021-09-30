@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -9,17 +7,9 @@
 <meta charset="UTF-8">
 <title>1단 레이아웃 샢플</title>
 
-<link
-	href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css"
-	rel="stylesheet" type="text/css"
->
-<link href="${ pageContext.request.contextPath }/assets/css/common.css"
-	rel="stylesheet" type="text/css"
->
-<link
-	href="${ pageContext.request.contextPath }/assets/css/ownerMain.css"
-	rel="stylesheet" type="text/css"
->
+<link href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/ownerMain.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -47,12 +37,8 @@
 
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/owners/NownerMlist"
-							>가게</a></li>
-							<li class="last"><a
-								href="${pageContext.request.contextPath}/owners/NownerMlist"
-							>가게관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/owners/NownerMlist">가게</a></li>
+							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerMlist">가게관리</a></li>
 						</ul>
 					</div>
 					<!-- //페이지타이틀 -->
@@ -83,27 +69,15 @@
 											</tr>
 										</thead>
 										<tbody>
-
-											<tr>
-												<td>샐러디 낙성대점</td>
-												<td>이미지</td>
-												<td>2021/09/29</td>
-												<td>관악구 봉천동 919-19</td>
-												<td>
-													<a href="test.html">[수정]</a>, <a href="test.html">[삭제]</a>
-												</td>
-											</tr>
-											<tr>
-												<td>샐러디 낙성대점</td>
-												<td>이미지</td>
-												<td>2021/09/29</td>
-												<td>관악구 봉천동 919-19</td>
-												<td>
-													<a href="test.html">[수정]</a>, <a href="test.html">[삭제]</a>
-												</td>
-											</tr>
-
-
+											<c:forEach items="${storeList}" var="storeVo">
+												<tr>
+													<td>${storeVo.s_name}</td>
+													<td>${storeVo.s_img}</td>
+													<td>${storeVo.s_date}</td>
+													<td>${storeVo.s_address}</td>
+													<td><a href="test.html">[수정]</a>, <a href="test.html">[삭제]</a></td>
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
