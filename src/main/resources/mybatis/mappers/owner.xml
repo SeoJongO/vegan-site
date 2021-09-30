@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="store">
+<mapper namespace="owner">
+
+	<insert id="storeInsert" parameterType = "com.javaex.vo.OwnerVo">
+		<![CDATA[
+			insert into store
+			values(s_no.nextval, #{u_no}, #{s_img}, #{s_name}, #{s_phone}, #{s_address}, #{s_detail_address}, #{s_openH}, #{s_openM}, #{s_closeH}, #{s_closeM}, #{s_parking}, #{s_intro}, #{s_youtube}, #{s_twitter}, #{s_instagram}, #{s_Hmon}, #{s_Htue}, #{s_Hwen}, #{s_Hthu}, #{s_Hfri}, #{s_Hsat}, #{s_Hsun}, #{s_latitude}, #{s_longitude})
+		]]>
+	</insert>
 	
 </mapper>

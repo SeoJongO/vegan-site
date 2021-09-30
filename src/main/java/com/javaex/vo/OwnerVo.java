@@ -3,11 +3,12 @@ package com.javaex.vo;
 public class OwnerVo {
 
 	private int s_no;
+	private int u_no;
 	private String s_img;
 	private String s_name;
 	private String s_phone;
 	private String s_address;
-	private String s_detail;
+	private String s_detail_address;
 	private String s_openH;
 	private String s_openM;
 	private String s_closeH;
@@ -26,21 +27,22 @@ public class OwnerVo {
 	private int s_Hsun;
 	private String s_latitude;
 	private String s_longitude;
-	private String s_date;
 
 	public OwnerVo() {
 	}
 
-	public OwnerVo(int s_no, String s_img, String s_name, String s_phone, String s_address, String s_detail,
-			String s_openH, String s_openM, String s_closeH, String s_closeM, int s_parking, String s_intro,
-			String s_youtube, String s_instagram, String s_twitter, int s_Hmon, int s_Htue, int s_Hwen, int s_Hthu,
-			int s_Hfri, int s_Hsat, int s_Hsun, String s_latitude, String s_longitude, String s_date) {
+	public OwnerVo(int s_no, int u_no, String s_img, String s_name, String s_phone, String s_address,
+			String s_detail_address, String s_openH, String s_openM, String s_closeH, String s_closeM, int s_parking,
+			String s_intro, String s_youtube, String s_instagram, String s_twitter, int s_Hmon, int s_Htue, int s_Hwen,
+			int s_Hthu, int s_Hfri, int s_Hsat, int s_Hsun, String s_latitude, String s_longitude) {
+		super();
 		this.s_no = s_no;
+		this.u_no = u_no;
 		this.s_img = s_img;
 		this.s_name = s_name;
 		this.s_phone = s_phone;
 		this.s_address = s_address;
-		this.s_detail = s_detail;
+		this.s_detail_address = s_detail_address;
 		this.s_openH = s_openH;
 		this.s_openM = s_openM;
 		this.s_closeH = s_closeH;
@@ -59,7 +61,6 @@ public class OwnerVo {
 		this.s_Hsun = s_Hsun;
 		this.s_latitude = s_latitude;
 		this.s_longitude = s_longitude;
-		this.s_date = s_date;
 	}
 
 	public int getS_no() {
@@ -68,6 +69,14 @@ public class OwnerVo {
 
 	public void setS_no(int s_no) {
 		this.s_no = s_no;
+	}
+
+	public int getU_no() {
+		return u_no;
+	}
+
+	public void setU_no(int u_no) {
+		this.u_no = u_no;
 	}
 
 	public String getS_img() {
@@ -102,12 +111,12 @@ public class OwnerVo {
 		this.s_address = s_address;
 	}
 
-	public String getS_detail() {
-		return s_detail;
+	public String getS_detail_address() {
+		return s_detail_address;
 	}
 
-	public void setS_detail(String s_detail) {
-		this.s_detail = s_detail;
+	public void setS_detail_address(String s_detail_address) {
+		this.s_detail_address = s_detail_address;
 	}
 
 	public String getS_openH() {
@@ -254,23 +263,15 @@ public class OwnerVo {
 		this.s_longitude = s_longitude;
 	}
 
-	public String getS_date() {
-		return s_date;
-	}
-
-	public void setS_date(String s_date) {
-		this.s_date = s_date;
-	}
-
 	@Override
 	public String toString() {
-		return "OwnerVo [s_no=" + s_no + ", s_img=" + s_img + ", s_name=" + s_name + ", s_phone=" + s_phone
-				+ ", s_address=" + s_address + ", s_detail=" + s_detail + ", s_openH=" + s_openH + ", s_openM="
-				+ s_openM + ", s_closeH=" + s_closeH + ", s_closeM=" + s_closeM + ", s_parking=" + s_parking
-				+ ", s_intro=" + s_intro + ", s_youtube=" + s_youtube + ", s_instagram=" + s_instagram + ", s_twitter="
-				+ s_twitter + ", s_Hmon=" + s_Hmon + ", s_Htue=" + s_Htue + ", s_Hwen=" + s_Hwen + ", s_Hthu=" + s_Hthu
-				+ ", s_Hfri=" + s_Hfri + ", s_Hsat=" + s_Hsat + ", s_Hsun=" + s_Hsun + ", s_latitude=" + s_latitude
-				+ ", s_longitude=" + s_longitude + ", s_date=" + s_date + "]";
+		return "OwnerVo [s_no=" + s_no + ", u_no=" + u_no + ", s_img=" + s_img + ", s_name=" + s_name + ", s_phone="
+				+ s_phone + ", s_address=" + s_address + ", s_detail_address=" + s_detail_address + ", s_openH="
+				+ s_openH + ", s_openM=" + s_openM + ", s_closeH=" + s_closeH + ", s_closeM=" + s_closeM
+				+ ", s_parking=" + s_parking + ", s_intro=" + s_intro + ", s_youtube=" + s_youtube + ", s_instagram="
+				+ s_instagram + ", s_twitter=" + s_twitter + ", s_Hmon=" + s_Hmon + ", s_Htue=" + s_Htue + ", s_Hwen="
+				+ s_Hwen + ", s_Hthu=" + s_Hthu + ", s_Hfri=" + s_Hfri + ", s_Hsat=" + s_Hsat + ", s_Hsun=" + s_Hsun
+				+ ", s_latitude=" + s_latitude + ", s_longitude=" + s_longitude + "]";
 	}
 
 }

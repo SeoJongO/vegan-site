@@ -2,21 +2,30 @@ package com.javaex.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.javaex.service.OwnerService;
 import com.javaex.vo.OwnerVo;
 
 @Controller
 @RequestMapping(value="/owners")
 public class OwnersController {
 
+
 	
 	
 	//가게 리스트 
+
+	
+	@Autowired
+	private OwnerService ownerService;
+	
+ 
 	@RequestMapping(value="/NownerSlist", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerSlist() {
 		System.out.println("[OwnersController.ownerSlist]");
@@ -37,7 +46,11 @@ public class OwnersController {
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
 		
+
+		System.out.println(ownerVo);
 		
+		int count = ownerService.storeInsert(ownerVo);
+
 		
 		return "owners/NownerSinsert";
 	}
