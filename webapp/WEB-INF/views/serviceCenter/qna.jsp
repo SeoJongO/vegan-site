@@ -11,6 +11,8 @@
 <link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.request.contextPath }/assets/css/serviceCenter.css" rel="stylesheet" type="text/css">
 
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery-1.12.4.js"></script>
+
 
 </head>
 <body>

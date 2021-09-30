@@ -27,8 +27,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     <!-- oracle datasource -->
     <bean id="oracleDatasource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
         <property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
-        <property name="user" value="C##vegan" />
-        <property name="password" value="vegan" />
+        <property name="user" value="C##vegun" />
+        <property name="password" value="vegun" />
         <property name="connectionCachingEnabled" value="true" />
         <qualifier value="main-db" />
     </bean>

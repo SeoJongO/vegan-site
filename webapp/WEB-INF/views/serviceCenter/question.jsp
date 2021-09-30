@@ -34,7 +34,7 @@
 				<div id="main">
 					<!-- 페이지타이틀 -->
 					<div id="page-title-wrap" class="clearfix">
-						<h3 id="page-title">문의</h3>
+						<h3 id="page-title">신고문의</h3>
 
 						<ul class="clearfix text-center">
 							<li><a href="${ pageContext.request.contextPath }/main">홈</a></li>
@@ -47,17 +47,36 @@
 					<!-- 컨텐츠 -->
 					<div id="content-wrap">
 						<!-- content -->
-						<div id="content">
-							<form id="input-zone" class="text-left clearfix" action="" method="get">
-								<label>제목</label> <input type="text" name="" value="" placeholder="드루와"> <label>내용</label>
-								<textarea name="" placeholder="드루와 드루와"></textarea>
-								<input class="float-l" type="file">
-								<button class="btn float-r" type="submit">문의하기</button>
+					
+						
+						
+				</div>
+				<div class="modal-body clearfix">
+					<div id="modify-content">
+					
+					<!-- 라디오로 표현  
+						<form action="${pageContext.request.contextPath}/testquestion" method="get">
+							<input type="radio" name="c_title" value="메뉴가 상세내용과 달라요"> <label>메뉴가 상세내용과 달라요</label> <br> <input type="radio" name="" value=""> <label>해당위치에
+								매장이 없어요</label> <br> <input type="radio" name="fruit" value="apple"> <label>기타</label> <br>
+							<textarea name="c_content" placeholder="내용을 입력해주세요"></textarea>
+							<input type="file">
+							<div class="text-center">
+								<button class="btn" type="submit">신고하기</button>
+							
+							</div>
+						</form>
+						-->
+							<form id="input-zone" class="text-left clearfix" action="${ pageContext.request.contextPath }/testquestion" method="get">
+								<label>제목</label> <input type="text" name="c_title" value="" placeholder="드루와"> <label>내용</label>
+								<textarea name="c_content" placeholder="드루와 드루와"></textarea>
+								<!--  <input class="float-l" type="file"> -->
+								<button class="btn float-r" type="submit">신고하기</button>
+								
 							</form>
 
 							<!-- 데이터없을시 hide -->
 							<div id="history">
-								<h3 class="text-left">문의내역</h3>
+								<h3 class="text-left">신고내역</h3>
 								<table id="historyTable">
 									<tr id="t-head">
 										<th id="q-title" class="text-center">제목</th>
@@ -65,9 +84,10 @@
 										<th id="q-status" class="text-center">상태</th>
 									</tr>
 									<!-- 반복구간 -->
+									<c:forEach items="${serviceList}" var="serviceList">
 									<tr class="t-body history-t-body">
-										<td class="text-left">애국가1절</td>
-										<td class="text-left">동해물과 백두산이 마르고닳도록 하느님이...</td>
+										<td class="text-left">${serviceList.c_title}</td>
+										<td class="text-left">${serviceList.c_content}</td>
 										<td class="text-center">답변완료</td>
 									</tr>
 
@@ -75,6 +95,7 @@
 									<tr class="t-body history-t-body">
 										<td>답변달리는영역~~~~~~~~~~~~~~~~~~~~~~~</td>
 									</tr>
+									</c:forEach>
 									<!-- //hide구간 -->
 									<!-- //반복구간 -->
 								</table>
