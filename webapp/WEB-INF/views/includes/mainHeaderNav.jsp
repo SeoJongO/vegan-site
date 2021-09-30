@@ -18,7 +18,7 @@
 		
 		<c:if test="${not empty authUser}">
 			<ul class="clearfix">
-				<li>${authUser.nickname}님 안녕하세요^^</li>
+				<li>${authUser.u_nickname}(${authUser.u_type})</li>
 				<li><a href="${pageContext.request.contextPath }/user/logout" class="btn_s">로그아웃</a></li>
 				<li><a href="${pageContext.request.contextPath }/user/modifyForm" class="btn_s">회원정보수정</a></li>
 			</ul>
@@ -50,8 +50,8 @@
 		</ul>
 
 		<!-- 작업편의상 가게관리 노출시킴 -->
-		<%-- <a href="${ pageContext.request.contextPath }/addShop" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게등록</span></a> --%>
-		<a href="${ pageContext.request.contextPath }/owners/NownerPage" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게관리</span></a>
+		<a href="${ pageContext.request.contextPath }/addShop" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게등록</span></a> 
+		<%-- <a href="${ pageContext.request.contextPath }/owners/NownerPage" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게관리</span></a> --%>
 
 
 	</div>

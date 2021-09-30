@@ -24,10 +24,10 @@ public class UserDao {
 		return sqlSession.selectOne("user.getUser", userVo);
 	}
 	
-	public UserVo userInfo(int user_no) {
+	public UserVo userInfo(int u_no) {
 		System.out.println("UserDao.userInfo()");
 		
-		return sqlSession.selectOne("user.userInfo", user_no);
+		return sqlSession.selectOne("user.userInfo", u_no);
 	}
 	
 	public int userUpdate(UserVo userVo) {
@@ -36,10 +36,10 @@ public class UserDao {
 		return sqlSession.update("user.userUpdate", userVo);
 	}
 	
-	public String getEmail(String phonenumber) {
+	public String getEmail(String u_phone) {
 		System.out.println("UserDao.getEmail()");
 		
-		return sqlSession.selectOne("user.getEmail", phonenumber);
+		return sqlSession.selectOne("user.getEmail", u_phone);
 	}
 
 }

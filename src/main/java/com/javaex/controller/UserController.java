@@ -58,21 +58,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login", method = { RequestMethod.GET, RequestMethod.POST })
-	public String login(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session) {
+	public String login(@RequestParam("u_email") String u_email, @RequestParam("u_password") String u_password, HttpSession session) {
 		System.out.println("[UserController.login()]");
 		
-		UserVo userVo = new UserVo(email, password);
+		UserVo userVo = new UserVo(u_email, u_password);
 		
 		UserVo authUser = userService.getUser(userVo);
 		
-		System.out.println(authUser);
-		
 		if (authUser != null) {
-			System.out.println("login success");
+			System.out.println("로그인 성공");
 			session.setAttribute("authUser", authUser);
 			return "redirect:/main";
 		} else {
-			System.out.println("login fail");
+			System.out.println("로그인 실패");
 			return "redirect:/user/loginForm?result=fail";
 		}
 		
@@ -91,7 +89,7 @@ public class UserController {
 		
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 		
-		String userPassword = userVo.getPassword();
+		String userPassword = userVo.getU_password();
 		
 		if(userPassword.equals(InputPassword)) {
 			return "redirect:/user/modifyForm";
@@ -107,7 +105,7 @@ public class UserController {
 		
 		UserVo authUser = (UserVo) session.getAttribute("authUser");
 		
-		UserVo userInfo = userService.userInfo(authUser.getUser_No());
+		UserVo userInfo = userService.userInfo(authUser.getU_no());
 		
 		model.addAttribute("userInfo", userInfo);
 		
@@ -117,8 +115,6 @@ public class UserController {
 	@RequestMapping(value="/modify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("[UserController.modify()]");
-		
-		System.out.println(userVo);
 		
 		int count = userService.userUpdate(userVo);
 		
@@ -162,10 +158,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/findEmailSuccess", method = { RequestMethod.GET, RequestMethod.POST })
-	public String findEmailSuccess(@RequestParam("phonenumber") String phonenumber, Model model) {
+	public String findEmailSuccess(@RequestParam("phonenumber") String u_phone, Model model) {
 		System.out.println("[UserController.findEmailSuccess()]");
 		
-		String userEmail = userService.getEmail(phonenumber);
+		String userEmail = userService.getEmail(u_phone);
 		
 		model.addAttribute("userEmail", userEmail);
 		
