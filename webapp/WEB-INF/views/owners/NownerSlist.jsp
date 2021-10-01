@@ -75,7 +75,10 @@
 													<td>${storeVo.s_img}</td>
 													<td>${storeVo.s_date}</td>
 													<td>${storeVo.s_address}</td>
-													<td><a href="test.html">[수정]</a>, <a href="test.html">[삭제]</a></td>
+													<td>
+													<a href="${pageContext.request.contextPath}/owners/NownerSmodify?s_no=${storeVo.s_no}">[수정]</a> 
+													<a href="${pageContext.request.contextPath}/owners/storeDelete?s_no=${storeVo.s_no}">[삭제]</a>
+													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -84,7 +87,7 @@
 								<div class="button-area button-center2">
 
 									<span class="orange">
-										<button>가게 등록</button>
+										<button onclick="location.href='${pageContext.request.contextPath}/owners/NownerSinsert'">가게 등록</button>
 									</span>
 								</div>
 

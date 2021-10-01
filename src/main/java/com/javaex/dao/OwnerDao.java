@@ -27,5 +27,23 @@ public class OwnerDao {
 		
 		return sqlSession.selectList("owner.storeList", u_no);
 	}
+	
+	public OwnerVo getStore(int s_no) {
+		System.out.println("OwnerDao.getStore()");
+
+		return sqlSession.selectOne("owner.getStore", s_no);
+	}
+	
+	public int storeDelete(int s_no) {
+		System.out.println("OwnerDao.storeDelete()");
+		
+		return sqlSession.delete("owner.storeDelete", s_no);
+	}
+	
+	public int storeModify(OwnerVo ownerVo) {
+		System.out.println("OwnerDao.storeModify()");
+		
+		return sqlSession.update("owner.storeModify", ownerVo);
+	}
 
 }

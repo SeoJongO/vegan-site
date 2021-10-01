@@ -33,12 +33,12 @@
 				<div id="main">
 					<!-- 페이지타이틀 -->
 					<div id="page-title-wrap" class="clearfix">
-						<h3 id="page-title">기본정보</h3>
+						<h3 id="page-title">가게수정</h3>
 
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
 							<li><a href="${pageContext.request.contextPath}/owners/NownerPage">가게관리</a></li>
-							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerPage">가게</a></li>
+							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerPage">가게수정</a></li>
 						</ul>
 					</div>
 					<!-- //페이지타이틀 -->
@@ -47,21 +47,10 @@
 					<div id="content-wrap">
 						<div id="wrap2">
 							<div class="head2">
-								<div class="s-listpo">
-									<select id="shop" name="shop">
-										<option value="shop1">샐러디 낙성대점</option>
-										<option value="shop2">샐러디 신림점</option>
-										<option value="shop3">샐러디 봉천점</option>
-										<option value="shop-add">+매장추가+</option>
-									</select>
-								</div>
-							</div>
-							<div class="s-listpo">
-								<h3>샐러디 낙성대점</h3>
 
 							</div>
-							<form action="${pageContext.request.contextPath}/owners/storeInsert" method="get">
-								<input type="hidden" name="u_no" value="${authUser.u_no}">
+							<form action="${pageContext.request.contextPath}/owners/storeModify" method="get">
+								<input type="hidden" name="s_no" value="${store.s_no}">
 								<table class="main-table">
 									<tr>
 										<td><b>로고</b></td>

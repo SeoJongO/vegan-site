@@ -1,25 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>1단 레이아웃 샢플</title>
+<title>가게관리</title>
 
-<link
-	href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css"
-	rel="stylesheet" type="text/css"
->
-<link href="${ pageContext.request.contextPath }/assets/css/common.css"
-	rel="stylesheet" type="text/css"
->
-<link
-	href="${ pageContext.request.contextPath }/assets/css/ownerMain.css"
-	rel="stylesheet" type="text/css"
->
+<link href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/ownerMain.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -43,7 +33,7 @@
 				<div id="main">
 					<!-- 페이지타이틀 -->
 					<div id="page-title-wrap" class="clearfix">
-						<h3 id="page-title">기본정보</h3>
+						<h3 id="page-title">가게등록</h3>
 
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
@@ -55,94 +45,41 @@
 
 					<!-- 컨텐츠 -->
 					<div id="content-wrap">
-
-
-
 						<div id="wrap2">
-
 							<div class="head2">
-								
-							</div>
-							<div class="s-listpo">
-								<h3>가게 등록</h3>
 
 							</div>
-							<form>
+							<form action="${pageContext.request.contextPath}/owners/storeInsert" method="get">
+								<input type="hidden" name="u_no" value="${authUser.u_no}">
 								<table class="main-table">
 									<tr>
-										<td>
-
-
-
-											<b>로고</b>
-										</td>
-										<td>
-											<img alt="가게로고"
-												src="${ pageContext.request.contextPath }/assets/imges/가게로고.jpeg"
-											>
-
-											<input type="file">
-
-										</td>
-										
-
+										<td><b>로고</b></td>
+										<td><img alt="가게로고" src="${store.s_img}"> <input type="file" name="s_img" value=""></td>
 									</tr>
-
-
-
-
-
-
 									<tr>
-										<td>
-											<label for="s-name"><b>상호명</b></label>
-										</td>
-
-
-										<td>
-											<input type="text" id="shopName" name="s-name">
-										</td>
+										<td><label for="s-name"><b>상호명</b></label></td>
+										<td><input type="text" id="shopName" name="s_name" value="${store.s_name}"></td>
 									</tr>
-
-
-
-
 									<tr>
-										<td>
-											<label for="s-number"><b>전화번호</b></label>
-										</td>
-										<td>
-											<input type="text" id="shopNumber" name="number">
-										</td>
+										<td><label for="s-number"><b>전화번호</b></label></td>
+										<td><input type="text" id="shopNumber" name="s_phone" value="${store.s_phone}"></td>
 									<tr>
 									<tr>
-										<td class="bnone">
-											<label for="s-addres"><b>주소</b></label>
-										</td>
-										<td class="bnone">
-											<input type="text" id="shopAddres" name="s-addres">
-											<span class="button-area">
-											<button  type="submit">
-												<b>주소찾기</b>
-											</button>
-											</span>
-										</td>
+										<td class="bnone"><label for="s-addres"><b>주소</b></label></td>
+										<td class="bnone"><input type="text" id="shopAddres" name="s_address" value="${store.s_address}">
+										<span class="button-area">
+												<button type="submit">
+													<b>주소찾기</b>
+												</button>
+										</span></td>
 									</tr>
-
-
 									<tr>
 										<td></td>
-
-										<td>
-											<input type="text" id="detailAddres" name="s-daddres">
-										</td>
+										<td><input type="text" id="detailAddres" name="s_detail_address" value="${store.s_detail_address}"></td>
 									</tr>
 									<tr>
-										<td>
-											<b>영업시간</b>
-										</td>
-										<td>
-											<select id="son-h-f" name="son-h-f">
+										<td><b>영업시간</b></td>
+										<td><select id="son-h-f" name="s_openH">
 												<option value="00">00</option>
 												<option value="01">01</option>
 												<option value="02">02</option>
@@ -167,19 +104,14 @@
 												<option value="21">21</option>
 												<option value="22">22</option>
 												<option value="23">23</option>
-											</select>
-											<span>:</span>
-											<select id="son-m-f" name="son-m-f">
+										</select> <span>:</span> <select id="son-m-f" name="s_openM">
 												<option value="00">00</option>
 												<option value="10">10</option>
 												<option value="20">20</option>
 												<option value="30">30</option>
 												<option value="40">40</option>
 												<option value="50">50</option>
-
-											</select>
-											<span>~</span>
-											<select id="son-h-l" name="son-h-l">
+										</select> <span>~</span> <select id="son-h-l" name="s_closeH">
 												<option value="00">00</option>
 												<option value="01">01</option>
 												<option value="02">02</option>
@@ -204,165 +136,75 @@
 												<option value="21">21</option>
 												<option value="22">22</option>
 												<option value="23">23</option>
-											</select>
-											<span>:</span>
-											<select id="son-m-l" name="son-m-l">
+										</select> <span>:</span> <select id="son-m-l" name="s_closeM">
 												<option value="00">00</option>
 												<option value="10">10</option>
 												<option value="20">20</option>
 												<option value="30">30</option>
 												<option value="40">40</option>
 												<option value="50">50</option>
-
-											</select>
+										</select></td>
+									</tr>
+									<tr>
+										<td><b>휴무일</b></td>
+										<td>
+											<label for="chk-sun">일</label> <input class="chkh" type="checkbox" id="chk-son" name="s_Hsun" value=1> &nbsp;&nbsp;&nbsp;
+											<label for="chk-mon">월</label> <input class="chkh" type="checkbox" id="chk-mon" name="s_Hmon" value=1> &nbsp;&nbsp;&nbsp;
+											<label for="chk-tue">화</label> <input class="chkh" type="checkbox" id="chk-tue" name="s_Htue" value=1> &nbsp;&nbsp;&nbsp;
+											<label for="chk-wen">수</label> <input class="chkh" type="checkbox" id="chk-wen" name="s_Hwen" value=1> &nbsp;&nbsp;&nbsp;
+											<label for="chk-thr">목</label> <input class="chkh" type="checkbox" id="chk-thr" name="s_Hthu" value=1> &nbsp;&nbsp;&nbsp;
+											<label for="chk-fri">금</label> <input class="chkh" type="checkbox" id="chk-fri" name="s_Hfri" value=1> &nbsp;&nbsp;&nbsp;
+											<label for="chk-sat">토</label> <input class="chkh" type="checkbox" id="chk-sat" name="s_Hsat" value=1>
 										</td>
 									</tr>
-
 									<tr>
+										<td><b>주차가능 여부</b></td>
 										<td>
-											<b>휴무일</b>
-										</td>
-										<td>
-											<label for="chk-sun">일</label>
-											<input class="chkh" type="checkbox" id="chk-son" name="holly"
-												value="son" checked="checked"
-											>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="chk-mon">월</label>
-											<input class="chkh" type="checkbox" id="chk-mon" name="holly"
-												value="mon"
-											>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="chk-tue">화</label>
-											<input class="chkh" type="checkbox" id="chk-tue" name="holly"
-												value="tue"
-											>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="chk-wen">수</label>
-											<input class="chkh" type="checkbox" id="chk-wen" name="holly"
-												value="wen"
-											>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="chk-thr">목</label>
-											<input class="chkh" type="checkbox" id="chk-thr" name="holly"
-												value="thr"
-											>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="chk-fri">금</label>
-											<input class="chkh" type="checkbox" id="chk-fri" name="holly"
-												value="fri"
-											>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="chk-sat">토</label>
-											<input class="chkh" type="checkbox" id="chk-sat" name="holly"
-												value="sat"
-											>
+											<label for="rdo-parking">주차 가능</label> <input class="chkh" type="radio" id="rdo-parking" name="s_parking" value=1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<label for="rdo-noParking">주차 불가능</label> <input class="chkh" type="radio" id="rdo-noParking" name="s_parking" value=2>
 										</td>
 									</tr>
-
 									<tr>
-										<td>
-											<b>주차가능 여부</b>
-										</td>
-										<td>
-											<label for="rdo-parking">주차 가능</label>
-											<input class="chkh" type="radio" id="rdo-parking"
-												name="parking" value="yesP" checked="checked"
-											>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<label for="rdo-noParking">주차 불가능</label>
-											<input class="chkh" type="radio" id="rdo-noParking"
-												name="parking" value="noP"
-											>
-										</td>
+										<td><b>가게 소개글</b></td>
+										<td><textarea class="textarea-size" name="s_intro" rows="" cols="">${store.s_intro}</textarea></td>
 									</tr>
-
-
 									<tr>
-										<td>
-											<b>가게 소개글</b>
-										</td>
-										<td>
-											<textarea class="textarea-size" rows="" cols=""></textarea>
-										</td>
-
+										<td class="bnone"><b>플랫폼 링크</b></td>
+										<td class="bnone"><img alt="유튜브" src="${ pageContext.request.contextPath }/assets/imges/유튜브아이콘.png"> <input type="text" id="youtube" name="s_youtube" value="${store.s_youtube}"></td>
 									</tr>
-
 									<tr>
-										<td class="bnone" >
- 											<b>플랫폼 링크</b>
-										</td>
-
-										<td class="bnone">
-											<img alt="유튜브"
-												src="${ pageContext.request.contextPath }/assets/imges/유튜브아이콘.png"
-											>
-											<input type="text" id="youtube" name="l-youtube">
-										
-										</td>
-									</tr>
-
-									<tr>
-
 										<td class="bnone"></td>
-										<td class="bnone">
-											<img alt="트위치"
-												src="${ pageContext.request.contextPath }/assets/imges/트위터아이콘.png"
-											>
-											<input type="text" id="twich" name="l-twich">
-										</td>
+										<td class="bnone"><img alt="트위치" src="${ pageContext.request.contextPath }/assets/imges/트위터아이콘.png"> <input type="text" id="twich" name="s_twitter" value="${store.s_twitter}"></td>
 									</tr>
 									<tr>
-										<td class="bnone"> </td>
-										<td class="bnone">
-											<img alt="인스타"
-												src="${ pageContext.request.contextPath }/assets/imges/인스타아이콘.png"
-											>
-											<input type="text" id="twich" name="l-insta">
-										</td>
+										<td class="bnone"></td>
+										<td class="bnone"><img alt="인스타" src="${ pageContext.request.contextPath }/assets/imges/인스타아이콘.png"> <input type="text" id="twich" name="s_instagram" value="${store.s_instagram}"></td>
 									</tr>
 								</table>
+								<input type="hidden" name="s_latitude" value="0">
+								<input type="hidden" name="s_longitude" value="0">
 								<div class="button-area button-center ">
 									<button>취소</button>
 									<span class="orange">
 										<button>저장</button>
 									</span>
 								</div>
-
-
-
-
 							</form>
 						</div>
-
-
-
-
-
 					</div>
 					<!-- //컨텐츠 -->
 				</div>
 				<!-- //메인 -->
-
 			</div>
-
-
-
-
-
-
-
-
 		</div>
 		<!-- //container -->
 
-
 		<!-- footer -->
 		<div id="footer">
-
 			<!-- 푸터내용 -->
 			<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-
 		</div>
 		<!-- //footer -->
-
-
 	</div>
-
-
 </body>
 </html>
