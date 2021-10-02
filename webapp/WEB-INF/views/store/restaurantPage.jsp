@@ -74,11 +74,11 @@ $(function(){
 
 			<!-- 페이지타이틀 -->
 			<div id="page-title-wrap" class="clearfix">
-				<h2 id="page-title">샐러디 역삼점</h2>
+				<h2 id="page-title">${ownerVo.s_name }</h2>
 
 				<ul class="clearfix text-center">
 					<li><a href="">홈</a></li>
-					<li class="last"><a href="">샐러디 역삼점</a></li>
+					<li class="last"><a href="">${ownerVo.s_name }</a></li>
 				</ul>
 			</div>
 			<!-- //페이지타이틀 -->
@@ -92,18 +92,23 @@ $(function(){
 							<p class="restaurantInfo-text">
 								<span class="timeInfo">영업시간</span> <span class="timeInfo">${ownerVo.s_openH }:${ownerVo.s_openM } ~
 									${ownerVo.s_closeH }:${ownerVo.s_closeM } </span>
-
-								<c:if test="${ownerVo.s_parking == 1 }">
-									<span>주차가능</span>
-								</c:if>
-								<c:if test="${ownerVo.s_parking == 2 }">
-									<span>주차불가능</span>
-								</c:if>
+									<span>휴무일:</span><br>
+									<!-- 휴무일 값 --><span>
+									${ownerVo.s_Hmon } 
+									${ownerVo.s_Htue}
+									${ownerVo.s_Hwen }
+									${ownerVo.s_Hthu }
+									${ownerVo.s_Hfri }
+									${ownerVo.s_Hsat }
+									${ownerVo.s_Hsun }</span><br>			
+									<!-- 주차가능 --><span>${ownerVo.s_parking }</span>
+									
+								
 
 							</p>
 							<p class="restaurantInfo-text">
-								<span><a href=""><img src="" alt="트위터"></a></span> <span><a href=""><img src="" alt="인스타그램"></a></span>
-								<span><a href=""><img src="" alt="페이스북"></a></span>
+								<span><a href=""><img src="" alt="트위터"></a>${ownerVo.s_twitter }</span> <span><a href=""><img src="" alt="인스타그램"></a>${ownerVo.s_instagram }</span>
+								<span><a href=""><img src="" alt="유튜브"></a>${ownerVo.s_youtube }</span>
 							</p>
 							<p>
 								<span class="favoritesImg"><img src="" alt="찜"></span> <span class="favorites">+555</span>
