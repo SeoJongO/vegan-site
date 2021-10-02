@@ -6,6 +6,11 @@
 	font-size: 10px;
 }
 
+#big {
+	margin: 100px 0px 100px 0px;
+	font-size: 30px;
+}
+
 .blue {
 	background-color: #ff6001;
 	color: white;
