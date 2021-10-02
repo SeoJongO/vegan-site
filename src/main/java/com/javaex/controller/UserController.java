@@ -191,4 +191,11 @@ public class UserController {
 		
 		return "redirect:/main";
 	}
+	
+	@RequestMapping(value="/joinOK", method = { RequestMethod.GET, RequestMethod.POST })
+	public String joinOk() {
+		System.out.println("[UserController.joinOk()]");
+		
+		return "user/joinOk";
+	}
 }
