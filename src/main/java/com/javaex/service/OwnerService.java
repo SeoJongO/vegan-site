@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.OwnerDao;
+import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
 
 @Service
@@ -43,5 +44,38 @@ public class OwnerService {
 		
 		return ownerDao.storeModify(ownerVo);
 	}
+	
+	public MenuVo getMenu(int m_no) {
+		System.out.println("OwnerService.getMenu()");
+		
+		return ownerDao.getMenu(m_no);
+	}
+	
+	
+	public int menuModify(MenuVo menuVo) {
+		System.out.println("OwnerService.menuModify()");
+		
+		return ownerDao.menuModify(menuVo);
+	}
+	
+	public int menuInsert(MenuVo menuVo) {
+		System.out.println("OwnerService.menuInsert()");
+		
+		return ownerDao.menuInsert(menuVo);
+	}
+	
+	
+	public int menuDelete(int m_no) {
+		System.out.println("OwnerService.menuDelete()");
+		
+		return ownerDao.menuDelete(m_no);
+	}
+	
+	public List<MenuVo> menuList() {
+		System.out.println("OwnerService.menuList()");
+		
+		return ownerDao.menuList();
+	}
+
 
 }

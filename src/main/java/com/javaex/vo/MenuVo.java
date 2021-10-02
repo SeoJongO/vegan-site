@@ -7,14 +7,14 @@ public class MenuVo {
 	private String m_name;
 	private String m_imge;
 	private String m_price;
-	private int m_type;
+	private String m_type;
 	private String m_intro;
 
 	public MenuVo() {
 		super();
 	}
 
-	public MenuVo(int m_no, int s_no, String m_name, String m_imge, String m_price, int m_type, String m_intro) {
+	public MenuVo(int m_no, int s_no, String m_name, String m_imge, String m_price, String m_type, String m_intro) {
 		super();
 		this.m_no = m_no;
 		this.s_no = s_no;
@@ -65,11 +65,11 @@ public class MenuVo {
 		this.m_price = m_price;
 	}
 
-	public int getM_type() {
+	public String getM_type() {
 		return m_type;
 	}
 
-	public void setM_type(int m_type) {
+	public void setM_type(String m_type) {
 		this.m_type = m_type;
 	}
 

@@ -97,7 +97,8 @@
 												<td>${mVo.m_type}</td>
 												<td>${mVo.m_price}</td>
 												<td>
-													<a href="test.html">[수정]</a> <a href="test.html">[삭제]</a>
+													<a href="${pageContext.request.contextPath}/owners/NownerMmodify?m_no=${mVo.m_no}">[수정]</a> 
+													<a href="${pageContext.request.contextPath}/owners/menuDelete?m_no=${mVo.m_no}">[삭제]</a>
 												</td>
 											</tr>
 

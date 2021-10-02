@@ -78,7 +78,8 @@
 							<h3>샐러디 낙성대점</h3>
 
 
-							<form>
+							<form action="${pageContext.request.contextPath}/owners/menuModify" method="get">
+								<input type="hidden" name="m_no" value="${menu.m_no}">
 								<table class="main-table">
 									<tr>
 										<td>
@@ -90,7 +91,7 @@
 												src="${ pageContext.request.contextPath }/assets/imges/단호박두부(비건).png"
 											>
 
-											<input type="file">
+											<input type="file" name="m_imge" value="">
 										</td>
 									</tr>
 
@@ -99,28 +100,28 @@
 
 									<tr>
 										<td>
-											<label for="m-name"><b>메뉴 이름</b></label>
+											<label for="m_name"><b>메뉴 이름</b></label>
 										</td>
 										<td>
-											<input type="text" id="menuName" name="m-name">
+											<input type="text" id="menuName" name="m_name" value="${menu.m_name}">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<label for="m-price"><b>메뉴 가격</b></label>
+											<label for="m_price"><b>메뉴 가격</b></label>
 										</td>
 										<td>
-											<input type="text" id="menuPrice" name="m-price">
+											<input type="text" id="menuPrice" name="m_price" value="${menu.m_price}">
 										</td>
 									</tr>
 
 
 									<tr>
 										<td class="bnone">
-											<label for="m-type"><b>채식 종류</b></label>
+											<label for="m_type"><b>채식 종류</b></label>
 										</td>
 										<td class="bnone">
-											<input type="text" id="menuType" name="m-type">
+											<input type="text" id="menuType" name="m_type" value="${menu.m_type}">
 											<span class="button-area orange">
 												<button type="button" id="vegan-select">잘모르겠어요</button>
 											</span>
@@ -151,7 +152,7 @@
 											<b>메뉴 소개</b>
 										</td>
 										<td class="bnone">
-											<textarea class="textarea-size" rows="" cols=""></textarea>
+											<textarea class="textarea-size" name = "m_intro" rows="" cols="">${menu.m_intro}</textarea>
 										</td>
 
 
@@ -174,7 +175,7 @@
 								<div class="button-area button-center">
 									<button>취소</button>
 									<span class="orange">
-										<button>저장</button>
+										<button >저장</button>
 									</span>
 								</div>
 							</form>

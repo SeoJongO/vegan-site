@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.OwnerService;
+import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.UserVo;
 
@@ -96,7 +97,10 @@ public class OwnersController {
 		return "redirect:/owners/NownerSlist";
 	}
 
-	// 메뉴 추가
+
+	
+	
+	// 메뉴 등록폼
 	@RequestMapping(value = "/NownerMinsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerMinsert() {
 		System.out.println("[OwnersController.ownerMinsert]");
@@ -104,13 +108,75 @@ public class OwnersController {
 		return "owners/NownerMinsert";
 	}
 
-	// 메뉴 리스트
+	// 메뉴 등록(s_no xml에 임의값 넣음)
+	@RequestMapping(value = "/menuInsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public String storeInsert(@ModelAttribute MenuVo menuVo) {
+		System.out.println("[OwnersController.menuInsert]");
+
+		int count = ownerService.menuInsert(menuVo);
+
+		return "redirect:/owners/NownerMlist";
+	}
+
+	
+	
+	// 메뉴 리스트(s_no xml에 임의값 넣음)
 	@RequestMapping(value = "/NownerMlist", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerMlist() {
+	public String ownerMlist(Model model, HttpSession session) {
 		System.out.println("[OwnersController.ownerMlist]");
+		
+
+		
+		List<MenuVo> mList = ownerService.menuList();
+
+		model.addAttribute("menuList", mList);
 
 		return "owners/NownerMlist";
 	}
+
+	// 메뉴 수정폼
+	@RequestMapping(value = "/NownerMmodify", method = { RequestMethod.GET, RequestMethod.POST })
+	public String menuModify(HttpSession session, Model model, @RequestParam("m_no") int m_no) {
+		System.out.println("[OwnersController.NownerMmodify]");
+
+		MenuVo menuVo = ownerService.getMenu(m_no);
+
+		System.out.println(menuVo);
+
+		model.addAttribute("menu", menuVo);
+
+		return "owners/NownerMmodify";
+	}
+
+	//메뉴 수정
+	@RequestMapping(value = "/menuModify", method = { RequestMethod.GET, RequestMethod.POST })
+	public String menuModify(@ModelAttribute MenuVo menuVo, HttpSession session, Model model) {
+		System.out.println("[OwnersController.storeModify]");
+
+		int count = ownerService.menuModify(menuVo);
+
+		if (count > 0) {
+			System.out.println("성공");
+		} else {
+			System.out.println("실패");
+		}
+
+		return "redirect:/owners/NownerMlist";
+	}
+	
+	//메뉴 삭제
+	@RequestMapping(value = "/menuDelete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String menuDelete(@RequestParam("m_no") int m_no) {
+		System.out.println("[OwnersController.storeDelete]");
+
+		int count = ownerService.menuDelete(m_no);
+
+		return "redirect:/owners/NownerMlist";
+	}
+	
+	
+	
+	
 
 	// 리뷰페이지
 	@RequestMapping(value = "/NownerLivew", method = { RequestMethod.GET, RequestMethod.POST })

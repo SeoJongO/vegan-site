@@ -85,4 +85,61 @@
 			where s_no = #{s_no}
 		]]>
 	</update>
+	
+	
+	<select id="getMenu" parameterType="int" resultType="com.javaex.vo.MenuVo">
+		<![CDATA[
+			select 
+			    m_no,
+			    s_no,
+			    m_name,
+			    m_imge,
+			    m_price,
+			    m_type,
+			    m_intro
+			from menu
+			where m_no = #{m_no}
+		]]>
+	</select>
+
+	<update id="menuModify" parameterType="com.javaex.vo.MenuVo">
+		<![CDATA[
+			update menu
+			set m_imge = #{m_imge},
+				m_name = #{m_name},
+				m_price = #{m_price},
+				m_type = #{m_type},
+				m_intro = #{m_intro}			
+			where m_no = #{m_no}
+		]]>
+	</update>
+
+
+
+	<insert id="menuInsert" parameterType="com.javaex.vo.MenuVo">
+		<![CDATA[
+			insert into menu
+			values(m_no.nextval, 2, #{m_name}, #{m_imge}, #{m_price}, #{m_type}, #{m_intro})		
+		]]>
+	</insert>
+
+	<delete id="menuDelete" parameterType="int">
+		<![CDATA[
+			delete menu
+			where m_no = #{m_no}
+		]]>
+	</delete>
+
+	<select id="menuList" resultType="com.javaex.vo.MenuVo">
+		<![CDATA[
+			select 
+					m_no,
+					m_imge,
+       				m_name,
+      			  	m_type,
+        			m_price
+			from menu
+			where s_no = 2
+		]]>
+	</select>
 </mapper>
