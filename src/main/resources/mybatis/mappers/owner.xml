@@ -86,7 +86,6 @@
 		]]>
 	</update>
 	
-	
 	<select id="getMenu" parameterType="int" resultType="com.javaex.vo.MenuVo">
 		<![CDATA[
 			select 
@@ -114,8 +113,6 @@
 		]]>
 	</update>
 
-
-
 	<insert id="menuInsert" parameterType="com.javaex.vo.MenuVo">
 		<![CDATA[
 			insert into menu
@@ -132,8 +129,7 @@
 
 	<select id="menuList" resultType="com.javaex.vo.MenuVo">
 		<![CDATA[
-			select 
-					m_no,
+			select  m_no,
 					m_imge,
        				m_name,
       			  	m_type,

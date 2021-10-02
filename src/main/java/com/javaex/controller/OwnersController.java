@@ -96,9 +96,6 @@ public class OwnersController {
 		
 		return "redirect:/owners/NownerSlist";
 	}
-
-
-	
 	
 	// 메뉴 등록폼
 	@RequestMapping(value = "/NownerMinsert", method = { RequestMethod.GET, RequestMethod.POST })
@@ -117,17 +114,21 @@ public class OwnersController {
 
 		return "redirect:/owners/NownerMlist";
 	}
-
-	
 	
 	// 메뉴 리스트(s_no xml에 임의값 넣음)
 	@RequestMapping(value = "/NownerMlist", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerMlist(Model model, HttpSession session) {
 		System.out.println("[OwnersController.ownerMlist]");
 		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		
+		int u_no = userVo.getU_no();
 
+		List<OwnerVo> sList = ownerService.storeList(u_no);
 		
 		List<MenuVo> mList = ownerService.menuList();
+		
+		model.addAttribute("storeList", sList);
 
 		model.addAttribute("menuList", mList);
 

@@ -13,18 +13,18 @@ public class OwnerVo {
 	private String s_openM;
 	private String s_closeH;
 	private String s_closeM;
-	private int s_parking;
+	private String s_parking;
 	private String s_intro;
 	private String s_youtube;
 	private String s_instagram;
 	private String s_twitter;
-	private int s_Hmon;
-	private int s_Htue;
-	private int s_Hwen;
-	private int s_Hthu;
-	private int s_Hfri;
-	private int s_Hsat;
-	private int s_Hsun;
+	private String s_Hmon;
+	private String s_Htue;
+	private String s_Hwen;
+	private String s_Hthu;
+	private String s_Hfri;
+	private String s_Hsat;
+	private String s_Hsun;
 	private String s_latitude;
 	private String s_longitude;
 	private String s_date;
@@ -33,9 +33,10 @@ public class OwnerVo {
 	}
 
 	public OwnerVo(int s_no, int u_no, String s_img, String s_name, String s_phone, String s_address,
-			String s_detail_address, String s_openH, String s_openM, String s_closeH, String s_closeM, int s_parking,
-			String s_intro, String s_youtube, String s_instagram, String s_twitter, int s_Hmon, int s_Htue, int s_Hwen,
-			int s_Hthu, int s_Hfri, int s_Hsat, int s_Hsun, String s_latitude, String s_longitude, String s_date) {
+			String s_detail_address, String s_openH, String s_openM, String s_closeH, String s_closeM, String s_parking,
+			String s_intro, String s_youtube, String s_instagram, String s_twitter, String s_Hmon, String s_Htue,
+			String s_Hwen, String s_Hthu, String s_Hfri, String s_Hsat, String s_Hsun, String s_latitude,
+			String s_longitude, String s_date) {
 		super();
 		this.s_no = s_no;
 		this.u_no = u_no;
@@ -153,11 +154,11 @@ public class OwnerVo {
 		this.s_closeM = s_closeM;
 	}
 
-	public int getS_parking() {
+	public String getS_parking() {
 		return s_parking;
 	}
 
-	public void setS_parking(int s_parking) {
+	public void setS_parking(String s_parking) {
 		this.s_parking = s_parking;
 	}
 
@@ -193,59 +194,59 @@ public class OwnerVo {
 		this.s_twitter = s_twitter;
 	}
 
-	public int getS_Hmon() {
+	public String getS_Hmon() {
 		return s_Hmon;
 	}
 
-	public void setS_Hmon(int s_Hmon) {
+	public void setS_Hmon(String s_Hmon) {
 		this.s_Hmon = s_Hmon;
 	}
 
-	public int getS_Htue() {
+	public String getS_Htue() {
 		return s_Htue;
 	}
 
-	public void setS_Htue(int s_Htue) {
+	public void setS_Htue(String s_Htue) {
 		this.s_Htue = s_Htue;
 	}
 
-	public int getS_Hwen() {
+	public String getS_Hwen() {
 		return s_Hwen;
 	}
 
-	public void setS_Hwen(int s_Hwen) {
+	public void setS_Hwen(String s_Hwen) {
 		this.s_Hwen = s_Hwen;
 	}
 
-	public int getS_Hthu() {
+	public String getS_Hthu() {
 		return s_Hthu;
 	}
 
-	public void setS_Hthu(int s_Hthu) {
+	public void setS_Hthu(String s_Hthu) {
 		this.s_Hthu = s_Hthu;
 	}
 
-	public int getS_Hfri() {
+	public String getS_Hfri() {
 		return s_Hfri;
 	}
 
-	public void setS_Hfri(int s_Hfri) {
+	public void setS_Hfri(String s_Hfri) {
 		this.s_Hfri = s_Hfri;
 	}
 
-	public int getS_Hsat() {
+	public String getS_Hsat() {
 		return s_Hsat;
 	}
 
-	public void setS_Hsat(int s_Hsat) {
+	public void setS_Hsat(String s_Hsat) {
 		this.s_Hsat = s_Hsat;
 	}
 
-	public int getS_Hsun() {
+	public String getS_Hsun() {
 		return s_Hsun;
 	}
 
-	public void setS_Hsun(int s_Hsun) {
+	public void setS_Hsun(String s_Hsun) {
 		this.s_Hsun = s_Hsun;
 	}
 

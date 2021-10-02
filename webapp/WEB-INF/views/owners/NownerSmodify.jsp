@@ -148,20 +148,20 @@
 									<tr>
 										<td><b>휴무일</b></td>
 										<td>
-											<label for="chk-sun">일</label> <input class="chkh" type="checkbox" id="chk-son" name="s_Hsun" value=1> &nbsp;&nbsp;&nbsp;
-											<label for="chk-mon">월</label> <input class="chkh" type="checkbox" id="chk-mon" name="s_Hmon" value=1> &nbsp;&nbsp;&nbsp;
-											<label for="chk-tue">화</label> <input class="chkh" type="checkbox" id="chk-tue" name="s_Htue" value=1> &nbsp;&nbsp;&nbsp;
-											<label for="chk-wen">수</label> <input class="chkh" type="checkbox" id="chk-wen" name="s_Hwen" value=1> &nbsp;&nbsp;&nbsp;
-											<label for="chk-thr">목</label> <input class="chkh" type="checkbox" id="chk-thr" name="s_Hthu" value=1> &nbsp;&nbsp;&nbsp;
-											<label for="chk-fri">금</label> <input class="chkh" type="checkbox" id="chk-fri" name="s_Hfri" value=1> &nbsp;&nbsp;&nbsp;
-											<label for="chk-sat">토</label> <input class="chkh" type="checkbox" id="chk-sat" name="s_Hsat" value=1>
+											<label for="chk-sun">일</label> <input class="chkh" type="checkbox" id="chk-son" name="s_Hsun" value="일"> &nbsp;&nbsp;&nbsp;
+											<label for="chk-mon">월</label> <input class="chkh" type="checkbox" id="chk-mon" name="s_Hmon" value="월"> &nbsp;&nbsp;&nbsp;
+											<label for="chk-tue">화</label> <input class="chkh" type="checkbox" id="chk-tue" name="s_Htue" value="화"> &nbsp;&nbsp;&nbsp;
+											<label for="chk-wen">수</label> <input class="chkh" type="checkbox" id="chk-wen" name="s_Hwen" value="수"> &nbsp;&nbsp;&nbsp;
+											<label for="chk-thr">목</label> <input class="chkh" type="checkbox" id="chk-thr" name="s_Hthu" value="목"> &nbsp;&nbsp;&nbsp;
+											<label for="chk-fri">금</label> <input class="chkh" type="checkbox" id="chk-fri" name="s_Hfri" value="금"> &nbsp;&nbsp;&nbsp;
+											<label for="chk-sat">토</label> <input class="chkh" type="checkbox" id="chk-sat" name="s_Hsat" value="토">
 										</td>
 									</tr>
 									<tr>
 										<td><b>주차가능 여부</b></td>
 										<td>
-											<label for="rdo-parking">주차 가능</label> <input class="chkh" type="radio" id="rdo-parking" name="s_parking" value=1> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<label for="rdo-noParking">주차 불가능</label> <input class="chkh" type="radio" id="rdo-noParking" name="s_parking" value=2>
+											<label for="rdo-parking">주차 가능</label> <input class="chkh" type="radio" id="rdo-parking" name="s_parking" value="주차 가능"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<label for="rdo-noParking">주차 불가능</label> <input class="chkh" type="radio" id="rdo-noParking" name="s_parking" value="주차 불가능">
 										</td>
 									</tr>
 									<tr>

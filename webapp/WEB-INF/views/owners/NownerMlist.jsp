@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -9,17 +7,9 @@
 <meta charset="UTF-8">
 <title>1단 레이아웃 샢플</title>
 
-<link
-	href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css"
-	rel="stylesheet" type="text/css"
->
-<link href="${ pageContext.request.contextPath }/assets/css/common.css"
-	rel="stylesheet" type="text/css"
->
-<link
-	href="${ pageContext.request.contextPath }/assets/css/ownerMain.css"
-	rel="stylesheet" type="text/css"
->
+<link href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.request.contextPath }/assets/css/ownerMain.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -47,12 +37,8 @@
 
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/owners/NownerPage"
-							>가게관리</a></li>
-							<li class="last"><a
-								href="${pageContext.request.contextPath}/owners/NownerMlist"
-							>메뉴관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/owners/NownerPage">가게관리</a></li>
+							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerMlist">메뉴관리</a></li>
 						</ul>
 					</div>
 					<!-- //페이지타이틀 -->
@@ -64,11 +50,10 @@
 
 							<div class="head2">
 								<div class="s-listpo">
-									<select id="shop" name="shop">
-										<option value="shop1">샐러디 낙성대점</option>
-										<option value="shop2">샐러디 신림점</option>
-										<option value="shop3">샐러디 봉천점</option>
-										<option value="shop-add">+매장추가+</option>
+									<select id="shop" name="s_no">
+										<c:forEach items="${storeList}" var="storeVo">
+											<option value="${storeVo.s_no}">${storeVo.s_name}</option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
@@ -96,10 +81,7 @@
 												<td>${mVo.m_name}</td>
 												<td>${mVo.m_type}</td>
 												<td>${mVo.m_price}</td>
-												<td>
-													<a href="${pageContext.request.contextPath}/owners/NownerMmodify?m_no=${mVo.m_no}">[수정]</a> 
-													<a href="${pageContext.request.contextPath}/owners/menuDelete?m_no=${mVo.m_no}">[삭제]</a>
-												</td>
+												<td><a href="${pageContext.request.contextPath}/owners/NownerMmodify?m_no=${mVo.m_no}">[수정]</a> <a href="${pageContext.request.contextPath}/owners/menuDelete?m_no=${mVo.m_no}">[삭제]</a></td>
 											</tr>
 
 										</c:forEach>
@@ -109,7 +91,7 @@
 							<div class="button-area button-center2">
 
 								<span class="orange">
-									<button>메뉴 추가</button>
+									<button onclick="location.href='${pageContext.request.contextPath}/owners/NownerMinsert'">메뉴 추가</button>
 								</span>
 							</div>
 
