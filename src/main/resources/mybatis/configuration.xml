@@ -9,8 +9,5 @@
         <mapper resource="mybatis/mappers/user.xml" />
         <mapper resource="mybatis/mappers/owner.xml" />
         <mapper resource="mybatis/mappers/serviceCenter.xml" />
-        <mapper resource="mybatis/mappers/restaurant.xml" />
-        
-        
     </mappers>
 </configuration>
