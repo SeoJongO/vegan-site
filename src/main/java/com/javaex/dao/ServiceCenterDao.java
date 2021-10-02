@@ -29,11 +29,11 @@ public class ServiceCenterDao {
 	
 	
 	//게시글 리스트 가져오기
-	public List<ServiceCenterVo> serviceList(){
+	public List<ServiceCenterVo> serviceList(int authUserNo){
 		
-		List<ServiceCenterVo> serviceList = sqlSession.selectList("serviceCenter.list");
+		List<ServiceCenterVo> serviceList = sqlSession.selectList("serviceCenter.list",authUserNo);
 		
-		System.out.println(serviceList);
+		System.out.println("리턴된값"+serviceList);
 		
 		return serviceList;
 		

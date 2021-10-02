@@ -29,13 +29,16 @@ public class ServiceCenterService {
 	
 	
 	//리스트 가져오기
-	public List<ServiceCenterVo> serviceList(){
+	public  List<ServiceCenterVo> serviceList(int authUserNo){
 		
-		List<ServiceCenterVo> serviceList = serviceCenterDao.serviceList();
+		List<ServiceCenterVo> serviceList = serviceCenterDao.serviceList(authUserNo);
 		
 		return serviceList;
 		
 	}
+	
+	//자기글만 보이게 하기
+	
 	
 	
 }

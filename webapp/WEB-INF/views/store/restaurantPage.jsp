@@ -88,16 +88,22 @@ $(function(){
 				<div id="content" class="clearfix">
 					<div id="restaurantInfo">
 						<div class="restaurantInfo float-l clearfix text-left">
-							<p class="restaurantInfo-text">가계 소개글 입니다.</p>
+							<p class="restaurantInfo-text">${ownerVo.s_intro }.</p>
 							<p class="restaurantInfo-text">
-								<span class="timeInfo">영업시간</span> <span class="timeInfo">월: 06:00 ~ 21:00</span> <span class="timeInfo">화: 06:00 ~ 21:00</span> <span
-									class="timeInfo">수: 06:00 ~ 21:00</span> <span class="timeInfo">목: 06:00 ~ 21:00</span> <span class="timeInfo">금: 06:00 ~ 21:00</span> <span
-									class="timeInfo">토: 06:00 ~ 21:00</span> <span class="timeInfo">일: 06:00 ~ 21:00</span> <span>주차가능</span>
+								<span class="timeInfo">영업시간</span> <span class="timeInfo">${ownerVo.s_openH }:${ownerVo.s_openM } ~
+									${ownerVo.s_closeH }:${ownerVo.s_closeM } </span>
+
+								<c:if test="${ownerVo.s_parking == 1 }">
+									<span>주차가능</span>
+								</c:if>
+								<c:if test="${ownerVo.s_parking == 2 }">
+									<span>주차불가능</span>
+								</c:if>
 
 							</p>
 							<p class="restaurantInfo-text">
-								<span><a href=""><img src="" alt="트위터"></a></span> <span><a href=""><img src="" alt="인스타그램"></a></span> <span><a href=""><img
-										src="" alt="페이스북"></a></span>
+								<span><a href=""><img src="" alt="트위터"></a></span> <span><a href=""><img src="" alt="인스타그램"></a></span>
+								<span><a href=""><img src="" alt="페이스북"></a></span>
 							</p>
 							<p>
 								<span class="favoritesImg"><img src="" alt="찜"></span> <span class="favorites">+555</span>
@@ -107,22 +113,22 @@ $(function(){
 							<div class="menu">
 								<img class="foodImg float-l clearfix" src="">
 								<p>
-									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입: 페스코</span> <span
-										class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
+									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입:
+										페스코</span> <span class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
 								</p>
 							</div>
 							<div class="menu">
 								<img class="foodImg float-l clearfix" src="">
 								<p>
-									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입: 페스코</span> <span
-										class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
+									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입:
+										페스코</span> <span class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
 								</p>
 							</div>
 							<div class="menu">
 								<img class="foodImg float-l clearfix" src="">
 								<p>
-									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입: 페스코</span> <span
-										class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
+									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입:
+										페스코</span> <span class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
 								</p>
 							</div>
 							<p>
@@ -176,7 +182,7 @@ $(function(){
 					<!-- //restaurantInfo -->
 					<div id="restaurantPage-btn" class="text-center">
 						<button id="reviewBtn" class="btn">리뷰남기기</button>
-						<button id="singoBtn" class="btn">신고하기</button>
+						<a href="${pageContext.request.contextPath }/questionwrite"><button id="singoBtn" class="btn">신고하기</button></a>
 					</div>
 					<!-- //////////////////////////////////////////////////////////// -->
 					<div id="reviewArea">
@@ -193,21 +199,24 @@ $(function(){
 								</div>
 								<div id="modify-deleft-btn" class=" float-r">
 									<p>
-										<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi">수정</a></span> <span class="delete">삭제</span>
+										<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi">수정</a></span> <span
+											class="delete">삭제</span>
 									</p>
 								</div>
 								<div id="reviewImg-text" class="float-l">
 									<div id="review-img-area">
-										<img class="review-img" src=""> <img class="review-img" src=""> <img class="review-img" src=""> <img class="review-img"
-											src=""> <img class="review-img" src=""> <img class="review-img" src="">
+										<img class="review-img" src=""> <img class="review-img" src=""> <img class="review-img" src="">
+										<img class="review-img" src=""> <img class="review-img" src=""> <img class="review-img" src="">
 									</div>
-									<p class="review-text">후기 자체는 주관적인 견해의 평가 활동에 불과하기에 절대로 객관적일 수 없다. 그럼에도 후기를 평가함에서 객관적이고 신뢰성있는 후기가 존재하기는 하는데, 이는 신뢰할 수 있는 객관적인 지표나 증거를 토대로
-										후기가 작성된 것을 뜻하는 것이지, 후기 자체가 객관적임을 뜻하지는 않는다. 예를 들어, 후기의 신뢰도는 객관적인 지표나 증거가 없이 소문을 통한 주장만 있다거나 거짓된 정보를 토대로 작성될 경우에 객관적이지 않고 신뢰도가 떨어진다고 할 수가 있다.
-										심지어 리뷰어의 제품에 관해 중립적이지 않다는 문제를 악용해서 리뷰 내용을 평가절하시키는 경우도 많다. 특히 한국의 경우에는 리뷰가 제품에 객관적이지 않다며, 법적으로까지 다가가여 명예훼손으로 고소까지하는 경우도 있으나 대부분의 리뷰 및 후기들이
-										사실에 입각하여 공공의 이익을 위해 작성된 것으로서 명예훼손에서 부터 면책 사항에 속한다. 리뷰에 거짓이 있었다면, 명예훼손죄에 해당되나, 사실을 기반으로했다면, 공공의 이익을 위한 리뷰로서 고소에 안전하다. 그럼에도 불구하고 제품사가 고소를 말로만
-										언급하는 것은 리뷰어에게 법을 거론함으로서 협박하여 입막음시키려고 한 수작으로 보면 된다. [3] 표현의 자유 참고. 결론적으로 "이 제품은 어떠한 지표를 참고로 이러한 점이 치명적인 문제로서 산업폐기물급 쓰레기다."라는 비난만하는 후기조차 공공의
-										이익을 위한 사실에 근거로 뒀다면, 제품에 관한 중립적인 입장과는 상관없이 객관적이고 신뢰성 있는 후기라 할 수 있다. 물론 반대로 온갖 미사여구 붙여가며 추천만하는 후기도 사실에 근거하며, 논리적이고 객관적인 자료를 통했다면 이도 마찬가지로
-										객관적이고 신뢰성 있는 후기이다. 즉, 후기의 객관성과 신뢰성은 리뷰어의 제품에 대한 입장이 아니라, 리뷰에 사용된 자료의 객관성과 신뢰성을 말한다.</p>
+									<p class="review-text">후기 자체는 주관적인 견해의 평가 활동에 불과하기에 절대로 객관적일 수 없다. 그럼에도 후기를 평가함에서 객관적이고 신뢰성있는 후기가 존재하기는
+										하는데, 이는 신뢰할 수 있는 객관적인 지표나 증거를 토대로 후기가 작성된 것을 뜻하는 것이지, 후기 자체가 객관적임을 뜻하지는 않는다. 예를 들어, 후기의 신뢰도는 객관적인 지표나 증거가 없이
+										소문을 통한 주장만 있다거나 거짓된 정보를 토대로 작성될 경우에 객관적이지 않고 신뢰도가 떨어진다고 할 수가 있다. 심지어 리뷰어의 제품에 관해 중립적이지 않다는 문제를 악용해서 리뷰 내용을
+										평가절하시키는 경우도 많다. 특히 한국의 경우에는 리뷰가 제품에 객관적이지 않다며, 법적으로까지 다가가여 명예훼손으로 고소까지하는 경우도 있으나 대부분의 리뷰 및 후기들이 사실에 입각하여 공공의
+										이익을 위해 작성된 것으로서 명예훼손에서 부터 면책 사항에 속한다. 리뷰에 거짓이 있었다면, 명예훼손죄에 해당되나, 사실을 기반으로했다면, 공공의 이익을 위한 리뷰로서 고소에 안전하다. 그럼에도
+										불구하고 제품사가 고소를 말로만 언급하는 것은 리뷰어에게 법을 거론함으로서 협박하여 입막음시키려고 한 수작으로 보면 된다. [3] 표현의 자유 참고. 결론적으로 "이 제품은 어떠한 지표를 참고로
+										이러한 점이 치명적인 문제로서 산업폐기물급 쓰레기다."라는 비난만하는 후기조차 공공의 이익을 위한 사실에 근거로 뒀다면, 제품에 관한 중립적인 입장과는 상관없이 객관적이고 신뢰성 있는 후기라 할 수
+										있다. 물론 반대로 온갖 미사여구 붙여가며 추천만하는 후기도 사실에 근거하며, 논리적이고 객관적인 자료를 통했다면 이도 마찬가지로 객관적이고 신뢰성 있는 후기이다. 즉, 후기의 객관성과 신뢰성은
+										리뷰어의 제품에 대한 입장이 아니라, 리뷰에 사용된 자료의 객관성과 신뢰성을 말한다.</p>
 								</div>
 							</div>
 							<p class="text-right singo">
@@ -228,7 +237,8 @@ $(function(){
 								</div>
 								<div id="modify-deleft-btn" class=" float-r">
 									<p>
-										<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi">수정</a></span> <span class="delete">삭제</span>
+										<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi">수정</a></span> <span
+											class="delete">삭제</span>
 									</p>
 								</div>
 								<div id="reviewImg-text" class="float-l">
@@ -254,16 +264,18 @@ $(function(){
 								</div>
 								<div id="modify-deleft-btn" class=" float-r">
 									<p>
-										<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi">수정</a></span> <span class="delete">삭제</span>
+										<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi">수정</a></span> <span
+											class="delete">삭제</span>
 									</p>
 								</div>
 								<div id="reviewImg-text" class="float-l">
 									<div id="review-img-area">
 										<img class="review-img" src=""> <img class="review-img" src=""> <img class="review-img" src="">
 									</div>
-									<p class="review-text">후기 자체는 주관적인 견해의 평가 활동에 불과하기에 절대로 객관적일 수 없다. 그럼에도 후기를 평가함에서 객관적이고 신뢰성있는 후기가 존재하기는 하는데, 이는 신뢰할 수 있는 객관적인 지표나 증거를 토대로
-										후기가 작성된 것을 뜻하는 것이지, 후기 자체가 객관적임을 뜻하지는 않는다. 예를 들어, 후기의 신뢰도는 객관적인 지표나 증거가 없이 소문을 통한 주장만 있다거나 거짓된 정보를 토대로 작성될 경우에 객관적이지 않고 신뢰도가 떨어진다고 할 수가 있다.
-										심지어 리뷰어의 제품에 관해 중립적이지 않다는 문제를 악용해서 리뷰 내용을 평가절하시키는 경우도 많다.</p>
+									<p class="review-text">후기 자체는 주관적인 견해의 평가 활동에 불과하기에 절대로 객관적일 수 없다. 그럼에도 후기를 평가함에서 객관적이고 신뢰성있는 후기가 존재하기는
+										하는데, 이는 신뢰할 수 있는 객관적인 지표나 증거를 토대로 후기가 작성된 것을 뜻하는 것이지, 후기 자체가 객관적임을 뜻하지는 않는다. 예를 들어, 후기의 신뢰도는 객관적인 지표나 증거가 없이
+										소문을 통한 주장만 있다거나 거짓된 정보를 토대로 작성될 경우에 객관적이지 않고 신뢰도가 떨어진다고 할 수가 있다. 심지어 리뷰어의 제품에 관해 중립적이지 않다는 문제를 악용해서 리뷰 내용을
+										평가절하시키는 경우도 많다.</p>
 								</div>
 							</div>
 							<p class="text-right singo">
@@ -426,7 +438,7 @@ $(function(){
 	</div>
 
 	<!-- Modal 신고하기클릭 -->
-	<div class="modal fade" id="singoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<!-- <div class="modal fade" id="singoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="restaurantPage-modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -451,7 +463,7 @@ $(function(){
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 </body>
 </html>

@@ -9,7 +9,7 @@
 
 <![CDATA[
 insert into serviceCenter
-	values(c_no.nextval,2,2,#{c_title},#{c_content},sysdate)
+	values(c_no.nextval,#{s_no},#{u_no},#{c_title},#{c_content},sysdate)
 
 ]]>
 
@@ -18,15 +18,18 @@ insert into serviceCenter
 
 <!-- 리스트 -->
 
-<select id="list" resultType="com.javaex.vo.ServiceCenterVo">
+<select id="list" parameterType="int" resultType="com.javaex.vo.ServiceCenterVo" >
 
 <![CDATA[
 
 select c_no,
+	   s_no,
+	   u_no,
        c_title,
        c_content,
        c_date
        from servicecenter
+       where u_no= #{u_no}
 
 
 ]]>
