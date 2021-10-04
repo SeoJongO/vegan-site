@@ -115,11 +115,22 @@ $(function(){
 							</p>
 						</div>
 						<div class="restaurantInfo float-l clearfix text-left">
+						<c:forEach items="${ownerVo.menuList }" var="menuList">
 							<div class="menu">
+								<img class="foodImg float-l clearfix" src="${menuList.m_imge}">
+								
+								<p>
+									<span class="foodInfo">메뉴이름: ${menuList.m_name}</span> <span class="foodInfo">가격: ${menuList.m_price}</span> <span class="foodInfo">채식타입:
+										${menuList.m_type}</span> <span class="foodInfo">${menuList.m_intro}</span>
+								</p>
+								
+							</div>
+							</c:forEach>
+							<!-- <div class="menu">
 								<img class="foodImg float-l clearfix" src="">
 								<p>
-									<span class="foodInfo">메뉴이름: ${ownerVo.m_name}</span> <span class="foodInfo">가격: ${ownerVo.m_price }</span> <span class="foodInfo">채식타입:
-										${ownerVo.m_type}</span> <span class="foodInfo">${ownerVo.m_intro }</span>
+									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입:
+										페스코</span> <span class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
 								</p>
 							</div>
 							<div class="menu">
@@ -128,14 +139,7 @@ $(function(){
 									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입:
 										페스코</span> <span class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
 								</p>
-							</div>
-							<div class="menu">
-								<img class="foodImg float-l clearfix" src="">
-								<p>
-									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입:
-										페스코</span> <span class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
-								</p>
-							</div>
+							</div> -->
 							<p>
 								<a id="menuList">메뉴더보기+</a>
 							</p>
