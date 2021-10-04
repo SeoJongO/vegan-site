@@ -118,8 +118,8 @@ $(function(){
 							<div class="menu">
 								<img class="foodImg float-l clearfix" src="">
 								<p>
-									<span class="foodInfo">메뉴이름: 연어샐러드</span> <span class="foodInfo">가격: 8000원</span> <span class="foodInfo">채식타입:
-										페스코</span> <span class="foodInfo">생연어와 상추로 만들어진 샐러드</span>
+									<span class="foodInfo">메뉴이름: ${ownerVo.m_name}</span> <span class="foodInfo">가격: ${ownerVo.m_price }</span> <span class="foodInfo">채식타입:
+										${ownerVo.m_type}</span> <span class="foodInfo">${ownerVo.m_intro }</span>
 								</p>
 							</div>
 							<div class="menu">
@@ -187,7 +187,7 @@ $(function(){
 					<!-- //restaurantInfo -->
 					<div id="restaurantPage-btn" class="text-center">
 						<button id="reviewBtn" class="btn">리뷰남기기</button>
-						<a href="${pageContext.request.contextPath }/questionwrite"><button id="singoBtn" class="btn">신고하기</button></a>
+						<a href="${pageContext.request.contextPath }/questionwrite?s_no=${ownerVo.s_no}"><button id="singoBtn" class="btn">신고하기</button></a>
 					</div>
 					<!-- //////////////////////////////////////////////////////////// -->
 					<div id="reviewArea">

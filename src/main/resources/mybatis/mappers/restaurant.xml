@@ -11,34 +11,41 @@
 <select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo" >
 
 <![CDATA[
-   select
-	    s_no,
-	    u_no, 
-	    s_img, 
-	    s_name, 
-	    s_phone, 
-	    s_address,
-	    s_detail_address, 
-	    s_openH, 
-	    s_openM, 
-	    s_closeH, 
-	    s_closeM, 
-	    s_parking, 
-	    s_intro, 
-	    s_youtube, 
-	    s_instagram, 
-	    s_twitter, 
-	    s_Hmon, 
-	    s_Htue,
-	    s_Hwen,
-	    s_Hthu,
-	    s_Hfri,
-	    s_Hsat,
-	    s_Hsun,
-	    s_latitude,
-	    s_longitude 
- 	   from store
-       where s_no= #{s_no}
+select
+	    s.s_no,
+	    s.u_no, 
+	    s.s_img, 
+	    s.s_name, 
+	    s.s_phone, 
+	    s.s_address,
+	    s.s_detail_address, 
+	    s.s_openH, 
+	    s.s_openM, 
+	    s.s_closeH, 
+	    s.s_closeM, 
+	    s.s_parking, 
+	    s.s_intro, 
+	    s.s_youtube, 
+	    s.s_instagram, 
+	    s.s_twitter, 
+	    s.s_Hmon, 
+	    s.s_Htue,
+	    s.s_Hwen,
+	    s.s_Hthu,
+	    s.s_Hfri,
+	    s.s_Hsat,
+	    s.s_Hsun,
+	    s.s_latitude,
+	    s.s_longitude,
+        m.m_name,
+        m.m_imge,
+        m.m_price,
+        m.m_type,
+        m.m_intro
+ 	   from store s, menu m
+       where s.s_no = m.s_no
+       and s.s_no = #{s_no}
+       and rownum=1
 
 ]]>
 

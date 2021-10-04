@@ -9,53 +9,37 @@ public class ServiceCenterVo {
 	private String c_title;
 	private String c_content;
 	private String c_date;
+	private String s_name;
+	
 	
 	
 	//생성자
 	
 	
-	
-	
-	public ServiceCenterVo(int c_no, String c_title, String c_content, String c_date) {
+	public ServiceCenterVo(int c_no, int s_no, int u_no, String c_title, String c_content, String c_date, String s_name) {
 		super();
 		this.c_no = c_no;
+		this.s_no = s_no;
+		this.u_no = u_no;
 		this.c_title = c_title;
 		this.c_content = c_content;
 		this.c_date = c_date;
+		this.s_name = s_name;
 	}
-	
-	
 
-	
+
+
 	public ServiceCenterVo() {
 		super();
 	}
 
 
-
-
-	public ServiceCenterVo(int c_no, String c_title, String c_content) {
-		super();
-		this.c_no = c_no;
-		this.c_title = c_title;
-		this.c_content = c_content;
-	}
 	
-	
-	public ServiceCenterVo(String c_title, String c_content) {
-		super();
-		this.c_title = c_title;
-		this.c_content = c_content;
-	}
+	//게터셋터
 
-
-
-	//겟셋 
-	
 	public int getC_no() {
 		return c_no;
 	}
-
 
 
 
@@ -65,11 +49,9 @@ public class ServiceCenterVo {
 
 
 
-
 	public int getS_no() {
 		return s_no;
 	}
-
 
 
 
@@ -79,11 +61,9 @@ public class ServiceCenterVo {
 
 
 
-
 	public int getU_no() {
 		return u_no;
 	}
-
 
 
 
@@ -93,11 +73,9 @@ public class ServiceCenterVo {
 
 
 
-
 	public String getC_title() {
 		return c_title;
 	}
-
 
 
 
@@ -107,11 +85,9 @@ public class ServiceCenterVo {
 
 
 
-
 	public String getC_content() {
 		return c_content;
 	}
-
 
 
 
@@ -121,11 +97,9 @@ public class ServiceCenterVo {
 
 
 
-
 	public String getC_date() {
 		return c_date;
 	}
-
 
 
 
@@ -134,15 +108,37 @@ public class ServiceCenterVo {
 	}
 
 
+
+	public String getS_name() {
+		return s_name;
+	}
+
+
+
+	public void setS_name(String s_name) {
+		this.s_name = s_name;
+	}
+
+
 	
-	
-	
-	//to string
+	//to 스트링
 
 	@Override
 	public String toString() {
-		return "ServiceCenterVo [c_no=" + c_no + ", s_no=" + s_no + ", u_no=" + u_no + ", c_title=" + c_title + ", c_content=" + c_content + ", c_date=" + c_date + "]";
+		return "ServiceCenterVo [c_no=" + c_no + ", s_no=" + s_no + ", u_no=" + u_no + ", c_title=" + c_title + ", c_content=" + c_content + ", c_date=" + c_date + ", s_name=" + s_name + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	
