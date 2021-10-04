@@ -72,7 +72,6 @@
 							</select>
 
 
-
 							<form
 								action="${pageContext.request.contextPath}/owners/menuInsert"
 								method="get"
@@ -84,12 +83,7 @@
 											<b>가게</b>
 										</td>
 										<td>
-											<c:forEach items="${storeList}" var="storeVo">
-												<label for="rdo-parking">${storeVo.s_name}</label>
-												<input class="chkh" type="radio" id="rdo-parking"
-													name="s_no" value="${storeVo.s_no}"
-												>
-											</c:forEach>
+											<input type="text" name="s_no" value="${ownerU.s_no}">
 										</td>
 									</tr>
 									<tr>

@@ -99,14 +99,19 @@ public class OwnersController {
 
 	// 메뉴 등록폼
 	@RequestMapping(value = "/NownerMinsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerMinsert(Model model,HttpSession session) {
+	public String ownerMinsert(Model model,HttpSession session, @RequestParam("s_no") int s_no) {
 		System.out.println("[OwnersController.ownerMinsert]");
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
 		int u_no = userVo.getU_no();
 
+		OwnerVo ownerVo = ownerService.getStore(s_no);
+		
+		
 		List<OwnerVo> sList = ownerService.storeList(u_no);
 		model.addAttribute("storeList", sList);
+		
+		model.addAttribute("ownerU", ownerVo);
 
 		return "owners/NownerMinsert";
 	}
@@ -163,6 +168,7 @@ public class OwnersController {
 			System.out.println(sList);
 
 			System.out.println(s_no);
+			
 			List<MenuVo> mList = ownerService.menuList(s_no);
 			System.out.println(mList);
 			
@@ -178,7 +184,6 @@ public class OwnersController {
 			return "owners/NownerMlist";
 
 		}
-
 	// 메뉴 수정폼
 	@RequestMapping(value = "/NownerMmodify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String menuModify(HttpSession session, Model model, @RequestParam("m_no") int m_no) {

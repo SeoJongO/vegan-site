@@ -114,9 +114,7 @@
 							<div class="button-area button-center2">
 
 								<span class="orange">
-									<button
-										onclick="location.href='${pageContext.request.contextPath}/owners/NownerMinsert'"
-									>메뉴추가</button>
+									<button onclick="location.href='${pageContext.request.contextPath}/owners/NownerMinsert?s_no=${storeVo.s_no}'">매뉴 등록</button>
 								</span>
 
 							</div>
