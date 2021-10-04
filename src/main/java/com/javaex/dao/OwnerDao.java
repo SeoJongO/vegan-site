@@ -67,10 +67,10 @@ public class OwnerDao {
 		return sqlSession.insert("owner.menuInsert", menuVo);
 	}
 
-	public List<MenuVo> menuList() {
+	public List<MenuVo> menuList(int s_no) {
 		System.out.println("OwnerDao.menuList()");
 
-		return sqlSession.selectList("owner.menuList");
+		return sqlSession.selectList("owner.menuList", s_no);
 	}
 
 	public int menuDelete(int m_no) {

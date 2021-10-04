@@ -19,6 +19,7 @@
 				   to_char(s_date, 'YYYY-MM-DD') AS s_date
 			from store
 			where u_no = #{u_no}
+			order by s_no asc
 		]]>
 	</select>	
 	
@@ -116,7 +117,7 @@
 	<insert id="menuInsert" parameterType="com.javaex.vo.MenuVo">
 		<![CDATA[
 			insert into menu
-			values(m_no.nextval, 2, #{m_name}, #{m_imge}, #{m_price}, #{m_type}, #{m_intro})		
+			values(m_no.nextval, #{s_no}, #{m_name}, #{m_imge}, #{m_price}, #{m_type}, #{m_intro})		
 		]]>
 	</insert>
 
@@ -127,15 +128,17 @@
 		]]>
 	</delete>
 
-	<select id="menuList" resultType="com.javaex.vo.MenuVo">
+	<select id="menuList" parameterType="int" resultType="com.javaex.vo.MenuVo">
 		<![CDATA[
-			select  m_no,
-					m_imge,
-       				m_name,
-      			  	m_type,
-        			m_price
-			from menu
-			where s_no = 2
+			select  m.m_no,
+                    m.m_imge,
+       				m.m_name,
+      			  	m.m_type,
+        			m.m_price,
+                    m.s_no
+			from menu m
+			where m.s_no = #{s_no}
+            
 		]]>
 	</select>
 </mapper>
