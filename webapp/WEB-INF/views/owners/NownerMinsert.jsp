@@ -64,12 +64,7 @@
 						<div id="wrap2">
 
 
-							<div class="head2"></div>
-							<select id="shop" name="shop">
-								<c:forEach items="${storeList}" var="storeVo">
-									<option value="${storeVo.s_no}">${storeVo.s_name}</option>
-								</c:forEach>
-							</select>
+							<h3>${ownerU.s_name}</h3>
 
 
 							<form
