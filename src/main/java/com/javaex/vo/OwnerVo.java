@@ -1,5 +1,7 @@
 package com.javaex.vo;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class OwnerVo {
@@ -30,16 +32,26 @@ public class OwnerVo {
 	private String s_latitude;
 	private String s_longitude;
 	private String s_date;
+	private String m_name;
+	private String m_imge;
+	private String m_price;
+	private String m_type;
+	private String m_intro;
+	private List<MenuVo> menuList;
+	private List<ReviewVo> reviewList;
 	private String savename;
-	
+
 	public OwnerVo() {
+		super();
 	}
 
 	public OwnerVo(int s_no, int u_no, MultipartFile s_img, String s_name, String s_phone, String s_address,
 			String s_detail_address, String s_openH, String s_openM, String s_closeH, String s_closeM, String s_parking,
 			String s_intro, String s_youtube, String s_instagram, String s_twitter, String s_Hmon, String s_Htue,
 			String s_Hwen, String s_Hthu, String s_Hfri, String s_Hsat, String s_Hsun, String s_latitude,
-			String s_longitude, String s_date, String savename) {
+			String s_longitude, String s_date, String m_name, String m_imge, String m_price, String m_type,
+			String m_intro, List<MenuVo> menuList, List<ReviewVo> reviewList, String savename) {
+		super();
 		this.s_no = s_no;
 		this.u_no = u_no;
 		this.s_img = s_img;
@@ -66,6 +78,13 @@ public class OwnerVo {
 		this.s_latitude = s_latitude;
 		this.s_longitude = s_longitude;
 		this.s_date = s_date;
+		this.m_name = m_name;
+		this.m_imge = m_imge;
+		this.m_price = m_price;
+		this.m_type = m_type;
+		this.m_intro = m_intro;
+		this.menuList = menuList;
+		this.reviewList = reviewList;
 		this.savename = savename;
 	}
 
@@ -277,6 +296,62 @@ public class OwnerVo {
 		this.s_date = s_date;
 	}
 
+	public String getM_name() {
+		return m_name;
+	}
+
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+
+	public String getM_imge() {
+		return m_imge;
+	}
+
+	public void setM_imge(String m_imge) {
+		this.m_imge = m_imge;
+	}
+
+	public String getM_price() {
+		return m_price;
+	}
+
+	public void setM_price(String m_price) {
+		this.m_price = m_price;
+	}
+
+	public String getM_type() {
+		return m_type;
+	}
+
+	public void setM_type(String m_type) {
+		this.m_type = m_type;
+	}
+
+	public String getM_intro() {
+		return m_intro;
+	}
+
+	public void setM_intro(String m_intro) {
+		this.m_intro = m_intro;
+	}
+
+	public List<MenuVo> getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(List<MenuVo> menuList) {
+		this.menuList = menuList;
+	}
+
+	public List<ReviewVo> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(List<ReviewVo> reviewList) {
+		this.reviewList = reviewList;
+	}
+
 	public String getSavename() {
 		return savename;
 	}
@@ -293,8 +368,9 @@ public class OwnerVo {
 				+ ", s_parking=" + s_parking + ", s_intro=" + s_intro + ", s_youtube=" + s_youtube + ", s_instagram="
 				+ s_instagram + ", s_twitter=" + s_twitter + ", s_Hmon=" + s_Hmon + ", s_Htue=" + s_Htue + ", s_Hwen="
 				+ s_Hwen + ", s_Hthu=" + s_Hthu + ", s_Hfri=" + s_Hfri + ", s_Hsat=" + s_Hsat + ", s_Hsun=" + s_Hsun
-				+ ", s_latitude=" + s_latitude + ", s_longitude=" + s_longitude + ", s_date=" + s_date + ", savename="
-				+ savename + "]";
+				+ ", s_latitude=" + s_latitude + ", s_longitude=" + s_longitude + ", s_date=" + s_date + ", m_name="
+				+ m_name + ", m_imge=" + m_imge + ", m_price=" + m_price + ", m_type=" + m_type + ", m_intro=" + m_intro
+				+ ", menuList=" + menuList + ", reviewList=" + reviewList + ", savename=" + savename + "]";
 	}
 
 }
