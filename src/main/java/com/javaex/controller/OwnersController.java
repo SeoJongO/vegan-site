@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.OwnerService;
 import com.javaex.vo.MenuVo;
@@ -53,7 +54,7 @@ public class OwnersController {
 	@RequestMapping(value = "/storeInsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
-
+		
 		int count = ownerService.storeInsert(ownerVo);
 
 		return "redirect:/owners/NownerSlist";

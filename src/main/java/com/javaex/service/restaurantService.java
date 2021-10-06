@@ -18,23 +18,25 @@ import com.javaex.vo.ReviewVo;
 @Service
 public class restaurantService {
 
-	
 	@Autowired
 	private restaurantDao restaurantDao;
-	
-	
 	//상세페이지 한개 메뉴리스트 출력
+
+	public List<OwnerVo> getStoreList(String keyword) {
+		System.out.println("restaurantService.getStoreList()");
+
+		return restaurantDao.getStoreList(keyword);
+	}
+
 	public OwnerVo getOne(int s_no) {
 		System.out.println("레스토랑서비스");
 		System.out.println(s_no);
-		OwnerVo ownerVo= restaurantDao.getOne(s_no);
-		
-		
-		
-		//메뉴리스트
+		OwnerVo ownerVo = restaurantDao.getOne(s_no);
+
+		// 메뉴리스트
 		List<MenuVo> menuList = restaurantDao.getMenuList(s_no);
 		System.out.println(menuList);
-		
+
 		ownerVo.setMenuList(menuList);
 		System.out.println("최종vo"+ownerVo);
 		
@@ -46,9 +48,12 @@ public class restaurantService {
 		System.out.println("리뷰리스트@@@@@@@@@@"+reviewList);
 		
 		
+
+
+		System.out.println("최종vo" + ownerVo);
+
+
 		return ownerVo;
-		
-		
 	}
 
 

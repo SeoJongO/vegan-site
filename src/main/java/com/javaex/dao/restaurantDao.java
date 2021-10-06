@@ -16,6 +16,12 @@ public class restaurantDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	public List<OwnerVo> getStoreList(String keyword) {
+		System.out.println("restaurantDao.getStoreList()");
+		
+		return sqlSession.selectList("restaurant.getStoreList", keyword);
+	}
+	
 	
 	public OwnerVo getOne(int s_no) {
 		

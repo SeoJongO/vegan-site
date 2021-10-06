@@ -53,13 +53,25 @@
 										<option>락토오보</option>
 										<option>페스코</option>
 									</select>
-									<input id="searchMap-box" type="text" value="" id="keyword" size="15">
+									<input id="searchMap-box" id="keyword" type="text" name="keyword" value="" size="15">
 									<button class="btn" type="submit">검색</button>
 								</form>
 							</div>
 						</div>
 						<hr>
 						<ul id="placesList"></ul>
+						<c:forEach items="${storeList}" var="storeVo">
+							<div>
+								<img src="${pageContext.request.contextPath}/assets/image/단호박두부(비건).png" 
+								style="float: left; height: 90px; width: 100px;">
+								<p>${storeVo.s_name} ${storeVo.s_phone}</p>
+								<p>${storeVo.s_intro}</p>
+								<p>${storeVo.s_address},${storeVo.s_detail_address} / ${storeVo.s_parking}</p>
+								<p>영업시간 : ${storeVo.s_openH}시 ${storeVo.s_openM}분 ~ ${storeVo.s_closeH}시 ${storeVo.s_closeM}분</p>
+								<p>휴무일 : ${storeVo.s_Hsun} ${storeVo.s_Hmon} ${storeVo.s_Htue} ${storeVo.s_Hwen} ${storeVo.s_Hthu} ${storeVo.s_Hfri} ${storeVo.s_Hsat}</p>
+							</div>
+							<br>
+						</c:forEach>	
 						<div id="pagination"></div>
 					</div>
 

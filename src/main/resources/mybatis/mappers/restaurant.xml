@@ -5,7 +5,36 @@
 
 <mapper namespace="restaurant">
 
-
+	<select id="getStoreList" parameterType="String" resultType="com.javaex.vo.OwnerVo">
+		<![CDATA[
+			select s_no,
+				   s_img,
+				   s_name,
+				   s_phone,
+				   s_address,
+				   s_detail_address,
+				   s_openH,
+				   s_openM,
+				   s_closeH,
+				   s_closeM,
+				   s_parking,
+				   s_intro,
+				   s_Hmon, 
+	    		   s_Htue,
+	    	       s_Hwen,
+	               s_Hthu,
+	               s_Hfri,
+	               s_Hsat,
+	               s_Hsun
+	        from store
+	        ]]>
+	        <if test='value != null and value != "" '>
+	        	where (s_name || s_address) like '%'||#{keyword}||'%'
+	        </if>
+	        <![CDATA[
+	        order by s_no asc
+		]]>
+	</select>
 
 <!-- 한명의 정보가져오기 -->
 <select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo" >
