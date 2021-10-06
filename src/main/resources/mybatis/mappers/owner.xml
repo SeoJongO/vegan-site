@@ -6,7 +6,7 @@
 	<insert id="storeInsert" parameterType = "com.javaex.vo.OwnerVo">
 		<![CDATA[
 			insert into store
-			values(s_no.nextval, #{u_no}, #{s_img}, #{s_name}, #{s_phone}, #{s_address}, #{s_detail_address}, #{s_openH}, #{s_openM}, #{s_closeH}, #{s_closeM}, #{s_parking}, #{s_intro}, #{s_youtube}, #{s_twitter}, #{s_instagram}, #{s_Hmon}, #{s_Htue}, #{s_Hwen}, #{s_Hthu}, #{s_Hfri}, #{s_Hsat}, #{s_Hsun}, #{s_latitude}, #{s_longitude}, to_char(SYSDATE, 'yyyy-mm-dd'), #{savename})
+			values(s_no.nextval, #{u_no}, #{s_img}, #{s_name}, #{s_phone}, #{s_address}, #{s_detail_address}, #{s_openH}, #{s_openM}, #{s_closeH}, #{s_closeM}, #{s_parking}, #{s_intro}, #{s_youtube}, #{s_twitter}, #{s_instagram}, #{s_Hmon}, #{s_Htue}, #{s_Hwen}, #{s_Hthu}, #{s_Hfri}, #{s_Hsat}, #{s_Hsun}, #{s_latitude}, #{s_longitude}, to_char(SYSDATE, 'yyyy-mm-dd'))
 		]]>
 	</insert>
 	
@@ -14,7 +14,7 @@
 		<![CDATA[
 			select s_no,
 				   s_name,
-				   savename,
+				   s_img,
 				   s_address,
 				   to_char(s_date, 'YYYY-MM-DD') AS s_date
 			from store
@@ -46,8 +46,7 @@
 				   s_Hthu,
 				   s_Hfri,
 				   s_Hsat,
-				   s_Hsun,
-				   savename
+				   s_Hsun
 			from store
 			where s_no = #{s_no}
 		]]>
@@ -83,8 +82,7 @@
 				s_intro = #{s_intro},
 				s_youtube = #{s_youtube},
 				s_twitter = #{s_twitter},
-				s_instagram = #{s_instagram},
-				savename = #{savename}
+				s_instagram = #{s_instagram}
 			where s_no = #{s_no}
 		]]>
 	</update>

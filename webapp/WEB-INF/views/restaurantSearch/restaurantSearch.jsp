@@ -53,17 +53,16 @@
 										<option>락토오보</option>
 										<option>페스코</option>
 									</select>
-									<input id="searchMap-box" id="keyword" type="text" name="keyword" value="" size="15">
-									<button class="btn" type="submit">검색</button>
+									<input id="searchMap-box" id="keyword" type="text" name="keyword" value="" size="10">
+									<button class="btn clearfix" type="submit">검색</button>
 								</form>
 							</div>
 						</div>
 						<hr>
 						<ul id="placesList"></ul>
 						<c:forEach items="${storeList}" var="storeVo">
-							<div>
-								<img src="${pageContext.request.contextPath}/assets/image/단호박두부(비건).png" 
-								style="float: left; height: 90px; width: 100px;">
+							<div class="clearfix" onclick="location.href='${pageContext.request.contextPath}/restaurantPage?s_no=${storeVo.s_no}'">
+								<img src="${pageContext.request.contextPath}/veganLogo/${storeVo.s_img}" style="float: left; height: 90px; width: 100px;">
 								<p>${storeVo.s_name} ${storeVo.s_phone}</p>
 								<p>${storeVo.s_intro}</p>
 								<p>${storeVo.s_address},${storeVo.s_detail_address} / ${storeVo.s_parking}</p>

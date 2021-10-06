@@ -72,7 +72,7 @@
 											<c:forEach items="${storeList}" var="storeVo">
 												<tr>
 													<td>${storeVo.s_name}</td>
-													<td>${storeVo.s_img}</td>
+													<td><img id="s_logo" src="${pageContext.request.contextPath}/veganLogo/${storeVo.s_img}"></td>
 													<td>${storeVo.s_date}</td>
 													<td>${storeVo.s_address}</td>
 													<td>

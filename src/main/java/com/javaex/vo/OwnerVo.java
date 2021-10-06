@@ -8,7 +8,7 @@ public class OwnerVo {
 
 	private int s_no;
 	private int u_no;
-	private MultipartFile s_img;
+	private String s_img;
 	private String s_name;
 	private String s_phone;
 	private String s_address;
@@ -39,19 +39,17 @@ public class OwnerVo {
 	private String m_intro;
 	private List<MenuVo> menuList;
 	private List<ReviewVo> reviewList;
-	private String savename;
+	private MultipartFile file;
 
 	public OwnerVo() {
-		super();
 	}
 
-	public OwnerVo(int s_no, int u_no, MultipartFile s_img, String s_name, String s_phone, String s_address,
+	public OwnerVo(int s_no, int u_no, String s_img, String s_name, String s_phone, String s_address,
 			String s_detail_address, String s_openH, String s_openM, String s_closeH, String s_closeM, String s_parking,
 			String s_intro, String s_youtube, String s_instagram, String s_twitter, String s_Hmon, String s_Htue,
 			String s_Hwen, String s_Hthu, String s_Hfri, String s_Hsat, String s_Hsun, String s_latitude,
 			String s_longitude, String s_date, String m_name, String m_imge, String m_price, String m_type,
-			String m_intro, List<MenuVo> menuList, List<ReviewVo> reviewList, String savename) {
-		super();
+			String m_intro, List<MenuVo> menuList, List<ReviewVo> reviewList, MultipartFile file) {
 		this.s_no = s_no;
 		this.u_no = u_no;
 		this.s_img = s_img;
@@ -85,7 +83,7 @@ public class OwnerVo {
 		this.m_intro = m_intro;
 		this.menuList = menuList;
 		this.reviewList = reviewList;
-		this.savename = savename;
+		this.file = file;
 	}
 
 	public int getS_no() {
@@ -104,11 +102,11 @@ public class OwnerVo {
 		this.u_no = u_no;
 	}
 
-	public MultipartFile getS_img() {
+	public String getS_img() {
 		return s_img;
 	}
 
-	public void setS_img(MultipartFile s_img) {
+	public void setS_img(String s_img) {
 		this.s_img = s_img;
 	}
 
@@ -352,12 +350,12 @@ public class OwnerVo {
 		this.reviewList = reviewList;
 	}
 
-	public String getSavename() {
-		return savename;
+	public MultipartFile getFile() {
+		return file;
 	}
 
-	public void setSavename(String savename) {
-		this.savename = savename;
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 	@Override
@@ -370,7 +368,7 @@ public class OwnerVo {
 				+ s_Hwen + ", s_Hthu=" + s_Hthu + ", s_Hfri=" + s_Hfri + ", s_Hsat=" + s_Hsat + ", s_Hsun=" + s_Hsun
 				+ ", s_latitude=" + s_latitude + ", s_longitude=" + s_longitude + ", s_date=" + s_date + ", m_name="
 				+ m_name + ", m_imge=" + m_imge + ", m_price=" + m_price + ", m_type=" + m_type + ", m_intro=" + m_intro
-				+ ", menuList=" + menuList + ", reviewList=" + reviewList + ", savename=" + savename + "]";
+				+ ", menuList=" + menuList + ", reviewList=" + reviewList + ", file=" + file + "]";
 	}
 
 }

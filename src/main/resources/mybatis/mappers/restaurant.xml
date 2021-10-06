@@ -28,60 +28,57 @@
 	               s_Hsun
 	        from store
 	        ]]>
-	        <if test='value != null and value != "" '>
-	        	where (s_name || s_address) like '%'||#{keyword}||'%'
-	        </if>
+		<if test='value != null and value != "" '>
+			where (s_name || s_address) like '%'||#{keyword}||'%'
+		</if>
 	        <![CDATA[
 	        order by s_no asc
 		]]>
 	</select>
 
-<!-- 한명의 정보가져오기 -->
-<select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo" >
+	<!-- 한명의 정보가져오기 -->
+	<select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo">
 
-<![CDATA[
-select
-	    s.s_no,
-	    s.u_no, 
-	    s.s_img, 
-	    s.s_name, 
-	    s.s_phone, 
-	    s.s_address,
-	    s.s_detail_address, 
-	    s.s_openH, 
-	    s.s_openM, 
-	    s.s_closeH, 
-	    s.s_closeM, 
-	    s.s_parking, 
-	    s.s_intro, 
-	    s.s_youtube, 
-	    s.s_instagram, 
-	    s.s_twitter, 
-	    s.s_Hmon, 
-	    s.s_Htue,
-	    s.s_Hwen,
-	    s.s_Hthu,
-	    s.s_Hfri,
-	    s.s_Hsat,
-	    s.s_Hsun,
-	    s.s_latitude,
-	    s.s_longitude,
-        m.m_name,
-        m.m_imge,
-        m.m_price,
-        m.m_type,
-        m.m_intro
- 	   from store s, menu m
-       where s.s_no = m.s_no
-       and s.s_no = #{s_no}
-       and rownum=1
+	<![CDATA[
+		select	s.s_no,
+		    	s.u_no, 
+		    	s.s_img, 
+		    	s.s_name, 
+		    	s.s_phone, 
+		    	s.s_address,
+		    	s.s_detail_address, 
+			    s.s_openH, 
+			    s.s_openM, 
+			    s.s_closeH, 
+			    s.s_closeM, 
+			    s.s_parking, 
+			    s.s_intro, 
+			    s.s_youtube, 
+			    s.s_instagram, 
+			    s.s_twitter, 
+			    s.s_Hmon, 
+			    s.s_Htue,
+			    s.s_Hwen,
+			    s.s_Hthu,
+			    s.s_Hfri,
+			    s.s_Hsat,
+			    s.s_Hsun,
+			    s.s_latitude,
+			    s.s_longitude,
+		        m.m_name,
+		        m.m_imge,
+		        m.m_price,
+		        m.m_type,
+		        m.m_intro
+		 	   from store s, menu m
+		       where s.s_no = m.s_no
+		       and s.s_no = #{s_no}
+		       and rownum=1
+		]]>
+	</select>
 
-]]>
-
-</select>
-
-<!-- 메뉴가져오기 -->
-<select id="menuList" parameterType="int" resultType="com.javaex.vo.MenuVo">
+	<!-- 메뉴가져오기 -->
+	<select id="menuList" parameterType="int" resultType="com.javaex.vo.MenuVo">
 
 <![CDATA[
   select 	m_no,
@@ -96,22 +93,22 @@ select
 ]]>
 
 
-</select>
+	</select>
 
-<!-- 리뷰쓰기 -->
-<insert id="insertReview" parameterType="com.javaex.vo.ReviewVo" >
+	<!-- 리뷰쓰기 -->
+	<insert id="insertReview" parameterType="com.javaex.vo.ReviewVo">
 
 <![CDATA[
 	INSERT into review
 	VALUES (r_no.nextval,#{s_no},#{u_no},#{r_contents}, sysdate ,'5점',#{saveName})
 ]]>
-</insert>
+	</insert>
 
 
 
-<!-- 리뷰리스트가져오기 -->
+	<!-- 리뷰리스트가져오기 -->
 
-<select id="reviewList" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+	<select id="reviewList" parameterType="int" resultType="com.javaex.vo.ReviewVo">
 
 
 <![CDATA[
@@ -133,10 +130,10 @@ select r.r_no,
 
 
 
-</select>
+	</select>
 
 
-<select id="reviewModi" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+	<select id="reviewModi" parameterType="int" resultType="com.javaex.vo.ReviewVo">
 
 <![CDATA[
 
@@ -161,7 +158,7 @@ select r.r_no,
 
 
 
-</select>
+	</select>
 
 
 

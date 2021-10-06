@@ -33,12 +33,8 @@ public class RestaurantController {
 	
 	///가게 정보1개 가지고오기
 	@RequestMapping(value="/restaurantPage", method = { RequestMethod.GET, RequestMethod.POST })
-	public String restaurantPage(Model model) {
+	public String restaurantPage(Model model, @RequestParam("s_no") int s_no) {
 		System.out.println("[RestaurantController.restaurantPage]");
-		
-		int s_no = 17;
-		
-		
 		
 		OwnerVo ownerVo=restaurantService.getOne(s_no);
 		System.out.println("컨트롤러"+ownerVo);

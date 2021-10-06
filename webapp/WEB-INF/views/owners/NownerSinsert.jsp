@@ -49,24 +49,24 @@
 							<div class="head2">
 
 							</div>
-							<form action="${pageContext.request.contextPath}/owners/storeInsert" method="get">
+							<form action="${pageContext.request.contextPath}/owners/storeInsert" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="u_no" value="${authUser.u_no}">
 								<table class="main-table">
 									<tr>
 										<td><b>로고</b></td>
-										<td><img alt="가게로고" src="${store.s_img}"> <input type="file" name="s_img" value=""></td>
+										<td><input type="file" name="file" value=""></td>
 									</tr>
 									<tr>
 										<td><label for="s-name"><b>상호명</b></label></td>
-										<td><input type="text" id="shopName" name="s_name" value="${store.s_name}"></td>
+										<td><input type="text" id="shopName" name="s_name" value=""></td>
 									</tr>
 									<tr>
 										<td><label for="s-number"><b>전화번호</b></label></td>
-										<td><input type="text" id="shopNumber" name="s_phone" value="${store.s_phone}"></td>
+										<td><input type="text" id="shopNumber" name="s_phone" value=""></td>
 									<tr>
 									<tr>
 										<td class="bnone"><label for="s-addres"><b>주소</b></label></td>
-										<td class="bnone"><input type="text" id="shopAddres" name="s_address" value="${store.s_address}">
+										<td class="bnone"><input type="text" id="shopAddres" name="s_address" value="">
 										<span class="button-area">
 												<button type="submit">
 													<b>주소찾기</b>
@@ -75,7 +75,7 @@
 									</tr>
 									<tr>
 										<td></td>
-										<td><input type="text" id="detailAddres" name="s_detail_address" value="${store.s_detail_address}"></td>
+										<td><input type="text" id="detailAddres" name="s_detail_address" value=""></td>
 									</tr>
 									<tr>
 										<td><b>영업시간</b></td>
@@ -166,19 +166,19 @@
 									</tr>
 									<tr>
 										<td><b>가게 소개글</b></td>
-										<td><textarea class="textarea-size" name="s_intro" rows="" cols="">${store.s_intro}</textarea></td>
+										<td><textarea class="textarea-size" name="s_intro" rows="" cols=""></textarea></td>
 									</tr>
 									<tr>
 										<td class="bnone"><b>플랫폼 링크</b></td>
-										<td class="bnone"><img alt="유튜브" src="${ pageContext.request.contextPath }/assets/imges/유튜브아이콘.png"> <input type="text" id="youtube" name="s_youtube" value="${store.s_youtube}"></td>
+										<td class="bnone"><img alt="유튜브" src="${ pageContext.request.contextPath }/assets/imges/유튜브아이콘.png"> <input type="text" id="youtube" name="s_youtube" value=""></td>
 									</tr>
 									<tr>
 										<td class="bnone"></td>
-										<td class="bnone"><img alt="트위치" src="${ pageContext.request.contextPath }/assets/imges/트위터아이콘.png"> <input type="text" id="twich" name="s_twitter" value="${store.s_twitter}"></td>
+										<td class="bnone"><img alt="트위치" src="${ pageContext.request.contextPath }/assets/imges/트위터아이콘.png"> <input type="text" id="twich" name="s_twitter" value=""></td>
 									</tr>
 									<tr>
 										<td class="bnone"></td>
-										<td class="bnone"><img alt="인스타" src="${ pageContext.request.contextPath }/assets/imges/인스타아이콘.png"> <input type="text" id="twich" name="s_instagram" value="${store.s_instagram}"></td>
+										<td class="bnone"><img alt="인스타" src="${ pageContext.request.contextPath }/assets/imges/인스타아이콘.png"> <input type="text" id="twich" name="s_instagram" value=""></td>
 									</tr>
 								</table>
 								<input type="hidden" name="s_latitude" value="0">

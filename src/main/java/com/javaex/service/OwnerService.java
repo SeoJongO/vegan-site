@@ -24,7 +24,7 @@ public class OwnerService {
 	public int storeInsert(OwnerVo ownerVo) {
 		System.out.println("OwnerService.storeInsert()");
 
-		MultipartFile file = ownerVo.getS_img();
+		MultipartFile file = ownerVo.getFile();
 
 		String saveDir = "C:\\veganLogo\\";
 
@@ -55,7 +55,7 @@ public class OwnerService {
 			e.printStackTrace();
 		}
 		// 파일정보를 db에 저장
-		ownerVo.setSavename(saveName);
+		ownerVo.setS_img(saveName);
 		
 		System.out.println("service"+ownerVo);
 
