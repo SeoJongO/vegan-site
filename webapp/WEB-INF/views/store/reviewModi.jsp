@@ -34,12 +34,12 @@
 				<div id="modify-content">
 					<h3 class="text-left">낙성대 1호점</h3>
 					<form action="" method="get">
-						<textarea placeholder="">수정할려고 들어</textarea>
+						<textarea placeholder="">${reviewModi.r_contents}</textarea>
 						<input type="file">
+						<img class="modifyPage-review-img review-img" src="${pageContext.request.contextPath }/veganReview/${reviewModi.saveName }">
 						<img class="modifyPage-review-img review-img" src="">
 						<img class="modifyPage-review-img review-img" src="">
-						<img class="modifyPage-review-img review-img" src="">
-						<p class="modifyPage-starPoint text-center">★★★★★</p>
+						<p class="modifyPage-starPoint text-center">${reviewModi.star}</p>
 						<div class="text-center">
 							<button class="btn" type="submit">저장</button>
 							<button class="btn">취소</button>

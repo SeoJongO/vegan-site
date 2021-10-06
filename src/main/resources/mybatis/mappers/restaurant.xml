@@ -7,7 +7,7 @@
 
 
 
-
+<!-- 한명의 정보가져오기 -->
 <select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo" >
 
 <![CDATA[
@@ -51,7 +51,7 @@ select
 
 </select>
 
-
+<!-- 메뉴가져오기 -->
 <select id="menuList" parameterType="int" resultType="com.javaex.vo.MenuVo">
 
 <![CDATA[
@@ -65,6 +65,71 @@ select
        from menu
        where s_no= #{s_no}
 ]]>
+
+
+</select>
+
+<!-- 리뷰쓰기 -->
+<insert id="insertReview" parameterType="com.javaex.vo.ReviewVo" >
+
+<![CDATA[
+	INSERT into review
+	VALUES (r_no.nextval,#{s_no},#{u_no},#{r_contents}, sysdate ,'5점',#{saveName})
+]]>
+</insert>
+
+
+
+<!-- 리뷰리스트가져오기 -->
+
+<select id="reviewList" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+
+
+<![CDATA[
+select r.r_no,
+	   r.s_no,
+	   r.u_no,
+	   r.r_contents,
+	   r.r_date,
+	   r.star,
+	   r.saveName,
+	   u.u_nickname,
+	   u.u_type
+	   from review r, users u
+	   where r.u_no = u.u_no 
+	   and r.s_no=#{s_no}
+
+]]>
+
+
+
+
+</select>
+
+
+<select id="reviewModi" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+
+<![CDATA[
+
+	  select r_no,
+              s_no,
+              r_no,
+              r_contents,
+              r_date,
+              star,
+              savename
+                
+       from review
+       where r_no=#{reviewNo}
+
+
+
+
+]]>
+
+
+
+
 
 
 </select>

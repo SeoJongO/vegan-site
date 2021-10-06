@@ -52,7 +52,8 @@
 		<property name="defaultEncoding" value="utf-8" />
 	</bean>
 	
+	<!-- 리뷰파일 경로지정 -->
 	<!-- url매핑-->
-		<mvc:resources mapping="/upload/**" location="file:C:\\Users\\Hi-PC\\Desktop\\JavaStudy\\upload\\" />
+		<mvc:resources mapping="/veganReview/**" location="file:C:/veganReview/" />
 	
 </beans>
