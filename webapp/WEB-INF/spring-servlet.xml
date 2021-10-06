@@ -55,5 +55,6 @@
 	<!-- 리뷰파일 경로지정 -->
 	<!-- url매핑-->
 		<mvc:resources mapping="/veganReview/**" location="file:C:/veganReview/" />
+		<mvc:resources mapping="/veganLogo/**" location="file:C:/veganLogo/" />
 	
 </beans>

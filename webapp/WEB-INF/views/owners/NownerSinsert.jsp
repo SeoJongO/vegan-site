@@ -54,7 +54,7 @@
 								<table class="main-table">
 									<tr>
 										<td><b>로고</b></td>
-										<td><img alt="가게로고" src="${store.s_img}"> <input type="file" name="s_img"></td>
+										<td><img alt="가게로고" src="${store.s_img}"> <input type="file" name="s_img" value=""></td>
 									</tr>
 									<tr>
 										<td><label for="s-name"><b>상호명</b></label></td>
