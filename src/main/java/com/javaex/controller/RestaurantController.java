@@ -1,10 +1,14 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.restaurantService;
 import com.javaex.vo.OwnerVo;
@@ -16,8 +20,12 @@ public class RestaurantController {
 	private restaurantService restaurantService;
 	
 	@RequestMapping(value="/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
-	public String restaurantSearch() {
+	public String restaurantSearch(Model model, @RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
 		System.out.println("[RestaurantController.restaurantSearch]");
+		
+		List<OwnerVo> storeList = restaurantService.getStoreList(keyword);
+		
+		model.addAttribute("storeList", storeList);
 		
 		return "restaurantSearch/restaurantSearch";
 	}

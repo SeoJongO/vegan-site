@@ -1,5 +1,7 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +13,12 @@ public class restaurantDao {
 
 	@Autowired
 	private SqlSession sqlSession;
+	
+	public List<OwnerVo> getStoreList(String keyword) {
+		System.out.println("restaurantDao.getStoreList()");
+		
+		return sqlSession.selectList("restaurant.getStoreList", keyword);
+	}
 	
 	
 	public OwnerVo getOne(int s_no) {
