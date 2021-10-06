@@ -89,7 +89,7 @@
 									<tr class="t-body history-t-body">
 										<td class="text-left">${serviceList.c_title}</td>
 										<td class="text-left">${serviceList.c_content}</td>
-										<td class="text-center">샐러디 낙성점</td>
+										<td class="text-center">${serviceList.s_name}</td>
 									</tr>
 
 									<!-- hide구간 -->

@@ -36,7 +36,7 @@ public class OwnersController {
 		int u_no = userVo.getU_no();
 
 		List<OwnerVo> sList = ownerService.storeList(u_no);
-		
+
 		model.addAttribute("storeList", sList);
 
 		return "owners/NownerSlist";
@@ -64,78 +64,127 @@ public class OwnersController {
 	@RequestMapping(value = "/NownerSmodify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerPage(HttpSession session, Model model, @RequestParam("s_no") int s_no) {
 		System.out.println("[OwnersController.NownerSmodify]");
-		
+
 		OwnerVo ownerVo = ownerService.getStore(s_no);
-		
+
 		System.out.println(ownerVo);
-		
+
 		model.addAttribute("store", ownerVo);
 
 		return "owners/NownerSmodify";
 	}
-	
+
 	@RequestMapping(value = "/storeModify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeModify(@ModelAttribute OwnerVo ownerVo, HttpSession session, Model model) {
 		System.out.println("[OwnersController.storeModify]");
-		
+
 		int count = ownerService.storeModify(ownerVo);
-		
-		if(count>0) {
+
+		if (count > 0) {
 			System.out.println("성공");
 		} else {
 			System.out.println("실패");
 		}
-		
+
 		return "redirect:/owners/NownerSlist";
 	}
-	
+
 	@RequestMapping(value = "/storeDelete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeDelete(@RequestParam("s_no") int s_no) {
 		System.out.println("[OwnersController.storeDelete]");
 
 		int count = ownerService.storeDelete(s_no);
-		
+
 		return "redirect:/owners/NownerSlist";
 	}
-	
+
 	// 메뉴 등록폼
 	@RequestMapping(value = "/NownerMinsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerMinsert() {
+	public String ownerMinsert(Model model,HttpSession session, @RequestParam("s_no") int s_no) {
 		System.out.println("[OwnersController.ownerMinsert]");
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		int u_no = userVo.getU_no();
+
+		OwnerVo ownerVo = ownerService.getStore(s_no);
+		
+		
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		model.addAttribute("storeList", sList);
+		
+		model.addAttribute("ownerU", ownerVo);
 
 		return "owners/NownerMinsert";
 	}
 
 	// 메뉴 등록(s_no xml에 임의값 넣음)
 	@RequestMapping(value = "/menuInsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public String storeInsert(@ModelAttribute MenuVo menuVo) {
+	public String storeInsert(MenuVo menuVo) {
 		System.out.println("[OwnersController.menuInsert]");
 
 		int count = ownerService.menuInsert(menuVo);
 
 		return "redirect:/owners/NownerMlist";
 	}
-	
+
 	// 메뉴 리스트(s_no xml에 임의값 넣음)
-	@RequestMapping(value = "/NownerMlist", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerMlist(Model model, HttpSession session) {
-		System.out.println("[OwnersController.ownerMlist]");
-		
-		UserVo userVo = (UserVo) session.getAttribute("authUser");
-		
-		int u_no = userVo.getU_no();
+		@RequestMapping(value = "/NownerMlist", method = { RequestMethod.GET, RequestMethod.POST })
+		public String ownerMlist(Model model, HttpSession session) {
+			System.out.println("[OwnersController.ownerMlist]");
 
-		List<OwnerVo> sList = ownerService.storeList(u_no);
+			UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+			int u_no = userVo.getU_no();
+
+			List<OwnerVo> sList = ownerService.storeList(u_no);
+			System.out.println(sList);
+
+			int s_no = sList.get(0).getS_no();
+			System.out.println(s_no);
+
+			List<MenuVo> mList = ownerService.menuList(s_no);
+
+			System.out.println(mList);
+
+			model.addAttribute("storeList", sList);
+			
+			model.addAttribute("storeVo", sList.get(0));
+
+			model.addAttribute("menuList", mList);
+
+			return "owners/NownerMlist";
+		}
+
+		@RequestMapping(value = "/NownerSmlist", method = { RequestMethod.GET, RequestMethod.POST })
+		public String ownerMlist(Model model, HttpSession session,@RequestParam("shop") int s_no) {
+			System.out.println("[OwnersController.ownerSmlist]");
+
+			
+			
+			UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+			int u_no = userVo.getU_no();
+
+			List<OwnerVo> sList = ownerService.storeList(u_no);
+			System.out.println(sList);
+
+			System.out.println(s_no);
+			
+			List<MenuVo> mList = ownerService.menuList(s_no);
+			System.out.println(mList);
+			
+			OwnerVo storeVo = ownerService.getStore(s_no);
+			
+			
+			model.addAttribute("storeList", sList);
 		
-		List<MenuVo> mList = ownerService.menuList();
-		
-		model.addAttribute("storeList", sList);
+			model.addAttribute("storeVo", storeVo);
+			
+			model.addAttribute("menuList", mList);
 
-		model.addAttribute("menuList", mList);
+			return "owners/NownerMlist";
 
-		return "owners/NownerMlist";
-	}
-
+		}
 	// 메뉴 수정폼
 	@RequestMapping(value = "/NownerMmodify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String menuModify(HttpSession session, Model model, @RequestParam("m_no") int m_no) {
@@ -150,7 +199,7 @@ public class OwnersController {
 		return "owners/NownerMmodify";
 	}
 
-	//메뉴 수정
+	// 메뉴 수정
 	@RequestMapping(value = "/menuModify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String menuModify(@ModelAttribute MenuVo menuVo, HttpSession session, Model model) {
 		System.out.println("[OwnersController.storeModify]");
@@ -165,8 +214,8 @@ public class OwnersController {
 
 		return "redirect:/owners/NownerMlist";
 	}
-	
-	//메뉴 삭제
+
+	// 메뉴 삭제
 	@RequestMapping(value = "/menuDelete", method = { RequestMethod.GET, RequestMethod.POST })
 	public String menuDelete(@RequestParam("m_no") int m_no) {
 		System.out.println("[OwnersController.storeDelete]");
@@ -175,10 +224,6 @@ public class OwnersController {
 
 		return "redirect:/owners/NownerMlist";
 	}
-	
-	
-	
-	
 
 	// 리뷰페이지
 	@RequestMapping(value = "/NownerLivew", method = { RequestMethod.GET, RequestMethod.POST })

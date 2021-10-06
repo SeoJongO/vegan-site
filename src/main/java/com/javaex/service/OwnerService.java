@@ -71,10 +71,10 @@ public class OwnerService {
 		return ownerDao.menuDelete(m_no);
 	}
 	
-	public List<MenuVo> menuList() {
+	public List<MenuVo> menuList(int s_no) {
 		System.out.println("OwnerService.menuList()");
 		
-		return ownerDao.menuList();
+		return ownerDao.menuList(s_no);
 	}
 
 

@@ -61,6 +61,7 @@
 								<!--  <input class="float-l" type="file"> -->
 								<button class="btn float-r" type="submit">신고하기</button>
 								<input type="text" name="u_no" value=" ${authUser.u_no }">
+								<input type="text" name="s_no" value=" ${param.s_no }">
 								
 							</form>
 

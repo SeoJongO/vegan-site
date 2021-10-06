@@ -64,22 +64,23 @@
 						<div id="wrap2">
 
 
-							<div class="head2">
-
-								<select id="shop" name="shop">
-									<option value="shop1">샐러디 낙성대점</option>
-									<option value="shop2">샐러디 신림점</option>
-									<option value="shop3">샐러디 봉천점</option>
-									<option value="shop-add">+매장추가+</option>
-								</select>
-
-							</div>
-
-							<h3>샐러디 낙성대점</h3>
+							<h3>${ownerU.s_name}</h3>
 
 
-							<form action="${pageContext.request.contextPath}/owners/menuInsert" method="get">
+							<form
+								action="${pageContext.request.contextPath}/owners/menuInsert"
+								method="get"
+							>
+
 								<table class="main-table">
+									<tr>
+										<td>
+											<b>가게</b>
+										</td>
+										<td>
+											<input type="text" name="s_no" value="${ownerU.s_no}">
+										</td>
+									</tr>
 									<tr>
 										<td>
 											<b>메뉴이미지</b>
@@ -140,8 +141,10 @@
 										<td></td>
 										<td>
 											<div id="gray">
-												<a href= "https://ko.wikipedia.org/wiki/%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98#%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98%EC%9E%90%EC%9D%98_%EB%B6%84%EB%A5%98">ⓘ채식을 더 알고싶다면?</a>
-												
+												<a
+													href="https://ko.wikipedia.org/wiki/%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98#%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98%EC%9E%90%EC%9D%98_%EB%B6%84%EB%A5%98"
+												>ⓘ채식을 더 알고싶다면?</a>
+
 											</div>
 										</td>
 									</tr>
@@ -151,7 +154,9 @@
 											<b>메뉴 소개</b>
 										</td>
 										<td class="bnone">
-											<textarea class="textarea-size" name = "m_intro" rows="" cols=""></textarea>
+											<textarea class="textarea-size" name="m_intro" rows=""
+												cols=""
+											></textarea>
 										</td>
 
 

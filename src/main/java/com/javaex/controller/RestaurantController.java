@@ -34,7 +34,7 @@ public class RestaurantController {
 	public String restaurantPage(Model model) {
 		System.out.println("[RestaurantController.restaurantPage]");
 		
-		int s_no = 12;
+		int s_no = 17;
 		
 		
 		

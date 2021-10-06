@@ -9,6 +9,7 @@ public class MenuVo {
 	private String m_price;
 	private String m_type;
 	private String m_intro;
+	
 
 	public MenuVo() {
 		super();
