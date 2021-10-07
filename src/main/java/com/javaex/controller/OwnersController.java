@@ -121,6 +121,8 @@ public class OwnersController {
 	@RequestMapping(value = "/menuInsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeInsert(MenuVo menuVo) {
 		System.out.println("[OwnersController.menuInsert]");
+		
+		System.out.println(menuVo);
 
 		int count = ownerService.menuInsert(menuVo);
 

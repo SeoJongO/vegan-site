@@ -72,14 +72,14 @@
 											<c:forEach items="${storeList}" var="storeVo">
 												<tr>
 													<td>${storeVo.s_name}</td>
-													<td><img id="s_logo" src="${pageContext.request.contextPath}/veganLogo/${storeVo.s_img}"></td>
+													<td id="s_logo"><img src="${pageContext.request.contextPath}/veganLogo/${storeVo.s_img}"></td>
 													<td>${storeVo.s_date}</td>
 													<td>${storeVo.s_address}</td>
 													<td>
 													<a href="${pageContext.request.contextPath}/owners/NownerSmodify?s_no=${storeVo.s_no}">[수정]</a> 
 													<a href="${pageContext.request.contextPath}/owners/storeDelete?s_no=${storeVo.s_no}">[삭제]</a>
 													</td>
-												</tr>
+											</tr>
 											</c:forEach>
 										</tbody>
 									</table>

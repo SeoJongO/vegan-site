@@ -101,7 +101,7 @@ public class OwnerService {
 	public int menuInsert(MenuVo menuVo) {
 		System.out.println("OwnerService.menuInsert()");
 
-		
+		System.out.println(menuVo);
 		
 		MultipartFile file2 = menuVo.getFile2();
 
