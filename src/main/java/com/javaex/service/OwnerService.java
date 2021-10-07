@@ -101,6 +101,45 @@ public class OwnerService {
 	public int menuInsert(MenuVo menuVo) {
 		System.out.println("OwnerService.menuInsert()");
 
+		
+		
+		MultipartFile file2 = menuVo.getFile2();
+
+		String saveDir = "C:\\veganLogo\\";
+
+		// 원파일이름
+		String orgName = file2.getOriginalFilename();
+		System.out.println("orgName: " + orgName);
+		// 확장자
+		String exName = file2.getOriginalFilename().substring(file2.getOriginalFilename().lastIndexOf("."));
+		System.out.println("exName: " + exName);
+		// 저장파일이름
+		String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+		System.out.println("saveName: " + saveName);
+		// 파일저장위치
+		String filePath = saveDir + saveName;
+		System.out.println("filePath: " + filePath);
+		// 파일사이즈
+		long fileSize = file2.getSize();
+		System.out.println("fileSize: " + fileSize);
+		// 파일 서버하드디스크에 저장
+		try {
+			byte[] fileData = file2.getBytes();
+			OutputStream out = new FileOutputStream(filePath);
+			BufferedOutputStream bout = new BufferedOutputStream(out);
+
+			bout.write(fileData);
+			bout.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// 파일정보를 db에 저장
+		menuVo.setM_imge(saveName);
+		
+		System.out.println("service"+menuVo);
+
+		
+		
 		return ownerDao.menuInsert(menuVo);
 	}
 

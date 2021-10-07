@@ -75,10 +75,10 @@
 								<table class="main-table">
 									<tr>
 										<td>
-											<b>가게</b>
+								
 										</td>
 										<td>
-											<input type="text" name="s_no" value="${ownerU.s_no}">
+											<input type="hidden" name="s_no" value="${ownerU.s_no}">
 										</td>
 									</tr>
 									<tr>
@@ -91,7 +91,7 @@
 												src="${ pageContext.request.contextPath }/assets/imges/단호박두부(비건).png"
 											>
 
-											<input type="file" name="m_imge" value="">
+											<input type="file" name="file2" value="">
 										</td>
 									</tr>
 
