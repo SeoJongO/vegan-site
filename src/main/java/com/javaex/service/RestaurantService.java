@@ -10,16 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.javaex.dao.restaurantDao;
+import com.javaex.dao.RestaurantDao;
 import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
 
 @Service
-public class restaurantService {
+public class RestaurantService {
 
 	@Autowired
-	private restaurantDao restaurantDao;
+	private RestaurantDao restaurantDao;
 	// 상세페이지 한개 메뉴리스트 출력
 
 	public List<OwnerVo> getStoreList(String keyword) {
@@ -54,11 +54,16 @@ public class restaurantService {
 	// 리뷰쓰기
 	public String insertReview(ReviewVo reviewVo) {
 		System.out.println("리뷰쓰기서비스" + reviewVo);
+		
+		MultipartFile file = reviewVo.getFile();
 
+		//파일이 있을때
+		if(file.getSize() > 0) {
+		
 		// 리뷰이미지 저장위치
 		String saveDir = "C:\\veganReview";
 
-		MultipartFile file = reviewVo.getFile();
+		
 		System.out.println("파일" + file);
 
 		System.out.println(file.getSize());
@@ -103,7 +108,9 @@ public class restaurantService {
 		System.out.println(reviewVo);
 
 		restaurantDao.insertReview(reviewVo);
-
+		}else {
+			restaurantDao.insertReview(reviewVo);
+		}
 		return null;
 
 	}

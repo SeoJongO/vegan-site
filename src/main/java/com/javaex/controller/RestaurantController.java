@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javaex.service.restaurantService;
+import com.javaex.service.RestaurantService;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
 
@@ -18,7 +18,7 @@ import com.javaex.vo.ReviewVo;
 public class RestaurantController {
 
 	@Autowired
-	private restaurantService restaurantService;
+	private RestaurantService restaurantService;
 	
 	@RequestMapping(value="/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
 	public String restaurantSearch(Model model, @RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
@@ -55,8 +55,10 @@ public class RestaurantController {
 		System.out.println("모달 이미지"+reviewVo);
 		
 		restaurantService.insertReview(reviewVo);
+		int s_no = reviewVo.getS_no();
+		System.out.println(s_no);
 		
-		return "redirect:/restaurantPage";
+		return "redirect:/restaurantPage?s_no="+s_no;
 		
 	}
 	
@@ -79,6 +81,16 @@ public class RestaurantController {
 		model.addAttribute("reviewModi",reviewModi);
 		
 		return "store/reviewModi";
+	}
+	
+	//리뷰수정
+	@RequestMapping(value="/reviewModify", method = {RequestMethod.GET,RequestMethod.POST})
+	public String reviewModify() {
+		
+		
+		
+		return null;
+		
 	}
 	
 	

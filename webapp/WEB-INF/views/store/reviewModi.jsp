@@ -33,7 +33,7 @@
 			<div id="content-wrap">
 				<div id="modify-content">
 					<h3 class="text-left">낙성대 1호점</h3>
-					<form action="" method="get">
+					<form action="${pageContext.request.contextPath }/reviewModify" method="get">
 						<textarea placeholder="">${reviewModi.r_contents}</textarea>
 						<input type="file">
 						<img class="modifyPage-review-img review-img" src="${pageContext.request.contextPath }/veganReview/${reviewModi.saveName }">

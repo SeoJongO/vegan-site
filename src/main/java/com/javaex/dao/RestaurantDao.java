@@ -11,7 +11,7 @@ import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
 
 @Repository
-public class restaurantDao {
+public class RestaurantDao {
 
 	@Autowired
 	private SqlSession sqlSession;

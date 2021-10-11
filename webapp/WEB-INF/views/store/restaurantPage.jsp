@@ -310,7 +310,7 @@
 				</div>
 			</div>
 		</div>
-
+	</div>
 		<!-- 모달창(메뉴더보기) end -->
 
 		<!-- Modal 리뷰남기기 -->
@@ -328,18 +328,17 @@
 						<div id="content_main">
 
 							<div id="modify-content">
-								<form action="${pageContext.request.contextPath }/reviewWrite" method="post" enctype="multipart/form-data">
+								<form action="${pageContext.request.contextPath }/reviewWrite" method="post" enctype="multipart/form-data"> 
 									<textarea id="writeModal" name="r_contents" ></textarea>
 									<input id="file" type="file" name="file" value="">
 									<p  class="modifyPage-starPoint text-center" >★★★★★</p>
 									<div class="text-center">
-										<button class="btn" type="submit">저장</button>
+										<button id= "ajaxButton" class="btn" type="submit">저장</button>
 										<button class="btn">취소</button>
 									</div>
 									<input type="text" name="u_no" value="${authUser.u_no}">
 									<input type="text" name="s_no" value="${ownerVo.s_no}">
-								</form>
-							</div>
+								 </form> 
 						</div>
 						<!-- //컨텐츠 -->
 					</div>
@@ -394,7 +393,7 @@ $(function(){
 		console.log("모달창 클릭")
 
 		$("#reviewModal").modal();
-
+		
 	});
 
 	<!-- 리뷰삭제 -->
@@ -422,6 +421,38 @@ $(function(){
 		$("#singoModal").modal();
 
 	});
+	
+	
+	
+	$("#ajaxButton").on("click", function(){
+		//데이터 ajax방식으로 서버에서 전송
+		$.ajax({
+				
+				//url : "${pageContext.request.contextPath }/api/guestbook/write?name="+userName+"&password="+password+ "&
+				url : "${pageContext.request.contextPath }/reviewWrite",
+				type : "get",
+				//contentType : "application/json",
+				data : reviewVo,
+
+				dataType : "json",
+				success : function(guestbookVo){
+					/*성공시 처리해야될 코드 작성*/
+					console.log(reviewVo);
+					render(guestbookVo,"up");
+					
+		            //입력폼 초기화
+		           
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		
+	});
+	
+	
+	
 });
 <!-- //document onload -->
 </script>
