@@ -85,11 +85,14 @@ public class RestaurantController {
 	
 	//리뷰수정
 	@RequestMapping(value="/reviewModify", method = {RequestMethod.GET,RequestMethod.POST})
-	public String reviewModify() {
+	public String reviewModify(@ModelAttribute ReviewVo reviewVo) {
+		System.out.println("리뷰수정=");
+		System.out.println(reviewVo);
 		
+		restaurantService.updateModi(reviewVo);
+		int s_no = reviewVo.getS_no();
 		
-		
-		return null;
+		return "redirect:/restaurantPage?s_no="+s_no;
 		
 	}
 	
@@ -98,3 +101,4 @@ public class RestaurantController {
 	
 	
 }
+

@@ -33,17 +33,22 @@
 			<div id="content-wrap">
 				<div id="modify-content">
 					<h3 class="text-left">낙성대 1호점</h3>
-					<form action="${pageContext.request.contextPath }/reviewModify" method="get">
-						<textarea placeholder="">${reviewModi.r_contents}</textarea>
-						<input type="file">
+					<form action="${pageContext.request.contextPath }/reviewModify" method="post" enctype="multipart/form-data">
+						<textarea placeholder="" name="r_contents">${reviewModi.r_contents}</textarea>
+						<input type="file" name="file">
 						<img class="modifyPage-review-img review-img" src="${pageContext.request.contextPath }/veganReview/${reviewModi.saveName }">
 						<img class="modifyPage-review-img review-img" src="">
 						<img class="modifyPage-review-img review-img" src="">
-						<p class="modifyPage-starPoint text-center">${reviewModi.star}</p>
+						<p class="modifyPage-starPoint text-center" >${reviewModi.star}</p>
 						<div class="text-center">
 							<button class="btn" type="submit">저장</button>
 							<button class="btn">취소</button>
 						</div>
+						<input type="text" name="r_no" value="${param.r_no }">
+						<input type="text" name="s_no" value="${reviewModi.s_no}">
+					
+						
+						
 					</form>
 				</div>
 			</div>

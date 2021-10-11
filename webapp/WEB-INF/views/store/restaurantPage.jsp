@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
 <meta charset="UTF-8">
 <title>메인페이지</title>
 
@@ -159,36 +160,35 @@
 					<!-- //////////////////////////////////////////////////////////// -->
 					<div id="reviewArea">
 					<c:forEach items="${reviewList}" var="reviewList">
-						<div class="review-wrap">
-						
-							<div class="review clearfix">
-								<div id="userProfile" class="float-l">
-									<img class="userProfile-img float-l" src="">
-									<div>
-										<p>${reviewList.u_nickName}(${reviewList.u_type })</p>
-										<p id="starPoint">${reviewList.star}</p>
-										<p>${reviewList.r_date }</p>
-									</div>
-								</div>
-							
-								<div id="modify-deleft-btn" class=" float-r">
-									<p>
-										<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi?r_no=${reviewList.r_no}">수정</a></span> <span
-											class="delete">삭제</span>
-									</p>
-								</div>
-								<div id="reviewImg-text" class="float-l">
-									<div id="review-img-area">
-										<img class="review-img" src="${ pageContext.request.contextPath }/veganReview/${reviewList.saveName }"> 
-										
-									</div>
-									<p class="review-text">${reviewList.r_contents}</p>
+					<div class="review-wrap" id="d-${reviewList.r_no }">
+					
+						<div class="review clearfix">
+							<div id="userProfile" class="float-l">
+								<img class="userProfile-img float-l" src="">
+								<div>
+									<p>${reviewList.u_nickName}(${reviewList.u_type })</p>
+									<p id="starPoint">${reviewList.star}</p>
+									<p>${reviewList.r_date }</p>
 								</div>
 							</div>
-							<p class="text-right singo">
-								<a href="">신고하기</a>
-							</p>
+						<c:if test="${authUser.u_no eq reviewList.u_no }">
+							<div id="modify-deleft-btn" class=" float-r">
+								<p>
+									<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi?r_no=${reviewList.r_no}">수정</a></span> 
+									<span class="delete" data-no="${reviewList.r_no }">삭제</span>
+								</p>
+							</div>
+							</c:if>
+							<div id="reviewImg-text" class="float-l">
+								<div id="review-img-area">
+									<img class="review-img" src="${ pageContext.request.contextPath }/veganReview/${reviewList.saveName }"> 
+									
+								</div>
+								<p class="review-text">${reviewList.r_contents}</p>
+							</div>
 						</div>
+						
+					</div>
 						<!-- //review-wrap -->
 						</c:forEach>
 						
@@ -328,7 +328,7 @@
 						<div id="content_main">
 
 							<div id="modify-content">
-								<form action="${pageContext.request.contextPath }/reviewWrite" method="post" enctype="multipart/form-data"> 
+								 <form action="${pageContext.request.contextPath }/reviewWrite" method="post" enctype="multipart/form-data">  
 									<textarea id="writeModal" name="r_contents" ></textarea>
 									<input id="file" type="file" name="file" value="">
 									<p  class="modifyPage-starPoint text-center" >★★★★★</p>
@@ -336,9 +336,9 @@
 										<button id= "ajaxButton" class="btn" type="submit">저장</button>
 										<button class="btn">취소</button>
 									</div>
-									<input type="text" name="u_no" value="${authUser.u_no}">
-									<input type="text" name="s_no" value="${ownerVo.s_no}">
-								 </form> 
+									<input id="u_no"type="text" name="u_no" value="${authUser.u_no}">
+									<input id="s_no"type="text" name="s_no" value="${ownerVo.s_no}">
+							 	</form>
 						</div>
 						<!-- //컨텐츠 -->
 					</div>
@@ -378,9 +378,29 @@
 </body>
 
 <script type="text/javascript">
+
+//화면 로딩되기직전
+$(document).ready(function(){
+	console.log("화면 로딩 직전");
+	
+	//ajax 요청
+	
+	
+});
+
+
+
+
+<!-- ajax 연습 -->
+
+//로딩이 끝난 후 
+
+
+
+
 $(function(){
 	<!-- 메뉴더보기 모달 -->
-	$("#menuList").on("click", function() {
+	$("#menuList").on("click", function(){
 		console.log("모달창 클릭")
 
 		$("#menuModal").modal();
@@ -390,20 +410,117 @@ $(function(){
 	<!-- 리뷰남기기 모달-->
 	//리뷰등록
 	$("#reviewBtn").on("click", function() {
+		
 		console.log("모달창 클릭")
 
 		$("#reviewModal").modal();
 		
 	});
+	
+	
+	<!--리뷰남기기 데이터값 읽어오기-->
+	$("#ajaxButton").on("click", function(){
+		event.preventDefault();//폼전송기능 끔
+		console.log("클릭");
+	/* 	 var reviewVo={
+				
+		 	u_no: $("[name='u_no']").val(),
+			s_no: $("[name='s_no']").val(),
+			file: $("#file").val(),
+			r_contents: $("#writeModal").val()
+		};  */
+		//데이터 ajax방식으로 서버에서 전송
+		
+		
+		var u_no = $("[name='u_no']").val();
+		var s_no = $("[name='s_no']").val();
+		var r_contents = $("#writeModal").val();
+		var file =$("#file")[0].files[0];
+		
+		console.log(u_no);
+		console.log(s_no);
+		console.log(r_contents);
+		console.log(file);
+		
+		var formData = new FormData();
+		formData.append('u_no', u_no);
+		formData.append('s_no',s_no);
+		formData.append('r_contents',r_contents);
+		formData.append('file',file);
+		
+		console.log(formData.get('u_no'));
+		console.log(formData.get('s_no'));
+		console.log(formData.get('r_contents'));
+		console.log(formData.get('file'));
+		
+		$.ajax({
+				
+				//url : "${pageContext.request.contextPath }/api/guestbook/write?name="+userName+"&password="+password+ "&
+				url : "${pageContext.request.contextPath }/api/review/write",
+				type : "POST",
+				processData : false,
+				contentType : false,
+				data: formData,
+				
+				dataType : "json",
+				//enctype: 'multipart/form-data',
+				success : function(resultVo){
+					/*성공시 처리해야될 코드 작성*/
+					
+					console.log(resultVo);
+					render(resultVo,"up");
+					
+					$('#reviewModal').modal('hide');
+		            //화면에 그리기
+		            
+		           
+					
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+
+	});
+	
+	
+	
+	
 
 	<!-- 리뷰삭제 -->
 	//이미지 등록
-	$(".delete").on("click", function() {
+	$("#reviewArea").on("click", ".delete", function() {
 		console.log("리뷰삭제 클릭")
 
 		if (confirm("삭제하시겠습니까?") == true){    //확인
 
-		    //ajax
+			var r_no = $(this).data("no");
+			console.log(r_no)
+			
+			//데이터 ajax방식으로 서버에서 전송
+			$.ajax({
+					
+					url : "${pageContext.request.contextPath }/api/review/delete",
+					type : "get",
+					//contentType : "application/json",
+					data : {"r_no":r_no},
+
+					dataType : "json",
+					success : function(counter){
+						/*성공시 처리해야될 코드 작성*/
+						console.log(counter)
+						if(counter == 1) {
+							$("#d-"+r_no).remove();
+						}
+
+					
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				});
+			
+			
 
 		}else{   //취소
 
@@ -422,40 +539,71 @@ $(function(){
 
 	});
 	
-	
-	
-	$("#ajaxButton").on("click", function(){
-		//데이터 ajax방식으로 서버에서 전송
-		$.ajax({
-				
-				//url : "${pageContext.request.contextPath }/api/guestbook/write?name="+userName+"&password="+password+ "&
-				url : "${pageContext.request.contextPath }/reviewWrite",
-				type : "get",
-				//contentType : "application/json",
-				data : reviewVo,
 
-				dataType : "json",
-				success : function(guestbookVo){
-					/*성공시 처리해야될 코드 작성*/
-					console.log(reviewVo);
-					render(guestbookVo,"up");
-					
-		            //입력폼 초기화
-		           
-					
-				},
-				error : function(XHR, status, error) {
-					console.error(status + " : " + error);
-				}
-			});
-		
-	});
-	
 	
 	
 });
+
+//리뷰 1개씩 랜더링 
+function render(resultVo, type){
+	var Str = "";
+	
+	Str +=  '<div class="review-wrap" id="d-'+resultVo.r_no+'">';
+	Str += '<div class="review clearfix">';
+	Str += '<div id="userProfile" class="float-l">';
+	Str += '<img class="userProfile-img float-l" src="">';
+	Str += '<div>';
+	Str += '<p>'+resultVo.u_nickName+''+(resultVo.u_type)+'</p>';
+	Str += '<p id="starPoint">'+resultVo.star+'</p>';
+	Str += '<p>'+resultVo.r_date+'</p>';
+	Str += '</div>';
+	Str += '</div>';
+	Str += '<div id="modify-deleft-btn" class=" float-r">';
+	Str += '<p>'
+	Str += '<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi?r_no='+resultVo.r_no+'">수정</a></span>';
+	Str += '<span class="delete" data-no="'+resultVo.r_no+'">삭제</span>';
+	Str += '</p>';
+	Str += '</div>';
+	Str += '<div id="reviewImg-text" class="float-l">';
+	Str += '<div id="review-img-area">';
+	Str += '<img class="review-img" src="${ pageContext.request.contextPath }/veganReview/'+resultVo.saveName+'">';
+	Str += '</div>';
+	Str += '<p class="review-text">'+resultVo.r_contents+'</p>';
+	Str += '</div>';
+	Str += '</div>';
+	Str += '</div>';
+
+	
+	
+	if(type === 'down'){
+		$("#reviewArea").append(Str);
+	}else if(type === 'up'){
+		$("#reviewArea").prepend(Str);
+	}else{
+		console.log("방향을 지정해 주세요");
+	}
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- //document onload -->
 </script>
 
 </html>
+
+
 
