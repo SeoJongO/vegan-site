@@ -96,11 +96,19 @@
 	</select>
 
 	<!-- 리뷰쓰기 -->
-	<insert id="insertReview" parameterType="com.javaex.vo.ReviewVo">
+	<insert id="insertReviewKey" parameterType="com.javaex.vo.ReviewVo">
+	<selectKey keyProperty="r_no" resultType="int" order="BEFORE">
+	<![CDATA[
+	
+	select r_no.nextval from dual
+	
+	]]>
+	</selectKey>
+
 
 <![CDATA[
 	INSERT into review
-	VALUES (r_no.nextval,#{s_no},#{u_no},#{r_contents}, sysdate ,'5점',#{saveName})
+	VALUES (#{r_no},#{s_no},#{u_no},#{r_contents}, sysdate ,'5점',#{saveName})
 ]]>
 	</insert>
 
@@ -124,7 +132,7 @@ select r.r_no,
 	   from review r, users u
 	   where r.u_no = u.u_no 
 	   and r.s_no=#{s_no}
-
+		order by r_no asc
 ]]>
 
 
@@ -132,26 +140,26 @@ select r.r_no,
 
 	</select>
 
-
+	<!-- 리뷰쓰기 -->
 	<select id="reviewModi" parameterType="int" resultType="com.javaex.vo.ReviewVo">
 
-<![CDATA[
-
-	  select r_no,
-              s_no,
-              r_no,
-              r_contents,
-              r_date,
-              star,
-              savename
-                
-       from review
-       where r_no=#{reviewNo}
-
-
-
-
-]]>
+			<![CDATA[
+			
+				  select r_no,
+			              s_no,
+			              r_no,
+			              r_contents,
+			              r_date,
+			              star,
+			              savename
+			                
+			       from review
+			       where r_no=#{reviewNo}
+			
+			
+			
+			
+			]]>
 
 
 
@@ -159,14 +167,57 @@ select r.r_no,
 
 
 	</select>
+	<!-- 리뷰수정 -->
+	<update id="updateModi" parameterType="com.javaex.vo.ReviewVo">
+	
+	<![CDATA[
+	update review
+	set r_contents = #{r_contents},
+		saveName = #{saveName}
+		where r_no=#{r_no}
+	
+	
+	]]>
+	
+	</update>
+	
+	
+	<!-- 에이작스 리뷰 1개 가지고오기 -->
+	
+	<select id="reviewOne" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+	
+		<![CDATA[
+			select r.r_no,
+			       r.s_no,
+			       r.u_no,
+			       r.r_contents,
+				   r.r_date,
+				   r.star,
+				   r.saveName,
+			       u.u_type,
+				   u.u_nickname
+			from review r, users u
+			where r.u_no = u.u_no
+			and r.r_no = #{r_no}
+			order by r_no asc
+		
+		
+		]]>
 
-
-
-
-
-
-
-
+	
+	</select>
+	
+	<!-- 리뷰삭제 -->
+	
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+		delete review
+		where r_no = #{r_no}
+		
+		
+		]]>
+	
+	</delete>
 
 
 </mapper>

@@ -11,7 +11,7 @@ import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
 
 @Repository
-public class restaurantDao {
+public class RestaurantDao {
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -42,12 +42,12 @@ public class restaurantDao {
 		
 	}
 	//리뷰쓰기
-	public String insertReview(ReviewVo reviewVo) {
+	public int insertReview(ReviewVo reviewVo) {
 		System.out.println("리뷰 다오:"+reviewVo);
 		
-		sqlSession.insert("restaurant.insertReview",reviewVo);
-		
-		return null;
+		int r_no = sqlSession.insert("restaurant.insertReviewKey",reviewVo);
+		System.out.println(r_no);
+		return r_no;
 		
 		
 	}
@@ -74,6 +74,41 @@ public class restaurantDao {
 		
 		
 	}
+	
+	
+	
+	//ajax 리뷰 하나 가지고오기
+	public ReviewVo getReviewOne(int r_no) {
+		System.out.println("에이작스 다오"+r_no);
+		ReviewVo reviewVo = sqlSession.selectOne("restaurant.reviewOne",r_no);
+		System.out.println("리턴된"+reviewVo);
+		
+		
+		return reviewVo;
+		
+	}
+
+	//리뷰수정
+	public String updateModi(ReviewVo reviewVo) {
+		System.out.println("서비스다오"+reviewVo);
+		sqlSession.update("restaurant.updateModi",reviewVo);
+		
+		
+		return null;
+		// TODO Auto-generated method stub
+		
+	}
+
+	//에이작스 리뷰삭제
+	public int reviewDelete(int r_no) {
+		System.out.println("다오"+r_no);
+		
+		int counter = sqlSession.delete("restaurant.delete",r_no);
+		return counter;
+		
+	}
+
+	
 	
 	
 	

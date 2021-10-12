@@ -1,6 +1,5 @@
 package com.javaex.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.google.code.geocoder.Geocoder;
-import com.google.code.geocoder.model.GeocodeResponse;
-import com.google.code.geocoder.model.GeocoderRequest;
-import com.google.code.geocoder.model.GeocoderResult;
-import com.google.code.geocoder.model.GeocoderStatus;
-import com.google.code.geocoder.model.LatLng;
-import com.javaex.service.restaurantService;
+import com.javaex.service.RestaurantService;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
 
@@ -25,11 +18,10 @@ import com.javaex.vo.ReviewVo;
 public class RestaurantController {
 
 	@Autowired
-	private restaurantService restaurantService;
-
-	@RequestMapping(value = "/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
-	public String restaurantSearch(Model model,
-			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+	private RestaurantService restaurantService;
+	
+	@RequestMapping(value="/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
+	public String restaurantSearch(Model model, @RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
 		System.out.println("[RestaurantController.restaurantSearch]");
 
 		List<OwnerVo> storeList = restaurantService.getStoreList(keyword);
@@ -63,8 +55,11 @@ public class RestaurantController {
 
 		restaurantService.insertReview(reviewVo);
 
-		return "redirect:/restaurantPage";
-
+		int s_no = reviewVo.getS_no();
+		System.out.println(s_no);
+		
+		return "redirect:/restaurantPage?s_no="+s_no;
+		
 	}
 
 	// 리뷰수정폼
@@ -83,4 +78,18 @@ public class RestaurantController {
 		return "store/reviewModi";
 	}
 	
+	//리뷰수정
+	@RequestMapping(value="/reviewModify", method = {RequestMethod.GET,RequestMethod.POST})
+	public String reviewModify(@ModelAttribute ReviewVo reviewVo) {
+		System.out.println("리뷰수정=");
+		System.out.println(reviewVo);
+		
+		restaurantService.updateModi(reviewVo);
+		int s_no = reviewVo.getS_no();
+		
+		return "redirect:/restaurantPage?s_no="+s_no;
+		
+	}
+	
 }
+

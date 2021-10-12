@@ -10,16 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.javaex.dao.restaurantDao;
+import com.javaex.dao.RestaurantDao;
 import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
 
 @Service
-public class restaurantService {
+public class RestaurantService {
 
 	@Autowired
-	private restaurantDao restaurantDao;
+	private RestaurantDao restaurantDao;
 	// 상세페이지 한개 메뉴리스트 출력
 
 	public List<OwnerVo> getStoreList(String keyword) {
@@ -52,13 +52,18 @@ public class restaurantService {
 	}
 
 	// 리뷰쓰기
-	public String insertReview(ReviewVo reviewVo) {
+	public ReviewVo insertReview(ReviewVo reviewVo) {
 		System.out.println("리뷰쓰기서비스" + reviewVo);
+		
+		MultipartFile file = reviewVo.getFile();
 
+		//파일이 있을때
+		if(file.getSize() > 0) {
+		
 		// 리뷰이미지 저장위치
 		String saveDir = "C:\\veganReview";
 
-		MultipartFile file = reviewVo.getFile();
+		
 		System.out.println("파일" + file);
 
 		System.out.println(file.getSize());
@@ -102,13 +107,31 @@ public class restaurantService {
 
 		System.out.println(reviewVo);
 
-		restaurantDao.insertReview(reviewVo);
-
-		return null;
+		int r_no = restaurantDao.insertReview(reviewVo);
+		System.out.println("리뷰번호"+r_no);
+		}else {
+			int r_no =restaurantDao.insertReview(reviewVo);
+			System.out.println("리뷰번호"+r_no);
+		}
+		
+		System.out.println("방금저장한 글번호"+reviewVo.getR_no());
+		
+		int r_no = reviewVo.getR_no();
+		System.out.println("최근글번호"+r_no);
+		
+		ReviewVo reivewVo = restaurantDao.getReviewOne(r_no);
+		System.out.println("Reveiw Service"+reivewVo);
+		return reivewVo;
 
 	}
+	
+	
+	
+	
+	
+	
 
-	// 리뷰수정
+	// 리뷰수정폼
 	public ReviewVo reviewModi(int reviewNo) {
 		System.out.println("리뷰서비스" + reviewNo);
 
@@ -117,5 +140,78 @@ public class restaurantService {
 		return reviewVo;
 
 	}
+
+	//리뷰수정
+	public String updateModi(ReviewVo reviewVo) {
+		System.out.println(reviewVo);
+		MultipartFile file = reviewVo.getFile();
+		System.out.println("파일="+file);
+		
+		// 리뷰이미지 저장위치
+				String saveDir = "C:\\veganReview";
+
+				
+				System.out.println("파일" + file);
+
+				System.out.println(file.getSize());
+
+				// 파일 서버하드 저장 // 파일정보를 db에 저장
+
+				// 원래파일이름
+				String orgName = file.getOriginalFilename();
+				System.out.println("파일원래이름:" + orgName);
+
+				// 확정자 = .jpg
+				String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+				System.out.println("exName:" + exName);
+
+				// 지정파일이름
+				String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+				System.out.println("saveName:" + saveName);
+
+				// 파일패스
+				String filePath = saveDir + "\\" + saveName;
+				System.out.println("filePaht:" + filePath);
+
+				// 파일사이즈
+				long fileSize = file.getSize();
+				System.out.println("fileSize:" + fileSize);
+
+				// 파일을 서버의 하드 디스크에 저장
+				try {
+					byte[] fileData = file.getBytes();
+					OutputStream out = new FileOutputStream(filePath);
+					BufferedOutputStream bout = new BufferedOutputStream(out);
+
+					bout.write(fileData);
+					bout.close();
+
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+				reviewVo.setSaveName(saveName);
+
+				System.out.println(reviewVo);
+				restaurantDao.updateModi(reviewVo);
+			
+		
+		return null;
+		
+		
+	}
+
+	//에이작스 리뷰삭제
+	public int reviewDelete(int r_no) {
+		System.out.println("서비스"+r_no);
+		
+		int counter = restaurantDao.reviewDelete(r_no);
+		
+		return counter;
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
