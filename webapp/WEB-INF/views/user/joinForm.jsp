@@ -77,8 +77,8 @@
 									</select></td>
 								</tr>
 								<tr>
-									<td class="bold">핸드폰</td>
-									<td><input id="phone" class="nomal-input-box" name="u_phone" value="" type="text" placeholder="핸드폰 번호를 입력해주세요"></td>
+									<td class="bold">전화번호</td>
+									<td><input id="phone" class="nomal-input-box" name="u_phone" value="" type="text" placeholder="전화번호를 입력해주세요"></td>
 								</tr>
 								<tr>
 									<td class="bold">채식타입</td>
