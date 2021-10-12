@@ -62,15 +62,15 @@
 
 							</p>
 							<p class="restaurantInfo-text">
-								<span><a href=""><img src="" alt="트위터"></a>${ownerVo.s_twitter }</span> <span><a href=""><img src="" alt="인스타그램"></a>${ownerVo.s_instagram }</span>
-								<span><a href=""><img src="" alt="유튜브"></a>${ownerVo.s_youtube }</span>
+								<span><a href="${ownerVo.s_twitter }"><img src="" alt="트위터"></a></span> <span><a href="${ownerVo.s_instagram }"><img src="" alt="인스타그램"></a></span>
+								<span><a href="${ownerVo.s_youtube }"><img src="" alt="유튜브"></a></span>
 							</p>
 							<p>
 								<span class="favoritesImg"><img src="" alt="찜"></span> <span class="favorites">+555</span>
 							</p>
 						</div>
 						<div class="restaurantInfo float-l clearfix text-left">
-						<c:forEach items="${ownerVo.menuList }" var="menuList">
+						<c:forEach items="${ownerVo.menuList }" var="menuList" varStatus="status" begin="0" end="2">
 							<div class="menu">
 								<img class="foodImg float-l clearfix" src="${menuList.m_imge}">
 								
@@ -221,91 +221,21 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title text-center" id="myModalLabel">샐러디 역삼점</h4>
+						<h4 class="modal-title text-center" id="myModalLabel">${ownerVo.s_name}</h4>
 					</div>
 					<div class="modal-body clearfix">
+					<c:forEach items="${ownerVo.menuList }" var="menuList">
 						<div class="menuInfo float-l">
 							<img class="menuImg" src="menuList" alt="">
 							<div class="menuText">
-								<p>연어샐러드</p>
-								<p>8000원</p>
-								<p>페스코</p>
+								<p>${menuList.m_name }</p>
+								<p>${menuList.m_price }</p>
+								<p>${menuList.m_type }</p>
 								<br>
-								<p>연어로이루어진 샐러드인데 맛있음</p>
+								<p>${menuList.m_intro }</p>
 							</div>
 						</div>
-
-						<div class="menuInfo float-l">
-
-							<img class="menuImg" src="menuList" alt="">
-							<div class="menuText">
-								<p>연어샐러드</p>
-								<p>8000원</p>
-								<p>페스코</p>
-								<br>
-								<p>연어로이루어진 샐러드인데 맛있음</p>
-							</div>
-						</div>
-
-						<div class="menuInfo float-l">
-
-							<img class="menuImg" src="menuList" alt="">
-							<div class="menuText">
-								<p>연어샐러드</p>
-								<p>8000원</p>
-								<p>페스코</p>
-								<br>
-								<p>연어로이루어진 샐러드인데 맛있음</p>
-							</div>
-						</div>
-
-						<div class="menuInfo float-l">
-
-							<img class="menuImg" src="menuList" alt="">
-							<div class="menuText">
-								<p>연어샐러드</p>
-								<p>8000원</p>
-								<p>페스코</p>
-								<br>
-								<p>연어로이루어진 샐러드인데 맛있음</p>
-							</div>
-						</div>
-
-						<div class="menuInfo float-l">
-
-							<img class="menuImg" src="menuList" alt="">
-							<div class="menuText">
-								<p>연어샐러드</p>
-								<p>8000원</p>
-								<p>페스코</p>
-								<br>
-								<p>연어로이루어진 샐러드인데 맛있음</p>
-							</div>
-						</div>
-
-						<div class="menuInfo float-l">
-
-							<img class="menuImg" src="menuList" alt="">
-							<div class="menuText">
-								<p>연어샐러드</p>
-								<p>8000원</p>
-								<p>페스코</p>
-								<br>
-								<p>연어로이루어진 샐러드인데 맛있음</p>
-							</div>
-						</div>
-
-						<div class="menuInfo float-l">
-
-							<img class="menuImg" src="menuList" alt="">
-							<div class="menuText">
-								<p>연어샐러드</p>
-								<p>8000원</p>
-								<p>페스코</p>
-								<br>
-								<p>연어로이루어진 샐러드인데 맛있음</p>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
