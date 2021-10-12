@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVo;
@@ -34,6 +35,16 @@ public class UserController {
 		return "user/joinForm";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/emailCheck", method = { RequestMethod.GET, RequestMethod.POST })
+	public boolean emailCheck(@RequestParam("u_email") String u_email) {
+		System.out.println("[UserController.emailCheck()]");
+
+		boolean state = userService.emailCheck(u_email);
+
+		return state;
+	}	
+	
 	@RequestMapping(value="/join", method = { RequestMethod.GET, RequestMethod.POST })
 	public String join(@ModelAttribute UserVo userVo) {
 		System.out.println("[UserController.join()]");
@@ -42,7 +53,7 @@ public class UserController {
 		
 		if(count > 0) {
 			System.out.println("회원가입 성공");
-			return "return:/user/joinOK";
+			return "redirect:/user/joinOK";
 		} else {
 			System.out.println("회원가입 실패");
 		}

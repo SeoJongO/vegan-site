@@ -140,6 +140,10 @@ table tr .btn { margin-left: 15px;}
 	height: 40px;
 }
 
+#joinForm #BtnEmailChk{
+	margin-bottom: 10.5px;	
+}
+
 #joinForm table{
 	display: inline-block;
 }

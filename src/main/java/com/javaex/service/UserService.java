@@ -18,6 +18,18 @@ public class UserService {
 		return userDao.joinUser(userVo);
 	}
 	
+	public boolean emailCheck(String u_email) {
+		System.out.println("UserService.emailCheck()");
+		
+		int result = userDao.emailCheck(u_email);
+		
+		if(result == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public UserVo getUser(UserVo userVo) {
 		System.out.println("UserService.getUser()");
 		

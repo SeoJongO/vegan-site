@@ -18,6 +18,12 @@ public class UserDao {
 		return sqlSession.insert("user.joinUser", userVo);
 	}
 	
+	public int emailCheck(String u_email) {
+		System.out.println("UserDao.emailChk");
+		
+		return sqlSession.selectOne("user.emailChk", u_email);
+	}
+	
 	public UserVo getUser(UserVo userVo) {
 		System.out.println("UserDao.getUser()");
 		

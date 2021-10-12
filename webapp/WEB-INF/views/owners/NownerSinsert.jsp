@@ -46,9 +46,7 @@
 					<!-- 컨텐츠 -->
 					<div id="content-wrap">
 						<div id="wrap2">
-							<div class="head2">
-
-							</div>
+							<div class="head2"></div>
 							<form action="${pageContext.request.contextPath}/owners/storeInsert" method="post" enctype="multipart/form-data">
 								<input type="hidden" name="u_no" value="${authUser.u_no}">
 								<table class="main-table">
@@ -68,9 +66,7 @@
 										<td class="bnone"><label for="s-addres"><b>주소</b></label></td>
 										<td class="bnone"><input type="text" id="shopAddres" name="s_address" value="">
 										<span class="button-area">
-												<button type="submit">
-													<b>주소찾기</b>
-												</button>
+												<button type="button" onclick="findAddr()"><b>주소찾기</b></button>
 										</span></td>
 									</tr>
 									<tr>
@@ -147,22 +143,11 @@
 									</tr>
 									<tr>
 										<td><b>휴무일</b></td>
-										<td>
-											<label for="chk-sun">일</label> <input class="chkh" type="checkbox" id="chk-son" name="s_Hsun" value="일"> &nbsp;&nbsp;&nbsp;
-											<label for="chk-mon">월</label> <input class="chkh" type="checkbox" id="chk-mon" name="s_Hmon" value="월"> &nbsp;&nbsp;&nbsp;
-											<label for="chk-tue">화</label> <input class="chkh" type="checkbox" id="chk-tue" name="s_Htue" value="화"> &nbsp;&nbsp;&nbsp;
-											<label for="chk-wen">수</label> <input class="chkh" type="checkbox" id="chk-wen" name="s_Hwen" value="수"> &nbsp;&nbsp;&nbsp;
-											<label for="chk-thr">목</label> <input class="chkh" type="checkbox" id="chk-thr" name="s_Hthu" value="목"> &nbsp;&nbsp;&nbsp;
-											<label for="chk-fri">금</label> <input class="chkh" type="checkbox" id="chk-fri" name="s_Hfri" value="금"> &nbsp;&nbsp;&nbsp;
-											<label for="chk-sat">토</label> <input class="chkh" type="checkbox" id="chk-sat" name="s_Hsat" value="토">
-										</td>
+										<td><label for="chk-sun">일</label> <input class="chkh" type="checkbox" id="chk-son" name="s_Hsun" value="일"> &nbsp;&nbsp;&nbsp; <label for="chk-mon">월</label> <input class="chkh" type="checkbox" id="chk-mon" name="s_Hmon" value="월"> &nbsp;&nbsp;&nbsp; <label for="chk-tue">화</label> <input class="chkh" type="checkbox" id="chk-tue" name="s_Htue" value="화"> &nbsp;&nbsp;&nbsp; <label for="chk-wen">수</label> <input class="chkh" type="checkbox" id="chk-wen" name="s_Hwen" value="수"> &nbsp;&nbsp;&nbsp; <label for="chk-thr">목</label> <input class="chkh" type="checkbox" id="chk-thr" name="s_Hthu" value="목"> &nbsp;&nbsp;&nbsp; <label for="chk-fri">금</label> <input class="chkh" type="checkbox" id="chk-fri" name="s_Hfri" value="금"> &nbsp;&nbsp;&nbsp; <label for="chk-sat">토</label> <input class="chkh" type="checkbox" id="chk-sat" name="s_Hsat" value="토"></td>
 									</tr>
 									<tr>
 										<td><b>주차가능 여부</b></td>
-										<td>
-											<label for="rdo-parking">주차 가능</label> <input class="chkh" type="radio" id="rdo-parking" name="s_parking" value="주차 가능"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<label for="rdo-noParking">주차 불가능</label> <input class="chkh" type="radio" id="rdo-noParking" name="s_parking" value="주차 불가능">
-										</td>
+										<td><label for="rdo-parking">주차 가능</label> <input class="chkh" type="radio" id="rdo-parking" name="s_parking" value="주차 가능"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="rdo-noParking">주차 불가능</label> <input class="chkh" type="radio" id="rdo-noParking" name="s_parking" value="주차 불가능"></td>
 									</tr>
 									<tr>
 										<td><b>가게 소개글</b></td>
@@ -170,19 +155,18 @@
 									</tr>
 									<tr>
 										<td class="bnone"><b>플랫폼 링크</b></td>
-										<td class="bnone"><img alt="유튜브" src="${ pageContext.request.contextPath }/assets/imges/유튜브아이콘.png"> <input type="text" id="youtube" name="s_youtube" value=""></td>
+										<td class="bnone"><img alt="유튜브" src="${ pageContext.request.contextPath }/assets/image/유튜브아이콘.png"> <input type="text" id="youtube" name="s_youtube" value=""></td>
 									</tr>
 									<tr>
 										<td class="bnone"></td>
-										<td class="bnone"><img alt="트위치" src="${ pageContext.request.contextPath }/assets/imges/트위터아이콘.png"> <input type="text" id="twich" name="s_twitter" value=""></td>
+										<td class="bnone"><img alt="트위치" src="${ pageContext.request.contextPath }/assets/image/트위터아이콘.png"> <input type="text" id="twich" name="s_twitter" value=""></td>
 									</tr>
 									<tr>
 										<td class="bnone"></td>
-										<td class="bnone"><img alt="인스타" src="${ pageContext.request.contextPath }/assets/imges/인스타아이콘.png"> <input type="text" id="twich" name="s_instagram" value=""></td>
+										<td class="bnone"><img alt="인스타" src="${ pageContext.request.contextPath }/assets/image/인스타아이콘.png"> <input type="text" id="twich" name="s_instagram" value=""></td>
 									</tr>
 								</table>
-								<input type="hidden" name="s_latitude" value="0">
-								<input type="hidden" name="s_longitude" value="0">
+								<input type="hidden" name="s_latitude" value="0"> <input type="hidden" name="s_longitude" value="0">
 								<div class="button-area button-center ">
 									<button>취소</button>
 									<span class="orange">
@@ -207,4 +191,17 @@
 		<!-- //footer -->
 	</div>
 </body>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+	function findAddr() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				var roadAddr = data.roadAddress; // 도로명 주소 변수
+				document.getElementById("shopAddres").value = roadAddr;
+			}
+		}).open();
+	}
+</script>
+
 </html>

@@ -56,5 +56,13 @@
 			where u_phone = #{u_phone}
        	]]>
 	</select>
+	
+	<select id="emailChk" parameterType="String" resultType="int">
+		<![CDATA[
+			select count(*)
+			from users
+			where u_email = #{u_email}
+		]]>
+	</select>
 
 </mapper>

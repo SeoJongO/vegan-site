@@ -1,5 +1,6 @@
 package com.javaex.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.code.geocoder.Geocoder;
+import com.google.code.geocoder.model.GeocodeResponse;
+import com.google.code.geocoder.model.GeocoderRequest;
+import com.google.code.geocoder.model.GeocoderResult;
+import com.google.code.geocoder.model.GeocoderStatus;
+import com.google.code.geocoder.model.LatLng;
 import com.javaex.service.restaurantService;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
@@ -19,70 +26,61 @@ public class RestaurantController {
 
 	@Autowired
 	private restaurantService restaurantService;
-	
-	@RequestMapping(value="/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
-	public String restaurantSearch(Model model, @RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
+
+	@RequestMapping(value = "/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
+	public String restaurantSearch(Model model,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		System.out.println("[RestaurantController.restaurantSearch]");
-		
+
 		List<OwnerVo> storeList = restaurantService.getStoreList(keyword);
-		
+
 		model.addAttribute("storeList", storeList);
-		
+
 		return "restaurantSearch/restaurantSearch";
 	}
-	
-	///가게 정보1개 가지고오기
-	@RequestMapping(value="/restaurantPage", method = { RequestMethod.GET, RequestMethod.POST })
+
+	/// 가게 정보1개 가지고오기
+	@RequestMapping(value = "/restaurantPage", method = { RequestMethod.GET, RequestMethod.POST })
 	public String restaurantPage(Model model, @RequestParam("s_no") int s_no) {
 		System.out.println("[RestaurantController.restaurantPage]");
-		
-		OwnerVo ownerVo=restaurantService.getOne(s_no);
-		System.out.println("컨트롤러"+ownerVo);
-		
+
+		OwnerVo ownerVo = restaurantService.getOne(s_no);
+		System.out.println("컨트롤러" + ownerVo);
+
 		model.addAttribute("ownerVo", ownerVo);
-		
+
 		List<ReviewVo> reviewList = ownerVo.getReviewList();
-		System.out.println("dddddddd"+reviewList);
-		model.addAttribute("reviewList",reviewList);
-		
+		System.out.println("dddddddd" + reviewList);
+		model.addAttribute("reviewList", reviewList);
+
 		return "store/restaurantPage";
 	}
-	
-	
-	//리뷰 모달로 쓰기
-	@RequestMapping(value="/reviewWrite", method = {RequestMethod.GET,RequestMethod.POST})
+
+	// 리뷰 모달로 쓰기
+	@RequestMapping(value = "/reviewWrite", method = { RequestMethod.GET, RequestMethod.POST })
 	public String reviewWrite(@ModelAttribute ReviewVo reviewVo) {
-		System.out.println("모달 이미지"+reviewVo);
-		
+		System.out.println("모달 이미지" + reviewVo);
+
 		restaurantService.insertReview(reviewVo);
-		
+
 		return "redirect:/restaurantPage";
-		
+
 	}
-	
-	
-	
-	
-	//리뷰수정폼
-	@RequestMapping(value="/reviewModi", method = { RequestMethod.GET, RequestMethod.POST })
-	public String reviewModi(@RequestParam("r_no")int reviewNo ,Model model)  {
-		
+
+	// 리뷰수정폼
+	@RequestMapping(value = "/reviewModi", method = { RequestMethod.GET, RequestMethod.POST })
+	public String reviewModi(@RequestParam("r_no") int reviewNo, Model model) {
+
 		System.out.println("[StoreController.reviewModi]");
 		System.out.println(reviewNo);
-		
-		
-		
+
 		ReviewVo reviewModi = restaurantService.reviewModi(reviewNo);
-		
-		System.out.println("리턴된 컨트롤러값="+reviewModi);
-		
-		model.addAttribute("reviewModi",reviewModi);
-		
+
+		System.out.println("리턴된 컨트롤러값=" + reviewModi);
+
+		model.addAttribute("reviewModi", reviewModi);
+
 		return "store/reviewModi";
 	}
-	
-	
-	
-	
 	
 }
