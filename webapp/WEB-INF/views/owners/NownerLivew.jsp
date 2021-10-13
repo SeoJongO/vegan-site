@@ -48,8 +48,12 @@
 
 						<ul class="clearfix text-center">
 							<li><a href="">홈</a></li>
-							<li><a href="${pageContext.request.contextPath}/owners/NownerPage">가게관리</a></li>
-							<li class="last"><a href="${pageContext.request.contextPath}/owners/NownerLivew">리뷰</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/owners/NownerPage"
+							>가게관리</a></li>
+							<li class="last"><a
+								href="${pageContext.request.contextPath}/owners/NownerLivew"
+							>리뷰</a></li>
 						</ul>
 					</div>
 					<!-- //페이지타이틀 -->
@@ -59,20 +63,26 @@
 
 						<div id="wrap2">
 
+							<div class="head2">
+								<form
+									action="${pageContext.request.contextPath}/owners/NownerSlivew"
+									method="get"
+								>
+									<div class="s-listpo">
+										<select id="shop" name="shop">
+											<c:forEach items="${storeList}" var="storeVo">
+												<option value="${storeVo.s_no}">${storeVo.s_name}</option>
+											</c:forEach>
+										</select>
+										<button type="submit" class="orange">검색</button>
+									</div>
 
-								<div class="s-listpo">
-									<select id="shop" name="shop">
-										<option value="shop1">샐러디 낙성대점</option>
-										<option value="shop2">샐러디 신림점</option>
-										<option value="shop3">샐러디 봉천점</option>
-										<option value="shop-add">+매장추가+</option>
-									</select>
-								</div>
-							
-							<div class="s-listpo">
-								<h3>샐러디 낙성대점</h3>
+								</form>
 							</div>
 
+							<div class="s-listpo">
+								<h3>${storeVo.s_name }</h3>
+							</div>
 							<div class="table-c">
 								<div>
 									<table class="type02">
@@ -83,12 +93,16 @@
 
 										</tr>
 
+
 										<tr>
-											<td>★★★★★</td>
-											<td>150개</td>
-											<td>♥+300</td>
+											<td></td>
+											<td>${countList.count}개</td>
+											<td></td>
+
 
 										</tr>
+
+
 
 									</table>
 
@@ -111,7 +125,7 @@
 										<tr>
 											<td>
 												<input type='date' name='userBirthday' />
-												<span> ~ </span>	
+												<span> ~ </span>
 												<input type='date' name='userBirthday' />
 											</td>
 										</tr>
@@ -141,49 +155,18 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>2021.08.29</td>
-												<td>★★★★★</td>
-												<td>청하</td>
-												<td>
-													<img alt="이미지"
-														src="${ pageContext.request.contextPath }/assets/imges/리뷰디폴트.png"
-													>
-												</td>
-												<td>개노맛</td>
-												<td>
-													<a href="main_test.css"><img alt="이미지"
-														src="${ pageContext.request.contextPath }/assets/imges/작성아이콘.png"
-													></a>
-												</td>
-											</tr>
+											<c:forEach items="${reviewList}" var="rVo">
+												<tr>
+													<td>${rVo.r_date}</td>
+													<td>${rVo.star}</td>
+													<td>${rVo.u_nickName}</td>
+													<td>${rVo.saveName}</td>
+													<td>${rVo.r_contents}</td>
+													<td></td>
+													
+												</tr>
 
-											<tr>
-												<td>2021.08.30</td>
-												<td>★★★★★</td>
-												<td>아이유</td>
-												<td></td>
-												<td>마시써용</td>
-												<td>
-													<a href="main_test.css">[수정]</a>
-												</td>
-											</tr>
-
-											<tr>
-												<td>2021.08.31</td>
-												<td>★★★★★</td>
-												<td>비비</td>
-												<td>
-													<img alt="이미지"
-														src="${ pageContext.request.contextPath }/assets/imges/리뷰디폴트.png"
-													>
-												</td>
-												<td>다이어트중최고의선택</td>
-												<td>
-													<a href="main_test.css">[수정]</a>
-												</td>
-											</tr>
-
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>
@@ -219,7 +202,5 @@
 
 
 	</div>
-
-
 </body>
 </html>

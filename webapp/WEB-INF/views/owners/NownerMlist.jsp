@@ -63,16 +63,20 @@
 						<div id="wrap2">
 
 							<div class="head2">
-								<form action="${pageContext.request.contextPath}/owners/NownerSmlist" method="get" >
+								<form
+									action="${pageContext.request.contextPath}/owners/NownerSmlist"
+									method="get"
+								>
 									<div class="s-listpo">
 										<select id="shop" name="shop">
 											<c:forEach items="${storeList}" var="storeVo">
 												<option value="${storeVo.s_no}">${storeVo.s_name}</option>
 											</c:forEach>
 										</select>
+										<button type="submit">검색</button>
 									</div>
-									<button type="submit">검색</button>
-							    </form>
+
+								</form>
 							</div>
 							<div class="s-listpo">
 								<h3>${storeVo.s_name }</h3>
@@ -114,7 +118,9 @@
 							<div class="button-area button-center2">
 
 								<span class="orange">
-									<button onclick="location.href='${pageContext.request.contextPath}/owners/NownerMinsert?s_no=${storeVo.s_no}'">매뉴 등록</button>
+									<button
+										onclick="location.href='${pageContext.request.contextPath}/owners/NownerMinsert?s_no=${storeVo.s_no}'"
+									>매뉴 등록</button>
 								</span>
 
 							</div>

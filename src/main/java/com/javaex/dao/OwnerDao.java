@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
+import com.javaex.vo.ReviewVo;
 
 @Repository
 public class OwnerDao {
@@ -77,6 +78,20 @@ public class OwnerDao {
 		System.out.println("OwnerDao.menuDelete()");
 
 		return sqlSession.delete("owner.menuDelete", m_no);
+	}
+	
+	public List<ReviewVo> reviewList(int s_no) {
+		System.out.println("OwnerDao.reviewList()");
+
+		return sqlSession.selectList("owner.reviewList", s_no);
+	}
+	
+	public ReviewVo count(int s_no) {
+		System.out.println("OwnerDao.count()");
+
+		return sqlSession.selectOne("owner.countList", s_no);
+		
+		
 	}
 
 }

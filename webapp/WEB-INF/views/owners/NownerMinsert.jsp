@@ -20,6 +20,12 @@
 	href="${ pageContext.request.contextPath }/assets/css/ownerMain.css"
 	rel="stylesheet" type="text/css"
 >
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"
+></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.js"
+></script>
 
 
 </head>
@@ -95,15 +101,16 @@
 										</td>
 										<td class="bnone">
 											<select id="menuType" name="m_type">
-												<option value="페스코">페스코</option>
-												<option value="락토-오보">락토-오보</option>
-												<option value="락토">락토</option>
-												<option value="오보">오보</option>
-												<option value="비건">비건</option>												
+												<option value="" selected disabled>선택</option>
+												<option value="vegan">비건</option>
+												<option value="lacto">락토</option>
+												<option value="ovo">오보</option>
+												<option value="lacto-ovo">락토-오보</option>
+												<option value="pesco">페스코</option>
 											</select>
 
 											<span class="button-area orange">
-												<button type="button" id="vegan-select">잘모르겠어요</button>
+												<button type="button" id="vegan-select" onclick="BtnTest()">잘모르겠어요</button>
 											</span>
 										</td>
 									</tr>
@@ -170,5 +177,369 @@
 		</div>
 		<!-- //footer -->
 	</div>
+	<!-- 설문 시작 -->
+	<div class="modal fade" id="Start">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>메뉴의 채식 타입조사를 시작하겠습니다.</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload" onclick="first()">시작</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 첫번째 질문 -->
+	<div class="modal fade" id="first">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>해산물이 들어있나요? 멸치등 해산물로 우린 육수도 포함합니다!<br>
+							ex)고등어, 갈치, 새우, 해조류</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="first_yes()"
+						>네</button>
+						<button type="button" class="btn" id="btnUpload"
+							onclick="first_no()"
+						>아니오</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 어패류 O -->
+	<div class="modal fade" id="first_yes">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>이 메뉴는 '페스코'네요!</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="select_pesco()"
+						>확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 두번째 질문 -->
+	<div class="modal fade" id="second">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>동물의 알이 들어있나요?<br>
+							ex)계란, 메추리알</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="second_yes()"
+						>네</button>
+						<button type="button" class="btn" id="btnUpload"
+							onclick="second_no()"
+						>아니오</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 세번째 질문 (난류 O)-->
+	<div class="modal fade" id="third_ok">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>치즈등을 포함한 유제품이 들어있나요?<br>
+							ex)우유, 치즈, 요거트</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="third_ok_yes()"
+						>네</button>
+						<button type="button" class="btn" id="btnUpload"
+							onclick="third_ok_no()"
+						>아니오</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 난류 O 유지류 O-->
+	<div class="modal fade" id="third_ok_yes">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>이 메뉴는 '락토-오보'네요!</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="select_lactoovo()"
+						>확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 난류 O 유지류 X-->
+	<div class="modal fade" id="third_ok_no">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>이 메뉴는 '오보'네요!</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="select_ovo()"
+						>확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 세번째 질문 (난류 X)-->
+	<div class="modal fade" id="third_no">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>치즈등을 포함한 유제품이 들어있나요?<br>
+							ex)우유, 치즈, 요거트</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="third_no_ok()"
+						>네</button>
+						<button type="button" class="btn" id="btnUpload"
+							onclick="third_no_no()"
+						>아니오</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 난류 X 유지류 O-->
+	<div class="modal fade" id="third_no_ok">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>이 메뉴는 '락토'네요!</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="select_lacto()"
+						>확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 모두 아니오 -->
+	<div class="modal fade" id="third_no_no">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">채식타입조사</h4>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data">
+					<div class="modal-body">
+						<div class="form-group">
+							<span>이 메뉴는 '비건'이네요!</span>
+						</div>
+						<div class="form-group"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" id="btnUpload"
+							onclick="select_vegan()"
+						>확인</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
+<script type="text/javascript">
+	function BtnTest() {
+		$("#Start").modal("show");
+	};
+	function first() {
+		$("#Start").modal("hide");
+		$("#first").modal("show");
+	};
+	function first_yes() {
+		$("#first").modal("hide");
+		$("#first_yes").modal("show");
+	};
+	function first_no() {
+		$("#first").modal("hide");
+		$("#second").modal("show");
+	};
+	function second_yes() {
+		$("#second").modal("hide");
+		$("#third_ok").modal("show");
+	};
+	function second_no() {
+		$("#second").modal("hide");
+		$("#third_no").modal("show");
+	};
+	function third_ok_yes() {
+		$("#third_ok").modal("hide");
+		$("#third_ok_yes").modal("show");
+	};
+	function third_no_ok() {
+		$("#third_no").modal("hide");
+		$("#third_no_ok").modal("show");
+	};
+	function third_ok_no() {
+		$("#third_ok").modal("hide");
+		$("#third_ok_no").modal("show");
+	};
+	function third_no_no() {
+		$("#third_no").modal("hide");
+		$("#third_no_no").modal("show");
+	};
+	function select_pesco() {
+		$("#first_yes").modal("hide");
+		$("#menuType").val("pesco").attr("selected", "selected");
+	};
+	function select_lactoovo() {
+		$("#third_ok_yes").modal("hide");
+		$("#menuType").val("lacto-ovo").attr("selected", "selected");
+	};
+	function select_ovo() {
+		$("#third_ok_no").modal("hide");
+		$("#menuType").val("ovo").attr("selected", "selected");
+	};
+	function select_lacto() {
+		$("#third_no_ok").modal("hide");
+		$("#menuType").val("lacto").attr("selected", "selected");
+	};
+	function select_vegan() {
+		$("#third_no_no").modal("hide");
+		$("#menuType").val("vegan").attr("selected", "selected");
+	};
+</script>
 </html>

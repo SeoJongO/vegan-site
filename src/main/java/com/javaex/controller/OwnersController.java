@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.OwnerService;
 import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
+import com.javaex.vo.ReviewVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -229,11 +229,85 @@ public class OwnersController {
 
 	// 리뷰페이지
 	@RequestMapping(value = "/NownerLivew", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerLivew() {
+	public String ownerLivew(Model model, HttpSession session) {
 		System.out.println("[OwnersController.ownerLivew]");
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
+		int u_no = userVo.getU_no();
+
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		System.out.println(sList);
+
+		int s_no = sList.get(0).getS_no();
+		System.out.println(s_no);
+
+		List<ReviewVo> rList = ownerService.reviewList(s_no);
+		System.out.println(rList);
+		
+		model.addAttribute("storeList", sList);
+		
+		model.addAttribute("storeVo", sList.get(0));
+
+		model.addAttribute("reviewList", rList);
+		
+		
+		
+		
+		ReviewVo cList = ownerService.count(s_no);
+		System.out.println(cList);
+		
+		model.addAttribute("countList", cList);
+		
+		
 		return "owners/NownerLivew";
 	}
+	
+	
+	@RequestMapping(value = "/NownerSlivew", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ownerlivew(Model model, HttpSession session,@RequestParam("shop") int s_no) {
+		System.out.println("[OwnersController.ownerSmlist]");
+
+		
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		int u_no = userVo.getU_no();
+
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		System.out.println(sList);
+
+		System.out.println(s_no);
+		
+		List<ReviewVo> rList = ownerService.reviewList(s_no);
+		System.out.println(rList);
+		
+		OwnerVo storeVo = ownerService.getStore(s_no);
+
+		
+		
+		
+		
+		ReviewVo cList = ownerService.count(s_no);
+		System.out.println(cList);
+		System.out.println(s_no);
+		
+		model.addAttribute("countList", cList);
+		
+		
+		
+		
+		model.addAttribute("storeList", sList);
+	
+		model.addAttribute("storeVo", storeVo);
+		
+		model.addAttribute("reviewList", rList);
+
+		return "owners/NownerLivew";
+
+	}
+	
+	
+
 
 	// 별점 페이지
 	@RequestMapping(value = "/NownerStar", method = { RequestMethod.GET, RequestMethod.POST })
