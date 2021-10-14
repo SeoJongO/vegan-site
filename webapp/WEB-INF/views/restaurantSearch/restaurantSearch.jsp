@@ -81,7 +81,8 @@
 						<ul id="placesList"></ul>
 						<!-- onclick="location.href='${pageContext.request.contextPath}/restaurantPage?s_no=${storeVo.s_no}'" -->
 						<c:forEach items="${storeList}" var="storeVo">
-							<div class="clearfix s_div" data-address="${storeVo.s_address}">
+							<div class="clearfix s_div" data-address="${storeVo.s_address}" data-no="${storeVo.s_no}"
+														data-name="${storeVo.s_name}" data-img="${storeVo.s_img}" data-intro="${storeVo.s_intro}">
 								<input type="hidden" class="s_address" value="${storeVo.s_address}">
 								<input type="hidden" class="s_name" value="${storeVo.s_name}">
 								<img src="${pageContext.request.contextPath}/veganLogo/${storeVo.s_img}" id="s_img">
@@ -201,24 +202,33 @@
 		    
 		 };
 		 
-		 var content =   '<div class="wrap">' + 
-		    '    <div class="info">' + 
-		    '        <div class="title">' + 
-		    '            카카오 스페이스닷원' + 
-		    '            <div class="close" title="닫기"></div>' + 
-		    '        </div>' + 
-		    '        <div class="body">' + 
-		    '            <div class="img">' +
-		    '                <img src="" width="73" height="70">' +
-		    '           </div>' + 
-		    '            <div class="desc">' + 
-		    '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-		    '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-		    '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">상세페이지</a></div>' + 
-		    '            </div>' + 
-		    '        </div>' + 
-		    '    </div>' +    
-		    '</div>';
+		 var s_no = address.data("no")
+		 var s_name = address.data("name")
+		 var s_intro = address.data("intro")
+		 var s_img = address.data("img")
+		 
+		 
+		 
+		 	
+		 
+			var content =	'<div class="wrap">' + 
+						    '    <div class="info">' + 
+						    '        <div class="title">' + 
+						    '            '+s_name+' '+ 
+						    '            <div class="close" title="닫기"></div>' + 
+						    '        </div>' + 
+						    '        <div class="body">' + 
+						    '            <div class="img">' +
+						    '                <img src="${pageContext.request.contextPath}/veganLogo/'+s_img+'" width="73" height="70">' +
+						    '           </div>' + 
+						    '            <div class="desc">' + 
+						    '                <div class="ellipsis">'+data+'' + 
+						    '                <div class="jibun ellipsis">'+s_intro+'' + 
+						    '                <div><a href="${pageContext.request.contextPath}/restaurantPage?s_no='+s_no+'" target="_blank" class="link">상세페이지</a></div>' + 
+						    '            </div>' + 
+						    '        </div>' + 
+						    '    </div>' +    
+						    '</div>';
 
 			var overlay = new kakao.maps.CustomOverlay({
 			content: content,
