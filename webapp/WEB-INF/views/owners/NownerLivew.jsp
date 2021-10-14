@@ -173,7 +173,7 @@
 													<td>${rVo.r_date}</td>
 													<td>${rVo.star}</td>
 													<td>${rVo.u_nickName}</td>
-													<td>${rVo.saveName}</td>
+													<td><img alt="" src="file:C:/veganReview/${rVo.saveName}"></td>
 													<td>${rVo.r_contents}</td>
 
 

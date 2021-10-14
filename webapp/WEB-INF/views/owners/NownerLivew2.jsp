@@ -174,7 +174,7 @@
 													<td>${dVo.r_date}</td>
 													<td>${dVo.star}</td>
 													<td>${dVo.u_nickName}</td>
-													<td>${dVo.saveName}</td>
+													<td><img alt="" src="file:C:/veganReview/${dVo.saveName}"></td>
 													<td>${dVo.r_contents}</td>
 
 
