@@ -81,7 +81,7 @@
 							</div>
 
 							<div class="s-listpo">
-								<h3>${storeVo.s_name }</h3>
+								<h3>${storeVo.s_name }</h3><img alt="" src="file:C:/veganLogo/${storeVo.saveName }">
 							</div>
 							<div class="table-c">
 								<div>
