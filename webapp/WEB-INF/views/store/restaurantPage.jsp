@@ -45,41 +45,33 @@
 						<div class="restaurantInfo float-l clearfix text-left">
 							<p class="restaurantInfo-text">${ownerVo.s_intro }.</p>
 							<p class="restaurantInfo-text">
-								<span class="timeInfo">영업시간</span> <span class="timeInfo">${ownerVo.s_openH }:${ownerVo.s_openM } ~
-									${ownerVo.s_closeH }:${ownerVo.s_closeM } </span>
-									<span>휴무일:</span><br>
-									<!-- 휴무일 값 --><span>
-									${ownerVo.s_Hmon } 
-									${ownerVo.s_Htue}
-									${ownerVo.s_Hwen }
-									${ownerVo.s_Hthu }
-									${ownerVo.s_Hfri }
-									${ownerVo.s_Hsat }
-									${ownerVo.s_Hsun }</span><br>			
-									<!-- 주차가능 --><span>${ownerVo.s_parking }</span>
-									
-								
+								<span class="timeInfo">영업시간</span> <span class="timeInfo">${ownerVo.s_openH }:${ownerVo.s_openM } ~ ${ownerVo.s_closeH }:${ownerVo.s_closeM } </span> <span>휴무일:</span><br>
+								<!-- 휴무일 값 -->
+								<span> ${ownerVo.s_Hmon } ${ownerVo.s_Htue} ${ownerVo.s_Hwen } ${ownerVo.s_Hthu } ${ownerVo.s_Hfri } ${ownerVo.s_Hsat } ${ownerVo.s_Hsun }</span><br>
+								<!-- 주차가능 -->
+								<span>${ownerVo.s_parking }</span>
+
+
 
 							</p>
 							<p class="restaurantInfo-text">
-								<span><a href="${ownerVo.s_twitter }"><img src="" alt="트위터"></a></span> <span><a href="${ownerVo.s_instagram }"><img src="" alt="인스타그램"></a></span>
-								<span><a href="${ownerVo.s_youtube }"><img src="" alt="유튜브"></a></span>
+								<input type="hidden" id="s_address" value="${ownerVo.s_address}">
+								<span><a href="${ownerVo.s_twitter }"><img src="" alt="트위터"></a></span> <span><a href="${ownerVo.s_instagram }"><img src="" alt="인스타그램"></a></span> <span><a href="${ownerVo.s_youtube }"><img src="" alt="유튜브"></a></span>
 							</p>
 							<p>
 								<span class="favoritesImg"><img src="" alt="찜"></span> <span class="favorites">+555</span>
 							</p>
 						</div>
 						<div class="restaurantInfo float-l clearfix text-left">
-						<c:forEach items="${ownerVo.menuList }" var="menuList" varStatus="status" begin="0" end="2">
-							<div class="menu">
-								<img class="foodImg float-l clearfix" src="${menuList.m_imge}">
-								
-								<p>
-									<span class="foodInfo">메뉴이름: ${menuList.m_name}</span> <span class="foodInfo">가격: ${menuList.m_price}</span> <span class="foodInfo">채식타입:
-										${menuList.m_type}</span> <span class="foodInfo">${menuList.m_intro}</span>
-								</p>
-								
-							</div>
+							<c:forEach items="${ownerVo.menuList }" var="menuList" varStatus="status" begin="0" end="2">
+								<div class="menu">
+									<img class="foodImg float-l clearfix" src="${menuList.m_imge}">
+
+									<p>
+										<span class="foodInfo">메뉴이름: ${menuList.m_name}</span> <span class="foodInfo">가격: ${menuList.m_price}</span> <span class="foodInfo">채식타입: ${menuList.m_type}</span> <span class="foodInfo">${menuList.m_intro}</span>
+									</p>
+
+								</div>
 							</c:forEach>
 							<!-- <div class="menu">
 								<img class="foodImg float-l clearfix" src="">
@@ -104,39 +96,9 @@
 							<div id="menu_wrap" class="bg_white">
 								<!-- 이미지 지도를 표시할 div 입니다 -->
 								<div id="staticMap" style="width: 340px; height: 200px;"></div>
-
-								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31"></script>
-								<script>
-									// 이미지 지도에서 마커가 표시될 위치입니다 
-									var markerPosition = new kakao.maps.LatLng(
-											33.450701, 126.570667);
-
-									// 이미지 지도에 표시할 마커입니다
-									// 이미지 지도에 표시할 마커는 Object 형태입니다
-									var marker = {
-										position : markerPosition
-									};
-
-									var staticMapContainer = document
-											.getElementById('staticMap'), // 이미지 지도를 표시할 div  
-									staticMapOption = {
-										center : new kakao.maps.LatLng(
-												33.450701, 126.570667), // 이미지 지도의 중심좌표
-										level : 4, // 이미지 지도의 확대 레벨
-										marker : marker
-									// 이미지 지도에 표시할 마커 
-									};
-
-									// 이미지 지도를 생성합니다
-									var staticMap = new kakao.maps.StaticMap(
-											staticMapContainer, staticMapOption);
-								</script>
 								<div id="address">
 									<div id="addressText">
-										<p>서울특별시 강남구 논현동 151-21</p>
-										<p>
-											<span id="addressType">&nbsp도로명&nbsp</span> <span>학동로28길 34</span>
-										</p>
+										<p>${ownerVo.s_address}</p>
 									</div>
 								</div>
 							</div>
@@ -145,53 +107,51 @@
 					</div>
 					<!-- //restaurantInfo -->
 					<c:if test="${not empty sessionScope.authUser }">
-					<div id="restaurantPage-btn" class="text-center">
-						<button id="reviewBtn" class="btn">리뷰남기기</button>
-						<a href="${pageContext.request.contextPath }/questionwrite?s_no=${ownerVo.s_no}"><button id="singoBtn" class="btn">신고하기</button></a>
-					</div>
+						<div id="restaurantPage-btn" class="text-center">
+							<button id="reviewBtn" class="btn">리뷰남기기</button>
+							<a href="${pageContext.request.contextPath }/questionwrite?s_no=${ownerVo.s_no}"><button id="singoBtn" class="btn">신고하기</button></a>
+						</div>
 					</c:if>
-					
+
 					<c:if test="${empty sessionScope.authUser }">
-					<div id="restaurantPage-btn" class="text-center">
-						<a href="${ pageContext.request.contextPath }/user/loginForm"><button id="reviewBtn" class="btn">리뷰남기기</button></a>
-						<a href="${ pageContext.request.contextPath }/user/loginForm"><button id="singoBtn" class="btn">신고하기</button></a>
-					</div>
+						<div id="restaurantPage-btn" class="text-center">
+							<a href="${ pageContext.request.contextPath }/user/loginForm"><button id="reviewBtn" class="btn">리뷰남기기</button></a> <a href="${ pageContext.request.contextPath }/user/loginForm"><button id="singoBtn" class="btn">신고하기</button></a>
+						</div>
 					</c:if>
 					<!-- //////////////////////////////////////////////////////////// -->
 					<div id="reviewArea">
-					<c:forEach items="${reviewList}" var="reviewList">
-					<div class="review-wrap" id="d-${reviewList.r_no }">
-					
-						<div class="review clearfix">
-							<div id="userProfile" class="float-l">
-								<img class="userProfile-img float-l" src="">
-								<div>
-									<p>${reviewList.u_nickName}(${reviewList.u_type })</p>
-									<p id="starPoint">${reviewList.star}</p>
-									<p>${reviewList.r_date }</p>
+						<c:forEach items="${reviewList}" var="reviewList">
+							<div class="review-wrap" id="d-${reviewList.r_no }">
+
+								<div class="review clearfix">
+									<div id="userProfile" class="float-l">
+										<img class="userProfile-img float-l" src="">
+										<div>
+											<p>${reviewList.u_nickName}(${reviewList.u_type })</p>
+											<p id="starPoint">${reviewList.star}</p>
+											<p>${reviewList.r_date }</p>
+										</div>
+									</div>
+									<c:if test="${authUser.u_no eq reviewList.u_no }">
+										<div id="modify-deleft-btn" class=" float-r">
+											<p>
+												<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi?r_no=${reviewList.r_no}">수정</a></span> <span class="delete" data-no="${reviewList.r_no }">삭제</span>
+											</p>
+										</div>
+									</c:if>
+									<div id="reviewImg-text" class="float-l">
+										<div id="review-img-area">
+											<img class="review-img" src="${ pageContext.request.contextPath }/veganReview/${reviewList.saveName }">
+
+										</div>
+										<p class="review-text">${reviewList.r_contents}</p>
+									</div>
 								</div>
+
 							</div>
-						<c:if test="${authUser.u_no eq reviewList.u_no }">
-							<div id="modify-deleft-btn" class=" float-r">
-								<p>
-									<span class="modify"><a href="${ pageContext.request.contextPath }/reviewModi?r_no=${reviewList.r_no}">수정</a></span> 
-									<span class="delete" data-no="${reviewList.r_no }">삭제</span>
-								</p>
-							</div>
-							</c:if>
-							<div id="reviewImg-text" class="float-l">
-								<div id="review-img-area">
-									<img class="review-img" src="${ pageContext.request.contextPath }/veganReview/${reviewList.saveName }"> 
-									
-								</div>
-								<p class="review-text">${reviewList.r_contents}</p>
-							</div>
-						</div>
-						
-					</div>
-						<!-- //review-wrap -->
+							<!-- //review-wrap -->
 						</c:forEach>
-						
+
 
 
 					</div>
@@ -224,51 +184,50 @@
 						<h4 class="modal-title text-center" id="myModalLabel">${ownerVo.s_name}</h4>
 					</div>
 					<div class="modal-body clearfix">
-					<c:forEach items="${ownerVo.menuList }" var="menuList">
-						<div class="menuInfo float-l">
-							<img class="menuImg" src="menuList" alt="">
-							<div class="menuText">
-								<p>${menuList.m_name }</p>
-								<p>${menuList.m_price }</p>
-								<p>${menuList.m_type }</p>
-								<br>
-								<p>${menuList.m_intro }</p>
+						<c:forEach items="${ownerVo.menuList }" var="menuList">
+							<div class="menuInfo float-l">
+								<img class="menuImg" src="menuList" alt="">
+								<div class="menuText">
+									<p>${menuList.m_name }</p>
+									<p>${menuList.m_price }</p>
+									<p>${menuList.m_type }</p>
+									<br>
+									<p>${menuList.m_intro }</p>
+								</div>
 							</div>
-						</div>
 						</c:forEach>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-		<!-- 모달창(메뉴더보기) end -->
+	<!-- 모달창(메뉴더보기) end -->
 
-		<!-- Modal 리뷰남기기 -->
-		<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="restaurantPage-modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title text-center" id="myModalLabel">${ownerVo.s_name}</h4>
-					</div>
-					<div class="modal-body clearfix">
+	<!-- Modal 리뷰남기기 -->
+	<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="restaurantPage-modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title text-center" id="myModalLabel">${ownerVo.s_name}</h4>
+				</div>
+				<div class="modal-body clearfix">
 
-						<div id="content_main">
+					<div id="content_main">
 
-							<div id="modify-content">
-								 <form action="${pageContext.request.contextPath }/reviewWrite" method="post" enctype="multipart/form-data">  
-									<textarea id="writeModal" name="r_contents" ></textarea>
-									<input id="file" type="file" name="file" value="">
-									<p  class="modifyPage-starPoint text-center" >★★★★★</p>
-									<div class="text-center">
-										<button id= "ajaxButton" class="btn" type="submit">저장</button>
-										<button class="btn">취소</button>
-									</div>
-									<input id="u_no"type="text" name="u_no" value="${authUser.u_no}">
-									<input id="s_no"type="text" name="s_no" value="${ownerVo.s_no}">
-							 	</form>
+						<div id="modify-content">
+							<form action="${pageContext.request.contextPath }/reviewWrite" method="post" enctype="multipart/form-data">
+								<textarea id="writeModal" name="r_contents"></textarea>
+								<input id="file" type="file" name="file" value="">
+								<p class="modifyPage-starPoint text-center">★★★★★</p>
+								<div class="text-center">
+									<button id="ajaxButton" class="btn" type="submit">저장</button>
+									<button class="btn">취소</button>
+								</div>
+								<input id="u_no" type="text" name="u_no" value="${authUser.u_no}"> <input id="s_no" type="text" name="s_no" value="${ownerVo.s_no}">
+							</form>
 						</div>
 						<!-- //컨텐츠 -->
 					</div>
@@ -307,61 +266,76 @@
 
 </body>
 
-<script type="text/javascript">
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31&libraries=services"></script>
+<script>
 //화면 로딩되기직전
 $(document).ready(function(){
 	console.log("화면 로딩 직전");
-	
 	//ajax 요청
 	
+	var address = document.getElementById('s_address').value;
 	
+	var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
+
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch(address, function(result, status) {
+
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	    }
+	     var la = coords.La;
+	     var ma = coords.Ma;
+	    
+    var marker = {
+    	    position: coords
+    	};
+    
+    var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(ma, la), // 이미지 지도의 중심좌표
+        level: 3, // 이미지 지도의 확대 레벨
+        marker: marker // 이미지 지도에 표시할 마커 
+    };    
+
+// 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+    	
+    
+});    
 });
-
-
-
-
-<!-- ajax 연습 -->
-
 //로딩이 끝난 후 
-
-
-
-
 $(function(){
+	
 	<!-- 메뉴더보기 모달 -->
 	$("#menuList").on("click", function(){
 		console.log("모달창 클릭")
-
 		$("#menuModal").modal();
-
 	});
 
 	<!-- 리뷰남기기 모달-->
 	//리뷰등록
 	$("#reviewBtn").on("click", function() {
-		
 		console.log("모달창 클릭")
-
 		$("#reviewModal").modal();
-		
 	});
-	
 	
 	<!--리뷰남기기 데이터값 읽어오기-->
 	$("#ajaxButton").on("click", function(){
 		event.preventDefault();//폼전송기능 끔
 		console.log("클릭");
-	/* 	 var reviewVo={
-				
+		
+		/*var reviewVo={
 		 	u_no: $("[name='u_no']").val(),
 			s_no: $("[name='s_no']").val(),
 			file: $("#file").val(),
 			r_contents: $("#writeModal").val()
-		};  */
+		};*/
+		
 		//데이터 ajax방식으로 서버에서 전송
-		
-		
 		var u_no = $("[name='u_no']").val();
 		var s_no = $("[name='s_no']").val();
 		var r_contents = $("#writeModal").val();
@@ -384,100 +358,66 @@ $(function(){
 		console.log(formData.get('file'));
 		
 		$.ajax({
-				
 				//url : "${pageContext.request.contextPath }/api/guestbook/write?name="+userName+"&password="+password+ "&
 				url : "${pageContext.request.contextPath }/api/review/write",
 				type : "POST",
 				processData : false,
 				contentType : false,
 				data: formData,
-				
 				dataType : "json",
 				//enctype: 'multipart/form-data',
 				success : function(resultVo){
-					/*성공시 처리해야될 코드 작성*/
-					
 					console.log(resultVo);
 					render(resultVo,"up");
-					
 					$('#reviewModal').modal('hide');
 		            //화면에 그리기
-		            
-		           
-					
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
 				}
 			});
-
 	});
 	
-	
-	
-	
-
 	<!-- 리뷰삭제 -->
 	//이미지 등록
 	$("#reviewArea").on("click", ".delete", function() {
 		console.log("리뷰삭제 클릭")
-
 		if (confirm("삭제하시겠습니까?") == true){    //확인
-
 			var r_no = $(this).data("no");
 			console.log(r_no)
-			
 			//데이터 ajax방식으로 서버에서 전송
 			$.ajax({
-					
 					url : "${pageContext.request.contextPath }/api/review/delete",
 					type : "get",
 					//contentType : "application/json",
 					data : {"r_no":r_no},
-
 					dataType : "json",
 					success : function(counter){
-						/*성공시 처리해야될 코드 작성*/
 						console.log(counter)
 						if(counter == 1) {
 							$("#d-"+r_no).remove();
 						}
-
-					
 					},
 					error : function(XHR, status, error) {
 						console.error(status + " : " + error);
 					}
 				});
-			
-			
-
 		}else{   //취소
-
 		    return;
-
 		}
-
 	});
 
 	<!-- 신고하기 모달 -->
 	//이미지 등록
 	$("#singoBtn").on("click", function() {
 		console.log("모달창 클릭")
-
 		$("#singoModal").modal();
-
 	});
-	
-
-	
-	
 });
 
 //리뷰 1개씩 랜더링 
 function render(resultVo, type){
 	var Str = "";
-	
 	Str +=  '<div class="review-wrap" id="d-'+resultVo.r_no+'">';
 	Str += '<div class="review clearfix">';
 	Str += '<div id="userProfile" class="float-l">';
@@ -502,9 +442,6 @@ function render(resultVo, type){
 	Str += '</div>';
 	Str += '</div>';
 	Str += '</div>';
-
-	
-	
 	if(type === 'down'){
 		$("#reviewArea").append(Str);
 	}else if(type === 'up'){
@@ -512,24 +449,7 @@ function render(resultVo, type){
 	}else{
 		console.log("방향을 지정해 주세요");
 	}
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- //document onload -->
 </script>
 
