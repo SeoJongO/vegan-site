@@ -1,9 +1,12 @@
 package com.javaex.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.ReviewPageVo;
 import com.javaex.vo.UserVo;
 
 @Repository
@@ -46,6 +49,12 @@ public class UserDao {
 		System.out.println("UserDao.getEmail()");
 		
 		return sqlSession.selectOne("user.getEmail", u_phone);
+	}
+	
+	public List<ReviewPageVo> getReview(int u_no) {
+		System.out.println("UserDao.getReview()");
+		
+		return sqlSession.selectList("user.getReview", u_no);
 	}
 
 }

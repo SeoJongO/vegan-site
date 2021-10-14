@@ -39,7 +39,28 @@
 						<img class="modifyPage-review-img review-img" src="${pageContext.request.contextPath }/veganReview/${reviewModi.saveName }">
 						<img class="modifyPage-review-img review-img" src="">
 						<img class="modifyPage-review-img review-img" src="">
-						<p class="modifyPage-starPoint text-center" >${reviewModi.star}</p>
+						<c:if test="${reviewModi.star == 5 }">
+						<p class="modifyPage-starPoint text-center" >★★★★★</p>
+						</c:if>
+						
+						<c:if test="${reviewModi.star == 4 }">
+						<p class="modifyPage-starPoint text-center" >★★★★</p>
+						</c:if>
+						
+						
+						<c:if test="${reviewModi.star == 3 }">
+						<p class="modifyPage-starPoint text-center" >★★★</p>
+						</c:if>
+						
+						
+						<c:if test="${reviewModi.star == 2 }">
+						<p class="modifyPage-starPoint text-center" >★★</p>
+						</c:if>
+						
+						
+						<c:if test="${reviewModi.star == 1 }">
+						<p class="modifyPage-starPoint text-center" >★</p>
+						</c:if>
 						<div class="text-center">
 							<button class="btn" type="submit">저장</button>
 							<button class="btn">취소</button>

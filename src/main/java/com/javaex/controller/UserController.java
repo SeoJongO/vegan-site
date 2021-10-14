@@ -1,5 +1,7 @@
 package com.javaex.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
+import com.javaex.vo.ReviewPageVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -148,8 +151,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/review", method = { RequestMethod.GET, RequestMethod.POST })
-	public String review() {
+	public String review(HttpSession session, Model model) {
 		System.out.println("[UserController.review()]");
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+		
+		int u_no = userVo.getU_no();
+		
+		List<ReviewPageVo> reviewList = userService.getReview(u_no);
+		
+		System.out.println(reviewList);
+			
+		model.addAttribute("reviewList", reviewList);
 		
 		return "user/review";
 	}

@@ -6,7 +6,7 @@
 		<li><a href="${pageContext.request.contextPath}/user/checkPassword">회원정보수정</a></li>
 		<li><a href="${pageContext.request.contextPath}/user/likeShopList">단골가게</a></li>
 		<li><a href="${pageContext.request.contextPath}/user/review">리뷰관리</a></li>
-		<li><a href="${pageContext.request.contextPath}/user/addShop">가게등록</a></li>
+		<li><a href="${pageContext.request.contextPath }/owners/NownerSlist">가게관리</a></li>
 	</ul>
 </div>
 <!-- //aside -->

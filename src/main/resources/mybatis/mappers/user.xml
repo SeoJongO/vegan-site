@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-	
-	<select id="getUser" parameterType = "com.javaex.vo.UserVo" resultType = "com.javaex.vo.UserVo">
+
+	<select id="getUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
 			select	u_no,
 					u_nickname,
@@ -14,15 +14,15 @@
 			and u_password = #{u_password}
        	]]>
 	</select>
-	
-	<insert id="joinUser" parameterType = "com.javaex.vo.UserVo">
+
+	<insert id="joinUser" parameterType="com.javaex.vo.UserVo">
 		<![CDATA[
 			insert into users 
 			values(u_no.nextval, #{u_email}, #{u_password}, #{u_nickname}, #{u_gender}, #{u_phone}, #{u_type}, sysdate)
 		]]>
 	</insert>
-	
-	<select id="userInfo" parameterType = "int" resultType = "com.javaex.vo.UserVo">
+
+	<select id="userInfo" parameterType="int" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
 			select	u_no,
 					u_email,
@@ -35,8 +35,8 @@
 			where u_no = #{u_no}
        	]]>
 	</select>
-	
-	<select id="userUpdate" parameterType = "com.javaex.vo.UserVo">
+
+	<select id="userUpdate" parameterType="com.javaex.vo.UserVo">
 		<![CDATA[
 			update users
 			set u_no = #{u_no},
@@ -48,20 +48,38 @@
 			where u_email = #{u_email}
        	]]>
 	</select>
-	
-	<select id="getEmail" parameterType = "String" resultType="String">
+
+	<select id="getEmail" parameterType="String" resultType="String">
 		<![CDATA[
 			select u_email
 			from users
 			where u_phone = #{u_phone}
        	]]>
 	</select>
-	
+
 	<select id="emailChk" parameterType="String" resultType="int">
 		<![CDATA[
 			select count(*)
 			from users
 			where u_email = #{u_email}
+		]]>
+	</select>
+
+	<select id="getReview" parameterType="int" resultType="com.javaex.vo.ReviewPageVo">
+		<![CDATA[
+			select  u.u_no,
+			        s.s_no,
+			        s.s_name,
+			        r.r_contents,
+			        to_char(r_date, 'YYYY-MM-DD') AS r_date,
+			        r.star,
+			        r.savename
+			from 	users u, store s, review r
+			where   u.u_no = s.u_no 
+			and		s.u_no = r.u_no 
+			and 	u.u_no = r.u_no 
+			and 	s.s_no = r.s_no
+			order by r_date desc
 		]]>
 	</select>
 
