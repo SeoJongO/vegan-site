@@ -42,17 +42,21 @@
 			<li><a href="${ pageContext.request.contextPath }/ranking">랭킹</a></li>
 			<li><a href="${ pageContext.request.contextPath }/serviceCenter">고객센터</a></li>
 			<c:if test="${not empty authUser}">
-				<li><a href="${ pageContext.request.contextPath }/user/checkPassword">마이페이지</a></li>
+				<li><a href="${pageContext.request.contextPath }/user/checkPassword">마이페이지</a></li>
 			</c:if>
 			<c:if test="${empty authUser}">
-				<li><a href="${ pageContext.request.contextPath }/user/loginForm">마이페이지</a></li>
+				<li><a href="${pageContext.request.contextPath }/user/loginForm">마이페이지</a></li>
 			</c:if>
 		</ul>
 
 		<!-- 작업편의상 가게관리 노출시킴 -->
-		<a href="${ pageContext.request.contextPath }/owners/NownerSlist" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게등록</span></a> 
-		<%-- <a href="${ pageContext.request.contextPath }/owners/NownerPage" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게관리</span></a> --%>
-
+		<c:if test="${not empty authUser}">
+			<a href="${pageContext.request.contextPath }/owners/NownerSlist" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게관리</span></a> 
+		</c:if>
+		
+		<c:if test="${empty authUser}">
+			<a href="${pageContext.request.contextPath }/user/loginForm" class="snb-more"> <span class="glyphicon glyphicon glyphicon-ok"></span> <span>가게관리</span></a> 
+		</c:if>
 
 	</div>
 	<!-- //해더하단 네비 -->

@@ -46,25 +46,11 @@
 					<!-- 컨텐츠 -->
 					<div id="content-wrap">
 						<div id="review">
-							<div class="margin-bottom" onclick="location.href='${ pageContext.request.contextPath }/storePage';">
-								<img src="C:\Users\Main\Desktop\　　　\cursor.png"> 샐러디 ★★★★☆ <br> 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물은 얼음이 있을 뿐이다 그들에게 생명을 불어 넣는 것은 따뜻 <br> 한 봄바람이다 풀밭에 속잎나고 가지에 싹이 트고 꽃 <br> <span>YYYY/MM/DD</span> <br>
-							</div>
-							<div>
-								<img class="margin-bottom" src="C:\Users\Main\Desktop\　　　\cursor.png"> 샐러디 ★★★★☆ <br> 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물은 얼음이 있을 뿐이다 그들에게 생명을 불어 넣는 것은 따뜻 <br> 한 봄바람이다 풀밭에 속잎나고 가지에 싹이 트고 꽃 <br> <span>YYYY/MM/DD</span> <br>
-							</div>
-		
-							<div>
-								<img class="margin-bottom" src="C:\Users\Main\Desktop\　　　\cursor.png"> 샐러디 ★★★★☆ <br> 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물은 얼음이 있을 뿐이다 그들에게 생명을 불어 넣는 것은 따뜻 <br> 한 봄바람이다 풀밭에 속잎나고 가지에 싹이 트고 꽃 <br> <span>YYYY/MM/DD</span> <br>
-							</div>
-		
-							<div>
-								<img class="margin-bottom" src="C:\Users\Main\Desktop\　　　\cursor.png"> 샐러디 ★★★★☆ <br> 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물은 얼음이 있을 뿐이다 그들에게 생명을 불어 넣는 것은 따뜻 <br> 한 봄바람이다 풀밭에 속잎나고 가지에 싹이 트고 꽃 <br> <span>YYYY/MM/DD</span> <br>
-							</div>
-		
-							<div>
-								<img class="margin-bottom" src="C:\Users\Main\Desktop\　　　\cursor.png"> 샐러디 ★★★★☆ <br> 인간이 얼마나 쓸쓸하랴? 얼음에 싸인 만물은 얼음이 있을 뿐이다 그들에게 생명을 불어 넣는 것은 따뜻 <br> 한 봄바람이다 풀밭에 속잎나고 가지에 싹이 트고 꽃 <br> <span>YYYY/MM/DD</span> <br>
-							</div>
-		
+							<c:forEach items="${reviewList}" var="reviewVo">
+								<div class="margin-bottom" onclick="location.href='${pageContext.request.contextPath}/restaurantPage?s_no=${reviewVo.s_no}';">
+									<img src="${pageContext.request.contextPath}/veganLogo/${reviewVo.savename}"> ${reviewVo.s_name} ${reviewVo.star} <br> ${reviewVo.r_contents} <br> <span>${reviewVo.r_date}</span> <br>
+								</div>
+							</c:forEach>
 							<div class="paging">
 								<a href=""><</a> <a href="">1</a> <a href="">2</a> <a href="">3</a> <a href="">></a>
 							</div>

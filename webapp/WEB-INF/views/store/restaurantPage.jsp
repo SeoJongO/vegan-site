@@ -105,37 +105,13 @@
                         <!-- 이미지 지도를 표시할 div 입니다 -->
                         <div id="staticMap" style="width: 340px; height: 200px;"></div>
 
-                        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31"></script>
-                        <script>
-                           // 이미지 지도에서 마커가 표시될 위치입니다 
-                           var markerPosition = new kakao.maps.LatLng(
-                                 33.450701, 126.570667);
-
-                           // 이미지 지도에 표시할 마커입니다
-                           // 이미지 지도에 표시할 마커는 Object 형태입니다
-                           var marker = {
-                              position : markerPosition
-                           };
-
-                           var staticMapContainer = document
-                                 .getElementById('staticMap'), // 이미지 지도를 표시할 div  
-                           staticMapOption = {
-                              center : new kakao.maps.LatLng(
-                                    33.450701, 126.570667), // 이미지 지도의 중심좌표
-                              level : 4, // 이미지 지도의 확대 레벨
-                              marker : marker
-                           // 이미지 지도에 표시할 마커 
-                           };
-
-                           // 이미지 지도를 생성합니다
-                           var staticMap = new kakao.maps.StaticMap(
-                                 staticMapContainer, staticMapOption);
-                        </script>
+                        
                         <div id="address">
                            <div id="addressText">
-                              <p>서울특별시 강남구 논현동 151-21</p>
+                           	<input type="hidden" id="s_address" value="${ownerVo.s_address}">
+                              <p>${ownerVo.s_address}</p>
                               <p>
-                                 <span id="addressType">&nbsp도로명&nbsp</span> <span>학동로28길 34</span>
+                                 <span id="addressType">&nbsp상세주소&nbsp</span> <span>${ownerVo.s_detail_address}</span>
                               </p>
                            </div>
                         </div>
@@ -341,16 +317,53 @@
 
 </body>
 
-<script type="text/javascript">
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31&libraries=services"></script>
+<script>
 var star;
 
 //화면 로딩되기직전
 $(document).ready(function(){
    console.log("화면 로딩 직전");
    
-   //ajax 요청
+   var address = document.getElementById('s_address').value;
+	console.log(address);
+
+	//주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	//주소로 좌표를 검색합니다
+	geocoder.addressSearch(address, function(result, status) {
+
+   // 정상적으로 검색이 완료됐으면 
+    if (status === kakao.maps.services.Status.OK) {
+       var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+   };
    
+   console.log(coords);
+   
+   var la = coords.La;
+   var ma = coords.Ma;
+	
+	//이미지 지도에서 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng(ma, la); 
+	
+	// 이미지 지도에 표시할 마커입니다
+	// 이미지 지도에 표시할 마커는 Object 형태입니다
+	var marker = {
+	    position: markerPosition
+	};
+	
+	var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+	    staticMapOption = { 
+	        center: new kakao.maps.LatLng(ma, la), // 이미지 지도의 중심좌표
+	        level: 3, // 이미지 지도의 확대 레벨
+	        marker: marker // 이미지 지도에 표시할 마커 
+	    };    
+	
+	// 이미지 지도를 생성합니다
+	var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+   
+	});
    
 });
 
@@ -407,7 +420,6 @@ $(function(){
       console.log(s_no);
       console.log(r_contents);
       console.log(file);
-      console.log(별);
       
       var formData = new FormData();
       formData.append('u_no', u_no);
