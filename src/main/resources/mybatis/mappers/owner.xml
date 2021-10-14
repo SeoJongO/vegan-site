@@ -190,4 +190,66 @@
 		]]>
 	</select>
 	
+	<select id="star1" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+		select 
+		      count(r.star) as st1
+	      from review r, users u
+	      where r.u_no = u.u_no 
+	      and r.s_no=#{s_no}
+	      and r.star=1
+	       
+		]]>
+	</select>
+	
+	<select id="star2" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+		select 
+		      count(r.star) as st2
+	      from review r, users u
+	      where r.u_no = u.u_no 
+	      and r.s_no=#{s_no}
+	      and r.star=2
+	       
+		]]>
+	</select>
+	
+	<select id="star3" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+		select 
+		      count(r.star) as st3
+	      from review r, users u
+	      where r.u_no = u.u_no 
+	      and r.s_no=#{s_no}
+	      and r.star=3
+	       
+		]]>
+	</select>
+	
+	<select id="star4" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+		select 
+		      count(r.star) as st4
+	      from review r, users u
+	      where r.u_no = u.u_no 
+	      and r.s_no=#{s_no}
+	      and r.star=4
+	       
+		]]>
+	</select>
+	
+	<select id="star5" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+		select 
+		      count(r.star) as st5
+	      from review r, users u
+	      where r.u_no = u.u_no 
+	      and r.s_no=#{s_no}
+	      and r.star=5
+	       
+		]]>
+	</select>
+	
+	
+	
 </mapper>

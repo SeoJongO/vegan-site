@@ -173,4 +173,35 @@ public class OwnerService {
 
 		return ownerDao.date(dateVo2);
 	}
+	
+	public ReviewVo star1(int s_no) {
+		System.out.println("OwnerService.star1()");
+
+		return ownerDao.star1(s_no);
+	}
+	
+	public ReviewVo star2(int s_no) {
+		System.out.println("OwnerService.star2()");
+
+		return ownerDao.star2(s_no);
+	}
+	
+	public ReviewVo star3(int s_no) {
+		System.out.println("OwnerService.star3()");
+
+		return ownerDao.star3(s_no);
+	}
+	
+	public ReviewVo star4(int s_no) {
+		System.out.println("OwnerService.star4()");
+
+		return ownerDao.star4(s_no);
+	}
+	public ReviewVo star5(int s_no) {
+		System.out.println("OwnerService.star5()");
+
+		return ownerDao.star5(s_no);
+	}
+	
+	
 }

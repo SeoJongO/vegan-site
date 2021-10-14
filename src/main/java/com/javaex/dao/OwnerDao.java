@@ -18,8 +18,8 @@ public class OwnerDao {
 
 	public int storeInsert(OwnerVo ownerVo) {
 		System.out.println("OwnerDao.storeInsert()");
-		
-		System.out.println("dao"+ownerVo);
+
+		System.out.println("dao" + ownerVo);
 
 		return sqlSession.insert("owner.storeInsert", ownerVo);
 	}
@@ -79,25 +79,63 @@ public class OwnerDao {
 
 		return sqlSession.delete("owner.menuDelete", m_no);
 	}
-	
+
 	public List<ReviewVo> reviewList(int s_no) {
 		System.out.println("OwnerDao.reviewList()");
 
 		return sqlSession.selectList("owner.reviewList", s_no);
 	}
-	
+
 	public ReviewVo count(int s_no) {
 		System.out.println("OwnerDao.count()");
 
 		return sqlSession.selectOne("owner.countList", s_no);
-		
-		
+
 	}
-	
+
 	public List<ReviewVo> date(ReviewVo dateVo2) {
 		System.out.println("OwnerDao.date()");
 
 		return sqlSession.selectList("owner.date", dateVo2);
+
+	}
+
+	public ReviewVo star1(int s_no) {
+		System.out.println("OwnerDao.star1()");
+
+		return sqlSession.selectOne("owner.star1", s_no);
+		
+		
+	}
+	
+	public ReviewVo star2(int s_no) {
+		System.out.println("OwnerDao.star2()");
+
+		return sqlSession.selectOne("owner.star2", s_no);
+		
+		
+	}
+	
+	public ReviewVo star3(int s_no) {
+		System.out.println("OwnerDao.star3()");
+
+		return sqlSession.selectOne("owner.star3", s_no);
+		
+		
+	}
+	
+	public ReviewVo star4(int s_no) {
+		System.out.println("OwnerDao.star4()");
+
+		return sqlSession.selectOne("owner.star4", s_no);
+		
+		
+	}
+	
+	public ReviewVo star5(int s_no) {
+		System.out.println("OwnerDao.star5()");
+
+		return sqlSession.selectOne("owner.star5", s_no);
 		
 		
 	}

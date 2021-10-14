@@ -54,7 +54,7 @@ public class OwnersController {
 	@RequestMapping(value = "/storeInsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeInsert(@ModelAttribute OwnerVo ownerVo) {
 		System.out.println("[OwnersController.storeInsert]");
-		
+
 		int count = ownerService.storeInsert(ownerVo);
 
 		return "redirect:/owners/NownerSlist";
@@ -100,18 +100,17 @@ public class OwnersController {
 
 	// 메뉴 등록폼
 	@RequestMapping(value = "/NownerMinsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerMinsert(Model model,HttpSession session, @RequestParam("s_no") int s_no) {
+	public String ownerMinsert(Model model, HttpSession session, @RequestParam("s_no") int s_no) {
 		System.out.println("[OwnersController.ownerMinsert]");
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
 		int u_no = userVo.getU_no();
 
 		OwnerVo ownerVo = ownerService.getStore(s_no);
-		
-		
+
 		List<OwnerVo> sList = ownerService.storeList(u_no);
 		model.addAttribute("storeList", sList);
-		
+
 		model.addAttribute("ownerU", ownerVo);
 
 		return "owners/NownerMinsert";
@@ -121,7 +120,7 @@ public class OwnersController {
 	@RequestMapping(value = "/menuInsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public String storeInsert(MenuVo menuVo) {
 		System.out.println("[OwnersController.menuInsert]");
-		
+
 		System.out.println(menuVo);
 
 		int count = ownerService.menuInsert(menuVo);
@@ -130,63 +129,61 @@ public class OwnersController {
 	}
 
 	// 메뉴 리스트(s_no xml에 임의값 넣음)
-		@RequestMapping(value = "/NownerMlist", method = { RequestMethod.GET, RequestMethod.POST })
-		public String ownerMlist(Model model, HttpSession session) {
-			System.out.println("[OwnersController.ownerMlist]");
+	@RequestMapping(value = "/NownerMlist", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ownerMlist(Model model, HttpSession session) {
+		System.out.println("[OwnersController.ownerMlist]");
 
-			UserVo userVo = (UserVo) session.getAttribute("authUser");
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
-			int u_no = userVo.getU_no();
+		int u_no = userVo.getU_no();
 
-			List<OwnerVo> sList = ownerService.storeList(u_no);
-			System.out.println(sList);
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		System.out.println(sList);
 
-			int s_no = sList.get(0).getS_no();
-			System.out.println(s_no);
+		int s_no = sList.get(0).getS_no();
+		System.out.println(s_no);
 
-			List<MenuVo> mList = ownerService.menuList(s_no);
+		List<MenuVo> mList = ownerService.menuList(s_no);
 
-			System.out.println(mList);
+		System.out.println(mList);
 
-			model.addAttribute("storeList", sList);
-			
-			model.addAttribute("storeVo", sList.get(0));
+		model.addAttribute("storeList", sList);
 
-			model.addAttribute("menuList", mList);
+		model.addAttribute("storeVo", sList.get(0));
 
-			return "owners/NownerMlist";
-		}
+		model.addAttribute("menuList", mList);
 
-		@RequestMapping(value = "/NownerSmlist", method = { RequestMethod.GET, RequestMethod.POST })
-		public String ownerMlist(Model model, HttpSession session,@RequestParam("shop") int s_no) {
-			System.out.println("[OwnersController.ownerSmlist]");
+		return "owners/NownerMlist";
+	}
 
-			
-			
-			UserVo userVo = (UserVo) session.getAttribute("authUser");
+	@RequestMapping(value = "/NownerSmlist", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ownerMlist(Model model, HttpSession session, @RequestParam("shop") int s_no) {
+		System.out.println("[OwnersController.ownerSmlist]");
 
-			int u_no = userVo.getU_no();
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
-			List<OwnerVo> sList = ownerService.storeList(u_no);
-			System.out.println(sList);
+		int u_no = userVo.getU_no();
 
-			System.out.println(s_no);
-			
-			List<MenuVo> mList = ownerService.menuList(s_no);
-			System.out.println(mList);
-			
-			OwnerVo storeVo = ownerService.getStore(s_no);
-			
-			
-			model.addAttribute("storeList", sList);
-		
-			model.addAttribute("storeVo", storeVo);
-			
-			model.addAttribute("menuList", mList);
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		System.out.println(sList);
 
-			return "owners/NownerMlist";
+		System.out.println(s_no);
 
-		}
+		List<MenuVo> mList = ownerService.menuList(s_no);
+		System.out.println(mList);
+
+		OwnerVo storeVo = ownerService.getStore(s_no);
+
+		model.addAttribute("storeList", sList);
+
+		model.addAttribute("storeVo", storeVo);
+
+		model.addAttribute("menuList", mList);
+
+		return "owners/NownerMlist";
+
+	}
+
 	// 메뉴 수정폼
 	@RequestMapping(value = "/NownerMmodify", method = { RequestMethod.GET, RequestMethod.POST })
 	public String menuModify(HttpSession session, Model model, @RequestParam("m_no") int m_no) {
@@ -243,32 +240,25 @@ public class OwnersController {
 
 		List<ReviewVo> rList = ownerService.reviewList(s_no);
 		System.out.println(rList);
-		
+
 		model.addAttribute("storeList", sList);
-		
+
 		model.addAttribute("storeVo", sList.get(0));
 
 		model.addAttribute("reviewList", rList);
-		
-		
-		
-		
+
 		ReviewVo cList = ownerService.count(s_no);
 		System.out.println(cList);
-		
+
 		model.addAttribute("countList", cList);
-		
-		
+
 		return "owners/NownerLivew";
 	}
-	
-	
+
 	@RequestMapping(value = "/NownerSlivew", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerlivew(Model model, HttpSession session,@RequestParam("shop") int s_no) {
+	public String ownerlivew(Model model, HttpSession session, @RequestParam("shop") int s_no) {
 		System.out.println("[OwnersController.ownerSmlist]");
 
-		
-		
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
 		int u_no = userVo.getU_no();
@@ -277,40 +267,33 @@ public class OwnersController {
 		System.out.println(sList);
 
 		System.out.println(s_no);
-		
+
 		List<ReviewVo> rList = ownerService.reviewList(s_no);
 		System.out.println(rList);
-		
+
 		OwnerVo storeVo = ownerService.getStore(s_no);
 
-		
-		
-		
-		
 		ReviewVo cList = ownerService.count(s_no);
 		System.out.println(cList);
 		System.out.println(s_no);
-		
+
 		model.addAttribute("countList", cList);
-		
-		
-		
-		
+
 		model.addAttribute("storeList", sList);
-	
+
 		model.addAttribute("storeVo", storeVo);
-		
+
 		model.addAttribute("reviewList", rList);
 
 		return "owners/NownerLivew";
 
 	}
-	
+
 	@RequestMapping(value = "/NownerDate", method = { RequestMethod.GET, RequestMethod.POST })
-	public String date(Model model, HttpSession session,@RequestParam("s_no") int s_no,@RequestParam("sDate") String sDate, @RequestParam("rDate") String rDate) {
+	public String date(Model model, HttpSession session, @RequestParam("s_no") int s_no,
+			@RequestParam("sDate") String sDate, @RequestParam("rDate") String rDate) {
 		System.out.println("[OwnersController.date]");
-		
-		
+
 		UserVo userVo = (UserVo) session.getAttribute("authUser");
 
 		int u_no = userVo.getU_no();
@@ -319,55 +302,129 @@ public class OwnersController {
 		System.out.println(sList);
 
 		System.out.println(s_no);
-		
+
 		List<ReviewVo> rList = ownerService.reviewList(s_no);
 		System.out.println(rList);
-		
+
 		OwnerVo storeVo = ownerService.getStore(s_no);
 
-		
-		
-		
-		
 		ReviewVo cList = ownerService.count(s_no);
 		System.out.println(cList);
 		System.out.println(s_no);
-		
+
 		model.addAttribute("countList", cList);
-		
-		
-		
-		
+
 		model.addAttribute("storeList", sList);
-	
+
 		model.addAttribute("storeVo", storeVo);
-		
+
 		model.addAttribute("reviewList", rList);
-		
-		
-		ReviewVo dateVo2 = new ReviewVo(sDate,rDate,s_no);
-		
+
+		ReviewVo dateVo2 = new ReviewVo(sDate, rDate, s_no);
+
 		List<ReviewVo> dateVo = ownerService.date(dateVo2);
 		model.addAttribute("dateList", dateVo);
-		
+
 		model.addAttribute("dateList2", dateVo2);
-		
+
 		System.out.println(dateVo);
 		System.out.println(sDate);
 		System.out.println(rDate);
 
-		
 		return "owners/NownerLivew2";
 	}
-	
-	
-
 
 	// 별점 페이지
 	@RequestMapping(value = "/NownerStar", method = { RequestMethod.GET, RequestMethod.POST })
-	public String ownerStar() {
+	public String ownerStar(Model model, HttpSession session) {
 		System.out.println("[OwnersController.ownerStar]");
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		int u_no = userVo.getU_no();
+
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		System.out.println(sList);
+
+		int s_no = sList.get(0).getS_no();
+		System.out.println(s_no);
+
+		ReviewVo cList = ownerService.count(s_no);
+		System.out.println(cList);
+		
+		ReviewVo star1 = ownerService.star1(s_no);
+		System.out.println(star1);
+		ReviewVo star2 = ownerService.star2(s_no);
+		System.out.println(star2);
+		ReviewVo star3 = ownerService.star3(s_no);
+		System.out.println(star3);
+		ReviewVo star4 = ownerService.star4(s_no);
+		System.out.println(star4);
+		ReviewVo star5 = ownerService.star5(s_no);
+		System.out.println(star5);
+		
+
+		model.addAttribute("countList", cList);
+		model.addAttribute("storeList", sList);
+		model.addAttribute("star1", star1);
+		model.addAttribute("star2", star2);
+		model.addAttribute("star3", star3);
+		model.addAttribute("star4", star4);
+		model.addAttribute("star5", star5);
+
+		
 
 		return "owners/NownerStar";
+	}
+	
+	@RequestMapping(value = "/NownerSstar", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ownerStar(Model model, HttpSession session, @RequestParam("shop") int s_no) {
+		System.out.println("[OwnersController.ownerSmlist]");
+
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		int u_no = userVo.getU_no();
+
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		System.out.println(sList);
+
+		System.out.println(s_no);
+
+
+		OwnerVo storeVo = ownerService.getStore(s_no);
+
+		ReviewVo cList = ownerService.count(s_no);
+		System.out.println(cList);
+		System.out.println(s_no);
+
+		model.addAttribute("countList", cList);
+
+		model.addAttribute("storeList", sList);
+
+		model.addAttribute("storeVo", storeVo);
+
+		
+		ReviewVo star1 = ownerService.star1(s_no);
+		System.out.println(star1);
+		ReviewVo star2 = ownerService.star2(s_no);
+		System.out.println(star2);
+		ReviewVo star3 = ownerService.star3(s_no);
+		System.out.println(star3);
+		ReviewVo star4 = ownerService.star4(s_no);
+		System.out.println(star4);
+		ReviewVo star5 = ownerService.star5(s_no);
+		System.out.println(star5);
+		
+
+		model.addAttribute("countList", cList);
+		model.addAttribute("storeList", sList);
+		model.addAttribute("star1", star1);
+		model.addAttribute("star2", star2);
+		model.addAttribute("star3", star3);
+		model.addAttribute("star4", star4);
+		model.addAttribute("star5", star5);
+
+
+		return "owners/NownerStar";
+
 	}
 }
