@@ -46,8 +46,8 @@
                      <p class="restaurantInfo-text">${ownerVo.s_intro }.</p>
                      <p class="restaurantInfo-text">
                         <span class="timeInfo">영업시간</span> <span class="timeInfo">${ownerVo.s_openH }:${ownerVo.s_openM } ~
-                           ${ownerVo.s_closeH }:${ownerVo.s_closeM } </span>
-                           <span>휴무일:</span><br>
+                           ${ownerVo.s_closeH }:${ownerVo.s_closeM } </span><br><br>
+                           <span>휴무일:</span>
                            <!-- 휴무일 값 --><span>
                            ${ownerVo.s_Hmon } 
                            ${ownerVo.s_Htue}
@@ -62,8 +62,8 @@
 
                      </p>
                      <p class="restaurantInfo-text">
-                        <span><a href="${ownerVo.s_twitter }"><img src="" alt="트위터"></a></span> <span><a href="${ownerVo.s_instagram }"><img src="" alt="인스타그램"></a></span>
-                        <span><a href="${ownerVo.s_youtube }"><img src="" alt="유튜브"></a></span>
+                        <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span> <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타그램"></a></span>
+                        <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span>
                      </p>
                      <p>
                         <span class="favoritesImg"><img src="" alt="찜"></span> <span class="favorites">+555</span>
@@ -72,7 +72,7 @@
                   <div class="restaurantInfo float-l clearfix text-left">
                   <c:forEach items="${ownerVo.menuList }" var="menuList" varStatus="status" begin="0" end="2">
                      <div class="menu">
-                        <img class="foodImg float-l clearfix" src="${menuList.m_imge}">
+                        <img class="foodImg float-l clearfix" src="${ pageContext.request.contextPath }/veganLogo/${menuList.m_imge }">
                         
                         <p>
                            <span class="foodInfo">메뉴이름: ${menuList.m_name}</span> <span class="foodInfo">가격: ${menuList.m_price}</span> <span class="foodInfo">채식타입:
@@ -171,16 +171,16 @@
                                        <p id="starPoint">★★★★★</p>
                                     </c:if>
                                     <c:if test="${reviewList.star == 4 }">
-                                       <p id="starPoint">★★★★</p>
+                                       <p id="starPoint">★★★★☆</p>
                                     </c:if>
                                     <c:if test="${reviewList.star == 3 }">
-                                       <p id="starPoint">★★★</p>
+                                       <p id="starPoint">★★★☆☆</p>
                                     </c:if>
                                     <c:if test="${reviewList.star == 2 }">
-                                       <p id="starPoint">★★</p>
+                                       <p id="starPoint">★★☆☆☆</p>
                                     </c:if>
                                     <c:if test="${reviewList.star == 1 }">
-                                       <p id="starPoint">★</p>
+                                       <p id="starPoint">★☆☆☆☆</p>
                                      </c:if>
                            <p>${reviewList.r_date }</p>
                         </div>
@@ -238,9 +238,9 @@
                   <h4 class="modal-title text-center" id="myModalLabel">${ownerVo.s_name}</h4>
                </div>
                <div class="modal-body clearfix">
-               <c:forEach items="${ownerVo.menuList }" var="menuList">
+               <c:forEach items="${ownerVo.menuList }" var="menuList" >
                   <div class="menuInfo float-l">
-                     <img class="menuImg" src="menuList" alt="">
+                     <img id="" class="menuImg" src="${ pageContext.request.contextPath }/veganLogo/${menuList.m_imge }" alt="">
                      <div class="menuText">
                         <p>${menuList.m_name }</p>
                         <p>${menuList.m_price }</p>
@@ -407,7 +407,7 @@ $(function(){
       console.log(s_no);
       console.log(r_contents);
       console.log(file);
-      console.log(별);
+      
       
       var formData = new FormData();
       formData.append('u_no', u_no);
@@ -528,13 +528,13 @@ function render(resultVo, type){
       if(resultVo.star == 5){
          Str += '<p id="starPoint">★★★★★</p>'
       }else if(resultVo.star == 4){
-         Str += '<p id="starPoint">★★★★</p>'
+         Str += '<p id="starPoint">★★★★☆</p>'
          }else if(resultVo.star == 3 ){
-            Str += '<p id="starPoint">★★★</p>'
+            Str += '<p id="starPoint">★★★☆☆</p>'
             }else if(resultVo.star == 2){
-               Str += '<p id="starPoint">★★</p>'
+               Str += '<p id="starPoint">★★☆☆☆</p>'
             }else if(resultVo.star == 1){
-               Str += '<p id="starPoint">★</p>'
+               Str += '<p id="starPoint">★☆☆☆☆</p>'
             }
       
    Str += '<p>'+resultVo.r_date+'</p>';

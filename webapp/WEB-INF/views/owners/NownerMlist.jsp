@@ -98,7 +98,7 @@
 									<tbody>
 										<c:forEach items="${menuList}" var="mVo">
 											<tr>
-												<td><img src="${pageContext.request.contextPath}/veganLogo/${mVo.m_imge}"></td>
+												<td id="s_img"><img src="${pageContext.request.contextPath}/veganLogo/${mVo.m_imge}"></td>
 												<td>${mVo.m_name}</td>
 												<td>${mVo.m_type}</td>
 												<td>${mVo.m_price}</td>
