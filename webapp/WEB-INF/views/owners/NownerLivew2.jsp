@@ -126,7 +126,7 @@
 										</tr>
 										<tr>
 											<td>
-												<p>기간을 입력하셔서 조회하실 수 있습니다.</p>
+												<p>${dateList2.sDate} ~ ${dateList2.rDate}</p>
 											</td>
 										</tr>
 
@@ -141,6 +141,7 @@
 													<input type="date" name="rDate" id="rDate">
 													<input type="hidden" name="s_no" id="s_no" value="${storeVo.s_no}">
 													<div class="button-area orange">
+													
 														<button type="submit">검색</button>
 													</div>
 												</form>
@@ -168,13 +169,13 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${reviewList}" var="rVo">
+											<c:forEach items="${dateList}" var="dVo">
 												<tr>
-													<td>${rVo.r_date}</td>
-													<td>${rVo.star}</td>
-													<td>${rVo.u_nickName}</td>
-													<td>${rVo.saveName}</td>
-													<td>${rVo.r_contents}</td>
+													<td>${dVo.r_date}</td>
+													<td>${dVo.star}</td>
+													<td>${dVo.u_nickName}</td>
+													<td>${dVo.saveName}</td>
+													<td>${dVo.r_contents}</td>
 
 
 												</tr>

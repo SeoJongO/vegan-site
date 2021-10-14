@@ -171,4 +171,23 @@
 		]]>
 	</select>
 	
+	<select id="date" parameterType="com.javaex.vo.ReviewVo" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+			select r.r_no,
+		      r.s_no,
+		      r.u_no,
+		      r.r_contents,
+		      r.r_date,
+		      r.star,
+		      r.saveName,
+		      u.u_nickname,
+		      u.u_type
+	      from review r, users u
+	      where r.u_no = u.u_no 
+	      and r.s_no= #{s_no}
+	      and r.r_date BETWEEN TO_DATE(#{sDate}, 'YYYY-MM-DD')
+	      AND TO_DATE(#{rDate}, 'YYYY-MM-DD')      
+		]]>
+	</select>
+	
 </mapper>

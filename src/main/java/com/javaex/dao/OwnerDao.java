@@ -93,5 +93,13 @@ public class OwnerDao {
 		
 		
 	}
+	
+	public List<ReviewVo> date(ReviewVo dateVo2) {
+		System.out.println("OwnerDao.date()");
+
+		return sqlSession.selectList("owner.date", dateVo2);
+		
+		
+	}
 
 }

@@ -306,6 +306,60 @@ public class OwnersController {
 
 	}
 	
+	@RequestMapping(value = "/NownerDate", method = { RequestMethod.GET, RequestMethod.POST })
+	public String date(Model model, HttpSession session,@RequestParam("s_no") int s_no,@RequestParam("sDate") String sDate, @RequestParam("rDate") String rDate) {
+		System.out.println("[OwnersController.date]");
+		
+		
+		UserVo userVo = (UserVo) session.getAttribute("authUser");
+
+		int u_no = userVo.getU_no();
+
+		List<OwnerVo> sList = ownerService.storeList(u_no);
+		System.out.println(sList);
+
+		System.out.println(s_no);
+		
+		List<ReviewVo> rList = ownerService.reviewList(s_no);
+		System.out.println(rList);
+		
+		OwnerVo storeVo = ownerService.getStore(s_no);
+
+		
+		
+		
+		
+		ReviewVo cList = ownerService.count(s_no);
+		System.out.println(cList);
+		System.out.println(s_no);
+		
+		model.addAttribute("countList", cList);
+		
+		
+		
+		
+		model.addAttribute("storeList", sList);
+	
+		model.addAttribute("storeVo", storeVo);
+		
+		model.addAttribute("reviewList", rList);
+		
+		
+		ReviewVo dateVo2 = new ReviewVo(sDate,rDate,s_no);
+		
+		List<ReviewVo> dateVo = ownerService.date(dateVo2);
+		model.addAttribute("dateList", dateVo);
+		
+		model.addAttribute("dateList2", dateVo2);
+		
+		System.out.println(dateVo);
+		System.out.println(sDate);
+		System.out.println(rDate);
+
+		
+		return "owners/NownerLivew2";
+	}
+	
 	
 
 

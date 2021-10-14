@@ -168,4 +168,9 @@ public class OwnerService {
 		return ownerDao.count(s_no);
 	}
 	
+	public List<ReviewVo> date(ReviewVo dateVo2) {
+		System.out.println("OwnerService.date()");
+
+		return ownerDao.date(dateVo2);
+	}
 }
