@@ -49,7 +49,7 @@
 							<div class="wrap3">
 								<form action="" method="">
 									<h4>사업자등록증</h4>
-									<br> <label for="ex_file"><img src="C:\Users\Hi-PC\Desktop\add.png"></label> <input type="file" id="ex_file"> <br>
+									<br> <label for="ex_file"><img src="${pageContext.request.contextPath }/assets/image/add.png"></label> <input type="file" id="ex_file"> <br>
 									<div class="button">
 										<button class="btn blue" type="submit" onclick="location.href='${pageContext.request.contextPath }/main'">확인</button>
 									</div>

@@ -1,9 +1,12 @@
 package com.javaex.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.UserDao;
+import com.javaex.vo.ReviewPageVo;
 import com.javaex.vo.UserVo;
 
 @Service
@@ -52,6 +55,12 @@ public class UserService {
 		System.out.println("UserService.getEmail()");
 		
 		return userDao.getEmail(u_phone);
+	}
+	
+	public List<ReviewPageVo> getReview (int u_no) {
+		System.out.println("UserService.getReview()");
+		
+		return userDao.getReview(u_no);
 	}
 
 }
