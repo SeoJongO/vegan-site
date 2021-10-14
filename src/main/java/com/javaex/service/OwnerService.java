@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.OwnerDao;
 import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
+import com.javaex.vo.ReviewVo;
 
 @Service
 public class OwnerService {
@@ -155,4 +156,21 @@ public class OwnerService {
 		return ownerDao.menuList(s_no);
 	}
 
+	public List<ReviewVo> reviewList(int s_no) {
+		System.out.println("OwnerService.storeList()");
+
+		return ownerDao.reviewList(s_no);
+	}
+	
+	public ReviewVo count(int s_no) {
+		System.out.println("OwnerService.count()");
+
+		return ownerDao.count(s_no);
+	}
+	
+	public List<ReviewVo> date(ReviewVo dateVo2) {
+		System.out.println("OwnerService.date()");
+
+		return ownerDao.date(dateVo2);
+	}
 }

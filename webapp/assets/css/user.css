@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
 /******************** 공통 ********************/
+#gray {
+	color: #808080;
+}
+
+
 .orange {
 	color: coral;
 	font-size: 10px;

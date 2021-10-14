@@ -3,13 +3,13 @@
 
 <mapper namespace="owner">
 
-	<insert id="storeInsert" parameterType = "com.javaex.vo.OwnerVo">
+	<insert id="storeInsert" parameterType="com.javaex.vo.OwnerVo">
 		<![CDATA[
 			insert into store
 			values(s_no.nextval, #{u_no}, #{s_img}, #{s_name}, #{s_phone}, #{s_address}, #{s_detail_address}, #{s_openH}, #{s_openM}, #{s_closeH}, #{s_closeM}, #{s_parking}, #{s_intro}, #{s_youtube}, #{s_twitter}, #{s_instagram}, #{s_Hmon}, #{s_Htue}, #{s_Hwen}, #{s_Hthu}, #{s_Hfri}, #{s_Hsat}, #{s_Hsun}, #{s_latitude}, #{s_longitude}, to_char(SYSDATE, 'yyyy-mm-dd'))
 		]]>
 	</insert>
-	
+
 	<select id="storeList" parameterType="int" resultType="com.javaex.vo.OwnerVo">
 		<![CDATA[
 			select s_no,
@@ -21,8 +21,8 @@
 			where u_no = #{u_no}
 			order by s_no asc
 		]]>
-	</select>	
-	
+	</select>
+
 	<select id="getStore" parameterType="int" resultType="com.javaex.vo.OwnerVo">
 		<![CDATA[
 			select s_no,
@@ -51,14 +51,14 @@
 			where s_no = #{s_no}
 		]]>
 	</select>
-	
+
 	<delete id="storeDelete" parameterType="int">
 		<![CDATA[
 			delete store
 			where s_no = #{s_no}
 		]]>
 	</delete>
-	
+
 	<update id="storeModify" parameterType="com.javaex.vo.OwnerVo">
 		<![CDATA[
 			update store
@@ -86,7 +86,7 @@
 			where s_no = #{s_no}
 		]]>
 	</update>
-	
+
 	<select id="getMenu" parameterType="int" resultType="com.javaex.vo.MenuVo">
 		<![CDATA[
 			select 
@@ -141,4 +141,53 @@
             
 		]]>
 	</select>
+
+	<select id="reviewList" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+			SELECT
+			    r.r_no,
+			    r.s_no,
+			    r.u_no,
+			    r.r_contents,
+			    to_char(r.r_date, 'YYYY.MM.DD') AS r_date,
+			    r.star,
+			    r.savename,
+			    u.u_nickname as u_nickName
+			FROM review r, users u
+			where r.u_no = u.u_no 
+			and s_no = #{s_no}
+            
+		]]>
+	</select>
+	
+	<select id="countList" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+			select 
+			count(r_no) as count
+			from review
+			GROUP BY s_no
+			having s_no = #{s_no}
+            
+		]]>
+	</select>
+	
+	<select id="date" parameterType="com.javaex.vo.ReviewVo" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+			select r.r_no,
+		      r.s_no,
+		      r.u_no,
+		      r.r_contents,
+		      r.r_date,
+		      r.star,
+		      r.saveName,
+		      u.u_nickname,
+		      u.u_type
+	      from review r, users u
+	      where r.u_no = u.u_no 
+	      and r.s_no= #{s_no}
+	      and r.r_date BETWEEN TO_DATE(#{sDate}, 'YYYY-MM-DD')
+	      AND TO_DATE(#{rDate}, 'YYYY-MM-DD')      
+		]]>
+	</select>
+	
 </mapper>

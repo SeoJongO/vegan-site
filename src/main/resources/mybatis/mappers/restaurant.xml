@@ -80,36 +80,33 @@
 	<!-- 메뉴가져오기 -->
 	<select id="menuList" parameterType="int" resultType="com.javaex.vo.MenuVo">
 
-<![CDATA[
-  select 	m_no,
-              s_no,
-              m_name,
-              m_imge,
-              m_type,
-              m_intro,
-              m_price
-       from menu
-       where s_no= #{s_no}
-]]>
-
-
+		<![CDATA[
+		  select 	m_no,
+		              s_no,
+		              m_name,
+		              m_imge,
+		              m_type,
+		              m_intro,
+		              m_price
+		       from menu
+		       where s_no= #{s_no}
+		]]>
 	</select>
+
+
 
 	<!-- 리뷰쓰기 -->
 	<insert id="insertReviewKey" parameterType="com.javaex.vo.ReviewVo">
-	<selectKey keyProperty="r_no" resultType="int" order="BEFORE">
-	<![CDATA[
+		<selectKey keyProperty="r_no" resultType="int" order="BEFORE">
+			<![CDATA[
+			select r_no.nextval from dual
+			]]>
+		</selectKey>
 	
-	select r_no.nextval from dual
-	
-	]]>
-	</selectKey>
-
-
-<![CDATA[
-	INSERT into review
-	VALUES (#{r_no},#{s_no},#{u_no},#{r_contents}, sysdate ,'5점',#{saveName})
-]]>
+		<![CDATA[
+			INSERT into review
+			VALUES (#{r_no},#{s_no},#{u_no},#{r_contents}, sysdate ,#{star},#{saveName})
+		]]>
 	</insert>
 
 
@@ -120,19 +117,19 @@
 
 
 <![CDATA[
-select r.r_no,
-	   r.s_no,
-	   r.u_no,
-	   r.r_contents,
-	   r.r_date,
-	   r.star,
-	   r.saveName,
-	   u.u_nickname,
-	   u.u_type
-	   from review r, users u
-	   where r.u_no = u.u_no 
-	   and r.s_no=#{s_no}
-		order by r_no asc
+	select r.r_no,
+		   r.s_no,
+		   r.u_no,
+		   r.r_contents,
+		   r.r_date,
+		   r.star,
+		   r.saveName,
+		   u.u_nickname,
+		   u.u_type
+		   from review r, users u
+		   where r.u_no = u.u_no 
+		   and r.s_no=#{s_no}
+			order by r_no asc
 ]]>
 
 
@@ -171,11 +168,11 @@ select r.r_no,
 	<update id="updateModi" parameterType="com.javaex.vo.ReviewVo">
 	
 	<![CDATA[
-	update review
-	set r_contents = #{r_contents},
-		saveName = #{saveName}
-		where r_no=#{r_no}
-	
+		update review
+		set r_contents = #{r_contents},
+			saveName = #{saveName}
+			where r_no=#{r_no}
+		
 	
 	]]>
 	
