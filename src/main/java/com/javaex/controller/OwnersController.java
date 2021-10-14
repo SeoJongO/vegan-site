@@ -250,8 +250,12 @@ public class OwnersController {
 
 		ReviewVo cList = ownerService.count(s_no);
 		System.out.println(cList);
-
+		
 		model.addAttribute("countList", cList);
+		
+		ReviewVo hart = ownerService.hartAvg(s_no);
+		model.addAttribute("hartAvg", hart);
+		System.out.println(hart);
 
 		return "owners/NownerLivew";
 	}
@@ -285,6 +289,10 @@ public class OwnersController {
 		model.addAttribute("storeVo", storeVo);
 
 		model.addAttribute("reviewList", rList);
+		
+		ReviewVo hart = ownerService.hartAvg(s_no);
+		model.addAttribute("hartAvg", hart);
+		System.out.println(hart);
 
 		return "owners/NownerLivew";
 
@@ -331,6 +339,10 @@ public class OwnersController {
 		System.out.println(dateVo);
 		System.out.println(sDate);
 		System.out.println(rDate);
+		
+		ReviewVo hart = ownerService.hartAvg(s_no);
+		model.addAttribute("hartAvg", hart);
+		System.out.println(hart);
 
 		return "owners/NownerLivew2";
 	}
@@ -371,6 +383,10 @@ public class OwnersController {
 		model.addAttribute("star3", star3);
 		model.addAttribute("star4", star4);
 		model.addAttribute("star5", star5);
+		
+		ReviewVo hart = ownerService.hartAvg(s_no);
+		model.addAttribute("hartAvg", hart);
+		System.out.println(hart);
 
 		
 
@@ -424,6 +440,10 @@ public class OwnersController {
 		model.addAttribute("star3", star3);
 		model.addAttribute("star4", star4);
 		model.addAttribute("star5", star5);
+		
+		ReviewVo hart = ownerService.hartAvg(s_no);
+		model.addAttribute("hartAvg", hart);
+		System.out.println(hart);
 
 
 		return "owners/NownerStar";

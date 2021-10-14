@@ -96,10 +96,10 @@
 
 										<tr>
 											<td>
-												<span id="tdGray">(평균 벌점을 나타냅니다.)</span>
+												<img src="${pageContext.request.contextPath}/assets/image/별222.png">${hartAvg.avg }<br><span id="tdGray">(평균 벌점을 나타냅니다.)</span>
 											</td>
 											<td>
-												${countList.count}개<br> <span id="tdGray">(전체 댓글
+												<img src="${pageContext.request.contextPath}/assets/image/작성아이콘.png">${countList.count}개<br> <span id="tdGray">(전체 댓글
 													개수를 나타냅니다.)</span>
 											</td>
 											<td>

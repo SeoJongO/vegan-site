@@ -140,4 +140,11 @@ public class OwnerDao {
 		
 	}
 
+	public ReviewVo hartAvg(int s_no) {
+		System.out.println("OwnerDao.hartAvg()");
+
+		return sqlSession.selectOne("owner.hartAvg", s_no);
+
+	}
+	
 }

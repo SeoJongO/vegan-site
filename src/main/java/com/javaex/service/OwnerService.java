@@ -203,5 +203,11 @@ public class OwnerService {
 		return ownerDao.star5(s_no);
 	}
 	
+	public ReviewVo hartAvg(int s_no) {
+		System.out.println("OwnerService.hartAvg()");
+
+		return ownerDao.hartAvg(s_no);
+	}
+	
 	
 }

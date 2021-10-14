@@ -250,6 +250,15 @@
 		]]>
 	</select>
 	
+	<select id="hartAvg" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+		<![CDATA[
+			SELECT
+    			round(avg(star), 1) as avg
+			FROM review
+			where s_no=#{s_no}
+			
+		]]>
+	</select>
 	
 	
 </mapper>
