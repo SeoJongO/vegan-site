@@ -167,7 +167,21 @@
 								<img class="userProfile-img float-l" src="">
 								<div>
 									<p>${reviewList.u_nickName}(${reviewList.u_type })</p>
-									<p id="starPoint">${reviewList.star}</p>
+												<c:if test="${reviewList.star == 5 }">
+													<p id="starPoint">★★★★★</p>
+												</c:if>
+												<c:if test="${reviewList.star == 4 }">
+													<p id="starPoint">★★★★</p>
+												</c:if>
+												<c:if test="${reviewList.star == 3 }">
+													<p id="starPoint">★★★</p>
+												</c:if>
+												<c:if test="${reviewList.star == 2 }">
+													<p id="starPoint">★★</p>
+												</c:if>
+												<c:if test="${reviewList.star == 1 }">
+													<p id="starPoint">★</p>
+											    </c:if>
 									<p>${reviewList.r_date }</p>
 								</div>
 							</div>
@@ -261,7 +275,27 @@
 								 <form action="${pageContext.request.contextPath }/reviewWrite" method="post" enctype="multipart/form-data">  
 									<textarea id="writeModal" name="r_contents" ></textarea>
 									<input id="file" type="file" name="file" value="">
-									<p  class="modifyPage-starPoint text-center" >★★★★★</p>
+									<!-- 별점구현;; -->
+									<!-- 부모 --> 
+									 <P id="reviewStar">
+									 
+									
+										 <input type="radio"  id="star-1" class="star" value="1" >
+										 <label for="star" id="star-1">★</label>
+										 
+										 <input type="radio"  id="star-2" class="star" value="2" >
+										 <label for="star" id="star-2">★</label>
+										 
+										 <input type="radio"  id="star-3" class="star" value="3" >
+										 <label for="star" id="star-3">★</label>
+										 
+										 <input type="radio"   id="star-4" class="star" value="4" >
+										 <label for="star" id="star-4">★</label>
+										 
+										 <input type="radio"   id="star-5" class="star" value="5" >
+										 <label for="star" id="star-5">★</label>
+									   <p> 
+									   
 									<div class="text-center">
 										<button id= "ajaxButton" class="btn" type="submit">저장</button>
 										<button class="btn">취소</button>
@@ -308,6 +342,8 @@
 </body>
 
 <script type="text/javascript">
+
+var star;
 
 //화면 로딩되기직전
 $(document).ready(function(){
@@ -371,17 +407,20 @@ $(function(){
 		console.log(s_no);
 		console.log(r_contents);
 		console.log(file);
+		console.log(star);
 		
 		var formData = new FormData();
 		formData.append('u_no', u_no);
 		formData.append('s_no',s_no);
 		formData.append('r_contents',r_contents);
 		formData.append('file',file);
+		formData.append('star',star);
 		
 		console.log(formData.get('u_no'));
 		console.log(formData.get('s_no'));
 		console.log(formData.get('r_contents'));
 		console.log(formData.get('file'));
+		console.log(formData.get('star'));
 		
 		$.ajax({
 				
@@ -399,6 +438,7 @@ $(function(){
 					
 					console.log(resultVo);
 					render(resultVo,"up");
+					console.log("ddd"+resultVo.star);
 					
 					$('#reviewModal').modal('hide');
 		            //화면에 그리기
@@ -484,7 +524,19 @@ function render(resultVo, type){
 	Str += '<img class="userProfile-img float-l" src="">';
 	Str += '<div>';
 	Str += '<p>'+resultVo.u_nickName+''+(resultVo.u_type)+'</p>';
-	Str += '<p id="starPoint">'+resultVo.star+'</p>';
+	
+		if(resultVo.star == 5){
+			Str += '<p id="starPoint">★★★★★</p>'
+		}else if(resultVo.star == 4){
+			Str += '<p id="starPoint">★★★★</p>'
+			}else if(resultVo.star == 3 ){
+				Str += '<p id="starPoint">★★★</p>'
+				}else if(resultVo.star == 2){
+					Str += '<p id="starPoint">★★</p>'
+				}else if(resultVo.star == 1){
+					Str += '<p id="starPoint">★</p>'
+				}
+		
 	Str += '<p>'+resultVo.r_date+'</p>';
 	Str += '</div>';
 	Str += '</div>';
@@ -518,6 +570,14 @@ function render(resultVo, type){
 
 
 
+<!-- 리뷰 별 체크 -->
+$('#reviewStar label').click(function(){ 
+	$(this).parent().children("label").removeClass("on"); 
+	$(this).addClass("on").prevAll("label").addClass("on"); 
+	//console.log($(this).attr("id"));  //라벨 id
+	console.log($('#'+$(this).attr("id")).attr("value")); //라벨 id를 이용해서 radio value를 가져옴
+	star =$('#'+$(this).attr("id")).attr("value");
+	});
 
 
 
