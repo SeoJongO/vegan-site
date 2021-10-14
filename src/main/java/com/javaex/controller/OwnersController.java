@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.OwnerService;
 import com.javaex.vo.MenuVo;
@@ -376,6 +377,7 @@ public class OwnersController {
 		return "owners/NownerStar";
 	}
 	
+
 	@RequestMapping(value = "/NownerSstar", method = { RequestMethod.GET, RequestMethod.POST })
 	public String ownerStar(Model model, HttpSession session, @RequestParam("shop") int s_no) {
 		System.out.println("[OwnersController.ownerSmlist]");
@@ -427,4 +429,15 @@ public class OwnersController {
 		return "owners/NownerStar";
 
 	}
+
+	@ResponseBody
+	@RequestMapping(value = "/getStore", method = { RequestMethod.GET, RequestMethod.POST })
+	public OwnerVo emailCheck(@RequestParam("s_no") int s_no) {
+		System.out.println("[OwnersController.getStore()]");
+
+		OwnerVo storeVo = ownerService.getStore(s_no);
+
+		return storeVo;
+	}	
+
 }
