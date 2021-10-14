@@ -105,7 +105,32 @@
                         <!-- 이미지 지도를 표시할 div 입니다 -->
                         <div id="staticMap" style="width: 340px; height: 200px;"></div>
 
-                        
+                        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31"></script>
+                        <script>
+                           // 이미지 지도에서 마커가 표시될 위치입니다 
+                           var markerPosition = new kakao.maps.LatLng(
+                                 33.450701, 126.570667);
+
+                           // 이미지 지도에 표시할 마커입니다
+                           // 이미지 지도에 표시할 마커는 Object 형태입니다
+                           var marker = {
+                              position : markerPosition
+                           };
+
+                           var staticMapContainer = document
+                                 .getElementById('staticMap'), // 이미지 지도를 표시할 div  
+                           staticMapOption = {
+                              center : new kakao.maps.LatLng(
+                                    33.450701, 126.570667), // 이미지 지도의 중심좌표
+                              level : 4, // 이미지 지도의 확대 레벨
+                              marker : marker
+                           // 이미지 지도에 표시할 마커 
+                           };
+
+                           // 이미지 지도를 생성합니다
+                           var staticMap = new kakao.maps.StaticMap(
+                                 staticMapContainer, staticMapOption);
+                        </script>
                         <div id="address">
                            <div id="addressText">
                            	<input type="hidden" id="s_address" value="${ownerVo.s_address}">
@@ -422,8 +447,6 @@ $(function(){
       console.log(file);
 
       
-
-      
       var formData = new FormData();
       formData.append('u_no', u_no);
       formData.append('s_no',s_no);
@@ -543,13 +566,13 @@ function render(resultVo, type){
       if(resultVo.star == 5){
          Str += '<p id="starPoint">★★★★★</p>'
       }else if(resultVo.star == 4){
-         Str += '<p id="starPoint">★★★★☆</p>'
+         Str += '<p id="starPoint">★★★★</p>'
          }else if(resultVo.star == 3 ){
-            Str += '<p id="starPoint">★★★☆☆</p>'
+            Str += '<p id="starPoint">★★★</p>'
             }else if(resultVo.star == 2){
-               Str += '<p id="starPoint">★★☆☆☆</p>'
+               Str += '<p id="starPoint">★★</p>'
             }else if(resultVo.star == 1){
-               Str += '<p id="starPoint">★☆☆☆☆</p>'
+               Str += '<p id="starPoint">★</p>'
             }
       
    Str += '<p>'+resultVo.r_date+'</p>';
@@ -609,5 +632,4 @@ $('#reviewStar label').click(function(){
 </script>
 
 </html>
-
 
