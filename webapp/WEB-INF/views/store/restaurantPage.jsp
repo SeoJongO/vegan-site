@@ -420,10 +420,9 @@ $(function(){
       console.log(s_no);
       console.log(r_contents);
       console.log(file);
-<<<<<<< HEAD
+
       
-=======
->>>>>>> branch 'master' of https://github.com/SeoJongO/vegan-site.git
+
       
       var formData = new FormData();
       formData.append('u_no', u_no);
