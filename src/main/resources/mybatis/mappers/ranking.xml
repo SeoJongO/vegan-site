@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="ranking">
+
+	<select id="rankingList"  resultType="com.javaex.vo.OwnerVo">
+		<![CDATA[
+			SELECT
+			    round(avg(r.star), 1) as avg,
+			    s.s_no as s_no,
+			    s.s_name as s_name,
+			    s.s_img as s_img 
+			FROM review r, store s
+			where r.s_no = s.s_no
+			group by r.s_no, s.s_no, s.s_name, s.s_img
+			order by avg(r.star) desc
+
+	        ]]>
+	</select>
+
+	
+</mapper>
