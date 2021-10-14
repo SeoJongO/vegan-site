@@ -139,16 +139,16 @@
 													<input type="date" name="sDate" id="sDate">
 													<span> ~ </span>
 													<input type="date" name="rDate" id="rDate">
-													<input type="hidden" name="s_no" id="s_no" value="${storeVo.s_no}">
+													<input type="hidden" name="s_no" id="s_no"
+														value="${storeVo.s_no}"
+													>
 													<div class="button-area orange">
 														<button type="submit">검색</button>
 													</div>
 												</form>
 											</td>
 										</tr>
-										<tr>
-											<td></td>
-										</tr>
+										
 									</table>
 								</div>
 
@@ -171,9 +171,39 @@
 											<c:forEach items="${reviewList}" var="rVo">
 												<tr>
 													<td>${rVo.r_date}</td>
-													<td>${rVo.star}</td>
+
+
+													<td>
+														<c:if test="${rVo.star == 5 }">
+															<p id="starPoint">★★★★★</p>
+														</c:if>
+														<c:if test="${rVo.star == 4 }">
+															<p id="starPoint">★★★★☆</p>
+														</c:if>
+														<c:if test="${rVo.star == 3 }">
+															<p id="starPoint">★★★☆☆</p>
+														</c:if>
+														<c:if test="${rVo.star == 2 }">
+															<p id="starPoint">★★☆☆☆</p>
+														</c:if>
+														<c:if test="${rVo.star == 1 }">
+															<p id="starPoint">★☆☆☆☆</p>
+														</c:if>
+													</td>
+
+
+
 													<td>${rVo.u_nickName}</td>
-													<td><img alt="" src="file:C:/veganReview/${rVo.saveName}"></td>
+													<td>
+														<c:if test="${rVo.saveName != null }">
+															<img alt=""
+																src="${pageContext.request.contextPath}/assets/image/리뷰디폴트.png"
+															>
+														</c:if>
+														<c:if test="${rVo.saveName == null }">
+														</c:if>
+													</td>
+
 													<td>${rVo.r_contents}</td>
 
 

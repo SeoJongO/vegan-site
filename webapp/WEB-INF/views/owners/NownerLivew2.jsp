@@ -126,7 +126,7 @@
 										</tr>
 										<tr>
 											<td>
-												<p>${dateList2.sDate} ~ ${dateList2.rDate}</p>
+												<p>${dateList2.sDate}~${dateList2.rDate}</p>
 											</td>
 										</tr>
 
@@ -139,17 +139,17 @@
 													<input type="date" name="sDate" id="sDate">
 													<span> ~ </span>
 													<input type="date" name="rDate" id="rDate">
-													<input type="hidden" name="s_no" id="s_no" value="${storeVo.s_no}">
+													<input type="hidden" name="s_no" id="s_no"
+														value="${storeVo.s_no}"
+													>
 													<div class="button-area orange">
-													
+
 														<button type="submit">검색</button>
 													</div>
 												</form>
 											</td>
 										</tr>
-										<tr>
-											<td></td>
-										</tr>
+										
 									</table>
 								</div>
 
@@ -173,8 +173,37 @@
 												<tr>
 													<td>${dVo.r_date}</td>
 													<td>${dVo.star}</td>
+
+													<td>
+														<c:if test="${dVo.star == 5 }">
+															<p id="starPoint">★★★★★</p>
+														</c:if>
+														<c:if test="${dVo.star == 4 }">
+															<p id="starPoint">★★★★☆</p>
+														</c:if>
+														<c:if test="${dVo.star == 3 }">
+															<p id="starPoint">★★★☆☆</p>
+														</c:if>
+														<c:if test="${dVo.star == 2 }">
+															<p id="starPoint">★★☆☆☆</p>
+														</c:if>
+														<c:if test="${dVo.star == 1 }">
+															<p id="starPoint">★☆☆☆☆</p>
+														</c:if>
+													</td>
+
+
+
 													<td>${dVo.u_nickName}</td>
-													<td><img alt="" src="file:C:/veganReview/${dVo.saveName}"></td>
+													<td>
+														<c:if test="${dVo.saveName != null }">
+															<img alt=""
+																src="${pageContext.request.contextPath}/assets/image/리뷰디폴트.png"
+															>
+														</c:if>
+														<c:if test="${dVo.saveName == null }">
+														</c:if>
+													</td>
 													<td>${dVo.r_contents}</td>
 
 
