@@ -79,6 +79,8 @@ public class UserController {
 		
 		UserVo authUser = userService.getUser(userVo);
 		
+		System.out.println("어쓰유저"+authUser);
+		
 		if (authUser != null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("authUser", authUser);

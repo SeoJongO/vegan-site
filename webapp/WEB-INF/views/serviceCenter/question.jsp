@@ -94,7 +94,7 @@
 
 									<!-- hide구간 -->
 									<tr class="t-body history-t-body">
-										<td>답변달리는영역~~~~~~~~~~~~~~~~~~~~~~~</td>
+										<td>답변을 기다리는 중입니다.</td>
 									</tr>
 									</c:forEach>
 									<!-- //hide구간 -->
