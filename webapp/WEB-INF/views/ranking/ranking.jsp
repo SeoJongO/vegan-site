@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -7,9 +9,16 @@
 <meta charset="UTF-8">
 <title>메인페이지</title>
 
-<link href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${ pageContext.request.contextPath }/assets/css/ranking.css" rel="stylesheet" type="text/css">
+<link
+	href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css"
+	rel="stylesheet" type="text/css"
+>
+<link href="${ pageContext.request.contextPath }/assets/css/common.css"
+	rel="stylesheet" type="text/css"
+>
+<link href="${ pageContext.request.contextPath }/assets/css/ranking.css"
+	rel="stylesheet" type="text/css"
+>
 
 </head>
 <body>
@@ -40,127 +49,27 @@
 				<div id="content">
 					<div id="content-top" class="clearfix">
 						<h3 class="float-l">전국랭킹</h3>
-						<select>
-							<option>전체</option>
-							<option>비건</option>
-							<option>락토</option>
-							<option>오보</option>
-							<option>락토오보</option>
-							<option>페스코</option>
-						</select>
+
 					</div>
 					<div id="ranking" class="clearfix">
 						<!-- 반복구간 -->
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
-						<div id="ranking-group" class="clearfix">
-							<a href="${ pageContext.request.contextPath }/restaurantPage">
-								<div id="ranking-img">
-									<img src="" alt="대표이미지">
-								</div>
-								<div id="ranking-info">
-									<p>러빙헛 역삼점</p>
-									<p>★★★★★</p>
-								</div>
-							</a>
-						</div>
+
+		
+
+						<c:forEach items="${storeList}" var="sVo" varStatus="status" begin="0" end="19">
+
+							<div id="ranking-group" class="clearfix">
+								<a href="${ pageContext.request.contextPath }/restaurantPage?s_no=${sVo.s_no}">
+									<div id="ranking-img">
+										<img src="${pageContext.request.contextPath}/veganLogo/${sVo.s_img}" >
+									</div>
+									<div id="ranking-info">
+										<p>${sVo.s_name}</p>
+										<p>${sVo.avg} <img src="${pageContext.request.contextPath}/assets/image/star.png"></p>
+									</div>
+								</a>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>

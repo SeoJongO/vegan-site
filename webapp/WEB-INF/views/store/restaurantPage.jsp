@@ -46,7 +46,7 @@
                      <p class="restaurantInfo-text">${ownerVo.s_intro }.</p>
                      <p class="restaurantInfo-text">
                         <span class="timeInfo">영업시간</span> <span class="timeInfo">${ownerVo.s_openH }:${ownerVo.s_openM } ~
-                           ${ownerVo.s_closeH }:${ownerVo.s_closeM } </span><br><br>
+                           ${ownerVo.s_closeH }:${ownerVo.s_closeM } </span><br>
                            <span>휴무일:</span>
                            <!-- 휴무일 값 --><span>
                            ${ownerVo.s_Hmon } 
@@ -61,10 +61,93 @@
                         
 
                      </p>
+                     <!-- 트위터 인스타 유뷰트 다 없는 경우 -->
+                     <c:if test="${empty ownerVo.s_twitter && empty ownerVo.s_instagram && empty ownerVo.s_youtube}">
                      <p class="restaurantInfo-text">
-                        <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span> <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타그램"></a></span>
-                        <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span>
+                     	<%--   <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span>  --%>
+                       <%--  <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타"></a></span> --%>
+                       <%--  <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span>  --%>
+                    
                      </p>
+                     </c:if>
+                     <!-- 트위터 인스타 유뷰트 다 있는 경우 -->
+                       <c:if test="${!empty ownerVo.s_twitter && !empty ownerVo.s_instagram && !empty ownerVo.s_youtube}">
+                     <p class="restaurantInfo-text">
+                     	   <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span> 
+                      <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타"></a></span> 
+                        <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span>  
+                    
+                     </p>
+                     </c:if>
+                     
+                     <!-- 트위터 있고 인스타 없고 유튜브 없는경우 -->
+                      <c:if test="${!empty ownerVo.s_twitter && empty ownerVo.s_instagram && empty ownerVo.s_youtube}">
+	                     <p class="restaurantInfo-text">
+		                     <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span> 
+		                     <%-- <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타"></a></span> 
+		                     <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span>   --%>
+	                    
+	                     </p>
+                     </c:if>
+                     
+                     <!-- 트위터 있고 인스타있고 유튜브 없는경우 -->
+                      <c:if test="${!empty ownerVo.s_twitter && !empty ownerVo.s_instagram && empty ownerVo.s_youtube}">
+	                     <p class="restaurantInfo-text">
+		                     <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span> 
+		                      <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타"></a></span> 
+		                     <%-- <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span> --%>   
+	                    
+	                     </p>
+                     </c:if>
+                     
+                   <!-- 트위터 있고 인스타없고 유튜브 있는경우 -->
+                      <c:if test="${!empty ownerVo.s_twitter && empty ownerVo.s_instagram && !empty ownerVo.s_youtube}">
+	                     <p class="restaurantInfo-text">
+		                     <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span> 
+		                     <%--  <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타"></a></span>  --%>
+		                      <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span> 
+	                    
+	                     </p>
+                     </c:if>
+                     
+                     <!-- 인스타있고 트위터없고 유튜브 있는경우 -->
+                      <c:if test="${!empty ownerVo.s_instagram && empty ownerVo.s_twitter && !empty ownerVo.s_youtube}">
+	                     <p class="restaurantInfo-text">
+		                     <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타"></a></span> 
+		                     <%--  <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/트위터아이콘.png" alt="트위터"></a></span>  --%>
+		                      <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span> 
+	                    
+	                     </p>
+                     </c:if>
+                     
+    
+                     
+                    <!-- 인스타있고 트위터없고 유튜브 없는경우 -->
+                      <c:if test="${!empty ownerVo.s_instagram && empty ownerVo.s_twitter && empty ownerVo.s_youtube}">
+	                     <p class="restaurantInfo-text">
+		                     <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="인스타"></a></span> 
+		                     <%--  <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="트위터"></a></span>  --%>
+		                   <%--    <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span>  --%>
+	                    
+	                     </p>
+                     </c:if>
+                     
+                     
+                      <!-- 유튜브있고 인스타없고  트위터없는경우 -->
+                      <c:if test="${!empty ownerVo.s_youtube && empty ownerVo.s_instagram && empty ownerVo.s_twitter}">
+	                     <p class="restaurantInfo-text">
+		                     <span><a href="${ownerVo.s_youtube }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="인스타"></a></span> 
+		                     <%--  <span><a href="${ownerVo.s_instagram }"><img src="${pageContext.request.contextPath }/assets/image/인스타아이콘.png" alt="트위터"></a></span>  --%>
+		                   <%--    <span><a href="${ownerVo.s_twitter }"><img src="${pageContext.request.contextPath }/assets/image/유튜브아이콘.png" alt="유튜브"></a></span>  --%>
+	                    
+	                     </p>
+                     </c:if>
+                     
+                     
+                     
+
+                     
+   
                      <p>
                         <span class="favoritesImg"><img src="" alt="찜"></span> <span class="favorites">+555</span>
                      </p>
@@ -139,7 +222,15 @@
                
                   <div class="review clearfix">
                      <div id="userProfile" class="float-l">
-                        <img class="userProfile-img float-l" src="">
+                     
+	                     <c:if test="${reviewList.u_gender eq  'female' }">
+	                        <img class="userProfile-img float-l" src="${pageContext.request.contextPath}/assets/image/female.png">
+	                      </c:if>
+	                      
+	                      <c:if test="${reviewList.u_gender eq 'male' }">
+	                        <img class="userProfile-img float-l" src="${pageContext.request.contextPath}/assets/image/male.PNG">
+	                      </c:if>
+	                   
                         <div>
                            <p>${reviewList.u_nickName}(${reviewList.u_type })</p>
                                     <c:if test="${reviewList.star == 5 }">
@@ -185,9 +276,9 @@
 
                </div>
                <!-- //reviewArea -->
-               <div id="paging" class="text-center">
+            <!--    <div id="paging" class="text-center">
                   <p>페이징</p>
-               </div>
+               </div> -->
             </div>
             <!-- //content -->
          </div>
@@ -277,6 +368,7 @@
                            </div>
                            <input id="u_no"type="text" name="u_no" value="${authUser.u_no}">
                            <input id="s_no"type="text" name="s_no" value="${ownerVo.s_no}">
+                           <input id="s_no"type="text" name="u_gender" value="${authUser.u_gender}">
                          </form>
                   </div>
                   <!-- //컨텐츠 -->
@@ -316,9 +408,9 @@
 
 </body>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31&libraries=services">
+</script>
 
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31&libraries=services"></script>
 <script>
 var address = document.getElementById('s_address').value;
 console.log(address);
@@ -402,24 +494,29 @@ $(function(){
       var s_no = $("[name='s_no']").val();
       var r_contents = $("#writeModal").val();
       var file =$("#file")[0].files[0];
+      var u_gender = $("[name= 'u_gender']").val();
+      
       
       console.log(u_no);
       console.log(s_no);
       console.log(r_contents);
       console.log(file);
-
+	  console.log(u_gender);
+      
       var formData = new FormData();
       formData.append('u_no', u_no);
       formData.append('s_no',s_no);
       formData.append('r_contents',r_contents);
       formData.append('file',file);
       formData.append('star',star);
+      formData.append('u_gender',u_gender);
       
       console.log(formData.get('u_no'));
       console.log(formData.get('s_no'));
       console.log(formData.get('r_contents'));
       console.log(formData.get('file'));
       console.log(formData.get('star'));
+      console.log(formData.get('u_gender'));
       
       $.ajax({
             //url : "${pageContext.request.contextPath }/api/guestbook/write?name="+userName+"&password="+password+ "&
@@ -490,20 +587,26 @@ function render(resultVo, type){
    Str +=  '<div class="review-wrap" id="d-'+resultVo.r_no+'">';
    Str += '<div class="review clearfix">';
    Str += '<div id="userProfile" class="float-l">';
-   Str += '<img class="userProfile-img float-l" src="">';
+   
+	   if(resultVo.u_gender == 'female'){
+	   		Str += '<img class="userProfile-img float-l" src="${pageContext.request.contextPath}/assets/image/female.png">';
+	   }else if(resultVo.u_gender == 'male'){
+		   Str += '<img class="userProfile-img float-l" src="${pageContext.request.contextPath}/assets/image/male.PNG">';
+ 	 	}
+	   
    Str += '<div>';
    Str += '<p>'+resultVo.u_nickName+''+(resultVo.u_type)+'</p>';
    
       if(resultVo.star == 5){
          Str += '<p id="starPoint">★★★★★</p>'
       }else if(resultVo.star == 4){
-         Str += '<p id="starPoint">★★★★</p>'
+         Str += '<p id="starPoint">★★★★☆</p>'
          }else if(resultVo.star == 3 ){
-            Str += '<p id="starPoint">★★★</p>'
+            Str += '<p id="starPoint">★★★☆☆</p>'
             }else if(resultVo.star == 2){
-               Str += '<p id="starPoint">★★</p>'
+               Str += '<p id="starPoint">★★☆☆☆</p>'
             }else if(resultVo.star == 1){
-               Str += '<p id="starPoint">★</p>'
+               Str += '<p id="starPoint">★☆☆☆☆</p>'
             }
       
    Str += '<p>'+resultVo.r_date+'</p>';
