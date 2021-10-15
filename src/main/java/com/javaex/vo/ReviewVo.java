@@ -24,6 +24,7 @@ public class ReviewVo {
 	private String st3;
 	private String st4;
 	private String st5;
+	private String u_gender;
 	
 
 	public ReviewVo() {
@@ -38,7 +39,7 @@ public class ReviewVo {
 
 	public ReviewVo(int r_no, int s_no, int u_no, String r_contents, String r_date, String star, MultipartFile file,
 			String saveName, String u_nickName, String u_type, int count, String hart, String avg, String sDate,
-			String rDate, String st1, String st2, String st3, String st4, String st5) {
+			String rDate, String st1, String st2, String st3, String st4, String st5, String u_gender) {
 		super();
 		this.r_no = r_no;
 		this.s_no = s_no;
@@ -60,6 +61,7 @@ public class ReviewVo {
 		this.st3 = st3;
 		this.st4 = st4;
 		this.st5 = st5;
+		this.u_gender =u_gender;
 	}
 
 	public int getR_no() {
@@ -222,14 +224,23 @@ public class ReviewVo {
 		this.st5 = st5;
 	}
 
+	
+	public String getU_gender() {
+		return u_gender;
+	}
+
+	public void setU_gender(String u_gender) {
+		this.u_gender = u_gender;
+	}
+
 	@Override
 	public String toString() {
-		return "ReviewVo [r_no=" + r_no + ", s_no=" + s_no + ", u_no=" + u_no + ", r_contents=" + r_contents
-				+ ", r_date=" + r_date + ", star=" + star + ", file=" + file + ", saveName=" + saveName
-				+ ", u_nickName=" + u_nickName + ", u_type=" + u_type + ", count=" + count + ", hart=" + hart + ", avg="
-				+ avg + ", sDate=" + sDate + ", rDate=" + rDate + ", st1=" + st1 + ", st2=" + st2 + ", st3=" + st3
-				+ ", st4=" + st4 + ", st5=" + st5 + "]";
+		return "ReviewVo [r_no=" + r_no + ", s_no=" + s_no + ", u_no=" + u_no + ", r_contents=" + r_contents + ", r_date=" + r_date + ", star=" + star + ", file=" + file + ", saveName=" + saveName + ", u_nickName=" + u_nickName
+				+ ", u_type=" + u_type + ", count=" + count + ", hart=" + hart + ", avg=" + avg + ", sDate=" + sDate + ", rDate=" + rDate + ", st1=" + st1 + ", st2=" + st2 + ", st3=" + st3 + ", st4=" + st4 + ", st5=" + st5 + ", u_gender="
+				+ u_gender + "]";
 	}
+
+	
 
 	
 

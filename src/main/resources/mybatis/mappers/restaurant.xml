@@ -105,7 +105,7 @@
 	
 		<![CDATA[
 			INSERT into review
-			VALUES (#{r_no},#{s_no},#{u_no},#{r_contents}, sysdate ,#{star},#{saveName})
+			VALUES (#{r_no},#{s_no},#{u_no},#{r_contents}, sysdate ,#{star},#{saveName} )
 		]]>
 	</insert>
 
@@ -122,6 +122,7 @@
 		   r.u_no,
 		   r.r_contents,
 		   r.r_date,
+		   u.u_gender,
 		   r.star,
 		   r.saveName,
 		   u.u_nickname,

@@ -26,7 +26,7 @@
 
 .review { border-top: 1px solid #a6a6a6; padding: 30px 0;}
 #userProfile {width: 250px;}
-.userProfile-img { width: 70px; height: 70px; border: 1px solid #000; margin-right: 10px}
+.userProfile-img { width: 70px; height: 70px;  margin-right: 10px}
 #userProfile p { text-align: left;}
 #starPoint {font-size: 20px;}
 
@@ -35,7 +35,7 @@
 
 #reviewImg-text { text-align: left; width: 700px;}
 img[class="review-img"] {margin-bottom: 10px;}
-.review-img { width: 90px; height: 90px; border: 1px solid #000; margin: 0 10px 0 0;}
+.review-img { width: 90px; height: 90px; margin: 0 10px 0 0;}
 
 #paging {border-top: 1px solid #a6a6a6;}
 #paging p {padding: 30px 0;}
@@ -44,7 +44,7 @@ img[class="review-img"] {margin-bottom: 10px;}
 
 
 /*임시*/
-img{border: 1px solid #000;}
+/* img{border: 1px solid #000;} */
 
 /* //상세페이지 & 공통 */
 

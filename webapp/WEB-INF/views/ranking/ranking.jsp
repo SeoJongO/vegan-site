@@ -53,7 +53,7 @@
 					</div>
 					<div id="ranking" class="clearfix">
 						<!-- 반복구간 -->
-						<c:forEach items="${storeList}" var="sVo">
+						<c:forEach items="${storeList}" var="sVo" varStatus="status" begin="0" end="19">
 							<div id="ranking-group" class="clearfix">
 								<a href="${ pageContext.request.contextPath }/restaurantPage?s_no=${sVo.s_no}">
 									<div id="ranking-img">
