@@ -193,7 +193,8 @@
 				   r.star,
 				   r.saveName,
 			       u.u_type,
-				   u.u_nickname
+				   u.u_nickname,
+				   u.u_gender
 			from review r, users u
 			where r.u_no = u.u_no
 			and r.r_no = #{r_no}
