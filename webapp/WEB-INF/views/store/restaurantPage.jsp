@@ -105,32 +105,6 @@
                         <!-- 이미지 지도를 표시할 div 입니다 -->
                         <div id="staticMap" style="width: 340px; height: 200px;"></div>
 
-                        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31"></script>
-                        <script>
-                           // 이미지 지도에서 마커가 표시될 위치입니다 
-                           var markerPosition = new kakao.maps.LatLng(
-                                 33.450701, 126.570667);
-
-                           // 이미지 지도에 표시할 마커입니다
-                           // 이미지 지도에 표시할 마커는 Object 형태입니다
-                           var marker = {
-                              position : markerPosition
-                           };
-
-                           var staticMapContainer = document
-                                 .getElementById('staticMap'), // 이미지 지도를 표시할 div  
-                           staticMapOption = {
-                              center : new kakao.maps.LatLng(
-                                    33.450701, 126.570667), // 이미지 지도의 중심좌표
-                              level : 4, // 이미지 지도의 확대 레벨
-                              marker : marker
-                           // 이미지 지도에 표시할 마커 
-                           };
-
-                           // 이미지 지도를 생성합니다
-                           var staticMap = new kakao.maps.StaticMap(
-                                 staticMapContainer, staticMapOption);
-                        </script>
                         <div id="address">
                            <div id="addressText">
                            	<input type="hidden" id="s_address" value="${ownerVo.s_address}">
@@ -342,85 +316,74 @@
 
 </body>
 
+
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45c4f1a0aa5b1e058d3298a1e43f3b31&libraries=services"></script>
 <script>
-var star;
+var address = document.getElementById('s_address').value;
+console.log(address);
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
 
+//주소로 좌표를 검색합니다
+geocoder.addressSearch(address, function(result, status) {
+// 정상적으로 검색이 완료됐으면 
+if (status === kakao.maps.services.Status.OK) {
+   var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+};
+
+console.log(coords);
+
+var la = coords.La;
+var ma = coords.Ma;
+
+//이미지 지도에서 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(ma, la); 
+
+// 이미지 지도에 표시할 마커입니다
+// 이미지 지도에 표시할 마커는 Object 형태입니다
+var marker = {
+    position: markerPosition
+};
+
+var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
+    staticMapOption = { 
+        center: new kakao.maps.LatLng(ma, la), // 이미지 지도의 중심좌표
+        level: 3, // 이미지 지도의 확대 레벨
+        marker: marker // 이미지 지도에 표시할 마커 
+    };    
+
+// 이미지 지도를 생성합니다
+var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
+
+});
+</script>
+
+<script>
+var star;
 //화면 로딩되기직전
 $(document).ready(function(){
    console.log("화면 로딩 직전");
    
-   var address = document.getElementById('s_address').value;
-	console.log(address);
-
-	//주소-좌표 변환 객체를 생성합니다
-	var geocoder = new kakao.maps.services.Geocoder();
-	
-	//주소로 좌표를 검색합니다
-	geocoder.addressSearch(address, function(result, status) {
-
-   // 정상적으로 검색이 완료됐으면 
-    if (status === kakao.maps.services.Status.OK) {
-       var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-   };
-   
-   console.log(coords);
-   
-   var la = coords.La;
-   var ma = coords.Ma;
-	
-	//이미지 지도에서 마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(ma, la); 
-	
-	// 이미지 지도에 표시할 마커입니다
-	// 이미지 지도에 표시할 마커는 Object 형태입니다
-	var marker = {
-	    position: markerPosition
-	};
-	
-	var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
-	    staticMapOption = { 
-	        center: new kakao.maps.LatLng(ma, la), // 이미지 지도의 중심좌표
-	        level: 3, // 이미지 지도의 확대 레벨
-	        marker: marker // 이미지 지도에 표시할 마커 
-	    };    
-	
-	// 이미지 지도를 생성합니다
-	var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
-   
-	});
-   
 });
-
-
-
 
 <!-- ajax 연습 -->
 
 //로딩이 끝난 후 
 
-
-
-
 $(function(){
    <!-- 메뉴더보기 모달 -->
    $("#menuList").on("click", function(){
       console.log("모달창 클릭")
-
       $("#menuModal").modal();
-
    });
 
    <!-- 리뷰남기기 모달-->
    //리뷰등록
    $("#reviewBtn").on("click", function() {
-      
       console.log("모달창 클릭")
-
       $("#reviewModal").modal();
-      
    });
-   
    
    <!--리뷰남기기 데이터값 읽어오기-->
    $("#ajaxButton").on("click", function(){
@@ -435,7 +398,6 @@ $(function(){
       };  */
       //데이터 ajax방식으로 서버에서 전송
       
-      
       var u_no = $("[name='u_no']").val();
       var s_no = $("[name='s_no']").val();
       var r_contents = $("#writeModal").val();
@@ -446,7 +408,6 @@ $(function(){
       console.log(r_contents);
       console.log(file);
 
-      
       var formData = new FormData();
       formData.append('u_no', u_no);
       formData.append('s_no',s_no);
@@ -461,58 +422,42 @@ $(function(){
       console.log(formData.get('star'));
       
       $.ajax({
-            
             //url : "${pageContext.request.contextPath }/api/guestbook/write?name="+userName+"&password="+password+ "&
             url : "${pageContext.request.contextPath }/api/review/write",
             type : "POST",
             processData : false,
             contentType : false,
             data: formData,
-            
             dataType : "json",
             //enctype: 'multipart/form-data',
             success : function(resultVo){
                /*성공시 처리해야될 코드 작성*/
-               
                console.log(resultVo);
                render(resultVo,"up");
                console.log("ddd"+resultVo.star);
-               
                $('#reviewModal').modal('hide');
                   //화면에 그리기
-                  
-                 
-               
             },
             error : function(XHR, status, error) {
                console.error(status + " : " + error);
             }
          });
-
    });
-   
-   
-   
-   
 
    <!-- 리뷰삭제 -->
    //이미지 등록
    $("#reviewArea").on("click", ".delete", function() {
       console.log("리뷰삭제 클릭")
-
       if (confirm("삭제하시겠습니까?") == true){    //확인
-
          var r_no = $(this).data("no");
          console.log(r_no)
          
          //데이터 ajax방식으로 서버에서 전송
          $.ajax({
-               
                url : "${pageContext.request.contextPath }/api/review/delete",
                type : "get",
                //contentType : "application/json",
                data : {"r_no":r_no},
-
                dataType : "json",
                success : function(counter){
                   /*성공시 처리해야될 코드 작성*/
@@ -520,36 +465,22 @@ $(function(){
                   if(counter == 1) {
                      $("#d-"+r_no).remove();
                   }
-
-               
                },
                error : function(XHR, status, error) {
                   console.error(status + " : " + error);
                }
             });
-         
-         
-
       }else{   //취소
-
           return;
-
       }
-
    });
 
    <!-- 신고하기 모달 -->
    //이미지 등록
    $("#singoBtn").on("click", function() {
       console.log("모달창 클릭")
-
       $("#singoModal").modal();
-
    });
-   
-
-   
-   
 });
 
 //리뷰 1개씩 랜더링 
@@ -592,8 +523,6 @@ function render(resultVo, type){
    Str += '</div>';
    Str += '</div>';
    Str += '</div>';
-
-   
    
    if(type === 'down'){
       $("#reviewArea").append(Str);
@@ -602,11 +531,7 @@ function render(resultVo, type){
    }else{
       console.log("방향을 지정해 주세요");
    }
-   
-
 }
-
-
 
 <!-- 리뷰 별 체크 -->
 $('#reviewStar label').click(function(){ 
@@ -616,17 +541,6 @@ $('#reviewStar label').click(function(){
    console.log($('#'+$(this).attr("id")).attr("value")); //라벨 id를 이용해서 radio value를 가져옴
    star =$('#'+$(this).attr("id")).attr("value");
    });
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- //document onload -->
 </script>

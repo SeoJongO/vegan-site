@@ -69,11 +69,13 @@
 								</tr>
 								<tr>
 									<td class="bold">성별</td>
-									<td><select id="gender" class="select" name="u_gender">
+									<td>
+										<select id="gender" class="select" name="u_gender">
 											<option value="" selected disabled>선택</option>
 											<option value="male">남자</option>
 											<option value="female">여자</option>
-									</select></td>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="bold">전화번호</td>
@@ -81,14 +83,16 @@
 								</tr>
 								<tr>
 									<td class="bold">채식타입</td>
-									<td><select id="vegan-select" class="select" name="u_type">
+									<td>
+										<select id="veganselect" class="select" name="u_type">
 											<option value="" selected disabled>선택</option>
 											<option value="vegan">비건</option>
 											<option value="lacto">락토</option>
 											<option value="ovo">오보</option>
 											<option value="lacto-ovo">락토-오보</option>
 											<option value="pesco">페스코</option>
-									</select></td>
+										</select>
+									</td>
 									<td>
 										<button id="BtnEmailChk" class="btn" type="button" onclick="BtnTest()">잘모르겠어요</button>
 									</td>
@@ -552,7 +556,7 @@
 			return false;
 		}
 
-		if (!form.vegan - select.value) {
+		if (!form.veganselect.value) {
 			alert("채식타입을 선택하세요.");
 			return false;
 		}
