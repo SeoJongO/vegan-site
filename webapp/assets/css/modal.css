@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.borange {
+	font-size: 25px;
+	color: #ff6001;
+	font-weight: bold;
+	text-align: center important!;
+}
+
+.mbtn {
+	width: 150px;
+	height: 41px;
+	align-items: center;
+	
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.mbtn2 {
+	width: 100px;
+	height: 41px;
+	
+}
