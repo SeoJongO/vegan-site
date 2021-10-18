@@ -212,7 +212,7 @@
                            	<input type="hidden" id="s_address" value="${ownerVo.s_address}">
                               <p>${ownerVo.s_address}</p>
                               <p>
-                                 <span id="addressType">&nbsp상세주소&nbsp</span> <span>${ownerVo.s_detail_address}</span>
+                                 <span id="addressType">&nbsp;상세주소&nbsp;</span> <span>${ownerVo.s_detail_address}</span>
                               </p>
                            </div>
                         </div>

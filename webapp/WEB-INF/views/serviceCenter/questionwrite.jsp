@@ -56,8 +56,8 @@
 					
 				
 							<form id="input-zone" class="text-left clearfix" action="${ pageContext.request.contextPath }/testquestion" method="get">
-								<label>제목</label> <input type="text" name="c_title" value="" placeholder="드루와"> <label>내용</label>
-								<textarea name="c_content" placeholder="드루와 드루와"></textarea>
+								<label>제목</label> <input type="text" name="c_title" value="" placeholder="업체에대한 신고사항을 기재해주세요"> <label>내용</label>
+								<textarea name="c_content" placeholder="정확히 입력해주세요"></textarea>
 								<!--  <input class="float-l" type="file"> -->
 								<button class="btn float-r" type="submit">신고하기</button>
 								<input type="text" name="u_no" value=" ${authUser.u_no }">

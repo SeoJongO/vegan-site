@@ -48,7 +48,7 @@
 			<div id="content-wrap">
 				<div id="content">
 					<div id="content-top" class="clearfix">
-						<h3 class="float-l">전국랭킹</h3>
+						<h3 class="float-l">전국랭킹 top 10</h3>
 
 					</div>
 					<div id="ranking" class="clearfix">
@@ -56,16 +56,16 @@
 
 		
 
-						<c:forEach items="${storeList}" var="sVo" varStatus="status" begin="0" end="19">
+						<c:forEach items="${storeList}" var="sVo" varStatus="status" begin="0" end="9">
 
 							<div id="ranking-group" class="clearfix">
 								<a href="${ pageContext.request.contextPath }/restaurantPage?s_no=${sVo.s_no}">
 									<div id="ranking-img">
-										<img src="${pageContext.request.contextPath}/veganLogo/${sVo.s_img}" >
+										<img src="${pageContext.request.contextPath}/veganLogo/${sVo.s_img}" style="width: 200px; height: 200px;">
 									</div>
 									<div id="ranking-info">
-										<p>${sVo.s_name}</p>
-										<p>${sVo.avg} <img src="${pageContext.request.contextPath}/assets/image/star.png"></p>
+										<p >업체명:${sVo.s_name}</p>
+										<p>평균리뷰 :${sVo.avg} <img src="${pageContext.request.contextPath}/assets/image/star.png"></p>
 									</div>
 								</a>
 							</div>

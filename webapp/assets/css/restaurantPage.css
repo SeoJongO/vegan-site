@@ -3,7 +3,7 @@
 
 /* 상세페이지 & 공통 */
 #content { box-sizing: border-box; width: 1200px; }
-#restaurantInfo {  border: 1px solid #a6a6a6; height: 370px;}
+#restaurantInfo {  border: 1px solid #a6a6a6; height: 420px;}
 .restaurantInfo { box-sizing: border-box; width: 399px; padding: 15px 30px;}
 
 .restaurantInfo .restaurantInfo-text .timeInfo {display: block;}
