@@ -64,11 +64,11 @@
 							<div>
 								<form class="text-center" onsubmit="searchPlaces(); return false;">
 									<select id="typeCheck" name="type">
-										<option value="all">전체</option>
+										<option value="">전체</option>
 										<option value="vegan">비건</option>
 										<option value="lacto">락토</option>
 										<option value="ovo">오보</option>
-										<option value="lactoovo">락토오보</option>
+										<option value="lacto-ovo">락토오보</option>
 										<option value="pesco">페스코</option>
 									</select> <input id="searchMap-box" id="keyword" type="text" name="keyword" value="" size="10">
 									<button class="btn clearfix" type="submit">검색</button>
@@ -80,12 +80,12 @@
 						<!-- onclick="location.href='${pageContext.request.contextPath}/restaurantPage?s_no=${storeVo.s_no}'" -->
 						<c:forEach items="${storeList}" var="storeVo">
 							<div class="clearfix s_div" data-address="${storeVo.s_address}" data-no="${storeVo.s_no}"
-														data-name="${storeVo.s_name}" data-img="${storeVo.s_img}" data-intro="${storeVo.s_intro}">
+														data-name="${storeVo.s_name}" data-img="${storeVo.s_img}" data-intro="${storeVo.avg}">
 								<input type="hidden" class="s_address" value="${storeVo.s_address}">
 								<input type="hidden" class="s_name" value="${storeVo.s_name}">
 								<img src="${pageContext.request.contextPath}/veganLogo/${storeVo.s_img}" id="s_img">
-								<p>${storeVo.s_name} ${storeVo.s_phone}</p>
-								<p>${storeVo.s_intro}</p>
+								<p>${storeVo.s_name} ${storeVo.avg}<img src="${pageContext.request.contextPath}/assets/image/star.png"></p>
+								<p>${storeVo.s_phone}</p>
 								<p>${storeVo.s_address},${storeVo.s_detail_address}/${storeVo.s_parking}</p>
 								<p>영업시간 : ${storeVo.s_openH}시 ${storeVo.s_openM}분 ~ ${storeVo.s_closeH}시 ${storeVo.s_closeM}분</p>
 								<p>휴무일 : ${storeVo.s_Hsun} ${storeVo.s_Hmon} ${storeVo.s_Htue} ${storeVo.s_Hwen} ${storeVo.s_Hthu} ${storeVo.s_Hfri} ${storeVo.s_Hsat}</p>
@@ -110,7 +110,7 @@
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	
 	mapOption = {
-	    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	    center: new kakao.maps.LatLng(37.4980389, 127.0283242), // 지도의 중심좌표
 	    level: 3 // 지도의 확대 레벨
 	};  
 	
