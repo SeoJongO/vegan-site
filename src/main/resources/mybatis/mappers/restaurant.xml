@@ -57,7 +57,7 @@
                     </if>
                  <![CDATA[
                  ) sm,
-          (select s_no, avg(별) avg
+          (select s_no, avg(star) avg
           from review
            group by s_no) sa 
          where sm.s_no = sa.s_no(+)      
