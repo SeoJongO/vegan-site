@@ -122,8 +122,6 @@
    
    var array = document.getElementsByClassName('s_address');
    
-   var marker = "";
-   
    for(i = 0; i < array.length; i++) {
          
       var mark_address = document.getElementsByClassName('s_address')[i].value;
@@ -159,7 +157,7 @@
          
          for (var i = 0; i < positions.length; i ++) {
             // 마커를 생성합니다
-            marker = new kakao.maps.Marker({
+            var marker = new kakao.maps.Marker({
                map: map, // 마커를 표시할 지도
                position: positions[i].latlng, // 마커를 표시할 위치
                title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
@@ -171,49 +169,7 @@
    
    //지도,마커생성---------------------------------------------------------
    
-   var address = $(this);
-   var data = address.data("address");
-   var s_no = address.data("no");
-   var s_name = address.data("name");
-   var s_intro = address.data("intro");
-   var s_img = address.data("img");
-
-   var content =   '<div class="wrap">' + 
-               '    <div class="info">' + 
-               '        <div class="title">' + 
-               '            '+s_name+' '+ 
-               '            <div class="close" title="닫기" data-sno="'+s_no+'"></div>' + 
-               '        </div>' + 
-               '        <div class="body">' + 
-               '            <div class="img">' +
-               '                <img src="${pageContext.request.contextPath}/veganLogo/'+s_img+'" width="73" height="70">' +
-               '           </div>' + 
-               '            <div class="desc">' + 
-               '                <div class="ellipsis">'+data+'' + 
-               '                <div class="jibun ellipsis">'+s_intro+'' + 
-               '                <div><a href="${pageContext.request.contextPath}/restaurantPage?s_no='+s_no+'" target="_blank" class="link">상세페이지</a></div>' + 
-               '            </div>' + 
-               '        </div>' + 
-               '    </div>' +    
-               '</div>';
-
-   var overlay = new kakao.maps.CustomOverlay({
-      content: content,
-      map: map,
-      position: marker.getPosition()       
-   });
-   
-   // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-   kakao.maps.event.addListener(marker, 'click', function() {
-   overlay.setMap(map);
-   });
-   
-   $("#map").on("click", ".close", function() {
-   console.log($(this).data("sno"));
-   
-   
-   overlay.setMap(null);
-   });         
+          
    
    //---------------------------------------------------------중심으로이동
    $(".s_div").on("click", function() {
@@ -226,6 +182,54 @@
          // 정상적으로 검색이 완료됐으면 
          if (status === kakao.maps.services.Status.OK) {
             var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            
+            var marker = new kakao.maps.Marker({
+                map: map, // 마커를 표시할 지도
+                position: coords, // 마커를 표시할 위치
+            });
+            
+            var s_no = address.data("no");
+            var s_name = address.data("name");
+            var s_intro = address.data("intro");
+            var s_img = address.data("img");
+
+            var content =   '<div class="wrap">' + 
+                        '    <div class="info">' + 
+                        '        <div class="title">' + 
+                        '            '+s_name+' '+ 
+                        '            <div class="close" title="닫기" data-sno="'+s_no+'"></div>' + 
+                        '        </div>' + 
+                        '        <div class="body">' + 
+                        '            <div class="img">' +
+                        '                <img src="${pageContext.request.contextPath}/veganLogo/'+s_img+'" width="73" height="70">' +
+                        '           </div>' + 
+                        '            <div class="desc">' + 
+                        '                <div class="ellipsis">'+data+'' + 
+                        '                <div class="jibun ellipsis">'+s_intro+'' + 
+                        '                <div><a href="${pageContext.request.contextPath}/restaurantPage?s_no='+s_no+'" target="_blank" class="link">상세페이지</a></div>' + 
+                        '            </div>' + 
+                        '        </div>' + 
+                        '    </div>' +    
+                        '</div>';
+
+            var overlay = new kakao.maps.CustomOverlay({
+               content: content,
+               map: map,
+               position: marker.getPosition()       
+            });
+            
+            // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+            kakao.maps.event.addListener(marker, 'click', function() {
+            overlay.setMap(map);
+            });
+            
+            $("#map").on("click", ".close", function() {
+            console.log($(this).data("sno"));
+            
+            
+            overlay.setMap(null);
+            });  
+            
             
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
