@@ -7,32 +7,40 @@
 
 	<select id="getStoreList" parameterType="String" resultType="com.javaex.vo.OwnerVo">
 		<![CDATA[
-			select s_no,
-				   s_img,
-				   s_name,
-				   s_phone,
-				   s_address,
-				   s_detail_address,
-				   s_openH,
-				   s_openM,
-				   s_closeH,
-				   s_closeM,
-				   s_parking,
-				   s_intro,
-				   s_Hmon, 
-	    		   s_Htue,
-	    	       s_Hwen,
-	               s_Hthu,
-	               s_Hfri,
-	               s_Hsat,
-	               s_Hsun
-	        from store
+			select s.s_no,
+				   s.s_img,
+				   s.s_name,
+				   s.s_phone,
+				   s.s_address,
+				   s.s_detail_address,
+				   s.s_openH,
+				   s.s_openM,
+				   s.s_closeH,
+				   s.s_closeM,
+				   s.s_parking,
+				   s.s_intro,
+				   s.s_Hmon, 
+	    		   s.s_Htue,
+	    	       s.s_Hwen,
+	               s.s_Hthu,
+	               s.s_Hfri,
+	               s.s_Hsat,
+	               s.s_Hsun,
+                   round(avg(r.star), 1) as avg
+	        from  review r, store s 
+           
+            
 	        ]]>
 		<if test='value != null and value != "" '>
-			where (s_name || s_address) like '%'||#{keyword}||'%'
+			where (s.s_name || s.s_address) like '%'||#{keyword}||'%'
 		</if>
 	        <![CDATA[
-	        order by s_no asc
+	       and  r.s_no = s.s_no 
+	        group by s.s_no, s.s_img, s.s_name, s.s_phone, s.s_address, 
+s.s_detail_address, s.s_openH, s.s_openM, s.s_closeH, s.s_closeM, 
+s.s_parking, s.s_intro, s.s_Hmon, s.s_Htue, s.s_Hwen, 
+s.s_Hthu, s.s_Hfri, s.s_Hsat, s.s_Hsun
+	        order by s.s_no asc
 		]]>
 	</select>
 
