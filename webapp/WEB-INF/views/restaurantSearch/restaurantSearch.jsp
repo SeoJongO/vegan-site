@@ -84,16 +84,8 @@
 								<input type="hidden" class="s_address" value="${storeVo.s_address}">
 								<input type="hidden" class="s_name" value="${storeVo.s_name}">
 								<img src="${pageContext.request.contextPath}/veganLogo/${storeVo.s_img}" id="s_img">
-<<<<<<< HEAD
 								<p><b>${storeVo.s_name}</b> ${storeVo.avg}<img src="${pageContext.request.contextPath}/assets/image/star.png"> </p>
-=======
-								<p>${storeVo.s_name} ${storeVo.avg}<img src="${pageContext.request.contextPath}/assets/image/star.png"></p>
->>>>>>> branch 'master' of https://github.com/SeoJongO/vegan-site.git
 								<p>${storeVo.s_phone}</p>
-<<<<<<< HEAD
-								
-=======
->>>>>>> branch 'master' of https://github.com/SeoJongO/vegan-site.git
 								<p>${storeVo.s_address},${storeVo.s_detail_address}/${storeVo.s_parking}</p>
 								<p>영업시간 : ${storeVo.s_openH}시 ${storeVo.s_openM}분 ~ ${storeVo.s_closeH}시 ${storeVo.s_closeM}분</p>
 								<p>휴무일 : ${storeVo.s_Hsun} ${storeVo.s_Hmon} ${storeVo.s_Htue} ${storeVo.s_Hwen} ${storeVo.s_Hthu} ${storeVo.s_Hfri} ${storeVo.s_Hsat}</p>

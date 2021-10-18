@@ -7,83 +7,6 @@
 
 	<select id="getStoreList" parameterType="map" resultType="com.javaex.vo.RsVo">
 		<![CDATA[
-<<<<<<< HEAD
-			select s.s_no,
-				   s.s_img,
-				   s.s_name,
-				   s.s_phone,
-				   s.s_address,
-				   s.s_detail_address,
-				   s.s_openH,
-				   s.s_openM,
-				   s.s_closeH,
-				   s.s_closeM,
-				   s.s_parking,
-				   s.s_intro,
-				   s.s_Hmon, 
-	    		   s.s_Htue,
-	    	       s.s_Hwen,
-	               s.s_Hthu,
-	               s.s_Hfri,
-	               s.s_Hsat,
-	               s.s_Hsun,
-                   round(avg(r.star), 1) as avg
-	        from  review r, store s 
-           
-            
-	        ]]>
-		<if test='value != null and value != "" '>
-			where (s.s_name || s.s_address) like '%'||#{keyword}||'%'
-		</if>
-	        <![CDATA[
-		        and  r.s_no = s.s_no 
-		        group by s.s_no, s.s_img, s.s_name, s.s_phone, s.s_address, 
-				s.s_detail_address, s.s_openH, s.s_openM, s.s_closeH, s.s_closeM, 
-				s.s_parking, s.s_intro, s.s_Hmon, s.s_Htue, s.s_Hwen, 
-				s.s_Hthu, s.s_Hfri, s.s_Hsat, s.s_Hsun
-		        order by s.s_no asc
-			]]>
-	</select>
-
-	<!-- 한명의 정보가져오기 -->
-	<select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo">
-
-	<![CDATA[
-		select	s.s_no,
-		    	s.u_no, 
-		    	s.s_img, 
-		    	s.s_name, 
-		    	s.s_phone, 
-		    	s.s_address,
-		    	s.s_detail_address, 
-			    s.s_openH, 
-			    s.s_openM, 
-			    s.s_closeH, 
-			    s.s_closeM, 
-			    s.s_parking, 
-			    s.s_intro, 
-			    s.s_youtube, 
-			    s.s_instagram, 
-			    s.s_twitter, 
-			    s.s_Hmon, 
-			    s.s_Htue,
-			    s.s_Hwen,
-			    s.s_Hthu,
-			    s.s_Hfri,
-			    s.s_Hsat,
-			    s.s_Hsun,
-			    s.s_latitude,
-			    s.s_longitude,
-		        m.m_name,
-		        m.m_imge,
-		        m.m_price,
-		        m.m_type,
-		        m.m_intro
-		 	   from store s, menu m
-		       where s.s_no = m.s_no
-		       and s.s_no = #{s_no}
-		       and rownum=1
-=======
 			select sm.s_no,
 			       sm.s_img,
 			       sm.s_name,
@@ -139,8 +62,48 @@
   		  (select s_no, avg(star) avg
   		  from review
    		  group by s_no) sa 
-	      where sm.s_no = sa.s_no(+)
->>>>>>> branch 'master' of https://github.com/SeoJongO/vegan-site.git
+	      where sm.s_no = sa.s_no(+)		
+			]]>
+	</select>
+
+	<!-- 한명의 정보가져오기 -->
+	<select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo">
+
+	<![CDATA[
+		select	s.s_no,
+		    	s.u_no, 
+		    	s.s_img, 
+		    	s.s_name, 
+		    	s.s_phone, 
+		    	s.s_address,
+		    	s.s_detail_address, 
+			    s.s_openH, 
+			    s.s_openM, 
+			    s.s_closeH, 
+			    s.s_closeM, 
+			    s.s_parking, 
+			    s.s_intro, 
+			    s.s_youtube, 
+			    s.s_instagram, 
+			    s.s_twitter, 
+			    s.s_Hmon, 
+			    s.s_Htue,
+			    s.s_Hwen,
+			    s.s_Hthu,
+			    s.s_Hfri,
+			    s.s_Hsat,
+			    s.s_Hsun,
+			    s.s_latitude,
+			    s.s_longitude,
+		        m.m_name,
+		        m.m_imge,
+		        m.m_price,
+		        m.m_type,
+		        m.m_intro
+		 	   from store s, menu m
+		       where s.s_no = m.s_no
+		       and s.s_no = #{s_no}
+		       and rownum=1
 		]]>
 	</select>
 
