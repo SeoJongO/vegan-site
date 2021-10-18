@@ -26,8 +26,7 @@
 			       sm.s_Hfri,
 			       sm.s_Hsat,
 			       sm.s_Hsun,
-			       round(sa.avg, 1) avg,
-			       sm.m_type
+			       round(sa.avg, 1) avg
 			from (select distinct  s.s_no,
 			                       s.s_img,
 			                       s.s_name,
@@ -46,8 +45,7 @@
 			                       s.s_Hthu,
 			                       s.s_Hfri,
 			                       s.s_Hsat,
-			                       s.s_Hsun,
-			                       m.m_type
+			                       s.s_Hsun
         		  from store s, menu m
         		  where s.s_no = m.s_no
         		  ]]>
