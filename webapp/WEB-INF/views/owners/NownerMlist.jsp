@@ -98,9 +98,44 @@
 									<tbody>
 										<c:forEach items="${menuList}" var="mVo">
 											<tr>
-												<td id="s_img"><img src="${pageContext.request.contextPath}/veganLogo/${mVo.m_imge}"></td>
+												<td id="s_img">
+													<img
+														src="${pageContext.request.contextPath}/veganLogo/${mVo.m_imge}"
+													>
+												</td>
 												<td>${mVo.m_name}</td>
-												<td>${mVo.m_type}</td>
+												<td>
+													<c:if test="${mVo.m_type eq 'vegan' }">
+														<img alt="" class=""
+															style="width: 40px; height: 40px; margin-top: -5px;"
+															src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 003.png"
+														>
+													</c:if>
+													<c:if test="${mVo.m_type eq 'lacto-ovo' }">
+														<img alt="" class=""
+															style="width: 40px; height: 40px; margin-top: -5px;"
+															src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 002.png"
+														>
+													</c:if>
+													<c:if test="${mVo.m_type eq 'lacto' }">
+														<img alt="" class=""
+															style="width: 40px; height: 40px; margin-top: -5px;"
+															src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-40 001.png"
+														>
+													</c:if>
+													<c:if test="${mVo.m_type eq 'ovo' }">
+														<img alt="" class=""
+															style="width: 40px; height: 40px; margin-top: -5px;"
+															src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 004.png"
+														>
+													</c:if>
+													<c:if test="${mVo.m_type eq 'pesco' }">
+														<img alt="" class=""
+															style="width: 40px; height: 40px; margin-top: -5px;"
+															src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 005.png"
+														>
+													</c:if>
+												</td>
 												<td>${mVo.m_price}</td>
 												<td>
 													<a
