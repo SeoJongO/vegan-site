@@ -29,10 +29,8 @@ $(function(){
 	$("#terms-checkbox-top").on("click", function(){
 		console.log("클릭");
 		if( $("#terms-checkbox-top").is(":checked")==false){
-				console.log("여긴왔지?")
 				$("#checked-all").prop("checked", false)
 		}else {
-			console.log("여기오나?")
 			if( $("#terms-checkbox-low").is(":checked")==true )
 				$("#checked-all").prop("checked", true)
 		};
@@ -54,7 +52,7 @@ $(function(){
 		console.log("전송");
 		if(  $("#terms-checkbox-top").is(":checked")==false | $("#terms-checkbox-low").is(":checked")==false){
 			event.preventDefault();
-			alert("약관에 동의해라마");
+			alert("약관에 모두 동의해주세요.");
 		}
 	});
 	

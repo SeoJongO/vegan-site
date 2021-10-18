@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -7,12 +9,26 @@
 <meta charset="UTF-8">
 <title>메인페이지</title>
 
-<link href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="${ pageContext.request.contextPath }/assets/css/common.css" rel="stylesheet" type="text/css">
-<link href="${ pageContext.request.contextPath }/assets/css/user.css" rel="stylesheet" type="text/css">
+<link
+	href="${ pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css"
+	rel="stylesheet" type="text/css"
+>
+<link href="${ pageContext.request.contextPath }/assets/css/common.css"
+	rel="stylesheet" type="text/css"
+>
+<link href="${ pageContext.request.contextPath }/assets/css/user.css"
+	rel="stylesheet" type="text/css"
+>
+<link href="${ pageContext.request.contextPath }/assets/css/modal.css"
+	rel="stylesheet" type="text/css"
+>
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"
+></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.js"
+></script>
 
 
 </head>
@@ -44,53 +60,85 @@
 			<div id="content-wrap">
 				<div id="joinForm">
 					<div class="wrap3">
-						<form action="${pageContext.request.contextPath}/user/join" method="get" name="userInfo" onsubmit="return checkValue()">
+						<form action="${pageContext.request.contextPath}/user/join"
+							method="get" name="userInfo" onsubmit="return checkValue()"
+						>
 							<table>
 								<tr>
 									<td class="bold">이메일</td>
-									<td><input id="email" onkeydown="inputEmailChk()" class="nomal-input-box" name="u_email" value="" type="text" class="margin-right" placeholder="이메일을 입력해주세요"></td>
 									<td>
-										<button type="button" id="BtnEmailChk" class="btn">중복체크</button> <input type="hidden" id="emailChk" name="emailDuplication" value="emailUncheck">
+										<input id="email" onkeydown="inputEmailChk()"
+											class="nomal-input-box" name="u_email" value="" type="text"
+											class="margin-right" placeholder="이메일을 입력해주세요"
+										>
+									</td>
+									<td>
+										<button type="button" id="BtnEmailChk" class="btn">중복체크</button>
+										<input type="hidden" id="emailChk" name="emailDuplication"
+											value="emailUncheck"
+										>
 									</td>
 								</tr>
 								<tr>
 									<td class="bold">비밀번호</td>
-									<td><input id="password" class="nomal-input-box" name="u_password" value="" type="text" placeholder="비밀번호를 입력해주세요"></td>
+									<td>
+										<input id="password" class="nomal-input-box" name="u_password"
+											value="" type="text" placeholder="비밀번호를 입력해주세요"
+										>
+									</td>
 								</tr>
 
 								<tr>
 									<td class="bold">비밀번호 재입력</td>
-									<td><input id="passwordCheck" class="nomal-input-box" type="text" placeholder="비밀번호를 입력해주세요"></td>
+									<td>
+										<input id="passwordCheck" class="nomal-input-box" type="text"
+											placeholder="비밀번호를 입력해주세요"
+										>
+									</td>
 								</tr>
 
 								<tr>
 									<td class="bold">닉네임</td>
-									<td><input id="nickname" class="nomal-input-box" name="u_nickname" value="" type="text" placeholder="닉네임을 입력해주세요"></td>
+									<td>
+										<input id="nickname" class="nomal-input-box" name="u_nickname"
+											value="" type="text" placeholder="닉네임을 입력해주세요"
+										>
+									</td>
 								</tr>
 								<tr>
 									<td class="bold">성별</td>
-									<td><select id="gender" class="select" name="u_gender">
+									<td>
+										<select id="gender" class="select" name="u_gender">
 											<option value="" selected disabled>선택</option>
 											<option value="male">남자</option>
 											<option value="female">여자</option>
-									</select></td>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<td class="bold">전화번호</td>
-									<td><input id="phone" class="nomal-input-box" name="u_phone" value="" type="text" placeholder="전화번호를 입력해주세요"></td>
+									<td>
+										<input id="phone" class="nomal-input-box" name="u_phone"
+											value="" type="text" placeholder="전화번호를 입력해주세요"
+										>
+									</td>
 								</tr>
 								<tr>
 									<td class="bold">채식타입</td>
-									<td><select id="vegan-select" class="select" name="u_type">
+									<td>
+										<select id="veganselect" class="select" name="u_type">
 											<option value="" selected disabled>선택</option>
 											<option value="vegan">비건</option>
 											<option value="lacto">락토</option>
 											<option value="ovo">오보</option>
 											<option value="lacto-ovo">락토-오보</option>
 											<option value="pesco">페스코</option>
-									</select></td>
+										</select>
+									</td>
 									<td>
-										<button id="BtnEmailChk" class="btn" type="button" onclick="BtnTest()">잘모르겠어요</button>
+										<button id="BtnEmailChk" class="btn" type="button"
+											onclick="BtnTest()"
+										>잘모르겠어요</button>
 									</td>
 								</tr>
 								<tr>
@@ -107,7 +155,11 @@
 
 								<tr>
 									<td></td>
-									<td><a href="https://ko.wikipedia.org/wiki/%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98#%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98%EC%9E%90%EC%9D%98_%EB%B6%84%EB%A5%98">ⓘ채식을 더 알고싶다면?(클릭)</a></td>
+									<td>
+										<a
+											href="https://ko.wikipedia.org/wiki/%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98#%EC%B1%84%EC%8B%9D%EC%A3%BC%EC%9D%98%EC%9E%90%EC%9D%98_%EB%B6%84%EB%A5%98"
+										>ⓘ채식을 더 알고싶다면?(클릭)</a>
+									</td>
 								</tr>
 								<tr>
 									<td></td>
@@ -118,7 +170,9 @@
 							</table>
 							<div class="text-center">
 								<button class="btn" type="submit">회원가입</button>
-								<button class="btn" type="button" onclick="location.href='${pageContext.request.contextPath }/main'">돌아가기</button>
+								<button class="btn" type="button"
+									onclick="location.href='${pageContext.request.contextPath }/main'"
+								>돌아가기</button>
 							</div>
 						</form>
 					</div>
@@ -149,21 +203,28 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="modal-title"></h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>반갑습니다! 채식타입조사를 시작하겠습니다.<br> 기본적으로 육류(붉은살코기)는 제외된 메뉴를 소개합니다.
-							</span>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 006.png"
+							> <br> <br> <br> <span class="borange">채식
+								타입 테스트하기</span> <br> <br> <span>간단한 테스트를 통해</span><br> <span>
+								채식타입을 알아보세요! </span> <br> <br> <br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="first()">시작</button>
+						<button type="button" class="btn mbtn" id="btnUpload"
+							onclick="first()"
+						>시작</button>
 					</div>
 				</form>
 			</div>
@@ -175,22 +236,31 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">채식타입조사</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>해산물을 드실건가요?<br> ex)고등어, 갈치, 새우, 해조류
-							</span>
+							<span class="bold">질문 1</span> <br>
+							<br>
+							<br> <span>해산물을 드시나요?<br> (고등어, 갈치, 새우, 해조류..등)
+							</span> <br> <br> <br>
+
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="first_yes()">네!</button>
-						<button type="button" class="btn" id="btnUpload" onclick="first_no()">아니오!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="first_yes()"
+						>네!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="first_no()"
+						>아니오!</button>
 					</div>
 				</form>
 			</div>
@@ -202,20 +272,29 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>당신은 페스코네요!</span>
+							<span>당신의 채식타입은</span>
+							<span class="bold">페스코</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 005.png"
+							><br><br><br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="select_pesco()">확인</button>
+						<button type="button" class="btn mbtn" id="btnUpload"
+							onclick="select_pesco()"
+						>확인</button>
 					</div>
 				</form>
 			</div>
@@ -227,22 +306,29 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">채식타입조사</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
-						<div class="form-group">
-							<span>동물의 알을 드실건가요?<br> ex)계란, 메추리알
-							</span>
+						<div class="form-group"><span class="bold">질문 2</span> <br>
+							<br>
+							<span>동물의 알을 드실건가요?<br> (계란, 메추리알)
+							</span><br> <br> <br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="second_yes()">네!</button>
-						<button type="button" class="btn" id="btnUpload" onclick="second_no()">아니오!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="second_yes()"
+						>네!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="second_no()"
+						>아니오!</button>
 					</div>
 				</form>
 			</div>
@@ -254,22 +340,29 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">채식타입조사</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
-						<div class="form-group">
-							<span>유제품을 드실건가요?<br> ex)우유, 치즈, 요거트
-							</span>
+						<div class="form-group"><span class="bold">질문 3</span> <br>
+							<br>
+							<span>유제품을 드시나요?<br> (우유, 치즈, 요거트)
+							</span><br><br><br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="third_ok_yes()">네!</button>
-						<button type="button" class="btn" id="btnUpload" onclick="third_ok_no()">아니오!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="third_ok_yes()"
+						>네!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="third_ok_no()"
+						>아니오!</button>
 					</div>
 				</form>
 			</div>
@@ -281,20 +374,30 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>당신은 락토-오보네요!</span>
+							<span>당신의 채식타입은</span>
+							<span class="bold">락토-오보</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 002.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="select_lactoovo()">확인</button>
+						<button type="button" class="btn mbtn" id="btnUpload"
+							onclick="select_lactoovo()"
+						>확인</button>
 					</div>
 				</form>
 			</div>
@@ -306,20 +409,30 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="modal-title">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>당신은 오보네요!</span>
+							<span>당신의 채식타입은</span>
+							<span class="bold">오보</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 004.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="select_ovo()">확인</button>
+						<button type="button" class="btn mbtn" id="btnUpload"
+							onclick="select_ovo()"
+						>확인</button>
 					</div>
 				</form>
 			</div>
@@ -331,7 +444,9 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<h4 class="modal-title">채식타입조사</h4>
@@ -339,14 +454,20 @@
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>유제품을 드실건가요?<br> ex)우유, 치즈, 요거트
-							</span>
+							<span class="bold">질문 3</span> <br>
+							<br>
+							<span>유제품을 드시나요?<br> (우유, 치즈, 요거트)
+							</span><br><br><br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="third_no_ok()">네</button>
-						<button type="button" class="btn" id="btnUpload" onclick="third_no_no()">아니오</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="third_no_ok()"
+						>네</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
+							onclick="third_no_no()"
+						>아니오</button>
 					</div>
 				</form>
 			</div>
@@ -358,20 +479,30 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>당신은 락토네요!</span>
+							<span>당신의 채식타입은</span>
+							<span class="bold">락토</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-40 001.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="select_lacto()">확인</button>
+						<button type="button" class="btn mbtn" id="btnUpload"
+							onclick="select_lacto()"
+						>확인</button>
 					</div>
 				</form>
 			</div>
@@ -383,20 +514,30 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close"
+					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>당신은 비건이네요!</span>
+							<span>당신의 채식타입은</span>
+							<span class="bold">비건</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 003.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="select_vegan()">확인</button>
+						<button type="button" class="btn mbtn" id="btnUpload"
+							onclick="select_vegan()"
+						>확인</button>
 					</div>
 				</form>
 			</div>
@@ -552,7 +693,7 @@
 			return false;
 		}
 
-		if (!form.vegan - select.value) {
+		if (!form.veganselect.value) {
 			alert("채식타입을 선택하세요.");
 			return false;
 		}

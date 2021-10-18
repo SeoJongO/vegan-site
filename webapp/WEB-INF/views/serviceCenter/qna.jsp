@@ -55,22 +55,50 @@
 								<!-- 반복구간 -->
 								<tr class="t-body">
 									<td class="text-center qna-q">Q</td>
-									<td class="text-left qna-q-content">이사트는 왜만든거죠?</td>
+									<td class="text-left qna-q-content"><b>아이디/비밀번호를 잊어버렸어요.</b></td>
 								</tr>
 								<!-- hide구간 -->
 								<tr class="t-body">
 									<td class="text-center qna-a">A</td>
-									<td class="text-left qna-a-content">나도몰러~~</td>
+									<td class="text-left qna-a-content"> 로그인 화면에서 아이디/비밀번호를 찾을 수 있습니다.</td>
 								</tr>
 								<tr class="t-body">
 									<td class="text-center qna-q">Q</td>
-									<td class="text-left qna-q-content">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산</td>
+									<td class="text-left qna-q-content"><b>가게의 메뉴 사진은 실제 음식을 찍은 사진인가요?</b></td>
 								</tr>
 								<!-- hide구간 -->
 								<tr class="t-body">
 									<td class="text-center qna-a">A</td>
-									<td class="text-left qna-a-content">대한사람 대한으로 길이 보전하세~~</td>
+									<td class="text-left qna-a-content"> 채식모아의 모든 메뉴이미지는 실제 판매되는 음식사진을 업로드합니다. 실제 이미지와 다를 경우 신고하기로 신고 해 주시면 처리해 드리겠습니다.</td>
 								</tr>
+								<tr class="t-body">
+									<td class="text-center qna-q">Q</td>
+									<td class="text-left qna-q-content"><b>리뷰작성은 어떻게 할 수 있나요?</b></td>
+								</tr>
+								<!-- hide구간 -->
+								<tr class="t-body">
+									<td class="text-center qna-a">A</td>
+									<td class="text-left qna-a-content"> 가게 상세페이지에서 밑으로 내리시면 리뷰 확인 및 작성이 가능합니다.</td>
+								</tr>
+								<tr class="t-body">
+									<td class="text-center qna-q">Q</td>
+									<td class="text-left qna-q-content"><b>리뷰작성은 누구나 할 수 있나요?</b></td>
+								</tr>
+								<!-- hide구간 -->
+								<tr class="t-body">
+									<td class="text-center qna-a">A</td>
+									<td class="text-left qna-a-content"> 리뷰 작성은 제한없이 할 수 있습니다. 정확한 정보를 작성해주세요!</td>
+								</tr>
+								<tr class="t-body">
+									<td class="text-center qna-q">Q</td>
+									<td class="text-left qna-q-content"><b>리뷰를 사장님만 보게 하고 싶어요.</b></td>
+								</tr>
+								<!-- hide구간 -->
+								<tr class="t-body">
+									<td class="text-center qna-a">A</td>
+									<td class="text-left qna-a-content"> 모든 정보를 공유한다는 취지에서 리뷰를 특정에게만 공개 할 수는 없습니다.</td>
+								</tr>
+								
 								<!-- //반복구간 -->
 							</table>
 

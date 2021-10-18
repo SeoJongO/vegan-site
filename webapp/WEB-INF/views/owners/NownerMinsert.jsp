@@ -20,6 +20,10 @@
 	href="${ pageContext.request.contextPath }/assets/css/ownerMain.css"
 	rel="stylesheet" type="text/css"
 >
+
+<link href="${ pageContext.request.contextPath }/assets/css/modal.css"
+	rel="stylesheet" type="text/css"
+>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"
 ></script>
@@ -178,7 +182,7 @@
 		<!-- //footer -->
 	</div>
 	<!-- 설문 시작 -->
-	<div class="modal fade" id="Start">
+		<div class="modal fade" id="Start">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -187,17 +191,24 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="modal-title"></h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>메뉴의 채식 타입조사를 시작하겠습니다.</span>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 006.png"
+							> <br> <br> <br> <span class="borange">채식
+								타입 테스트하기</span> <br> <br> <span>간단한 테스트를 통해</span><br> <span>
+								메뉴의 채식타입을 설정할 수 있어요! </span><br>
+								<span>(기본적으로 육류는 허용되지 않습니다. 치킨스톡 등 육수도 안돼요!)</span> <br> <br> <br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload" onclick="first()">시작</button>
+						<button type="button" class="btn mbtn" id="btnUpload"
+							onclick="first()"
+						>시작하기</button>
 					</div>
 				</form>
 			</div>
@@ -214,23 +225,26 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">채식타입조사</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>해산물이 들어있나요? 멸치등 해산물로 우린 육수도 포함합니다!<br>
-							ex)고등어, 갈치, 새우, 해조류</span>
+							<span class="bold">질문 1</span> <br>
+							<br>
+							<br> <span>메뉴에 해산물이 들어있나요?<br> (고등어, 갈치, 새우, 해조류..등)
+							</span> <br> <br> <br>
+
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="first_yes()"
-						>네</button>
-						<button type="button" class="btn" id="btnUpload"
+						>네!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="first_no()"
-						>아니오</button>
+						>아니오!</button>
 					</div>
 				</form>
 			</div>
@@ -247,17 +261,22 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>이 메뉴는 '페스코'네요!</span>
+							<span>이 메뉴의 채식타입은</span>
+							<span class="bold">페스코</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 005.png"
+							><br><br><br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn" id="btnUpload"
 							onclick="select_pesco()"
 						>확인</button>
 					</div>
@@ -276,23 +295,24 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">채식타입조사</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
-						<div class="form-group">
-							<span>동물의 알이 들어있나요?<br>
-							ex)계란, 메추리알</span>
+						<div class="form-group"><span class="bold">질문 2</span> <br>
+							<br>
+							<span>매뉴의 알을 들어있나요?<br> (계란, 메추리알)
+							</span><br> <br> <br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="second_yes()"
-						>네</button>
-						<button type="button" class="btn" id="btnUpload"
+						>네!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="second_no()"
-						>아니오</button>
+						>아니오!</button>
 					</div>
 				</form>
 			</div>
@@ -309,23 +329,24 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">채식타입조사</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
-						<div class="form-group">
-							<span>치즈등을 포함한 유제품이 들어있나요?<br>
-							ex)우유, 치즈, 요거트</span>
+						<div class="form-group"><span class="bold">질문 3</span> <br>
+							<br>
+							<span>메뉴에 유제품이 들어있나요?<br> (우유, 치즈, 요거트)
+							</span><br><br><br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="third_ok_yes()"
-						>네</button>
-						<button type="button" class="btn" id="btnUpload"
+						>네!</button>
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="third_ok_no()"
-						>아니오</button>
+						>아니오!</button>
 					</div>
 				</form>
 			</div>
@@ -342,17 +363,23 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>이 메뉴는 '락토-오보'네요!</span>
+							<span>이 메뉴의 채식타입은</span>
+							<span class="bold">락토-오보</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 002.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn" id="btnUpload"
 							onclick="select_lactoovo()"
 						>확인</button>
 					</div>
@@ -371,17 +398,23 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="modal-title">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>이 메뉴는 '오보'네요!</span>
+							<span>이 메뉴의 채식타입은</span>
+							<span class="bold">오보</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 004.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn" id="btnUpload"
 							onclick="select_ovo()"
 						>확인</button>
 					</div>
@@ -405,16 +438,18 @@
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>치즈등을 포함한 유제품이 들어있나요?<br>
-							ex)우유, 치즈, 요거트</span>
+							<span class="bold">질문 3</span> <br>
+							<br>
+							<span>메뉴에 유제품이 들어있나요?<br> (우유, 치즈, 요거트)
+							</span><br><br><br>
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="third_no_ok()"
 						>네</button>
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn2" id="btnUpload"
 							onclick="third_no_no()"
 						>아니오</button>
 					</div>
@@ -433,17 +468,23 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>이 메뉴는 '락토'네요!</span>
+							<span>이 메뉴의 채식타입은</span>
+							<span class="bold">락토</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-40 001.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn" id="btnUpload"
 							onclick="select_lacto()"
 						>확인</button>
 					</div>
@@ -462,17 +503,23 @@
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">채식타입조사</h4>
+					<h4 class="borange">테스트 결과</h4>
 				</div>
 				<form method="post" action="" enctype="multipart/form-data">
 					<div class="modal-body">
 						<div class="form-group">
-							<span>이 메뉴는 '비건'이네요!</span>
+							<span>이 메뉴의 채식타입은</span>
+							<span class="bold">비건</span>
+							<span>입니다.</span><br><br><br>
+							<img alt=""
+								src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 003.png"
+							><br><br><br>
+						
 						</div>
 						<div class="form-group"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" id="btnUpload"
+						<button type="button" class="btn mbtn" id="btnUpload"
 							onclick="select_vegan()"
 						>확인</button>
 					</div>
