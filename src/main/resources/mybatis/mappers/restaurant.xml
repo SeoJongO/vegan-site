@@ -5,285 +5,246 @@
 
 <mapper namespace="restaurant">
 
-	<select id="getStoreList" parameterType="map" resultType="com.javaex.vo.RsVo">
-		<![CDATA[
+   <select id="getStoreList" parameterType="map" resultType="com.javaex.vo.RsVo">
+      <![CDATA[
+         select sm.s_no,
+                sm.s_img,
+                sm.s_name,
+                sm.s_phone,
+                sm.s_address,
+                sm.s_detail_address,
+                sm.s_openH,
+                sm.s_openM,
+                sm.s_closeH,
+                sm.s_closeM,
+                sm.s_parking,
+                sm.s_intro,
+                sm.s_Hmon, 
+                sm.s_Htue,
+                sm.s_Hwen,
+                sm.s_Hthu,
+                sm.s_Hfri,
+                sm.s_Hsat,
+                sm.s_Hsun,
+                round(sa.avg, 1) avg
+         from (select distinct  s.s_no,
+                                s.s_img,
+                                s.s_name,
+                                s.s_phone,
+                                s.s_address,
+                                s.s_detail_address,
+                                s.s_openH,
+                                s.s_openM,
+                                s.s_closeH,
+                                s.s_closeM,
+                                s.s_parking,
+                                s.s_intro,
+                                s.s_Hmon, 
+                                s.s_Htue,
+                                s.s_Hwen,
+                                s.s_Hthu,
+                                s.s_Hfri,
+                                s.s_Hsat,
+                                s.s_Hsun
+                from store s, menu m
+                where s.s_no = m.s_no
+                ]]>
+                   <if test='m_type != null and m_type != ""'>
+                      and m.m_type = #{m_type}
+                   </if>
+                   <if test='keyword != null and keyword != ""'>
+                       and s.s_name || s.s_address || m.m_name like '%'||#{keyword}||'%' 
+                    </if>
+                 <![CDATA[
+                 ) sm,
+          (select s_no, avg(star) avg
+          from review
+           group by s_no) sa 
+         where sm.s_no = sa.s_no(+)      
+         ]]>
+   </select>
 
-			select s.s_no,
-				   s.s_img,
-				   s.s_name,
-				   s.s_phone,
-				   s.s_address,
-				   s.s_detail_address,
-				   s.s_openH,
-				   s.s_openM,
-				   s.s_closeH,
-				   s.s_closeM,
-				   s.s_parking,
-				   s.s_intro,
-				   s.s_Hmon, 
-	    		   s.s_Htue,
-	    	       s.s_Hwen,
-	               s.s_Hthu,
-	               s.s_Hfri,
-	               s.s_Hsat,
-	               s.s_Hsun,
-                   round(avg(r.star), 1) as avg
-	        from  review r, store s 
-           
-            
-	        ]]>
-		<if test='value != null and value != "" '>
-			where (s.s_name || s.s_address) like '%'||#{keyword}||'%'
-		</if>
-	        <![CDATA[
-		        and  r.s_no = s.s_no 
-		        group by s.s_no, s.s_img, s.s_name, s.s_phone, s.s_address, 
-				s.s_detail_address, s.s_openH, s.s_openM, s.s_closeH, s.s_closeM, 
-				s.s_parking, s.s_intro, s.s_Hmon, s.s_Htue, s.s_Hwen, 
-				s.s_Hthu, s.s_Hfri, s.s_Hsat, s.s_Hsun
-		        order by s.s_no asc
-			]]>
-	</select>
+   <!-- 한명의 정보가져오기 -->
+   <select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo">
 
-	<!-- 한명의 정보가져오기 -->
-	<select id="getOne" parameterType="int" resultType="com.javaex.vo.OwnerVo">
+   <![CDATA[
+      select   s.s_no,
+             s.u_no, 
+             s.s_img, 
+             s.s_name, 
+             s.s_phone, 
+             s.s_address,
+             s.s_detail_address, 
+             s.s_openH, 
+             s.s_openM, 
+             s.s_closeH, 
+             s.s_closeM, 
+             s.s_parking, 
+             s.s_intro, 
+             s.s_youtube, 
+             s.s_instagram, 
+             s.s_twitter, 
+             s.s_Hmon, 
+             s.s_Htue,
+             s.s_Hwen,
+             s.s_Hthu,
+             s.s_Hfri,
+             s.s_Hsat,
+             s.s_Hsun,
+             s.s_latitude,
+             s.s_longitude,
+              m.m_name,
+              m.m_imge,
+              m.m_price,
+              m.m_type,
+              m.m_intro
+             from store s, menu m
+             where s.s_no = m.s_no
+             and s.s_no = #{s_no}
+             and rownum=1
+      ]]>
+   </select>
 
-	<![CDATA[
-		select	s.s_no,
-		    	s.u_no, 
-		    	s.s_img, 
-		    	s.s_name, 
-		    	s.s_phone, 
-		    	s.s_address,
-		    	s.s_detail_address, 
-			    s.s_openH, 
-			    s.s_openM, 
-			    s.s_closeH, 
-			    s.s_closeM, 
-			    s.s_parking, 
-			    s.s_intro, 
-			    s.s_youtube, 
-			    s.s_instagram, 
-			    s.s_twitter, 
-			    s.s_Hmon, 
-			    s.s_Htue,
-			    s.s_Hwen,
-			    s.s_Hthu,
-			    s.s_Hfri,
-			    s.s_Hsat,
-			    s.s_Hsun,
-			    s.s_latitude,
-			    s.s_longitude,
-		        m.m_name,
-		        m.m_imge,
-		        m.m_price,
-		        m.m_type,
-		        m.m_intro
-		 	   from store s, menu m
-		       where s.s_no = m.s_no
-		       and s.s_no = #{s_no}
-		       and rownum=1
+   <!-- 메뉴가져오기 -->
+   <select id="menuList" parameterType="int" resultType="com.javaex.vo.MenuVo">
 
-			select sm.s_no,
-			       sm.s_img,
-			       sm.s_name,
-			       sm.s_phone,
-			       sm.s_address,
-			       sm.s_detail_address,
-			       sm.s_openH,
-			       sm.s_openM,
-			       sm.s_closeH,
-			       sm.s_closeM,
-			       sm.s_parking,
-			       sm.s_intro,
-			       sm.s_Hmon, 
-			       sm.s_Htue,
-			       sm.s_Hwen,
-			       sm.s_Hthu,
-			       sm.s_Hfri,
-			       sm.s_Hsat,
-			       sm.s_Hsun,
-			       round(sa.avg, 1) avg,
-			       sm.m_type
-			from (select distinct  s.s_no,
-			                       s.s_img,
-			                       s.s_name,
-			                       s.s_phone,
-			                       s.s_address,
-			                       s.s_detail_address,
-			                       s.s_openH,
-			                       s.s_openM,
-			                       s.s_closeH,
-			                       s.s_closeM,
-			                       s.s_parking,
-			                       s.s_intro,
-			                       s.s_Hmon, 
-			                       s.s_Htue,
-			                       s.s_Hwen,
-			                       s.s_Hthu,
-			                       s.s_Hfri,
-			                       s.s_Hsat,
-			                       s.s_Hsun,
-			                       m.m_type
-        		  from store s, menu m
-        		  where s.s_no = m.s_no
-        		  ]]>
-	        		  <if test='m_type != null and m_type != ""'>
-	        		  	and m.m_type = #{m_type}
-	        		  </if>
-	        		  <if test='keyword != null and keyword != ""'>
-	        	      	and s.s_name || s.s_address || m.m_name like '%'||#{keyword}||'%' 
-	        	      </if>
-        	      <![CDATA[
-        	      ) sm,
-  		  (select s_no, avg(star) avg
-  		  from review
-   		  group by s_no) sa 
-	      where sm.s_no = sa.s_no(+)
-
-		]]>
-	</select>
-
-	<!-- 메뉴가져오기 -->
-	<select id="menuList" parameterType="int" resultType="com.javaex.vo.MenuVo">
-
-		<![CDATA[
-		  select 	m_no,
-		              s_no,
-		              m_name,
-		              m_imge,
-		              m_type,
-		              m_intro,
-		              m_price
-		       from menu
-		       where s_no= #{s_no}
-		]]>
-	</select>
+      <![CDATA[
+        select    m_no,
+                    s_no,
+                    m_name,
+                    m_imge,
+                    m_type,
+                    m_intro,
+                    m_price
+             from menu
+             where s_no= #{s_no}
+      ]]>
+   </select>
 
 
 
-	<!-- 리뷰쓰기 -->
-	<insert id="insertReviewKey" parameterType="com.javaex.vo.ReviewVo">
-		<selectKey keyProperty="r_no" resultType="int" order="BEFORE">
-			<![CDATA[
-			select r_no.nextval from dual
-			]]>
-		</selectKey>
-	
-		<![CDATA[
-			INSERT into review
-			VALUES (#{r_no},#{s_no},#{u_no},#{r_contents}, sysdate ,#{star},#{saveName} )
-		]]>
-	</insert>
+   <!-- 리뷰쓰기 -->
+   <insert id="insertReviewKey" parameterType="com.javaex.vo.ReviewVo">
+      <selectKey keyProperty="r_no" resultType="int" order="BEFORE">
+         <![CDATA[
+         select r_no.nextval from dual
+         ]]>
+      </selectKey>
+   
+      <![CDATA[
+         INSERT into review
+         VALUES (#{r_no},#{s_no},#{u_no},#{r_contents}, sysdate ,#{star},#{saveName} )
+      ]]>
+   </insert>
 
 
 
-	<!-- 리뷰리스트가져오기 -->
+   <!-- 리뷰리스트가져오기 -->
 
-	<select id="reviewList" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+   <select id="reviewList" parameterType="int" resultType="com.javaex.vo.ReviewVo">
 
 
 <![CDATA[
-	select r.r_no,
-		   r.s_no,
-		   r.u_no,
-		   r.r_contents,
-		   to_char(r.r_date, 'YYYY-MM-DD') AS r_date,
-		   u.u_gender,
-		   r.star,
-		   r.saveName,
-		   u.u_nickname,
-		   u.u_type
-		   from review r, users u
-		   where r.u_no = u.u_no 
-		   and r.s_no=#{s_no}
-			order by r_no asc
+   select r.r_no,
+         r.s_no,
+         r.u_no,
+         r.r_contents,
+         to_char(r.r_date, 'YYYY-MM-DD') AS r_date,
+         u.u_gender,
+         r.star,
+         r.saveName,
+         u.u_nickname,
+         u.u_type
+         from review r, users u
+         where r.u_no = u.u_no 
+         and r.s_no=#{s_no}
+         order by r_no asc
 ]]>
 
 
 
 
-	</select>
+   </select>
 
-	<!-- 리뷰쓰기 -->
-	<select id="reviewModi" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+   <!-- 리뷰쓰기 -->
+   <select id="reviewModi" parameterType="int" resultType="com.javaex.vo.ReviewVo">
 
-			<![CDATA[
-			
-				  select r_no,
-			              s_no,
-			              r_no,
-			              r_contents,
-			              r_date,
-			              star,
-			              savename
-			                
-			       from review
-			       where r_no=#{reviewNo}
-			
-			
-			
-			
-			]]>
-
-
+         <![CDATA[
+         
+              select r_no,
+                       s_no,
+                       r_no,
+                       r_contents,
+                       r_date,
+                       star,
+                       savename
+                         
+                from review
+                where r_no=#{reviewNo}
+         
+         
+         
+         
+         ]]>
 
 
 
 
-	</select>
-	<!-- 리뷰수정 -->
-	<update id="updateModi" parameterType="com.javaex.vo.ReviewVo">
-	
-	<![CDATA[
-		update review
-		set r_contents = #{r_contents},
-			saveName = #{saveName}
-			where r_no=#{r_no}
-		
-	
-	]]>
-	
-	</update>
-	
-	
-	<!-- 에이작스 리뷰 1개 가지고오기 -->
-	
-	<select id="reviewOne" parameterType="int" resultType="com.javaex.vo.ReviewVo">
-	
-		<![CDATA[
-			select r.r_no,
-			       r.s_no,
-			       r.u_no,
-			       r.r_contents,
-				   r.r_date,
-				   r.star,
-				   r.saveName,
-			       u.u_type,
-				   u.u_nickname,
-				   u.u_gender
-			from review r, users u
-			where r.u_no = u.u_no
-			and r.r_no = #{r_no}
-			order by r_no asc
-		
-		
-		]]>
 
-	
-	</select>
-	
-	<!-- 리뷰삭제 -->
-	
-	<delete id="delete" parameterType="int">
-		<![CDATA[
-		delete review
-		where r_no = #{r_no}
-		
-		
-		]]>
-	
-	</delete>
+
+   </select>
+   <!-- 리뷰수정 -->
+   <update id="updateModi" parameterType="com.javaex.vo.ReviewVo">
+   
+   <![CDATA[
+      update review
+      set r_contents = #{r_contents},
+         saveName = #{saveName}
+         where r_no=#{r_no}
+      
+   
+   ]]>
+   
+   </update>
+   
+   
+   <!-- 에이작스 리뷰 1개 가지고오기 -->
+   
+   <select id="reviewOne" parameterType="int" resultType="com.javaex.vo.ReviewVo">
+   
+      <![CDATA[
+         select r.r_no,
+                r.s_no,
+                r.u_no,
+                r.r_contents,
+               r.r_date,
+               r.star,
+               r.saveName,
+                u.u_type,
+               u.u_nickname,
+               u.u_gender
+         from review r, users u
+         where r.u_no = u.u_no
+         and r.r_no = #{r_no}
+         order by r_no asc
+      
+      
+      ]]>
+
+   
+   </select>
+   
+   <!-- 리뷰삭제 -->
+   
+   <delete id="delete" parameterType="int">
+      <![CDATA[
+      delete review
+      where r_no = #{r_no}
+      
+      
+      ]]>
+   
+   </delete>
 
 
 </mapper>
