@@ -5,7 +5,6 @@
 	color: #808080;
 }
 
-
 .orange {
 	color: coral;
 	font-size: 10px;
@@ -124,7 +123,7 @@ td {
 	text-align: left;
 }
 
-.bold { padding-left: 40px;}
+#joinForm .bold { padding-left: 40px;}
 
 table tr .btn { margin-left: 15px;}
 .text-center .btn[type="submit"] {margin-right: 10px;}
