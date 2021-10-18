@@ -43,7 +43,7 @@
             <div id="content" class="clearfix">
                <div id="restaurantInfo">
                   <div class="restaurantInfo float-l clearfix text-left">
-                     <p class="restaurantInfo-text">${ownerVo.s_intro }.</p>
+                     <p class="restaurantInfo-text">${ownerVo.s_intro }</p>
                      <p class="restaurantInfo-text">
                         <span class="timeInfo">영업시간</span> <span class="timeInfo">${ownerVo.s_openH }:${ownerVo.s_openM } ~
                            ${ownerVo.s_closeH }:${ownerVo.s_closeM } </span><br>
@@ -149,7 +149,7 @@
                      
    
                      <p>
-                        <span class="favoritesImg"><img src="" alt="찜"></span> <span class="favorites">+555</span>
+                        <span class="favoritesImg"><img src="${pageContext.request.contextPath }/assets/image/빈하트.png" width="70px"height="70px""></span> <span class="favorites">+12</span>
                      </p>
                   </div>
                   <div class="restaurantInfo float-l clearfix text-left">
@@ -364,7 +364,7 @@
                               
                            <div class="text-center">
                               <button id= "ajaxButton" class="btn" type="submit">저장</button>
-                              <button class="btn">취소</button>
+                              <button id="cancel" class="btn">취소</button>
                            </div>
                            <input id="u_no"type="text" name="u_no" value="${authUser.u_no}">
                            <input id="s_no"type="text" name="s_no" value="${ownerVo.s_no}">
