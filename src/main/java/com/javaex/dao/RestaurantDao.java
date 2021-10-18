@@ -1,5 +1,6 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
+import com.javaex.vo.RsVo;
 
 @Repository
 public class RestaurantDao {
@@ -16,10 +18,16 @@ public class RestaurantDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<OwnerVo> getStoreList(String keyword) {
+	public List<RsVo> getStoreList(String m_type, String keyword) {
 		System.out.println("restaurantDao.getStoreList()");
 		
-		return sqlSession.selectList("restaurant.getStoreList", keyword);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("m_type", m_type);
+		map.put("keyword", keyword);
+		
+		System.out.println(map);
+		
+		return sqlSession.selectList("restaurant.getStoreList", map);
 	}
 	
 	

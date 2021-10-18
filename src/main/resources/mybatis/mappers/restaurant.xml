@@ -5,8 +5,9 @@
 
 <mapper namespace="restaurant">
 
-	<select id="getStoreList" parameterType="String" resultType="com.javaex.vo.OwnerVo">
+	<select id="getStoreList" parameterType="map" resultType="com.javaex.vo.RsVo">
 		<![CDATA[
+<<<<<<< HEAD
 			select s.s_no,
 				   s.s_img,
 				   s.s_name,
@@ -82,6 +83,64 @@
 		       where s.s_no = m.s_no
 		       and s.s_no = #{s_no}
 		       and rownum=1
+=======
+			select sm.s_no,
+			       sm.s_img,
+			       sm.s_name,
+			       sm.s_phone,
+			       sm.s_address,
+			       sm.s_detail_address,
+			       sm.s_openH,
+			       sm.s_openM,
+			       sm.s_closeH,
+			       sm.s_closeM,
+			       sm.s_parking,
+			       sm.s_intro,
+			       sm.s_Hmon, 
+			       sm.s_Htue,
+			       sm.s_Hwen,
+			       sm.s_Hthu,
+			       sm.s_Hfri,
+			       sm.s_Hsat,
+			       sm.s_Hsun,
+			       round(sa.avg, 1) avg,
+			       sm.m_type
+			from (select distinct  s.s_no,
+			                       s.s_img,
+			                       s.s_name,
+			                       s.s_phone,
+			                       s.s_address,
+			                       s.s_detail_address,
+			                       s.s_openH,
+			                       s.s_openM,
+			                       s.s_closeH,
+			                       s.s_closeM,
+			                       s.s_parking,
+			                       s.s_intro,
+			                       s.s_Hmon, 
+			                       s.s_Htue,
+			                       s.s_Hwen,
+			                       s.s_Hthu,
+			                       s.s_Hfri,
+			                       s.s_Hsat,
+			                       s.s_Hsun,
+			                       m.m_type
+        		  from store s, menu m
+        		  where s.s_no = m.s_no
+        		  ]]>
+	        		  <if test='m_type != null and m_type != ""'>
+	        		  	and m.m_type = #{m_type}
+	        		  </if>
+	        		  <if test='keyword != null and keyword != ""'>
+	        	      	and s.s_name || s.s_address || m.m_name like '%'||#{keyword}||'%' 
+	        	      </if>
+        	      <![CDATA[
+        	      ) sm,
+  		  (select s_no, avg(star) avg
+  		  from review
+   		  group by s_no) sa 
+	      where sm.s_no = sa.s_no(+)
+>>>>>>> branch 'master' of https://github.com/SeoJongO/vegan-site.git
 		]]>
 	</select>
 

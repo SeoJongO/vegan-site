@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javaex.service.RestaurantService;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
+import com.javaex.vo.RsVo;
 
 @Controller
 public class RestaurantController {
@@ -21,11 +22,11 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 	
 	@RequestMapping(value="/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
-	public String restaurantSearch(Model model, @RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
+	public String restaurantSearch(Model model, @RequestParam(value="type", required=false, defaultValue="") String type,
+												@RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
 		System.out.println("[RestaurantController.restaurantSearch]");
 
-		List<OwnerVo> storeList = restaurantService.getStoreList(keyword);
-		
+		List<RsVo> storeList = restaurantService.getStoreList(type, keyword);
 		model.addAttribute("storeList", storeList);
 		System.out.println(storeList);
 		return "restaurantSearch/restaurantSearch";

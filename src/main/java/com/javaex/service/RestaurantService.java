@@ -14,6 +14,7 @@ import com.javaex.dao.RestaurantDao;
 import com.javaex.vo.MenuVo;
 import com.javaex.vo.OwnerVo;
 import com.javaex.vo.ReviewVo;
+import com.javaex.vo.RsVo;
 
 @Service
 public class RestaurantService {
@@ -22,10 +23,10 @@ public class RestaurantService {
 	private RestaurantDao restaurantDao;
 	// 상세페이지 한개 메뉴리스트 출력
 
-	public List<OwnerVo> getStoreList(String keyword) {
+	public List<RsVo> getStoreList( String m_type, String keyword) {
 		System.out.println("restaurantService.getStoreList()");
 
-		return restaurantDao.getStoreList(keyword);
+		return restaurantDao.getStoreList(m_type, keyword);
 	}
 
 	public OwnerVo getOne(int s_no) {
