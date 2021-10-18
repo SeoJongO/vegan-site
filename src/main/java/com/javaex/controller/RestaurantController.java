@@ -21,10 +21,11 @@ public class RestaurantController {
 	private RestaurantService restaurantService;
 	
 	@RequestMapping(value="/restaurantSearch", method = { RequestMethod.GET, RequestMethod.POST })
-	public String restaurantSearch(Model model, @RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
+	public String restaurantSearch(Model model, @RequestParam("type") String type,
+												@RequestParam(value="keyword", required=false, defaultValue="") String keyword) {
 		System.out.println("[RestaurantController.restaurantSearch]");
 
-		List<OwnerVo> storeList = restaurantService.getStoreList(keyword);
+		List<OwnerVo> storeList = restaurantService.getStoreList(type, keyword);
 
 		model.addAttribute("storeList", storeList);
 

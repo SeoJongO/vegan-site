@@ -142,14 +142,10 @@
 	                    
 	                     </p>
                      </c:if>
-                     
-                     
-                     
 
-                     
-   
+					<!-- 비로그인 -->   
                      <p>
-                        <span class="favoritesImg"><img src="${pageContext.request.contextPath }/assets/image/빈하트.png" width="70px"height="70px""></span> <span class="favorites">+12</span>
+                        <span class="favoritesImg"><img src="${pageContext.request.contextPath }/assets/image/빈하트.png" width="70px"height="70px"></span> <span class="favorites">+12</span>
                      </p>
                   </div>
                   <div class="restaurantInfo float-l clearfix text-left">
@@ -412,6 +408,32 @@
 </script>
 
 <script>
+
+var u_no = $("[name='u_no']").val();
+var s_no = $("[name='s_no']").val();
+
+$(".favoritesImg").on("click", function() {
+	$.ajax({
+        url : "${pageContext.request.contextPath}/like",
+        type : "POST",
+        processData : false,
+        contentType : false,
+        data: formData,
+        dataType : "json",
+        success : function(resultVo){
+           /*성공시 처리해야될 코드 작성*/
+           console.log(resultVo);
+           render(resultVo,"up");
+           console.log("ddd"+resultVo.star);
+           $('#reviewModal').modal('hide');
+              //화면에 그리기
+        },
+        error : function(XHR, status, error) {
+           console.error(status + " : " + error);
+        }
+     });
+   });
+
 var address = document.getElementById('s_address').value;
 console.log(address);
 //주소-좌표 변환 객체를 생성합니다
