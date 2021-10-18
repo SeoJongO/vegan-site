@@ -25,9 +25,9 @@ public class RestaurantController {
 		System.out.println("[RestaurantController.restaurantSearch]");
 
 		List<OwnerVo> storeList = restaurantService.getStoreList(keyword);
-
+		
 		model.addAttribute("storeList", storeList);
-
+		System.out.println(storeList);
 		return "restaurantSearch/restaurantSearch";
 	}
 
