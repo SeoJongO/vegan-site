@@ -155,12 +155,35 @@
                   <div class="restaurantInfo float-l clearfix text-left">
                   <c:forEach items="${ownerVo.menuList }" var="menuList" varStatus="status" begin="0" end="2">
                      <div class="menu">
+                     
+                     
                         <img class="foodImg float-l clearfix" src="${ pageContext.request.contextPath }/veganLogo/${menuList.m_imge }">
                         
                         <p>
-                           <span class="foodInfo">메뉴이름: ${menuList.m_name}</span> <span class="foodInfo">가격: ${menuList.m_price}</span> <span class="foodInfo">채식타입:
-                              ${menuList.m_type}</span> <span class="foodInfo">${menuList.m_intro}</span>
+                           <span class="foodInfo">메뉴이름: ${menuList.m_name}</span> <span class="foodInfo">가격: ${menuList.m_price}</span>
+                         <c:if test="${menuList.m_type eq 'pesco' }">
+                           <span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 25px; height: 25px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 005.png"></span>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'vegan' }">
+                           <span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 25px; height: 25px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 003.png"></span>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'ovo' }">
+                           <span class="foodInfo">채식타입:&nbsp; <img alt="" class="" style="width: 25px; height: 25px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 004.png"></span>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'lacto-ovo' }">
+                           <span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 25px; height: 25px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 002.png"></span>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'lacto'}">
+                           <span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 25px; height: 25px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-40 001.png"></span>
+                        </c:if>
+                            <span class="foodInfo">${menuList.m_intro}</span>
+                            
                         </p>
+                     
                         
                      </div>
                      </c:forEach>
@@ -232,7 +255,8 @@
 	                      </c:if>
 	                   
                         <div>
-                           <p>${reviewList.u_nickName}(${reviewList.u_type })</p>
+                        <c:if test="${reviewList.u_type eq 'vegan' }">
+                           <p>${reviewList.u_nickName}<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 003.png">
                                     <c:if test="${reviewList.star == 5 }">
                                        <p id="starPoint">★★★★★</p>
                                     </c:if>
@@ -249,6 +273,87 @@
                                        <p id="starPoint">★☆☆☆☆</p>
                                      </c:if>
                            <p>${reviewList.r_date }</p>
+                           </c:if>
+                           
+                           <c:if test="${reviewList.u_type eq 'lacto-ovo' }">
+                           <p>${reviewList.u_nickName}<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 002.png">
+                                    <c:if test="${reviewList.star == 5 }">
+                                       <p id="starPoint">★★★★★</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 4 }">
+                                       <p id="starPoint">★★★★☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 3 }">
+                                       <p id="starPoint">★★★☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 2 }">
+                                       <p id="starPoint">★★☆☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 1 }">
+                                       <p id="starPoint">★☆☆☆☆</p>
+                                     </c:if>
+                           <p>${reviewList.r_date }</p>
+                           </c:if>
+                           
+                            <c:if test="${reviewList.u_type eq 'lacto'}">
+                           <p>${reviewList.u_nickName}<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-40 001.png">
+                                    <c:if test="${reviewList.star == 5 }">
+                                       <p id="starPoint">★★★★★</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 4 }">
+                                       <p id="starPoint">★★★★☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 3 }">
+                                       <p id="starPoint">★★★☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 2 }">
+                                       <p id="starPoint">★★☆☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 1 }">
+                                       <p id="starPoint">★☆☆☆☆</p>
+                                     </c:if>
+                           <p>${reviewList.r_date }</p>
+                           </c:if>
+                           
+                            <c:if test="${reviewList.u_type eq 'ovo' }">
+                           <p>${reviewList.u_nickName}<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 004.png">
+                                    <c:if test="${reviewList.star == 5 }">
+                                       <p id="starPoint">★★★★★</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 4 }">
+                                       <p id="starPoint">★★★★☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 3 }">
+                                       <p id="starPoint">★★★☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 2 }">
+                                       <p id="starPoint">★★☆☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 1 }">
+                                       <p id="starPoint">★☆☆☆☆</p>
+                                     </c:if>
+                           <p>${reviewList.r_date }</p>
+                           </c:if>
+                           
+                           <c:if test="${reviewList.u_type eq 'pesco' }">
+                           <p>${reviewList.u_nickName}<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 005.png">
+                                    <c:if test="${reviewList.star == 5 }">
+                                       <p id="starPoint">★★★★★</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 4 }">
+                                       <p id="starPoint">★★★★☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 3 }">
+                                       <p id="starPoint">★★★☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 2 }">
+                                       <p id="starPoint">★★☆☆☆</p>
+                                    </c:if>
+                                    <c:if test="${reviewList.star == 1 }">
+                                       <p id="starPoint">★☆☆☆☆</p>
+                                     </c:if>
+                           <p>${reviewList.r_date }</p>
+                           </c:if>
                         </div>
                      </div>
                   <c:if test="${authUser.u_no eq reviewList.u_no }">
@@ -310,7 +415,26 @@
                      <div class="menuText">
                         <p>${menuList.m_name }</p>
                         <p>${menuList.m_price }</p>
-                        <p>${menuList.m_type }</p>
+                        
+                        <c:if test="${menuList.m_type eq 'vegan' }">
+                        <p><span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 003.png"></span></p>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'lacto' }">
+                        <p><span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-40 001.png"></span></p>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'lacto-ovo' }">
+                        <p><span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 002.png"></span></p>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'ovo' }">
+                        <p><span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 004.png"></span></p>
+                        </c:if>
+                        
+                        <c:if test="${menuList.m_type eq 'pesco' }">
+                        <p><span class="foodInfo">채식타입: &nbsp; <img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 005.png"></span></p>
+                        </c:if>
                         <br>
                         <p>${menuList.m_intro }</p>
                      </div>
@@ -595,7 +719,11 @@ function render(resultVo, type){
  	 	}
 	   
    Str += '<div>';
-   Str += '<p>'+resultVo.u_nickName+''+(resultVo.u_type)+'</p>';
+  
+   if(resultVo.u_type == 'vegan'){
+	   
+   
+   Str += '<p>'+resultVo.u_nickName+'<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 003.png"></p>';
    
       if(resultVo.star == 5){
          Str += '<p id="starPoint">★★★★★</p>'
@@ -608,7 +736,63 @@ function render(resultVo, type){
             }else if(resultVo.star == 1){
                Str += '<p id="starPoint">★☆☆☆☆</p>'
             }
-      
+   }else if(resultVo.u_type == 'ovo'){
+	   Str += '<p>'+resultVo.u_nickName+'<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 004.png"></p>';
+	   
+	      if(resultVo.star == 5){
+	         Str += '<p id="starPoint">★★★★★</p>'
+	      }else if(resultVo.star == 4){
+	         Str += '<p id="starPoint">★★★★☆</p>'
+	         }else if(resultVo.star == 3 ){
+	            Str += '<p id="starPoint">★★★☆☆</p>'
+	            }else if(resultVo.star == 2){
+	               Str += '<p id="starPoint">★★☆☆☆</p>'
+	            }else if(resultVo.star == 1){
+	               Str += '<p id="starPoint">★☆☆☆☆</p>'
+	            }
+   }else if(resultVo.u_type =='lacto-ovo'){
+	   Str += '<p>'+resultVo.u_nickName+'<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 002.png"></p>';
+	   
+	      if(resultVo.star == 5){
+	         Str += '<p id="starPoint">★★★★★</p>'
+	      }else if(resultVo.star == 4){
+	         Str += '<p id="starPoint">★★★★☆</p>'
+	         }else if(resultVo.star == 3 ){
+	            Str += '<p id="starPoint">★★★☆☆</p>'
+	            }else if(resultVo.star == 2){
+	               Str += '<p id="starPoint">★★☆☆☆</p>'
+	            }else if(resultVo.star == 1){
+	               Str += '<p id="starPoint">★☆☆☆☆</p>'
+	            }
+   }else if(resultVo.u_type == 'lacto'){
+	   Str += '<p>'+resultVo.u_nickName+'<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-40 001.png"></p>';
+	   
+	      if(resultVo.star == 5){
+	         Str += '<p id="starPoint">★★★★★</p>'
+	      }else if(resultVo.star == 4){
+	         Str += '<p id="starPoint">★★★★☆</p>'
+	         }else if(resultVo.star == 3 ){
+	            Str += '<p id="starPoint">★★★☆☆</p>'
+	            }else if(resultVo.star == 2){
+	               Str += '<p id="starPoint">★★☆☆☆</p>'
+	            }else if(resultVo.star == 1){
+	               Str += '<p id="starPoint">★☆☆☆☆</p>'
+	            }
+   }else if(resultVo.u_type == 'pesco'){
+	   Str += '<p>'+resultVo.u_nickName+'<img alt="" class="" style="width: 40px; height: 40px; margin-top: -5px;" src="${pageContext.request.contextPath }/assets/image/KakaoTalk_Photo_2021-10-16-23-08-41 005.png"></p>';
+	   
+	      if(resultVo.star == 5){
+	         Str += '<p id="starPoint">★★★★★</p>'
+	      }else if(resultVo.star == 4){
+	         Str += '<p id="starPoint">★★★★☆</p>'
+	         }else if(resultVo.star == 3 ){
+	            Str += '<p id="starPoint">★★★☆☆</p>'
+	            }else if(resultVo.star == 2){
+	               Str += '<p id="starPoint">★★☆☆☆</p>'
+	            }else if(resultVo.star == 1){
+	               Str += '<p id="starPoint">★☆☆☆☆</p>'
+	            }
+   }
    Str += '<p>'+resultVo.r_date+'</p>';
    Str += '</div>';
    Str += '</div>';

@@ -35,13 +35,13 @@
 			where (s.s_name || s.s_address) like '%'||#{keyword}||'%'
 		</if>
 	        <![CDATA[
-	       and  r.s_no = s.s_no 
-	        group by s.s_no, s.s_img, s.s_name, s.s_phone, s.s_address, 
-s.s_detail_address, s.s_openH, s.s_openM, s.s_closeH, s.s_closeM, 
-s.s_parking, s.s_intro, s.s_Hmon, s.s_Htue, s.s_Hwen, 
-s.s_Hthu, s.s_Hfri, s.s_Hsat, s.s_Hsun
-	        order by s.s_no asc
-		]]>
+		        and  r.s_no = s.s_no 
+		        group by s.s_no, s.s_img, s.s_name, s.s_phone, s.s_address, 
+				s.s_detail_address, s.s_openH, s.s_openM, s.s_closeH, s.s_closeM, 
+				s.s_parking, s.s_intro, s.s_Hmon, s.s_Htue, s.s_Hwen, 
+				s.s_Hthu, s.s_Hfri, s.s_Hsat, s.s_Hsun
+		        order by s.s_no asc
+			]]>
 	</select>
 
 	<!-- 한명의 정보가져오기 -->
@@ -129,7 +129,7 @@ s.s_Hthu, s.s_Hfri, s.s_Hsat, s.s_Hsun
 		   r.s_no,
 		   r.u_no,
 		   r.r_contents,
-		   r.r_date,
+		   to_char(r.r_date, 'YYYY-MM-DD') AS r_date,
 		   u.u_gender,
 		   r.star,
 		   r.saveName,
