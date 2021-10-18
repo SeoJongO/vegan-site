@@ -7,7 +7,7 @@
 
 	<select id="getStoreList" parameterType="map" resultType="com.javaex.vo.RsVo">
 		<![CDATA[
-<<<<<<< HEAD
+
 			select s.s_no,
 				   s.s_img,
 				   s.s_name,
@@ -83,7 +83,7 @@
 		       where s.s_no = m.s_no
 		       and s.s_no = #{s_no}
 		       and rownum=1
-=======
+
 			select sm.s_no,
 			       sm.s_img,
 			       sm.s_name,
@@ -140,7 +140,7 @@
   		  from review
    		  group by s_no) sa 
 	      where sm.s_no = sa.s_no(+)
->>>>>>> branch 'master' of https://github.com/SeoJongO/vegan-site.git
+
 		]]>
 	</select>
 
